@@ -1,9 +1,47 @@
+import { Review } from "@/components/review/Review";
 import Image from "next/image";
 
+import React from "react"
+
+
 export default function Home() {
+  // useEffect(() => {
+  //   const slider = new Glide(".glide-08", {
+  //     type: "carousel",
+  //     focusAt: 1,
+  //     animationDuration: 4000,
+  //     autoplay: 4500,
+  //     autoplay: true,
+  //     rewind: true,
+  //     perView: 2,
+  //     gap: 48,
+  //     classes: {
+  //       nav: {
+  //         active: "[&>*]:bg-wuiSlate-700",
+  //       },
+  //     },
+  //     breakpoints: {
+  //       1024: {
+  //         perView: 2,
+  //       },
+  //       640: {
+  //         perView: 1,
+  //       },
+  //     },
+  //   }).mount()
+
+  //   return () => {
+  //     slider.destroy()
+  //   }
+  // }, [])
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <div> pagla gora khepece world</div>
+    <div className="">
+      <div> 
+      fdsaadsf
+      <Review></Review>
+      
+      </div>
     </div>
   );
 }
