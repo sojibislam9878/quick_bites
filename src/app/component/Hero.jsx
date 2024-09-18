@@ -86,7 +86,7 @@ const Hero = () => {
             />
 
             {/* CTA Button */}
-            <button className="bg-[#f7b614] text-black px-4 py-4 rounded-l-none border-none hover:bg-[#d99512] w-[50%]">
+            <button className="bg-[#f7b614] text-white px-4 py-4 rounded-l-none border-none hover:bg-[#d99512] w-[50%]">
               Find now
             </button>
           </div>
