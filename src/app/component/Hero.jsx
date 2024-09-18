@@ -4,43 +4,21 @@ import Image from "next/image";
 import banner from "@/asset/image/banner3.jpg";
 import bannerLeft from "@/asset/image/bannerleft.png";
 import { FiMapPin } from "react-icons/fi";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import L from "leaflet";
+
+
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Hero = () => {
-  const [location, setLocation] = useState("");
-  const [geoLocation, setGeoLocation] = useState(null);
-  const [deliveryTime, setDeliveryTime] = useState("20-30 minutes"); // Mocked delivery time
-
-  // Default icon for marker
-  const defaultIcon = L.icon({
-    iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-  });
-
-  // Geolocation fetching
+  
+  // Initialize AOS for animations
   useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setGeoLocation({ latitude, longitude });
-        },
-        (error) => {
-          console.error("Geolocation error:", error);
-          setGeoLocation("Location not found");
-        }
-      );
-    } else {
-      setGeoLocation("Geolocation not supported by your browser");
-    }
+    AOS.init({ duration: 2000 });
   }, []);
 
-  const handleLocationChange = (e) => {
-    setLocation(e.target.value);
-  };
+ 
+  
+
 
   return (
     <div className="relative max-w-7xl mx-auto hero w-full mt-12 bg-black">
@@ -81,26 +59,22 @@ const Hero = () => {
               type="text"
               placeholder="Enter your delivery address"
               value={location}
-              onChange={handleLocationChange}
+           
               className="w-full px-4 text-black outline-none"
             />
 
             {/* CTA Button */}
-            <button className="bg-[#f7b614] text-white px-4 py-4 rounded-l-none border-none hover:bg-[#d99512] w-[50%]">
+            <button className="bg-[#f7b614] text-black px-4 py-4 rounded-l-none border-none hover:bg-[#d99512] w-[50%]">
               Find now
             </button>
           </div>
-
-          
         </div>
 
         {/* Image Section */}
-        <div className="mt-24 md:mt-0 max-w-lg">
+        <div data-aos="fade-left" className="mt-24 md:mt-0 max-w-lg">
           <Image src={bannerLeft} alt="Banner Left" className="object-contain" />
         </div>
       </div>
-
-      
     </div>
   );
 };
