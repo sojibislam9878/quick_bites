@@ -65,7 +65,7 @@ const Footer = () => {
                             <ul className="mt-4 space-y-2">
                                 <li className='hover:scale-y-[1.08]'><a href='' className=" hover:text-gray-300 font-semibold hover:underline ">About Us</a></li>
                                 <li className='hover:scale-y-[1.08]'><a href='' className="hover:text-gray-300 font-semibold hover:underline">Branch Contacts</a></li>
-                                <li className='hover:scale-y-[1.08]'><a href='' className="hover:text-gray-300 font-semibold hover:underline">Contact Us</a></li>
+                                <li className='hover:scale-y-[1.08]'><a href='/contact' className="hover:text-gray-300 font-semibold hover:underline">Contact Us</a></li>
                                 <li className='hover:scale-y-[1.08]'><a href='' className="hover:text-gray-300 font-semibold hover:underline">Careers</a></li>
                             </ul>
                         </div>
