@@ -1,4 +1,4 @@
-// Import Swiper React components
+
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 // Import Swiper styles
@@ -16,7 +16,7 @@ export default function ReviewSlide() {
     // State to hold review data
     const [reviews, setReviews] = useState([]);
 
-    // Optionally, fetch reviews from an API
+    // Optionally, fetch reviews from an API or local array
     useEffect(() => {
         setReviews(reviewsAll)
     }, []);
@@ -24,9 +24,7 @@ export default function ReviewSlide() {
     return (
         <div>
             <Swiper
-                slidesPerView={3}
                 spaceBetween={20}
-                centeredSlides={false}
                 loop={true}
                 autoplay={{
                     delay: 3000,
@@ -37,6 +35,22 @@ export default function ReviewSlide() {
                 }}
                 modules={[Autoplay]}
                 className='mySwiper rounded-xl'
+
+                // Responsive breakpoints
+                breakpoints={{
+                    // when window width is >= 320px (mobile)
+                    320: {
+                        slidesPerView: 1, // show 1 slide on mobile
+                    },
+                    // when window width is >= 768px (tablet/medium devices)
+                    768: {
+                        slidesPerView: 2, // show 2 slides on tablets
+                    },
+                    // when window width is >= 1024px (large devices)
+                    1024: {
+                        slidesPerView: 3, // show 3 slides on large devices
+                    },
+                }}
             >
                 {/* Map through the reviews and create SwiperSlide dynamically */}
                 {reviews.map((review, index) => (
