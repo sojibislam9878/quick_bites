@@ -2,7 +2,9 @@ import { Review } from "@/components/review/Review";
 import Image from "next/image";
 
 import React from "react"
-
+// pages/_app.js or pages/_app.tsx
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 export default function Home() {
   // useEffect(() => {
