@@ -1,7 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "./Componants/Navbar";
-import Footer from "./Componants/Footer";
+import Navbar from "./component/Navbar";
+import Footer from "./component/Footer";
 
 
 
@@ -32,7 +32,8 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
 
-      </head>      <body
+      </head>   
+         <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar></Navbar>
