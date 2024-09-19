@@ -38,15 +38,16 @@ const Navbar = () => {
 
 
     return (
-        <div className='lg:px-16 border-b-2 fixed   w-full h-fit z-10 bg-base-100  border-gray-300 md:px-5'>
+        
+        <div className='lg:px-16 border-b-2 fixed mb-48  border  w-full h-fit z-50 bg-base-100  border-gray-300 md:px-5'>
             <div className="navbar  justify-between  lg:justify-between md:justify-between ">
                 <div className="navbar-start  w-fit">
                     {/* for small */}
                     <div className={icon ? '' : ' relative'}>
-                        <div tabIndex={1} role="button" className="btn btn-ghost lg:hidden">
+                        <div tabIndex={1}  onClick={() => setIcon(!icon)} role="button" className="btn btn-ghost lg:hidden">
 
-                            <FiAlignJustify className={icon ? 'block ' : 'hidden'} onClick={() => setIcon(!icon)} size={20} />
-                            <GrClose className={icon ? 'hidden ' : 'block'} onClick={() => setIcon(!icon)} size={20} />
+                            <FiAlignJustify className={icon ? 'block ' : 'hidden'} size={20} />
+                            <GrClose className={icon ? 'hidden ' : 'block'}  size={20} />
 
 
 
