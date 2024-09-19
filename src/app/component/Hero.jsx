@@ -21,7 +21,7 @@ const Hero = () => {
 
 
   return (
-    <div className="relative max-w-7xl mx-auto hero w-full mt-28 bg-black">
+    <div className="relative max-w-7xl mx-auto hero w-full mt-12 bg-black">
       {/* Background Image */}
       <Image
         src={banner}
