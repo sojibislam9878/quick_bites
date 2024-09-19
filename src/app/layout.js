@@ -1,5 +1,8 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import localFont from "next/font/local";
 import "./globals.css";
+import Navbar from "./component/Navbar";
+import Footer from "./component/Footer";
 
 
 
@@ -21,11 +24,22 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
+    <html lang="en" data-theme="light">
+
+      <head>
+
+        <link
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
+
+      </head>   
+         <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Navbar></Navbar>
         {children}
+        <Footer></Footer>
       </body>
     </html>
   );

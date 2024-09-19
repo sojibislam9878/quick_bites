@@ -26,7 +26,7 @@ const PromotionBanner = () => {
   return (
     <section
       
-      className="w-[96%] md:w-[80%] mx-auto max-w-[1220px] mt-9 flex flex-col md:flex-row  "
+      className="w-[96%] md:w-[80%] mx-auto max-w-[1220px] mt-9 flex flex-col md:flex-row  mb-20"
     >
       {/* First Coupon Card */}
       <div
