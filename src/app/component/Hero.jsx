@@ -58,7 +58,7 @@ const Hero = () => {
             <input
               type="text"
               placeholder="Enter your delivery address"
-              value={location}
+             
            
               className="w-full px-4 text-black outline-none"
             />
