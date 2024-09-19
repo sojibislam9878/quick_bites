@@ -4,7 +4,7 @@ import { FaDiscord, FaFacebook, FaFacebookF, FaInstagram, FaLinkedin, FaLinkedin
 const Footer = () => {
     return (
 
-        <footer className="bg-orange-600 text-gray-300 pt-8 pb-4">
+        <footer className="bg-orange-600 text-gray-300 pt-8 pb-4 ">
             <div className=" container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Left Section - Logo and Social Icons */}
