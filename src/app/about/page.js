@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-white dark:bg-gray-900">
+      <section className="bg-white dark:bg-gray-900 pt-[120px]">
         <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
           <div className="mr-auto place-self-center lg:col-span-7">
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white w-[460px] ">
@@ -74,10 +74,10 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="bg-white dark:bg-gray-900">
+      <section className="bg-white dark:bg-gray-900 mb-10">
         <div className="container mx-auto px-4 md:px-10">
           <div className="flex flex-col md:flex-row gap-10">
-            <div className="p-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400">
+            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400">
               <a href="#" className="">
                 <img
                   className="rounded-t-lg p-2"
@@ -91,14 +91,14 @@ export default function AboutPage() {
                     Free Delivery
                   </h5>
                 </a>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 leading-8 ">
                   Here are the biggest enterprise technology acquisitions of
                   2021 so far, in reverse chronological order.
                 </p>
               </div>
             </div>
 
-            <div className="p-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400">
+            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400">
               <a href="#">
                 <img
                   className="rounded-t-lg p-2"
@@ -119,7 +119,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="p-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400">
+            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400">
               <a href="#">
                 <img
                   className="rounded-t-lg p-2"
@@ -140,7 +140,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="p-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400">
+            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400">
               <a href="#">
                 <img
                   className="rounded-t-lg p-2"
@@ -427,7 +427,7 @@ export default function AboutPage() {
     <div class="w-full bg-white border-t border-b border-gray-200 px-5 py-16 md:py-24 text-gray-800">
         <div class="w-full max-w-6xl mx-auto">
             <div class="text-center max-w-xl mx-auto">
-                <h1 class="text-6xl md:text-7xl font-bold mb-5 text-gray-600">What people <br></br>are saying.</h1>
+                <h1 class="text-6xl md:text-7xl font-bold mb-5 text-black-600">What people <br></br>are saying.</h1>
                 <h3 class="text-xl mb-5 font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
                 <div class="text-center mb-10">
                     <span class="inline-block w-1 h-1 rounded-full bg-indigo-500 ml-1"></span>

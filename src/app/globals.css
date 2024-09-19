@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+.Playfair{
+
+    font-family: "Playfair Display", serif;
+}
