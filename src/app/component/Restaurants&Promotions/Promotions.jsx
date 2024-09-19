@@ -15,7 +15,7 @@ import PromotionsSlider from './PromotionsSIider';
 
 const Promotions = () => {
   return (
-    <div className="relative mt-28 w-[80%] mx-auto">
+    <div className="relative  max-w-7xl mx-auto mt-28 w-[80%] ">
       {/* Title */}
       <h2 className="text-3xl font-bold text-center mb-8">Restaurants & Promotions</h2>
 
