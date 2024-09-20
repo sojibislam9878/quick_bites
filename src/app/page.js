@@ -1,9 +1,18 @@
 import Image from "next/image";
+import Hero from "./component/Hero";
+import Promotions from "./component/Restaurants&Promotions/Promotions";
+import PromotionBanner from "./component/Restaurants&Promotions/PromotionBanner";
+import Review from "./component/Review/Review";
+
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <div> hello world</div>
+    <div className="">
+    <Hero/>
+    <Promotions/>
+    <PromotionBanner/>
+    <Review/>
+    
     </div>
   );
 }
