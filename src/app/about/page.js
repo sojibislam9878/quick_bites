@@ -1,18 +1,12 @@
-"use client";
+import Image from "next/image";
 
-import { motion } from "framer-motion";
 export default function AboutPage() {
   return (
     <>
       <section className="bg-white dark:bg-gray-900 pt-[120px]">
         <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-          <motion.div
-            className="mr-auto place-self-center lg:col-span-7"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white w-[460px]">
+          <div className="mr-auto place-self-center lg:col-span-7">
+            <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white w-[460px] ">
               Nothing to worry about with QuickBites
             </h1>
             <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400 w-[460px]">
@@ -31,9 +25,9 @@ export default function AboutPage() {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fillRule="evenodd"
+                  fill-rule="evenodd"
                   d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clipRule="evenodd"
+                  clip-rule="evenodd"
                 ></path>
               </svg>
             </a>
@@ -43,111 +37,76 @@ export default function AboutPage() {
             >
               Speak to Sales
             </a>
-          </motion.div>
-
-          <motion.div
-            className="hidden lg:mt-0 lg:col-span-5 lg:flex rounded-[50px]"
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          </div>
+          <div className="hidden lg:mt-0 lg:col-span-5 lg:flex rounded-[50px] ">
             <img
               src="https://bslthemes.com/html/quickeat/assets/img/photo-9.jpg"
               alt="mockup"
               className="rounded-[50px] rotate-45"
             />
-          </motion.div>
+          </div>
         </div>
       </section>
       <section className="bg-white dark:bg-gray-900 my-5">
         <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
-          <motion.div
-            className="mt-8"
-            initial={{ opacity: 0, x: -100 }} // animation starts off-screen to the left
-            animate={{ opacity: 1, x: 0 }} // fades in and moves to its normal position
-            transition={{ duration: 0.8 }}
-          >
-            <motion.img
+          <div className="mt-8">
+            <img
               className="w-full rounded-lg"
               src="https://bslthemes.com/html/quickeat/assets/img/illustration-5.png"
               alt="office content 1"
-              initial={{ scale: 0.8 }} // start slightly smaller
-              animate={{ scale: 1 }} // grow to full size
-              transition={{ duration: 0.8 }}
             />
-          </motion.div>
-
-          <motion.div
-            className="font-light text-gray-500 sm:text-lg dark:text-gray-400"
-            initial={{ opacity: 0, x: 100 }} // animation starts off-screen to the right
-            animate={{ opacity: 1, x: 0 }} // fades in and moves to its normal position
-            transition={{ duration: 0.8, delay: 0.2 }} // delay to start after the image animation
-          >
+          </div>
+          <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
             <h2 className="mb-4 text-6xl tracking-tight font-extrabold text-gray-900 dark:text-white">
               Our mission is to save your time
             </h2>
             <p className="mb-4">
               We are strategists, designers and developers. Innovators and
               problem solvers. Small enough to be simple and quick, but big
-              enough to deliver the scope you want at the pace you need.
+              enough to deliver the scope you want at the pace you need. Small
+              enough to be simple and quick, but big enough to deliver the scope
+              you want at the pace you need.
             </p>
             <p>
               We are strategists, designers and developers. Innovators and
               problem solvers. Small enough to be simple and quick.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
       <section className="bg-white dark:bg-gray-900 mb-10">
         <div className="container mx-auto px-4 md:px-10">
-          <motion.div
-            className="flex flex-col md:flex-row gap-10"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, staggerChildren: 0.2 }}
-          >
-            {/* Service Card 1 */}
-            <motion.div
-              className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400"
-              whileHover={{ scale: 1.05 }} // Adds a scaling effect on hover
-              whileTap={{ scale: 0.95 }} // Slightly shrinks on click
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <a href="#">
+          <div className="flex flex-col md:flex-row gap-10">
+            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400">
+              <a href="#" className="">
                 <img
                   className="rounded-t-lg p-2"
                   src="https://bslthemes.com/html/quickeat/assets/img/service-icon-2.svg"
-                  alt="Free Delivery"
+                  alt=""
                 />
               </a>
-              <div>
+              <div className="">
                 <a href="#">
                   <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
                     Free Delivery
                   </h5>
                 </a>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 leading-8">
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 leading-8 ">
                   Here are the biggest enterprise technology acquisitions of
                   2021 so far, in reverse chronological order.
                 </p>
               </div>
-            </motion.div>
+            </div>
 
-            {/* Service Card 2 */}
-            <motion.div
-              className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
+            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400">
               <a href="#">
                 <img
                   className="rounded-t-lg p-2"
                   src="https://bslthemes.com/html/quickeat/assets/img/service-icon-3.svg"
-                  alt="Save Your Time"
+                  alt=""
                 />
               </a>
-              <div>
+              <div className="">
                 <a href="#">
                   <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
                     Save Your Time
@@ -158,23 +117,17 @@ export default function AboutPage() {
                   2021 so far, in reverse chronological order.
                 </p>
               </div>
-            </motion.div>
+            </div>
 
-            {/* Service Card 3 */}
-            <motion.div
-              className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
+            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400">
               <a href="#">
                 <img
                   className="rounded-t-lg p-2"
                   src="https://bslthemes.com/html/quickeat/assets/img/service-icon-5.svg"
-                  alt="Regular Discounts"
+                  alt=""
                 />
               </a>
-              <div>
+              <div className="">
                 <a href="#">
                   <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
                     Regular Discounts
@@ -185,23 +138,17 @@ export default function AboutPage() {
                   2021 so far, in reverse chronological order.
                 </p>
               </div>
-            </motion.div>
+            </div>
 
-            {/* Service Card 4 */}
-            <motion.div
-              className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
+            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400">
               <a href="#">
                 <img
                   className="rounded-t-lg p-2"
                   src="https://bslthemes.com/html/quickeat/assets/img/service-icon-7.svg"
-                  alt="Variety Food"
+                  alt=""
                 />
               </a>
-              <div>
+              <div className="">
                 <a href="#">
                   <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                     Variety Food
@@ -212,90 +159,47 @@ export default function AboutPage() {
                   2021 so far, in reverse chronological order.
                 </p>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
       <section className="bg-[url('https://bslthemes.com/html/quickeat/assets/img/background.png')] bg-cover bg-center dark:bg-gray-900">
-        <div className="flex lg:flex-row flex-col gap-10 mx-auto lg:py-5 lg:px-10 ">
-          {/* Image Section */}
-          <motion.div
-            className="lg:w-1/2 w-full flex lg:flex-row flex-col justify-center items-center rounded-[50px] "
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+        <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+          <div className="lg:col-span-6 col-span-12 flex justify-center items-center rounded-[50px]">
             <img
               src="https://bslthemes.com/html/quickeat/assets/img/photo-10.png"
               alt="mockup"
               className="rounded-[50px]"
             />
-          </motion.div>
-
-          {/* Text Section */}
-          <motion.div
-            className="mr-auto place-self-center lg:w-1/2 w-full "
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            {/* Title and Stat 1 */}
-            <div className="flex my-10 lg:flex-row flex-col ">
-              <h1 className="lg:max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white lg:w-[460px] w-[200px] mx-auto">
+          </div>
+          <div className="mr-auto place-self-center lg:col-span-6 col-span-12">
+            <div className="flex my-10">
+              <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white w-[460px]">
                 Service shows good taste.
               </h1>
-
-              <div className="flex mt-10 mx-auto">
-                <motion.h1
-                  className="text-[#F29F05] font-bold lg:text-6xl text-4xl"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  976
-                </motion.h1>
+              <p className="max-w-2xl mb-6  text-black-500 lg:mb-8 md:text-lg text-lg font-semibold dark:text-gray-400 w-[460px]">
+                <span className="text-[#F29F05] font-bold text-6xl">976 </span>
+                Satisfied Customers
+              </p>
+            </div>
+            <div className="flex  bg-white p-8 rounded-lg shadow-md w-[600px] justify-between">
+              <div className="flex ">
+                <h1 className="text-[#F29F05] font-bold text-6xl">12 </h1>
                 <div className="flex flex-col text-left ml-4">
-                  <p className="text-lg lg:font-semibold">Satisfied</p>
-                  <p className="text-lg lg:font-semibold">Customers</p>
+                  <p className="text-lg font-semibold">Best</p>
+                  <p className="text-lg font-semibold">Restaurants</p>
+                </div>
+              </div>
+
+              <div className="flex ">
+                <h1 className="text-[#F29F05] font-bold text-6xl">1k + </h1>
+                <div className="flex flex-col text-left  ml-4">
+                  <p className="text-lg font-semibold">Food</p>
+                  <p className="text-lg font-semibold">Delivered</p>
                 </div>
               </div>
             </div>
-
-            {/* Stats Section */}
-            <motion.div
-              className="flex  bg-white lg:p-8 rounded-lg shadow-md lg:w-[600px] justify-between px-5 mx-5"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              <div className="flex">
-                <motion.h1
-                  className="text-[#F29F05] font-bold lg:text-6xl text-4xl"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  12
-                </motion.h1>
-                <div className="flex flex-col text-left ml-4">
-                  <p className="text-lg lg:font-semibold">Best</p>
-                  <p className="text-lg lg:font-semibold">Restaurants</p>
-                </div>
-              </div>
-
-              <div className="flex">
-                <motion.h1
-                  className="text-[#F29F05] font-bold lg:text-6xl text-4xl"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  1k+
-                </motion.h1>
-                <div className="flex flex-col text-left ml-4">
-                  <p className="text-lg lg:font-semibold">Food</p>
-                  <p className="text-lg lg:font-semibold">Delivered</p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
       <section className="py-24 ">
@@ -514,133 +418,11 @@ export default function AboutPage() {
                     </div>
                 </div>
             </div>
-          </motion.div>
+        </div>  
+     
+    
 
-          <motion.div
-            className="grid grid-cols-3 items-center bg-gray-100 p-4 rounded-lg relative"
-            whileHover={{ scale: 1.05 }} // Example animation
-            transition={{ duration: 0.3 }} // Animation duration
-          >
-            <div className="col-span-2 min-h-[190px]">
-              <img
-                src="https://readymadeui.com/team-2.webp"
-                className="rounded-lg"
-                alt="Mark Adair"
-              />
-            </div>
-            <div className="bg-white rounded-lg p-4 absolute right-4 shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)]">
-              <h4 className="text-gray-800 text-sm font-bold">Mark Adair</h4>
-              <p className="text-[10px] text-gray-500 mt-0.5">United State</p>
-              <p className="text-gray-800 mt-2 text-xs">Professional Chef</p>
-            </div>
-          </motion.div>
 
-          <motion.div
-            className="grid grid-cols-3 items-center bg-gray-100 p-4 rounded-lg relative"
-            whileHover={{ scale: 1.05 }} // Example animation
-            transition={{ duration: 0.3 }} // Animation duration
-          >
-            <div className="col-span-2 min-h-[190px]">
-              <img
-                src="https://readymadeui.com/team-3.webp"
-                className="rounded-lg"
-                alt="Simon Konecki"
-              />
-            </div>
-            <div className="bg-white rounded-lg p-4 absolute right-4 shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)]">
-              <h4 className="text-gray-800 text-sm font-bold">Simon Konecki</h4>
-              <p className="text-[10px] text-gray-500 mt-0.5">United State</p>
-              <p className="text-gray-800 mt-2 text-xs">Professional Chef</p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="grid grid-cols-3 items-center bg-gray-100 p-4 rounded-lg relative"
-            whileHover={{ scale: 1.05 }} // Example animation
-            transition={{ duration: 0.3 }} // Animation duration
-          >
-            <div className="col-span-2 min-h-[190px]">
-              <img
-                src="https://readymadeui.com/team-4.webp"
-                className="rounded-lg"
-                alt="Simon Konecki"
-              />
-            </div>
-            <div className="bg-white rounded-lg p-4 absolute right-4 shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)]">
-              <h4 className="text-gray-800 text-sm font-bold">Simon Konecki</h4>
-              <p className="text-[10px] text-gray-500 mt-0.5">United State</p>
-              <p className="text-gray-800 mt-2 text-xs">Professional Chef</p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="grid grid-cols-3 items-center bg-gray-100 p-4 rounded-lg relative"
-            whileHover={{ scale: 1.05 }} // Example animation
-            transition={{ duration: 0.3 }} // Animation duration
-          >
-            <div className="col-span-2 min-h-[190px]">
-              <img
-                src="https://readymadeui.com/team-5.webp"
-                className="rounded-lg"
-                alt="Alen"
-              />
-            </div>
-            <div className="bg-white rounded-lg p-4 absolute right-4 shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)]">
-              <h4 className="text-gray-800 text-sm font-bold">Alen</h4>
-              <p className="text-[10px] text-gray-500 mt-0.5">United State</p>
-              <p className="text-gray-800 mt-2 text-xs">Professional Chef</p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="grid grid-cols-3 items-center bg-gray-100 p-4 rounded-lg relative"
-            whileHover={{ scale: 1.05 }} // Example animation
-            transition={{ duration: 0.3 }} // Animation duration
-          >
-            <div className="col-span-2 min-h-[190px]">
-              <img
-                src="https://readymadeui.com/team-6.webp"
-                className="rounded-lg"
-                alt="Sophia"
-              />
-            </div>
-            <div className="bg-white rounded-lg p-4 absolute right-4 shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)]">
-              <h4 className="text-gray-800 text-sm font-bold">Sophia</h4>
-              <p className="text-[10px] text-gray-500 mt-0.5">United State</p>
-              <p className="text-gray-800 mt-2 text-xs">Professional Chef</p>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-      <div class="min-w-screen min-h-screen bg-gray-50 flex items-center justify-center py-5">
-        <div class="w-full bg-white border-t border-b border-gray-200 px-5 py-16 md:py-24 text-gray-800">
-          <div class="w-full max-w-6xl mx-auto">
-            <div class="text-center max-w-xl mx-auto">
-              <h1 class="text-6xl md:text-7xl font-bold mb-5 text-black-600">
-                What people <br></br>are saying.
-              </h1>
-              <h3 class="text-xl mb-5 font-light">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </h3>
-              <div class="text-center mb-10">
-                <span class="inline-block w-1 h-1 rounded-full bg-indigo-500 ml-1"></span>
-                <span class="inline-block w-3 h-1 rounded-full bg-indigo-500 ml-1"></span>
-                <span class="inline-block w-40 h-1 rounded-full bg-indigo-500"></span>
-                <span class="inline-block w-3 h-1 rounded-full bg-indigo-500 ml-1"></span>
-                <span class="inline-block w-1 h-1 rounded-full bg-indigo-500 ml-1"></span>
-              </div>
-            </div>
-            <div class="-mx-3 md:flex items-start">
-              <div class="px-3 md:w-1/3">
-                <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
-                  <div class="w-full flex mb-4 items-center">
-                    <div class="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=1" alt="" />
-                    </div>
-                    <div class="flex-grow pl-3">
-                      <h6 class="font-bold text-sm uppercase text-gray-600">
-                        Kenzie Edgar.
-                      </h6>
 <div className="min-w-screen min-h-screen bg-gray-50 flex items-center justify-center py-5">
     <div className="w-full bg-white border-t border-b border-gray-200 px-5 py-16 md:py-24 text-gray-800">
         <div className="w-full max-w-6xl mx-auto">
@@ -683,31 +465,7 @@ export default function AboutPage() {
                             <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1"></span>Lorem ipsum, dolor sit amet, consectetur adipisicing elit. Dolore quod necessitatibus, labore sapiente, est, dignissimos ullam error ipsam sint quam tempora vel.<span className="text-lg leading-none italic font-bold text-gray-400 ml-1"></span></p>
                         </div>
                     </div>
-                  </div>
-                  <div class="w-full">
-                    <p class="text-sm leading-tight">
-                      <span class="text-lg leading-none italic font-bold text-gray-400 mr-1">
-                        "
-                      </span>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Quos sunt ratione dolor exercitationem minima quas itaque
-                      saepe quasi architecto vel! Accusantium, vero sint
-                      recusandae cum tempora nemo commodi soluta deleniti.
-                      <span class="text-lg leading-none italic font-bold text-gray-400 ml-1">
-                        "
-                      </span>
-                    </p>
-                  </div>
                 </div>
-                <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
-                  <div class="w-full flex mb-4 items-center">
-                    <div class="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=2" alt="" />
-                    </div>
-                    <div class="flex-grow pl-3">
-                      <h6 class="font-bold text-sm uppercase text-gray-600">
-                        Stevie Tifft.
-                      </h6>
                 <div className="px-3 md:w-1/3">
                     <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                         <div className="w-full flex mb-4 items-center">
@@ -735,32 +493,7 @@ export default function AboutPage() {
                             <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1"></span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto inventore voluptatum nostrum atque, corrupti, vitae esse id accusamus dignissimos neque reprehenderit natus, hic sequi itaque dicta nisi voluptatem! Culpa, iusto.<span className="text-lg leading-none italic font-bold text-gray-400 ml-1"></span></p>
                         </div>
                     </div>
-                  </div>
-                  <div class="w-full">
-                    <p class="text-sm leading-tight">
-                      <span class="text-lg leading-none italic font-bold text-gray-400 mr-1">
-                        "
-                      </span>
-                      Lorem ipsum, dolor sit amet, consectetur adipisicing elit.
-                      Dolore quod necessitatibus, labore sapiente, est,
-                      dignissimos ullam error ipsam sint quam tempora vel.
-                      <span class="text-lg leading-none italic font-bold text-gray-400 ml-1">
-                        "
-                      </span>
-                    </p>
-                  </div>
                 </div>
-              </div>
-              <div class="px-3 md:w-1/3">
-                <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
-                  <div class="w-full flex mb-4 items-center">
-                    <div class="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=3" alt="" />
-                    </div>
-                    <div class="flex-grow pl-3">
-                      <h6 class="font-bold text-sm uppercase text-gray-600">
-                        Tommie Ewart.
-                      </h6>
                 <div className="px-3 md:w-1/3">
                     <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                         <div className="w-full flex mb-4 items-center">
@@ -788,139 +521,9 @@ export default function AboutPage() {
                             <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1"></span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem iusto, explicabo, cupiditate quas totam!<span className="text-lg leading-none italic font-bold text-gray-400 ml-1"></span></p>
                         </div>
                     </div>
-                  </div>
-                  <div class="w-full">
-                    <p class="text-sm leading-tight">
-                      <span class="text-lg leading-none italic font-bold text-gray-400 mr-1">
-                        "
-                      </span>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Vitae, obcaecati ullam excepturi dicta error deleniti
-                      sequi.
-                      <span class="text-lg leading-none italic font-bold text-gray-400 ml-1">
-                        "
-                      </span>
-                    </p>
-                  </div>
                 </div>
-                <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
-                  <div class="w-full flex mb-4 items-center">
-                    <div class="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=4" alt="" />
-                    </div>
-                    <div class="flex-grow pl-3">
-                      <h6 class="font-bold text-sm uppercase text-gray-600">
-                        Charlie Howse.
-                      </h6>
-                    </div>
-                  </div>
-                  <div class="w-full">
-                    <p class="text-sm leading-tight">
-                      <span class="text-lg leading-none italic font-bold text-gray-400 mr-1">
-                        "
-                      </span>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Architecto inventore voluptatum nostrum atque, corrupti,
-                      vitae esse id accusamus dignissimos neque reprehenderit
-                      natus, hic sequi itaque dicta nisi voluptatem! Culpa,
-                      iusto.
-                      <span class="text-lg leading-none italic font-bold text-gray-400 ml-1">
-                        "
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="px-3 md:w-1/3">
-                <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
-                  <div class="w-full flex mb-4 items-center">
-                    <div class="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=5" alt="" />
-                    </div>
-                    <div class="flex-grow pl-3">
-                      <h6 class="font-bold text-sm uppercase text-gray-600">
-                        Nevada Herbertson.
-                      </h6>
-                    </div>
-                  </div>
-                  <div class="w-full">
-                    <p class="text-sm leading-tight">
-                      <span class="text-lg leading-none italic font-bold text-gray-400 mr-1">
-                        "
-                      </span>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Nobis, voluptatem porro obcaecati dicta, quibusdam sunt
-                      ipsum, laboriosam nostrum facere exercitationem pariatur
-                      deserunt tempora molestiae assumenda nesciunt alias eius?
-                      Illo, autem!
-                      <span class="text-lg leading-none italic font-bold text-gray-400 ml-1">
-                        "
-                      </span>
-                    </p>
-                  </div>
-                </div>
-                <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
-                  <div class="w-full flex mb-4 items-center">
-                    <div class="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=6" alt="" />
-                    </div>
-                    <div class="flex-grow pl-3">
-                      <h6 class="font-bold text-sm uppercase text-gray-600">
-                        Kris Stanton.
-                      </h6>
-                    </div>
-                  </div>
-                  <div class="w-full">
-                    <p class="text-sm leading-tight">
-                      <span class="text-lg leading-none italic font-bold text-gray-400 mr-1">
-                        "
-                      </span>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Voluptatem iusto, explicabo, cupiditate quas totam!
-                      <span class="text-lg leading-none italic font-bold text-gray-400 ml-1">
-                        "
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-<<<<<<< HEAD
-      </div>
-      <div class="relative  bg-[url('https://bslthemes.com/html/quickeat/assets/img/background-img.jpg')] bg-cover bg-center">
-        <div className="absolute inset-0 bg-yellow-500 bg-opacity-40 backdrop-blur-sm"></div>
-        <div class="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:py-16 lg:px-8">
-          <div class="px-6 py-6 md:px-12 lg:flex lg:items-center lg:px-16">
-            <div class="lg:flex-1 xl:w-0">
-              <h2 class="text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
-                Email Newsletter
-              </h2>
-              <p class="mt-3 max-w-3xl text-lg leading-6 text-indigo-200">
-                Sign up for our email newsletter to stay up to date.
-              </p>
-            </div>
-            <div class="mt-8 sm:w-full sm:max-w-md xl:mt-0 xl:ml-8">
-              <form class="sm:flex" id="revue-form" target="_blank">
-                <input
-                  type="email"
-                  autocomplete="email"
-                  required=""
-                  class="w-full rounded-md border-white px-5 py-3 placeholder-gray-500 focus:outline-none focus:ring-0"
-                  placeholder="Enter your email"
-                />
-                <button
-                  type="submit"
-                  class="mt-3 flex w-full items-center justify-center rounded-md border border-transparent bg-black px-5 py-3 text-base font-medium text-white shadow hover:bg-black-400 focus:outline-none focus:ring-0 sm:mt-0 sm:ml-3 sm:w-auto sm:flex-shrink-0"
-                >
-                  Subscribe
-                </button>
-              </form>
-              <p class="mt-3 text-sm text-indigo-200">
-                We will never send any spam emails. Promise.
-              </p>
-=======
     </div>
 </div>
 
@@ -947,11 +550,10 @@ export default function AboutPage() {
                     <input type="email" autocomplete="email" required="" className="w-full rounded-md border-white px-5 py-3 placeholder-gray-500 focus:outline-none focus:ring-0" placeholder="Enter your email"/><button type="submit" className="mt-3 flex w-full items-center justify-center rounded-md border border-transparent bg-black px-5 py-3 text-base font-medium text-white shadow hover:bg-black-400 focus:outline-none focus:ring-0 sm:mt-0 sm:ml-3 sm:w-auto sm:flex-shrink-0">Subscribe</button>
                 </form>
                 <p className="mt-3 text-sm text-indigo-200">We will never send any spam emails. Promise.</p>
->>>>>>> c181137e8a42aef5d0048d83bd16b81e3aa6b65d
             </div>
-          </div>
         </div>
-      </div>
+    </div>
+</div>
     </>
   );
 }
