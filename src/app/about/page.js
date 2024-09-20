@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Marque from "../component/Restaurants&Promotions/Marque";
 
 export default function AboutPage() {
   return (
@@ -207,7 +208,9 @@ export default function AboutPage() {
             <div className="mb-14 text-center">
                 <h4 className="text-6xl text-black-400 text-center font-bold">Our trusted partners</h4>
             </div>
-            <div
+            <Marque/>
+            
+            {/* <div
                 className="grid grid-cols-2  justify-center  items-center  gap-12 md:grid-cols-3  xl:grid-cols-none xl:flex xl:justify-between">
                 <a href="#" className="flex justify-center items-center">
                     <svg className="h-9" viewBox="0 0 125 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -337,7 +340,8 @@ export default function AboutPage() {
                     </svg>
 
                 </a>
-            </div>
+            </div> */}
+            
         </div>
     </section>
     <div className="lg:max-w-7xl sm:max-w-2xl max-sm:max-w-sm mx-auto mt-4">
