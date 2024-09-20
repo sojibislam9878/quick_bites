@@ -18,11 +18,11 @@ import { FaUserCircle } from "react-icons/fa";
 
 const navLinks = [
     { path: '/', name: 'Home' },
-    { path: '/restaurants', name: 'Restaurants' },
-    { path: '/orders', name: 'Orders' },
+    // { path: '/restaurants', name: 'Restaurants' },
+    // { path: '/orders', name: 'Orders' },
     { path: '/contact', name: 'Contact' },
-    { path: '/about', name: 'About Us' },
-    { path: '/Support/FAQs', name: 'Support/FAQs' },
+    { path: '/about', name: 'About' },
+    // { path: '/Support/FAQs', name: 'Support/FAQs' },
 ];
 
 

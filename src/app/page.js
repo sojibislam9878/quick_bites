@@ -1,11 +1,18 @@
 import Image from "next/image";
 import Hero from "./component/Hero";
-import Navbar from "./component/Navbar";
+import Promotions from "./component/Restaurants&Promotions/Promotions";
+import PromotionBanner from "./component/Restaurants&Promotions/PromotionBanner";
+import Review from "./component/Review/Review";
 
-export default function aboutus() {
+
+export default function Home() {
   return (
-    <div className="pt-1">
+    <div className="">
     <Hero/>
+    <Promotions/>
+    <PromotionBanner/>
+    <Review/>
+    
     </div>
   );
 }

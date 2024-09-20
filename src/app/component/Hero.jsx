@@ -17,11 +17,11 @@ const Hero = () => {
   }, []);
 
  
-  
+  12 
 
 
   return (
-    <div className="relative max-w-7xl mx-auto hero w-full mt-12 bg-black">
+    <div className="relative max-w-7xl mx-auto hero w-full bg-black">
       {/* Background Image */}
       <Image
         src={banner}
