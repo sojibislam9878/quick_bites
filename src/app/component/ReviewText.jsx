@@ -1,38 +1,4 @@
-// import Image from "next/image";
-// import { Rating } from "@smastrom/react-rating";
-// import '@smastrom/react-rating/style.css';
-
-// const ReviewText = ({ name, designation, description, image, rating }) => {
-//     return (
-//         <div className="my-4">
-
-//             <div className="card bg-base-100  shadow-xl flex flex-col ">
-//                 <figure className="px-10 pt-10  flex-1 ">
-//                     <Image width={150}
-//                         height={150} className="flex items-center justify-center rounded-full object-cover  " src={image} alt="client photo" />
-//                 </figure>
-//                 <div className=" card-body items-center text-center">
-//                     <h2 className="card-title">{name}</h2>
-//                     <div>
-//                         <Rating
-//                             style={{ maxWidth: 70 }}
-//                             value={rating}
-//                             readOnly
-//                         />
-//                     </div>
-//                     <p className="mt-4 text-sm font-light leading-relaxed text-[#222222] "> “
-//                         {description}</p>
-
-
-
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default ReviewText;
-
+"use client"
 import Image from "next/image";
 import { Rating } from "@smastrom/react-rating";
 import '@smastrom/react-rating/style.css';
