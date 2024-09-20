@@ -452,7 +452,7 @@ export default function AboutPage() {
               <p className="text-gray-800 mt-2 text-xs">Software Engineer</p>
             </div>
           </div>
-
+{/* test */}
           <div className="grid grid-cols-3 items-center bg-gray-100 p-4 rounded-lg relative">
             <div className="col-span-2 min-h-[190px]">
               <img
