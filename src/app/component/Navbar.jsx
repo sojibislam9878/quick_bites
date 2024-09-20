@@ -21,6 +21,7 @@ const navLinks = [
     { path: '/restaurants', name: 'Restaurants' },
     { path: '/orders', name: 'Orders' },
     { path: '/contact', name: 'Contact' },
+    { path: '/about', name: 'About Us' },
     { path: '/Support/FAQs', name: 'Support/FAQs' },
 ];
 

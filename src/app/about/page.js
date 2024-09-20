@@ -217,8 +217,7 @@ export default function AboutPage() {
         </div>
       </section>
       <section className="bg-[url('https://bslthemes.com/html/quickeat/assets/img/background.png')] bg-cover bg-center dark:bg-gray-900">
-     
-      <div className="flex lg:flex-row flex-col gap-10 mx-auto lg:py-5 lg:px-10 ">
+        <div className="flex lg:flex-row flex-col gap-10 mx-auto lg:py-5 lg:px-10 ">
           {/* Image Section */}
           <motion.div
             className="lg:w-1/2 w-full flex lg:flex-row flex-col justify-center items-center rounded-[50px] "
@@ -245,7 +244,7 @@ export default function AboutPage() {
               <h1 className="lg:max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white lg:w-[460px] w-[200px] mx-auto">
                 Service shows good taste.
               </h1>
-             
+
               <div className="flex mt-10 mx-auto">
                 <motion.h1
                   className="text-[#F29F05] font-bold lg:text-6xl text-4xl"
@@ -284,7 +283,7 @@ export default function AboutPage() {
 
               <div className="flex">
                 <motion.h1
-                      className="text-[#F29F05] font-bold lg:text-6xl text-4xl"
+                  className="text-[#F29F05] font-bold lg:text-6xl text-4xl"
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -298,8 +297,6 @@ export default function AboutPage() {
             </motion.div>
           </motion.div>
         </div>
-   
-      
       </section>
       <section class="py-24 ">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -489,7 +486,6 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </div>
-
       <div class="min-w-screen min-h-screen bg-gray-50 flex items-center justify-center py-5">
         <div class="w-full bg-white border-t border-b border-gray-200 px-5 py-16 md:py-24 text-gray-800">
           <div class="w-full max-w-6xl mx-auto">
@@ -673,23 +669,6 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
-      {/* 
-      <div class="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
-        <div>
-          <a
-            title="Buy me a beer"
-            href="https://www.buymeacoffee.com/scottwindon"
-            target="_blank"
-            class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12"
-          >
-            <img
-              class="object-cover object-center w-full h-full rounded-full"
-              src="https://i.pinimg.com/originals/60/fd/e8/60fde811b6be57094e0abc69d9c2622a.jpg"
-            />
-          </a>
-        </div>
-      </div> */}
-
       <div class="relative  bg-[url('https://bslthemes.com/html/quickeat/assets/img/background-img.jpg')] bg-cover bg-center">
         <div className="absolute inset-0 bg-yellow-500 bg-opacity-40 backdrop-blur-sm"></div>
         <div class="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:py-16 lg:px-8">
