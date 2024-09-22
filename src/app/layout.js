@@ -3,24 +3,18 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "./component/Navbar";
 import Footer from "./component/Footer";
+import { Poppins } from 'next/font/google';
 
 
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const poppins = Poppins({
+  subsets: ['latin'], // Specify subsets
+   weight: ['400', '500', '600', '700','800','900'],
+  variable: '--font-poppins', // Custom variable name
+  display: 'swap', // Font display strategy
 });
 
-export const metadata = {
-  title: "Quick Bites",
-  description: "Get your food as fast",
-};
+
 
 export default function RootLayout({ children }) {
   return (
@@ -28,14 +22,11 @@ export default function RootLayout({ children }) {
 
       <head>
 
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
+      
 
       </head>   
          <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      className={`${poppins.variable} antialiased`}
       >
         <Navbar></Navbar>
         {children}

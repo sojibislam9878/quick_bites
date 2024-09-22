@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import { FaDiscord, FaFacebook, FaFacebookF, FaInstagram, FaLinkedin, FaLinkedinIn } from 'react-icons/fa6';
 
@@ -19,10 +20,11 @@ const Footer = () => {
 
                         <a className=' ' href="/">
 
-                            <img className=' w-20  mx-auto lg:mx-0 md:mx-0'
-                                src="https://i.ibb.co.com/kgT20yy/Quick-Bite-logo-1.webp" // Replace with your logo path
+                            <Image className=' w-20  mx-auto lg:mx-0 md:mx-0'
+                                src="https://i.ibb.co/kgT20yy/Quick-Bite-logo-1.webp"
                                 alt="QuickBite"
                                 height={100}
+                                width={100}
                             />
                         </a>
 
