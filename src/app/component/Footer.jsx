@@ -4,7 +4,12 @@ import { FaDiscord, FaFacebook, FaFacebookF, FaInstagram, FaLinkedin, FaLinkedin
 const Footer = () => {
     return (
 
-        <footer className="bg-orange-600 text-gray-300 pt-8 pb-4 ">
+        <footer
+            style={{
+                backgroundImage: `linear-gradient(45deg, rgba(7,25,82,0.5), rgba(0,0,0,0.15)), url(/assets/images/footer.jpeg)`
+            }}
+
+            className="bg-orange-600 text-gray-300 pt-8 pb-4 bg-cover bg-no-repeat bg-center bg-transparent ">
             <div className=" container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Left Section - Logo and Social Icons */}
@@ -14,7 +19,7 @@ const Footer = () => {
 
                         <a className=' ' href="/">
 
-                            <img  className=' w-20  mx-auto lg:mx-0 md:mx-0'
+                            <img className=' w-20  mx-auto lg:mx-0 md:mx-0'
                                 src="https://i.ibb.co.com/kgT20yy/Quick-Bite-logo-1.webp" // Replace with your logo path
                                 alt="QuickBite"
                                 height={100}
@@ -52,7 +57,7 @@ const Footer = () => {
                         <h3 className="font-bold text-lg">Product</h3>
                         <ul className="mt-4 space-y-2">
                             <li className='hover:scale-y-[1.08]'><a href='' className="hover:text-gray-300 font-semibold hover:underline">Menu</a></li>
-                            <li className='hover:scale-y-[1.08]'><a href=''  className=" hover:text-gray-300 font-semibold hover:underline">Price List</a></li>
+                            <li className='hover:scale-y-[1.08]'><a href='' className=" hover:text-gray-300 font-semibold hover:underline">Price List</a></li>
                             <li className='hover:scale-y-[1.08]'><a href='' className="hover:text-gray-300 font-semibold hover:underline">Reviews</a></li>
                             <li className='hover:scale-y-[1.08]'><a href='' className="hover:text-gray-300 font-semibold hover:underline">Updates</a></li>
                         </ul>
