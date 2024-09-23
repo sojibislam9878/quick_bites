@@ -1,7 +1,6 @@
 "use client"
 import Image from "next/image";
-import { Rating } from "@smastrom/react-rating";
-import '@smastrom/react-rating/style.css';
+
 
 const ReviewText = ({ name, designation, description, image, rating }) => {
     return (
@@ -19,11 +18,7 @@ const ReviewText = ({ name, designation, description, image, rating }) => {
                 <div className="card-body items-center text-center h-50">
                     <h2 className="card-title">{name}</h2>
                     <div>
-                        <Rating
-                            style={{ maxWidth: 70 }}
-                            value={rating}
-                            readOnly
-                        />
+                       
                     </div>
                     <p className="mt-4 text-sm font-light leading-relaxed text-[#222222]">
                         “{description}
