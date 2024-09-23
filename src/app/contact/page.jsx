@@ -5,10 +5,9 @@ import { IoLocation } from "react-icons/io5";
 import { PiBuildingApartmentFill } from "react-icons/pi";
 const contactpage = () => {
     return (
-        <div className='bg-[#F9F9F9]'>
-            <nav className='bg-blue-600 p-10'></nav>
-            <div className='container mx-auto px-4 mt-12'>
-                <div className=''>
+        <div className='bg-[#F9F9F9] pb-20'>
+            <div className='container mx-auto px-4'>
+                <div className=' pt-32'>
                 <div>
                     <h1 className='text-4xl font-extrabold opacity-90'>Inform us of Yourself</h1>
                     <p className='text-lg font-medium opacity-60'>Contact us if you have any queries or merely want to say hi.</p>
@@ -48,10 +47,10 @@ const contactpage = () => {
                 <div>
                 {/* form */}
                 <div>
-                <div className="container mx-auto p-4 bg-white rounded-xl">
+                <div className="container mx-auto p-4 bg-white rounded-xl mt-16 ">
       {/* section header */}
-      <div className="text-center">
-        <h1 className="text-4xl font-extrabold mt-6 font-play">
+      <div className="text-center ">
+        <h1 className="text-4xl font-extrabold mt-6 font-play opacity-90">
           Lets Stay In Touch
         </h1>
         <p className="leading-7 opacity-80 mt-6 lg:w-2/3 mx-auto">
@@ -93,12 +92,11 @@ const contactpage = () => {
                 </div>
                 {/* map  */}
                 <div>
-                    map
+                    {/* map will be add here */}
                 </div>
 
                 </div>
             </div>
-            <footer className='bg-orange-700 p-20'></footer>
         </div>
     );
 };

@@ -4,7 +4,7 @@ import { FaDiscord, FaFacebook, FaFacebookF, FaInstagram, FaLinkedin, FaLinkedin
 const Footer = () => {
     return (
 
-        <footer className="bg-orange-600 text-gray-300 pt-8 pb-4">
+        <footer className="bg-orange-600 text-gray-300 pt-8 pb-4 ">
             <div className=" container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Left Section - Logo and Social Icons */}
@@ -65,7 +65,7 @@ const Footer = () => {
                             <ul className="mt-4 space-y-2">
                                 <li className='hover:scale-y-[1.08]'><a href='' className=" hover:text-gray-300 font-semibold hover:underline ">About Us</a></li>
                                 <li className='hover:scale-y-[1.08]'><a href='' className="hover:text-gray-300 font-semibold hover:underline">Branch Contacts</a></li>
-                                <li className='hover:scale-y-[1.08]'><a href='' className="hover:text-gray-300 font-semibold hover:underline">Contact Us</a></li>
+                                <li className='hover:scale-y-[1.08]'><a href='/contact' className="hover:text-gray-300 font-semibold hover:underline">Contact Us</a></li>
                                 <li className='hover:scale-y-[1.08]'><a href='' className="hover:text-gray-300 font-semibold hover:underline">Careers</a></li>
                             </ul>
                         </div>

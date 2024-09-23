@@ -13,6 +13,9 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+
+        loginColor: "#bec5d1",
+        loginBTn: "#007dc0"
       },
     },
   },
