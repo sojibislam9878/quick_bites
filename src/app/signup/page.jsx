@@ -3,12 +3,29 @@ import React from 'react';
 
 
 const page = () => {
-    const  handleSubmit = (e) =>{
+    const  handleSubmit = async(e) =>{
         e.preventDefault();
+
+        const name1= e.target.name1.value
+        const name2= e.target.name2.value
         const formData = {
-            name: e.target.name.value,
+            name: name1+' '+name2,
+            password: e.target.password.value,
+            email: e.target.email.value,
+            image: e.target.image.value,
+
+           
         }
         console.log(formData);
+        const res= await fetch("http://localhost:3000/signup/api",{
+
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        console.log(res)
     }
     return (
         <div className=' ' >
@@ -26,12 +43,12 @@ const page = () => {
                             <div className="flex space-x-4">
                                 <input
                                     type="text"
-                                    name='name'
+                                    name='name1'
                                     placeholder="First name"
                                     className="w-1/2 px-4 py-3 text-white bg-transparent border border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" />
                                 <input
                                     type="text"
-                                    name='last_name'
+                                    name='name2'
                                     placeholder="Last name"
                                     className="w-1/2 px-4 py-3 text-white bg-transparent border border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" />
                             </div>
