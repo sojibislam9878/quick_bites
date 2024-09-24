@@ -8,7 +8,7 @@ if(db) {
 };
 
 try {
-    const uri =`mongodb+srv://${process.env.mongoDB_user}:${process.env.mongoDB_pass}@cluster0.ngsjczb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+    const uri =`mongodb+srv://quickbites:zMq1soa6DlmXzyjr@cluster0.ngsjczb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
     const client = new MongoClient(uri, {
         serverApi: {
           version: ServerApiVersion.v1,
