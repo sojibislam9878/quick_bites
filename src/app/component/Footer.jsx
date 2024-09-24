@@ -7,10 +7,14 @@ const Footer = () => {
 
         <footer
             style={{
-                backgroundImage: `linear-gradient(45deg, rgba(7,25,82,0.5), rgba(0,0,0,0.15)), url(/assets/images/footer.jpeg)`
-            }}
+                background: `rgba(0, 0, 0, 0.8) url(/assets/images/footer.jpeg)`,
+                backgroundBlendMode: 'overlay',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
 
-            className="bg-orange-600 text-gray-300 pt-8 pb-4 bg-cover bg-no-repeat bg-center bg-transparent ">
+            }}
+            className="text-gray-300 pt-8 pb-4 bg-no-repeat"
+        >
             <div className=" container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Left Section - Logo and Social Icons */}

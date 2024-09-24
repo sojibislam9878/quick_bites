@@ -57,22 +57,7 @@ const Banner = () => {
                         <div className='w-full flex h-full justify-center  items-center'>
                             <div className='space-y-6  text-white text-center'>
                                 <h1 className='text-6xl font-bold tracking-wide'>{banner.title}</h1>
-                                {/* <p>{banner.description}</p> */}
-                                {/* 
-                                <div className="flex flex-row items-center justify-center w-full  bg-white rounded-s-full rounded-e-full -mr-12 shadow-lg ">
-                                    <span className="p-4 text-black">
-                                        <FiMapPin size={24} />
-                                    </span>
-                                    <input
-                                        type="text"
-                                        placeholder="Enter your delivery address"
-                                        className="w-full px-4 text-black outline-none rounded-s-full rounded-e-full"
-                                    />
-                                    <button className="bg-[#de0d67] text-white px-4 py-4 rounded-s-full rounded-e-full font-bold border-none hover:bg-[#90013f] w-[50%] -pl-12">
-                                        Find now
-                                    </button>
 
-                                </div> */}
                                 <div className="flex items-center justify-between w-[60%] mx-auto bg-white rounded-full shadow-lg">
                                     <span className="p-4 text-black">
                                         <FiMapPin size={24} />

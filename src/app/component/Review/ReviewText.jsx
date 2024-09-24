@@ -9,9 +9,9 @@ const ReviewText = ({ name, designation, description, image, rating }) => {
             <div className="card bg-base-100 shadow-xl flex flex-col w-84 h-80">  {/* Fixed width and height */}
                 <figure className="px-10 pt-5  ">
                     <Image
-                        width={150}
-                        height={150}
-                        className=" object-cover"
+                        width={50}
+                        height={50}
+                        className=" object-cover rounded-full"
                         src={image}
                         alt="client photo"
                     />
