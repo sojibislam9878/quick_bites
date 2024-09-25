@@ -51,10 +51,10 @@ export default function ReviewSlide() {
                 }}
             >
                 {/* Map through the reviews and create SwiperSlide dynamically */}
-                {reviews.map((review, index) => (
+                {reviews?.map((review, index) => (
                     <SwiperSlide key={index}>
                         <Slide
-                            image={review.image}
+                            image={review?.image}
                             name={review.reviewer}
                             designation={review.designation}
                             description={review.review}

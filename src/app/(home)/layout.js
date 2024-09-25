@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import localFont from "next/font/local";
-import "./globals.css";
-import Navbar from "./component/Navbar";
-import Footer from "./component/Footer";
+import "../globals.css";
+import Navbar from "../component/Navbar";
+import Footer from "../component/Footer";
 import { Poppins } from 'next/font/google';
 
 
@@ -21,9 +21,6 @@ export default function RootLayout({ children }) {
     <html lang="en" data-theme="light">
 
       <head>
-
-      
-
       </head>   
          <body
       className={`${poppins.variable} antialiased`}
