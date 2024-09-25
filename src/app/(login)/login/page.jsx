@@ -1,11 +1,11 @@
 "use client"
 import SocialSignin from "@/app/component/shared/SocialSignin";
 import { signIn } from "next-auth/react";
-import { useSearchParams } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 
 const page = () => {
-    const searchParams = useSearchParams();
-    const path = searchParams.get("redirect");
+    // const searchParams = useSearchParams();
+    // const path = searchParams.get("redirect");
 
     const handleSubmit =async e=> {
         e.preventDefault();
@@ -15,7 +15,7 @@ const page = () => {
           email,
           password,
           redirect: true,
-          callbackUrl: path ? path : "/",
+          callbackUrl: "/",
         });
         console.log(resp)
       };
