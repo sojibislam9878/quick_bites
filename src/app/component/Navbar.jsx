@@ -20,6 +20,7 @@ import Link from "next/link";
 
 const navLinks = [
     { path: '/', name: 'Home' },
+    { path: '/menu', name: 'Menu' },
     // { path: '/restaurants', name: 'Restaurants' },
     // { path: '/orders', name: 'Orders' },
     { path: '/contact', name: 'Contact' },
