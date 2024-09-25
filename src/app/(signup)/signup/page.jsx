@@ -17,7 +17,7 @@ const page = () => {
            
         }
         console.log(formData);
-        const res= await fetch("http://localhost:3000/signup/api",{
+        const res= await fetch("/signup/api",{
 
             method: 'POST',
             headers: {
@@ -26,6 +26,8 @@ const page = () => {
             body: JSON.stringify(formData)
         })
         console.log(res)
+
+        
     }
     return (
         <div className=' ' >

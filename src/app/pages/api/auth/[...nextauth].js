@@ -5,8 +5,11 @@ import GitHubProvider from "next-auth/providers/github";
 import bcrypt from "bcrypt";
 import { connectDB } from "@/app/lib/connectDB";
 
+
+console.log("hit");
 // Configure NextAuth.js options
 const authOptions = {
+
   // secret: process.env.NEXT_PUBLIC_AUTH_SECRET,
   session: {
     strategy: "jwt",

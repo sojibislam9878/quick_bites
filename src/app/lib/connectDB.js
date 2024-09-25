@@ -9,7 +9,7 @@ if(db) {
 
 try {
     
-  const uri = "mongodb+srv://Quick_bites:WJRP6nnI82JKMyxJ@cluster0.6zehkma.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+  const uri = "mongodb+srv://quickBites:l2pVCBjeO3Vi105S@cluster0.ngsjczb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
   // const uri =`mongodb+srv://quickbites:zMq1soa6DlmXzyjr@cluster0.ngsjczb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
     const client = new MongoClient(uri, {
         serverApi: {

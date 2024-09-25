@@ -10,8 +10,8 @@ const page = () => {
         const resp = await signIn("credentials", {
           email,
           password,
-          redirect: true,
-          callbackUrl: path ? path : "/",
+          redirect: false,
+    
         });
         console.log(resp)
       };
