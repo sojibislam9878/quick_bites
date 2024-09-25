@@ -1,7 +1,11 @@
 "use client"
+import SocialSignin from "@/app/component/shared/SocialSignin";
 import { signIn } from "next-auth/react";
+// import { useSearchParams } from "next/navigation";
 
 const page = () => {
+    // const searchParams = useSearchParams();
+    // const path = searchParams.get("redirect");
 
     const handleSubmit =async e=> {
         e.preventDefault();
@@ -11,7 +15,7 @@ const page = () => {
           email,
           password,
           redirect: true,
-          callbackUrl: path ? path : "/",
+          callbackUrl: "/",
         });
         console.log(resp)
       };
@@ -77,15 +81,7 @@ const page = () => {
                     <div className="text-center mt-6 text-gray-700 text-sm">
                         <span>Or login using:</span>
                         <div className="flex justify-center mt-4 space-x-3">
-                            <a href="#" className="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition">
-                                <i className="fab fa-facebook"></i>
-                            </a>
-                            <a href="#" className="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500 transition">
-                                <i className="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" className="bg-red-600 text-white p-3 rounded-full hover:bg-red-700 transition">
-                                <i className="fab fa-google"></i>
-                            </a>
+                           <SocialSignin></SocialSignin>
                         </div>
                     </div>
 
