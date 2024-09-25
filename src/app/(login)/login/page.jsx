@@ -1,7 +1,27 @@
-import Image from 'next/image';
-import React from 'react';
+"use client"
+import { signIn } from "next-auth/react";
 
 const page = () => {
+
+    const handleSubmit =async e=> {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        const resp = await signIn("credentials", {
+          email,
+          password,
+          redirect: true,
+          callbackUrl: path ? path : "/",
+        });
+        console.log(resp)
+      };
+     
+
+
+    
+
+
+
     return (
         <div className='  items-center text-justify'>
             <div className="flex justify-center md:py-24 py-12 lg:py-28  items-center h-full bg-cover bg-center relative" style={{ backgroundImage: "url('https://i.ibb.co.com/wC1k5yY/pexels-ella-olsson-572949-1640777.jpg')" }}>
@@ -13,11 +33,12 @@ const page = () => {
                         <img className=' p-3' src="https://i.ibb.co.com/kgT20yy/Quick-Bite-logo-1.webp" alt="Logo" height={'100'} width="100" />
                     </h2>
 
-                    <form>
+                    <form onSubmit={ handleSubmit}>
                         <div className="mb-4">
                             {/* <label className="block text-white text-sm font-medium">Email Address</label> */}
                             <input
                                 type="email"
+                                name='email'
                                 className="w-full p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="Email Address"
                             />
@@ -27,6 +48,7 @@ const page = () => {
                             {/* <label className="block text-gray-700 text-sm font-medium">Password</label> */}
                             <input
                                 type="password"
+                                name='password'
                                 className="w-full p-3  border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="Password"
                             />
