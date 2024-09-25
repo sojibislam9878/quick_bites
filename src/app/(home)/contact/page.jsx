@@ -8,6 +8,7 @@ const contactpage = () => {
         <div className='bg-[#F9F9F9] pb-20'>
             <div className='container mx-auto px-4'>
                 <div className=' pt-32'>
+                  adf
                 <div>
                     <h1 className='text-4xl font-extrabold opacity-90'>Inform us of Yourself</h1>
                     <p className='text-lg font-medium opacity-60'>Contact us if you have any queries or merely want to say hi.</p>
