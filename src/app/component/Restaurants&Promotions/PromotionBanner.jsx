@@ -8,7 +8,7 @@ const PromotionBanner = () => {
   const [timeLeft, setTimeLeft] = useState({ hours: 1, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    AOS.init({ duration: 1000 });
+    AOS.init({ duration:1000 });
 
     const countdown = setInterval(() => {
       if (timeLeft.seconds > 0) {
