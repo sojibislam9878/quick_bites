@@ -4,6 +4,7 @@ import "../globals.css";
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
 import { Poppins } from 'next/font/google';
+import { SessionProvider } from "next-auth/react";
 
 
 
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
 
       <head>
       </head>   
+      <SessionProvider>
          <body
       className={`${poppins.variable} antialiased`}
       >
@@ -29,6 +31,7 @@ export default function RootLayout({ children }) {
         {children}
         <Footer></Footer>
       </body>
+      </SessionProvider>
     </html>
   );
 }

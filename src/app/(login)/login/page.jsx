@@ -1,7 +1,10 @@
 "use client"
 import { signIn } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
 
 const page = () => {
+    const searchParams = useSearchParams();
+    const path = searchParams.get("redirect");
 
     const handleSubmit =async e=> {
         e.preventDefault();
