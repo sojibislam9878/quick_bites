@@ -1,76 +1,84 @@
 import NextAuth from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
+
 import bcrypt from "bcrypt";
 import { connectDB } from "@/app/lib/connectDB";
+import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 
-// Configure NextAuth.js options
-const authOptions = {
-  // secret: process.env.NEXT_PUBLIC_AUTH_SECRET,
+
+export const handler = NextAuth({
+  secret: "process.env.NEXT_PUBLIC_AUTH_SECRET", 
   session: {
     strategy: "jwt",
-    maxAge: 30 * 24 * 60 * 60, // 30 days
+    maxAge: 30 * 24 * 60 * 60,
+    rolling: false,
   },
   providers: [
     CredentialsProvider({
       credentials: {
-        email: { },
-        password: { },
+        email: {  },
+        password: {  },
       },
       async authorize(credentials) {
-        const { email, password } = credentials || {};
+        const { email, password } = credentials;
         if (!email || !password) {
-          throw new Error("Email and password are required");
+          throw new Error("Missing email or password");
         }
 
         const db = await connectDB();
         const currentUser = await db.collection("users").findOne({ email });
+        console.log(currentUser)
         if (!currentUser) {
-          throw new Error("No user found with this email");
+          throw new Error("No user found with that email");
         }
 
-        const passwordMatched = await bcrypt.compare(password, currentUser.password);
+        const passwordMatched = bcrypt.compareSync(password, currentUser.password);
         if (!passwordMatched) {
           throw new Error("Incorrect password");
         }
 
-        return { id: currentUser._id, name: currentUser.name, email: currentUser.email };
+        return { id: currentUser._id, email: currentUser.email }; // Ensure this matches the user object
       },
-    }),
-    GoogleProvider({
-      // clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-      // clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET,
-    }),
-    GitHubProvider({
-      // clientId: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID,
-      // clientSecret: process.env.NEXT_PUBLIC_GITHUB_CLIENT_SECRET,
-    }),
+    },
+  
+  
+  ),  GitHubProvider({
+    clientId: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+  }),
+  GoogleProvider({
+    clientId:process.env.GOOGLE_CLIENT_ID,
+    clientSecret:process.env.GOOGLE_CLIENT_SECRET,
+  }),
+    
+
   ],
+
   pages: {
     signIn: "/login",
+    signOut:"/"
   },
   callbacks: {
     async signIn({ user, account }) {
       if (account.provider === "google" || account.provider === "github") {
-        const { email } = user;
-        const db = await connectDB();
-        const userCollection = db.collection("users");
-        const userExist = await userCollection.findOne({ email });
-        if (!userExist) {
-          await userCollection.insertOne({ name: user.name, email: user.email, image: user.image });
+        const { name, email, image } = user;
+        try {
+          const db = await connectDB();
+          const userCollection = db.collection("users");
+          const userExist = await userCollection.findOne({ email });
+          if (!userExist) {
+            const res = await userCollection.insertOne(user);
+            return user;
+          } else {
+            return user;
+          }
+        } catch (error) {
+          console.log(error);
         }
-      }
-      return true;
-    },
-  },
-};
+      } else {
+        return user;
+      }}}
+});
 
-// Export the NextAuth.js handler as named GET and POST functions
-export async function GET(request) {
-  return NextAuth(authOptions)(request);
-}
-
-export async function POST(request) {
-  return NextAuth(authOptions)(request);
-}
+export { handler as GET, handler as POST }; 

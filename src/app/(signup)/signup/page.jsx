@@ -84,7 +84,7 @@ const page = () => {
                             <button
                                 type="submit"
                                 className="w-full py-3 bg-red-500 hover:bg-red-600 text-white font-bold rounded-full">
-                                SIGN IN
+                                SIGN UP
                             </button>
                         </form>
 
