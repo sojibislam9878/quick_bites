@@ -13,6 +13,7 @@ import { VscSignIn } from "react-icons/vsc";
 import { BsCart4 } from "react-icons/bs";
 import { usePathname } from 'next/navigation'
 import { FaUserCircle } from "react-icons/fa";
+import { useSession } from "next-auth/react";
 // import { useRouter } from "next/router";
 
 
@@ -28,6 +29,10 @@ const navLinks = [
 
 const Navbar = () => {
 
+
+    const session=useSession(
+    )
+    console.log(session)
     const pathName = usePathname()
 
 

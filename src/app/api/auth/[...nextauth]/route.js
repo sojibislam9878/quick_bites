@@ -1,10 +1,13 @@
 import NextAuth from "next-auth";
-'use client'
-import CredentialsProvider from "next-auth/providers/credentials";
+import GitHubProvider from "next-auth/providers/github";
+
 import bcrypt from "bcrypt";
 import { connectDB } from "@/app/lib/connectDB";
+import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 
-const handler = NextAuth({
+
+export const handler = NextAuth({
   secret: "process.env.NEXT_PUBLIC_AUTH_SECRET", // Fixed the secret
   session: {
     strategy: "jwt",
@@ -14,8 +17,8 @@ const handler = NextAuth({
   providers: [
     CredentialsProvider({
       credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" },
+        email: {  },
+        password: {  },
       },
       async authorize(credentials) {
         const { email, password } = credentials;
@@ -25,6 +28,7 @@ const handler = NextAuth({
 
         const db = await connectDB();
         const currentUser = await db.collection("users").findOne({ email });
+        console.log(currentUser)
         if (!currentUser) {
           throw new Error("No user found with that email");
         }
@@ -36,11 +40,44 @@ const handler = NextAuth({
 
         return { id: currentUser._id, email: currentUser.email }; // Ensure this matches the user object
       },
-    }),
+    },
+  
+  
+  ),  GitHubProvider({
+    clientId: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+  }),
+  GoogleProvider({
+    clientId:process.env.GOOGLE_CLIENT_ID,
+    clientSecret:process.env.GOOGLE_CLIENT_SECRET,
+  }),
+    
+
   ],
+
   pages: {
-    signIn: "/auth/login",
+    signIn: "/login",
   },
+  callbacks: {
+    async signIn({ user, account }) {
+      if (account.provider === "google" || account.provider === "github" || account.provider === "facebook") {
+        const { name, email, image } = user;
+        try {
+          const db = await connectDB();
+          const userCollection = db.collection("users");
+          const userExist = await userCollection.findOne({ email });
+          if (!userExist) {
+            const res = await userCollection.insertOne(user);
+            return user;
+          } else {
+            return user;
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        return user;
+      }}}
 });
 
 export { handler as GET, handler as POST }; // Ensure the export is correct

@@ -1,10 +1,13 @@
 /* eslint-disable @next/next/no-page-custom-font */
+
+"use clients"
 import localFont from "next/font/local";
 import "../globals.css";
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
 import { Poppins } from 'next/font/google';
 import { SessionProvider } from "next-auth/react";
+import Auth from "../session/Auth";
 
 
 
@@ -23,7 +26,7 @@ export default function RootLayout({ children }) {
 
       <head>
       </head>   
-      <SessionProvider>
+      <Auth>
          <body
       className={`${poppins.variable} antialiased`}
       >
@@ -31,7 +34,7 @@ export default function RootLayout({ children }) {
         {children}
         <Footer></Footer>
       </body>
-      </SessionProvider>
+      </Auth>
     </html>
   );
 }
