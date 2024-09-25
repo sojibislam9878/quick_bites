@@ -8,7 +8,7 @@ import GoogleProvider from "next-auth/providers/google";
 
 
 export const handler = NextAuth({
-  secret: "process.env.NEXT_PUBLIC_AUTH_SECRET", // Fixed the secret
+  secret: "process.env.NEXT_PUBLIC_AUTH_SECRET", 
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60,
@@ -57,10 +57,11 @@ export const handler = NextAuth({
 
   pages: {
     signIn: "/login",
+    signOut:"/"
   },
   callbacks: {
     async signIn({ user, account }) {
-      if (account.provider === "google" || account.provider === "github" || account.provider === "facebook") {
+      if (account.provider === "google" || account.provider === "github") {
         const { name, email, image } = user;
         try {
           const db = await connectDB();
@@ -80,4 +81,4 @@ export const handler = NextAuth({
       }}}
 });
 
-export { handler as GET, handler as POST }; // Ensure the export is correct
+export { handler as GET, handler as POST }; 

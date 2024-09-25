@@ -5,7 +5,7 @@
 
 
 // import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiAlignJustify } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
 import { FaUserLarge } from "react-icons/fa6";
@@ -13,7 +13,8 @@ import { VscSignIn } from "react-icons/vsc";
 import { BsCart4 } from "react-icons/bs";
 import { usePathname } from 'next/navigation'
 import { FaUserCircle } from "react-icons/fa";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 // import { useRouter } from "next/router";
 
 
@@ -30,8 +31,7 @@ const navLinks = [
 const Navbar = () => {
 
 
-    const session=useSession(
-    )
+    const session=useSession()
     console.log(session)
     const pathName = usePathname()
 
@@ -40,6 +40,22 @@ const Navbar = () => {
     const [icon, setIcon] = useState('true')
     console.log(icon)
     const [userIcon, setUserIcon] = useState(false)
+
+
+    // for sign out functionality
+    const handleSignOut =()=> {
+        signOut('credentials',
+
+        )
+document. localStorage.removeItem("next-auth.token");
+
+
+
+
+
+    
+    }
+ 
 
 
 
@@ -106,9 +122,11 @@ const Navbar = () => {
                 <div className="navbar-end items-center   gap-3 md:gap-8 lg:gap-10 relative w-fit">
 
                         {/* for large device sign in  */}
-                    <a  className="lg:flex md:flex hidden items-center bg-rose-500 font-thin  Playfair rounded-md  px-2 py-1 text-white gap-2" href="/login">
+                   {session?.status === 'authenticated'? <div   onClick={ handleSignOut}  className="lg:flex cursor-pointer md:flex hidden items-center bg-stone-200  font-thin  Playfair rounded-md  px-2 py-1 text-red-400 gap-2" >
+                        <VscSignIn size={25} /> Sign Out
+                    </div>:<Link  className="lg:flex md:flex hidden items-center bg-rose-500 font-thin  Playfair rounded-md  px-2 py-1 text-white gap-2" href="/login">
                         <VscSignIn size={25} /> Sign In
-                    </a>
+                    </Link>}
                     {/* for cart */}
                     <div className="w-fit hover:text-orange-600 hover:scale-[1.08] ">
                         <BsCart4 size={25} />
