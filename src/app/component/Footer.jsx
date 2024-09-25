@@ -1,10 +1,20 @@
+import Image from 'next/image';
 import React from 'react';
 import { FaDiscord, FaFacebook, FaFacebookF, FaInstagram, FaLinkedin, FaLinkedinIn } from 'react-icons/fa6';
 
 const Footer = () => {
     return (
 
-        <footer className="bg-orange-600 text-gray-300 pt-8 pb-4 ">
+        <footer
+            style={{
+                background: `rgba(0, 0, 0, 0.8) url(/assets/images/footer.jpeg)`,
+                backgroundBlendMode: 'overlay',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+
+            }}
+            className="text-gray-300 pt-8 pb-4 bg-no-repeat"
+        >
             <div className=" container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Left Section - Logo and Social Icons */}
@@ -14,10 +24,11 @@ const Footer = () => {
 
                         <a className=' ' href="/">
 
-                            <img  className=' w-20  mx-auto lg:mx-0 md:mx-0'
-                                src="https://i.ibb.co.com/kgT20yy/Quick-Bite-logo-1.webp" // Replace with your logo path
+                            <Image className=' w-20  mx-auto lg:mx-0 md:mx-0'
+                                src="https://i.ibb.co/kgT20yy/Quick-Bite-logo-1.webp"
                                 alt="QuickBite"
                                 height={100}
+                                width={100}
                             />
                         </a>
 
@@ -52,7 +63,7 @@ const Footer = () => {
                         <h3 className="font-bold text-lg">Product</h3>
                         <ul className="mt-4 space-y-2">
                             <li className='hover:scale-y-[1.08]'><a href='' className="hover:text-gray-300 font-semibold hover:underline">Menu</a></li>
-                            <li className='hover:scale-y-[1.08]'><a href=''  className=" hover:text-gray-300 font-semibold hover:underline">Price List</a></li>
+                            <li className='hover:scale-y-[1.08]'><a href='' className=" hover:text-gray-300 font-semibold hover:underline">Price List</a></li>
                             <li className='hover:scale-y-[1.08]'><a href='' className="hover:text-gray-300 font-semibold hover:underline">Reviews</a></li>
                             <li className='hover:scale-y-[1.08]'><a href='' className="hover:text-gray-300 font-semibold hover:underline">Updates</a></li>
                         </ul>

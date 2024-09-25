@@ -48,17 +48,16 @@ const Hero = () => {
           </p>
 
           {/* Location Input and CTA */}
-          <div className="flex flex-row items-center w-full max-w-lg bg-white rounded-lg overflow-hidden shadow-lg mt-8">
-            {/* Icon */}
-            <span className="p-4 text-black">
+           <div className="flex flex-row items-center w-full max-w-lg bg-white rounded-lg overflow-hidden shadow-lg mt-8">
+             {/* Icon */}
+           <span className="p-4 text-black">
               <FiMapPin size={24} />
-            </span>
-
+           </span>
             {/* Location Input */}
-            <input
+           <input
               type="text"
               placeholder="Enter your delivery address"
-              // value={location}
+              value={'location'}
            
               className="w-full px-4 text-black outline-none"
             />
@@ -75,7 +74,9 @@ const Hero = () => {
           <Image src={bannerLeft} alt="Banner Left" className="object-contain" />
         </div>
       </div>
-    </div>
+
+      
+      </div>
   );
 };
 

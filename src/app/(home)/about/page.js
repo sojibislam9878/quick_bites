@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Marque from "../component/Restaurants&Promotions/Marque";
+import Marque from "../../component/Restaurants&Promotions/Marque";
 
 export default function AboutPage() {
   return (
