@@ -15,6 +15,7 @@ import { usePathname } from 'next/navigation'
 import { FaUserCircle } from "react-icons/fa";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import Image from "next/image";
 // import { useRouter } from "next/router";
 
 
@@ -33,7 +34,7 @@ const navLinks = [
 const Navbar = () => {
 
 
-    const session=useSession()
+    const session = useSession()
     console.log(session)
     const pathName = usePathname()
 
@@ -45,33 +46,28 @@ const Navbar = () => {
 
 
     // for sign out functionality
-    const handleSignOut =()=> {
+    const handleSignOut = () => {
         signOut('credentials',
 
         )
-document. localStorage.removeItem("next-auth.token");
+        document.localStorage.removeItem("next-auth.token");
 
-
-
-
-
-    
     }
- 
+
 
 
 
     return (
-        
+
         <div className='lg:px-16 border-b-2 fixed mb-48  border  w-full h-fit z-50 bg-base-100  border-gray-400 md:px-5'>
             <div className="navbar  justify-between  lg:justify-between md:justify-between ">
                 <div className="navbar-start  w-fit">
                     {/* for small */}
                     <div className={icon ? '' : ' relative'}>
-                        <div tabIndex={1}  onClick={() => setIcon(!icon)} role="button" className="btn btn-ghost lg:hidden">
+                        <div tabIndex={1} onClick={() => setIcon(!icon)} role="button" className="btn btn-ghost lg:hidden">
 
                             <FiAlignJustify className={icon ? 'block ' : 'hidden'} size={20} />
-                            <GrClose className={icon ? 'hidden ' : 'block'}  size={20} />
+                            <GrClose className={icon ? 'hidden ' : 'block'} size={20} />
 
 
 
@@ -82,14 +78,14 @@ document. localStorage.removeItem("next-auth.token");
                             className="menu font-serif menu-sm lg:hidden  absolute bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                             <li>
 
-                                {navLinks?.map((link, index) => (<a key={index}
-                                    href={link.path}
+                                {navLinks?.map((link, index) => (<Link href={link.path} key={index}
+
                                     className={
                                         link.path == pathName ? "text-orange-500 font-serif flex hover:border-solid hover:border underline-offset-4 underline hover:border-white border-solid border-transparent border box-border w-full p-3 font-semibold" : "w-full  font-sans   hover:border-solid   hover:text-orange-500 hover:border border border-transparent box-border p-3"
                                     }
                                 >
                                     {link.name}
-                                </a>
+                                </Link>
 
                                 ))}
 
@@ -100,10 +96,16 @@ document. localStorage.removeItem("next-auth.token");
                         </ul>}
                     </div>
                     {/* image logo */}
-                    <a className="" href="/">
-                        <img className='w-10 md:w-16 lg:w-16 ' src="https://i.ibb.co.com/kgT20yy/Quick-Bite-logo-1.webp" alt="QuickBite" />
 
-                    </a>
+                    <Link className="" href="/">
+
+                        <Image className=' w-10  md:w-16 lg:w-16 mx-auto lg:mx-0 md:mx-0'
+                            src="https://i.ibb.co/kgT20yy/Quick-Bite-logo-1.webp"
+                            alt="QuickBite"
+                            height={100}
+                            width={100}
+                        />
+                    </Link>
                 </div>
                 {/* for large  */}
                 <div className="navbar-center hidden gap-4 lg:flex">
@@ -123,10 +125,10 @@ document. localStorage.removeItem("next-auth.token");
                 {/* for right icons  */}
                 <div className="navbar-end items-center   gap-3 md:gap-8 lg:gap-10 relative w-fit">
 
-                        {/* for large device sign in  */}
-                   {session?.status === 'authenticated'? <div   onClick={ handleSignOut}  className="lg:flex cursor-pointer md:flex hidden items-center bg-stone-200  font-thin  Playfair rounded-md  px-2 py-1 text-red-400 gap-2" >
+                    {/* for large device sign in  */}
+                    {session?.status === 'authenticated' ? <div onClick={handleSignOut} className="lg:flex cursor-pointer md:flex hidden items-center bg-stone-200  font-thin  Playfair rounded-md  px-2 py-1 text-red-400 gap-2" >
                         <VscSignIn size={25} /> Sign Out
-                    </div>:<Link  className="lg:flex md:flex hidden items-center bg-rose-500 font-thin  Playfair rounded-md  px-2 py-1 text-white gap-2" href="/login">
+                    </div> : <Link className="lg:flex md:flex hidden items-center bg-rose-500 font-thin  Playfair rounded-md  px-2 py-1 text-white gap-2" href="/login">
                         <VscSignIn size={25} /> Sign In
                     </Link>}
                     {/* for cart */}

@@ -1,43 +1,44 @@
 "use client"
 import SocialSignin from "@/app/component/shared/SocialSignin";
 import { signIn } from "next-auth/react";
+import Image from "next/image";
 // import { useSearchParams } from "next/navigation";
 
 const page = () => {
     // const searchParams = useSearchParams();
     // const path = searchParams.get("redirect");
 
-    const handleSubmit =async e=> {
+    const handleSubmit = async e => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
         const resp = await signIn("credentials", {
-          email,
-          password,
-          redirect: true,
-          callbackUrl: "/",
+            email,
+            password,
+            redirect: true,
+            callbackUrl: "/",
         });
         console.log(resp)
-      };
-     
+    };
 
 
-    
+
+
 
 
 
     return (
-        <div className='  items-center text-justify'>
+        <div className='h-screen  items-center text-justify'>
             <div className="flex justify-center md:py-24 py-12 lg:py-28  items-center h-full bg-cover bg-center relative" style={{ backgroundImage: "url('https://i.ibb.co.com/wC1k5yY/pexels-ella-olsson-572949-1640777.jpg')" }}>
                 {/* Overlay to darken the background */}
                 <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-0"></div>
 
                 <div className="relative bg-gray-500  bg-opacity-10 p-8 rounded-lg shadow-2xl w-full max-w-md">
                     <h2 className="text-center justify-center flex w-full text-2xl font-semibold mb-6 text-gray-900">
-                        <img className=' p-3' src="https://i.ibb.co.com/kgT20yy/Quick-Bite-logo-1.webp" alt="Logo" height={'100'} width="100" />
+                        <Image className=' p-3' src="https://i.ibb.co/kgT20yy/Quick-Bite-logo-1.webp" alt="Logo" height={100} width={100} />
                     </h2>
 
-                    <form onSubmit={ handleSubmit}>
+                    <form onSubmit={handleSubmit}>
                         <div className="mb-4">
                             {/* <label className="block text-white text-sm font-medium">Email Address</label> */}
                             <input
@@ -81,7 +82,7 @@ const page = () => {
                     <div className="text-center mt-6 text-gray-700 text-sm">
                         <span>Or login using:</span>
                         <div className="flex justify-center mt-4 space-x-3">
-                           <SocialSignin></SocialSignin>
+                            <SocialSignin></SocialSignin>
                         </div>
                     </div>
 

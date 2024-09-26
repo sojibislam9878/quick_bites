@@ -8,7 +8,7 @@ const PromotionCard = ({ pData }) => {
     return (
         <div>
 
-            <div className='relative overflow-hidden max-w-xl rounded-xl shadow-lg group'>
+            <div className='relative overflow-hidden max-full rounded-xl shadow-lg group'>
                 <Image
                     src={image}
                     alt='promotion Card'
