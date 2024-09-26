@@ -1,7 +1,8 @@
 import React from 'react';
 import { promotionsData } from './PromotionsData';
 import PromotionCard from './PromotionCard';
-import DiscountBanner from '../discount/discountBanner';
+import DiscountBanner from '../discount/DiscountBanner';
+
 
 const Promotion = () => {
     return (
