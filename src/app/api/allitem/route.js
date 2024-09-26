@@ -10,10 +10,21 @@ export const GET = async (request) => {
     const category = searchParams.get('filter');
     const brand = searchParams.get('brand');
     const search = searchParams.get('search')
+    const sort = searchParams.get('sort')
 
   
    
     let query = {};
+    let sortOption = {}
+
+    if(sort === "low"){
+      
+sortOption.price = 1
+    }
+    if(sort === "high"){
+      sortOption.price = -1
+
+    }
 
     if (category) {
       query.category = category;
@@ -38,7 +49,7 @@ export const GET = async (request) => {
     const foodCollection = db.collection('foodList');
 
 
-    const result = await foodCollection.find(query).skip(skip).limit(perPage).toArray();
+    const result = await foodCollection.find(query).skip(skip).limit(perPage).sort(sortOption).toArray();
 
     return NextResponse.json({ result });
   } catch (error) {
