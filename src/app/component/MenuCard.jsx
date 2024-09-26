@@ -19,12 +19,12 @@ const MenuCard = ({ item }) => {
         <figure>
           <img
             src={image}
-            alt="Shoes"
+            alt="food photo"
             className="h-[31rem] w-full object-cover"
           />
         </figure>
         <div className="card-body">
-          <h2 className="text-4xl font-bold mt-4 font-play bg-gradient-to-r from-[#1ABC9C] to-[#62e6cb] bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold mt-4 font-play bg-gradient-to-r from-[#EA6A12] to-[#fa9049] bg-clip-text text-transparent">
             {foodName}
           </h2>
           {/* <p className="text-lg">{description}</p> */}
@@ -46,10 +46,10 @@ const MenuCard = ({ item }) => {
             </p>
           </div> */}
           <div className="card-actions flex gap-8 mt-4">
-            <button className="btn btn-outline border-[#1ABC9C] hover:border-[#1ABC9C] text-[#1ABC9C] hover:bg-[#1ABC9C]">
+            <button className="btn btn-outline border-[#EA6A12] hover:border-[#EA6A12] text-[#EA6A12] hover:bg-[#EA6A12]">
               Add To Cart
             </button>
-            <button className="btn bg-[#1ABC9C]  text-white  hover:bg-transparent hover:border-[#1ABC9C] hover:text-[#1ABC9C]">
+            <button className="btn bg-[#EA6A12]  text-white  hover:bg-transparent hover:border-[#EA6A12] hover:text-[#EA6A12]">
               Buy Now
             </button>
           </div>
