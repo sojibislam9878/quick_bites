@@ -60,25 +60,20 @@ export const handler = NextAuth({
     signOut:"/"
   },
   callbacks: {
-    async signIn({ user, account }) {
-      if (account.provider === "google" || account.provider === "github") {
-        const { name, email, image } = user;
-        try {
-          const db = await connectDB();
-          const userCollection = db.collection("users");
-          const userExist = await userCollection.findOne({ email });
-          if (!userExist) {
-            const res = await userCollection.insertOne(user);
-            return user;
-          } else {
-            return user;
-          }
-        } catch (error) {
-          console.log(error);
-        }
-      } else {
-        return user;
-      }}}
+    async session({ session, token, user }) {
+      // Add custom fields to the session object
+      session.user.id = token.sub;  // Example: Add user ID
+      session.user.role = 'admin';  // Example: Add a user role
+      session.customInfo = 'Some custom data'; // Example: Add custom data
+      return session;
+    },
+    async jwt({ token, user }) {
+      // Persist the user ID in the token
+      if (user) {
+        token.sub = user.id;
+      }
+      return token;
+    },}
 });
 
 export { handler as GET, handler as POST }; 

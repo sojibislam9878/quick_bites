@@ -56,7 +56,7 @@ const Banner = () => {
                     >
                         <div className='w-full flex h-full justify-center  items-center'>
                             <div className='space-y-6  text-white text-center'>
-                                <h1 className='text-6xl font-bold tracking-wide'>{banner.title}</h1>
+                                <h1 className='text-2xl md:text-6xl font-bold tracking-wide'>{banner.title}</h1>
 
                                 <div className="flex items-center justify-between w-[60%] mx-auto bg-white rounded-full shadow-lg">
                                     <span className="p-4 text-black">
@@ -65,10 +65,10 @@ const Banner = () => {
                                     <input
                                         type="text"
                                         placeholder="Enter your delivery address"
-                                        className="w-full px-6 py-4 text-black outline-none rounded-s-full"
+                                        className=" w-full px-2 md:px-6 py-2 md:py-4 text-black outline-none rounded-s-full"
                                     />
                                     <br /><br />
-                                    <button className="bg-[#de0d67] text-white px-6 py-4 rounded-s-full rounded-e-full font-bold border-none hover:bg-[#90013f] w-[50%]">
+                                    <button className="bg-[#de0d67] text-white px-2 md:px-6 py-4 rounded-s-full rounded-e-full font-bold border-none hover:bg-[#90013f] md:w-[50%] w-[240px]">
                                         Find now
                                     </button>
                                 </div>
