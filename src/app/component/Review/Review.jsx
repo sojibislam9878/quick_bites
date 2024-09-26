@@ -7,7 +7,7 @@ const Review = () => {
         <div>
             <div className="text-center space-y-2 mb-6">
 
-                <section className="bg-white dark:bg-gray-900">
+                <section className="bg-white">
                     <div className="max-w-6xl px-6 py-10 mx-auto">
                         <p className="text-xl font-medium text-[#6E6B58] ">Reviews</p>
 
