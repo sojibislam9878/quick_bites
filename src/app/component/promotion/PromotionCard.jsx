@@ -27,7 +27,7 @@ const PromotionCard = ({ pData }) => {
                             value={rating}
                             readOnly
                         />
-                        <p className='text-sm font-extralight'>{shortDescription}</p>
+                        {/* <p className='text-sm font-extralight'>{shortDescription}</p> */}
                         <p><span className='text-white font-medium'>Price:</span> ${price}</p>
                         <p><span className='text-white font-medium'>Discount: </span> {discount}</p>
                         {/* <div className='flex text-sm flex-row justify-between items-center px-4 my-2 '>
