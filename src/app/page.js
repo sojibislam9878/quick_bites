@@ -5,6 +5,7 @@ import PromotionBanner from "./component/Restaurants&Promotions/PromotionBanner"
 import Review from "./component/Review/Review";
 
 import Banner from "./component/Restaurants&Promotions/Banner";
+import Promotion from "./component/promotion/Promotion";
 
 
 
@@ -13,8 +14,9 @@ export default function Home() {
     <div className=" pt-4">
     {/* <Hero/> */}
     <Banner/>
-    <Promotions/>
-    <PromotionBanner/>
+    {/* <Promotions/> */}
+    {/* <PromotionBanner/>  */}
+    <Promotion/>
     <Review/>
     
     </div>
