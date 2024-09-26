@@ -2,15 +2,15 @@ import React from 'react';
 
 const MenuCard = ({ item }) => {
     const {
-        // _id,
+        _id,
         brand,
         category,
-        createdAt,
-        description,
+        // createdAt,
+        // description,
         image,
-        name,
+        foodName,
         price,
-        ratings,
+        // ratings,
       } = item || {};
 
     return (
@@ -25,18 +25,18 @@ const MenuCard = ({ item }) => {
         </figure>
         <div className="card-body">
           <h2 className="text-4xl font-bold mt-4 font-play bg-gradient-to-r from-[#1ABC9C] to-[#62e6cb] bg-clip-text text-transparent">
-            {name}
+            {foodName}
           </h2>
-          <p className="text-lg">{description}</p>
+          {/* <p className="text-lg">{description}</p> */}
           <p className="text-lg font-medium">Category: {category}</p>
           <p className="text-lg font-medium">Brand: {brand}</p>
           <p className="flex gap-6 text-lg font-medium">
             Price: $ {price}
-            <span className="text-red-400">
+            {/* <span className="text-red-400">
               <del>$ {slicedOldPrice}</del>
-            </span>
+            </span> */}
           </p>
-          <div className="flex items-center justify-between">
+          {/* <div className="flex items-center justify-between">
             <p className="text-lg font-semibold flex gap-2 items-center">
               Rating: {ratings}{" "}
               <span className="material-symbols-outlined">star_half</span>
@@ -44,7 +44,7 @@ const MenuCard = ({ item }) => {
             <p>
               Date: {date} Time:{time}
             </p>
-          </div>
+          </div> */}
           <div className="card-actions flex gap-8 mt-4">
             <button className="btn btn-outline border-[#1ABC9C] hover:border-[#1ABC9C] text-[#1ABC9C] hover:bg-[#1ABC9C]">
               Add To Cart
@@ -59,4 +59,4 @@ const MenuCard = ({ item }) => {
     );
 };
 
-export default MenuCard;
+export default MenuCard  
