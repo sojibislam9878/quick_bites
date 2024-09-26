@@ -1,5 +1,5 @@
 import { connectDB } from "@/app/lib/connectDB"
-import { NextResponse } from "next/server"
+
 
 export const GET = async(request)=>{
 
@@ -40,10 +40,10 @@ export const GET = async(request)=>{
 
         const result = await foodCollection.countDocuments( query)
 
-        return NextResponse.json({count:result})
+        return Response.json({count:result})
         
     } catch (error) {
-        NextResponse.json({
+        Response.json({
 status:404,
 statusText:"something went wrong",
 error:error.message
