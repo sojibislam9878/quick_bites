@@ -1,0 +1,218 @@
+_id
+66f4fc0104bb22c39d78b698
+name
+"Taco Mexican"
+avgReview
+98
+location
+"Mirpur, Dhaka"
+locationDetails
+"Road No 24, Hakim Plaza"
+opensAt
+"17:00"
+minimumOrder
+15
+image
+"https://i.ibb.co.com/YfJZBbz/thumb-restaurant.jpg"
+_id
+66f4fc0104bb22c39d78b699
+name
+"Naples Pizza"
+avgReview
+98
+location
+"Gulshan, Dhaka"
+locationDetails
+"House No 23, Block C"
+opensAt
+"17:00"
+minimumOrder
+15
+image
+"https://i.ibb.co.com/g9BK91b/thumb-restaurant-2.jpg"
+_id
+66f4fc0104bb22c39d78b69a
+name
+"Japan Food"
+avgReview
+98
+location
+"Banani, Dhaka"
+locationDetails
+"Road 11, Banani Complex"
+opensAt
+"17:00"
+minimumOrder
+15
+image
+"https://i.ibb.co.com/9VDjn4P/thumb-restaurant-3.jpg"
+_id
+66f4fc0104bb22c39d78b69b
+name
+"Sushi Gold"
+avgReview
+98
+location
+"Dhanmondi, Dhaka"
+locationDetails
+"House 45, Lake Road"
+opensAt
+"17:00"
+minimumOrder
+15
+image
+"https://i.ibb.co.com/vBKLwzk/thumb-restaurant-4.jpg"
+_id
+66f4fc0104bb22c39d78b69c
+name
+"Dragon Tower"
+avgReview
+98
+location
+"Uttara, Dhaka"
+locationDetails
+"Sector 7, Road 18"
+opensAt
+"17:00"
+minimumOrder
+15
+image
+"https://i.ibb.co.com/9vtZH4n/thumb-restaurant-5.jpg"
+_id
+66f4fc0104bb22c39d78b69d
+name
+"China Food"
+avgReview
+98
+location
+"Mirpur, Dhaka"
+locationDetails
+"Plot 13, Mirpur-2"
+opensAt
+"17:00"
+minimumOrder
+15
+image
+"https://i.ibb.co.com/0szqbp1/thumb-restaurant-6.jpg"
+_id
+66f4fc1904bb22c39d78cc98
+name
+"Taco Mexican"
+avgReview
+98
+location
+"Mirpur, Dhaka"
+locationDetails
+"Road No 24, Hakim Plaza"
+opensAt
+"17:00"
+minimumOrder
+15
+image
+"https://i.ibb.co.com/YfJZBbz/thumb-restaurant.jpg"
+_id
+66f4fc1904bb22c39d78cc99
+name
+"Naples Pizza"
+avgReview
+98
+location
+"Gulshan, Dhaka"
+locationDetails
+"House No 23, Block C"
+opensAt
+"17:00"
+minimumOrder
+15
+image
+"https://i.ibb.co.com/g9BK91b/thumb-restaurant-2.jpg"
+_id
+66f4fc1904bb22c39d78cc9a
+name
+"Japan Food"
+avgReview
+98
+location
+"Banani, Dhaka"
+locationDetails
+"Road 11, Banani Complex"
+opensAt
+"17:00"
+minimumOrder
+15
+image
+"https://i.ibb.co.com/9VDjn4P/thumb-restaurant-3.jpg"
+_id
+66f4fc1904bb22c39d78cc9b
+name
+"Sushi Gold"
+avgReview
+98
+location
+"Dhanmondi, Dhaka"
+locationDetails
+"House 45, Lake Road"
+opensAt
+"17:00"
+minimumOrder
+15
+image
+"https://i.ibb.co.com/vBKLwzk/thumb-restaurant-4.jpg"
+_id
+66f4fc1904bb22c39d78cc9c
+name
+"Dragon Tower"
+avgReview
+98
+location
+"Uttara, Dhaka"
+locationDetails
+"Sector 7, Road 18"
+opensAt
+"17:00"
+minimumOrder
+15
+image
+"https://i.ibb.co.com/9vtZH4n/thumb-restaurant-5.jpg"
+_id
+66f4fc1904bb22c39d78cc9d
+name
+"China Food"
+avgReview
+98
+location
+"Mirpur, Dhaka"
+locationDetails
+"Plot 13, Mirpur-2"
+opensAt
+"17:00"
+minimumOrder
+15
+image
+"https://i.ibb.co.com/0szqbp1/thumb-restaurant-6.jpg"
+
+
+add extra some filed here and give me a array of object[its add mongodb manullay)
+
+the field is 
+
+Categories[Fast Food
+
+Traditional
+
+Continental
+
+Dessert]
+
+serviece : [Service
+
+Dine In
+
+Take Away
+
+Home Delivery]
+
+extra[take a name]: [
+Best Seller
+
+Newly Opened] 

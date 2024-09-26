@@ -12,10 +12,7 @@ import Promotion from "./component/promotion/Promotion";
 export default function Home() {
   return (
     <div className=" pt-4">
-    {/* <Hero/> */}
     <Banner/>
-    {/* <Promotions/> */}
-    {/* <PromotionBanner/>  */}
     <Promotion/>
     <Review/>
     

@@ -5,7 +5,7 @@
 
 
 // import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiAlignJustify } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
 import { FaUserLarge } from "react-icons/fa6";
@@ -13,21 +13,28 @@ import { VscSignIn } from "react-icons/vsc";
 import { BsCart4 } from "react-icons/bs";
 import { usePathname } from 'next/navigation'
 import { FaUserCircle } from "react-icons/fa";
+import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 // import { useRouter } from "next/router";
 
 
 const navLinks = [
     { path: '/', name: 'Home' },
+    { path: '/menu', name: 'Menu' },
     // { path: '/restaurants', name: 'Restaurants' },
     // { path: '/orders', name: 'Orders' },
     { path: '/contact', name: 'Contact' },
     { path: '/about', name: 'About' },
+    { path: '/allRestaurant', name: ' Restaurant' },
     // { path: '/Support/FAQs', name: 'Support/FAQs' },
 ];
 
 
 const Navbar = () => {
 
+
+    const session=useSession()
+    console.log(session)
     const pathName = usePathname()
 
 
@@ -37,10 +44,26 @@ const Navbar = () => {
     const [userIcon, setUserIcon] = useState(false)
 
 
+    // for sign out functionality
+    const handleSignOut =()=> {
+        signOut('credentials',
+
+        )
+document. localStorage.removeItem("next-auth.token");
+
+
+
+
+
+    
+    }
+ 
+
+
 
     return (
         
-        <div className='lg:px-16 border-b-2 fixed mb-48  border  w-full h-fit z-50 bg-base-100  border-gray-300 md:px-5'>
+        <div className='lg:px-16 border-b-2 fixed mb-48  border  w-full h-fit z-50 bg-base-100  border-gray-400 md:px-5'>
             <div className="navbar  justify-between  lg:justify-between md:justify-between ">
                 <div className="navbar-start  w-fit">
                     {/* for small */}
@@ -101,9 +124,11 @@ const Navbar = () => {
                 <div className="navbar-end items-center   gap-3 md:gap-8 lg:gap-10 relative w-fit">
 
                         {/* for large device sign in  */}
-                    <a className="lg:flex md:flex hidden items-center bg-rose-500 font-thin  Playfair rounded-md  px-2 py-1 text-white gap-2" href="">
+                   {session?.status === 'authenticated'? <div   onClick={ handleSignOut}  className="lg:flex cursor-pointer md:flex hidden items-center bg-stone-200  font-thin  Playfair rounded-md  px-2 py-1 text-red-400 gap-2" >
+                        <VscSignIn size={25} /> Sign Out
+                    </div>:<Link  className="lg:flex md:flex hidden items-center bg-rose-500 font-thin  Playfair rounded-md  px-2 py-1 text-white gap-2" href="/login">
                         <VscSignIn size={25} /> Sign In
-                    </a>
+                    </Link>}
                     {/* for cart */}
                     <div className="w-fit hover:text-orange-600 hover:scale-[1.08] ">
                         <BsCart4 size={25} />
@@ -115,10 +140,10 @@ const Navbar = () => {
                         <div tabIndex={0} role="button" className=" m-1">
                             <FaUserCircle className="hover:scale-[1.03]  hover:text-orange-600 " onClick={() => setUserIcon(!userIcon)} size={30} />
                         </div>
-                        <ul tabIndex={0} className="dropdown-content absolute  gap-1  -right-2 lg:-right-10 h-fit  menu border-2 border-red-100  bg-base-100 rounded-md z-[1] w-32 p-2 shadow">
+                        <ul tabIndex={0} className="dropdown-content absolute  gap-1  -right-5 lg:-right-10 h-fit  menu border-2 border-red-100  bg-base-100 rounded-md z-[1] w-32 p-2 shadow">
                             <p className="p-2 lg:hidden md:hidden block hover:bg-gray-300 font-semibold rounded">
                                 {/* <div className="absolute  top-14 -right-10   w-40 rounded-md p-2 border border-red-200   text-black  font-medium text-center"> */}
-                                <a className="lg:hidden md:hidden flex   gap-2" href="">
+                                <a className="lg:hidden md:hidden flex   gap-2" href="/login">
                                     <VscSignIn size={20} /> Sign In
                                 </a>
 
