@@ -9,8 +9,8 @@ if(db) {
 
 try {
     
-  const uri = `mongodb+srv://${process.env.MONGODB_USER_NAME}:${process.env.MONGODB_PASSWORD}@cluster0.6zehkma.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
-  // const uri =`mongodb+srv://quickbites:zMq1soa6DlmXzyjr@cluster0.ngsjczb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+  // const uri = `mongodb+srv://${process.env.MONGODB_USER_NAME}:${process.env.MONGODB_PASSWORD}@cluster0.6zehkma.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+  const uri =`mongodb+srv://quickbites:zMq1soa6DlmXzyjr@cluster0.ngsjczb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
     const client = new MongoClient(uri, {
         serverApi: {
           version: ServerApiVersion.v1,
