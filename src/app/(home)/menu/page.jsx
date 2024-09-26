@@ -1,4 +1,7 @@
 "use client"
+import MenuCard from '@/app/component/MenuCard';
+import NoData from '@/app/component/NoData';
+import Spinner from '@/app/component/Spinner';
 import React, { useEffect, useState } from 'react';
 const ManuePage = () => {
     const [allItems, setAllItems] = useState([]);
@@ -7,7 +10,6 @@ const ManuePage = () => {
   const [filter, setFilter] = useState("");
   const [brand, setBrand] = useState("");
   const [sort, setSort] = useState("");
-  const [sort2, setSort2] = useState("");
   const [search, setSearch] = useState("");
   const [serchText, setSearchText] = useState("");
   const [loading, setLoading] = useState("");
@@ -21,9 +23,10 @@ const ManuePage = () => {
       setLoading(true);
       try {
         const res = await fetch(
-          `api/allitem?page=${currentPage}&size=${cardPerPage}&filter=${filter}&brand=${brand}&sort=${sort}&sort2=${sort2}&search=${search}`
+          `https://quick-bites-tau.vercel.app/api/allitem?page=${currentPage}&size=${cardPerPage}&filter=${filter}&brand=${brand}&sort=${sort}&search=${search}`
         );
         const data = await res.json();
+        
         setAllItems(data);
         setLoading(false);
         if (brand || filter || search) {
@@ -36,14 +39,14 @@ const ManuePage = () => {
     };
 
     fetchData();
-  }, [currentPage, cardPerPage, filter, sort, sort2, search, brand]);
+  }, [currentPage, cardPerPage, filter, sort, search, brand]);
 
   useEffect(() => {
     const fetchDataCount = async () => {
       setLoading(true);
       try {
         const res = await fetch(
-          `https://scica10.vercel.app/itemscounts?filter=${filter}&brand=${brand}&search=${search}`
+          `https://quick-bites-tau.vercel.app/api/itemcounts?filter=${filter}&brand=${brand}&search=${search}`
         );
         const data = await res.json();
         setDataCount(data.count);
@@ -86,7 +89,6 @@ const ManuePage = () => {
     setFilter("");
     setBrand("");
     setSort("");
-    setSort2("");
   };
 
 
@@ -94,10 +96,11 @@ const ManuePage = () => {
 
 
     return (
-        <div className="pt-24"><div>
+        <div className="pt-24 container mx-auto p-4">
+          <div>
         <div className="flex flex-col lg:flex-row justify-center gap-2">
           <form 
-        //   onSubmit={handleSearch}
+          onSubmit={handleSearch}
           >
             <div className="flex justify-between p-1 overflow-hidden border rounded-lg    focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300 md:w-1/2 lg:w-full">
               <input
@@ -126,17 +129,18 @@ const ManuePage = () => {
               id="category"
               className="border p-4 rounded-lg"
             >
-              <option value="">Item Category</option>
-              <option value="Electronics">Electronics</option>
-              <option value="Footwear">Footwear</option>
-              <option value="Accessories">Accessories</option>
-              <option value="Health">Health</option>
-              <option value="Fitness">Fitness</option>
-              <option value="Home Automation">Home Automation</option>
-              <option value="Appliances">Appliances</option>
-              <option value="Furniture">Furniture</option>
-              <option value="Home And Office">Home & Office</option>
-              <option value="Transportation">Transportation</option>
+              <option value="">Food Category</option>
+              <option value="Pizza">Pizza</option>
+              <option value="Burger">Burger</option>
+              <option value="Salad">Salad</option>
+              <option value="Sushi">Sushi</option>
+              <option value="Mexican">Mexican</option>
+              <option value="Thai">Thai</option>
+              <option value="Indian">Indian</option>
+              <option value="BBQ">BBQ</option>
+              <option value="Japanese">Japanese</option>
+              <option value="Greek">Greek</option>
+              <option value="Beverages">Beverages</option>
             </select>
           </div>
 
@@ -149,34 +153,20 @@ const ManuePage = () => {
               id="brand"
               className="border p-4 rounded-lg"
             >
-              <option value="">Item Brand</option>
-              <option value="Samsung">Samsung</option>
-              <option value="Apple">Apple</option>
-              <option value="Nike">Nike</option>
-              <option value="Adidas">Adidas</option>
-              <option value="Sony">Sony</option>
-              <option value="Dell">Dell</option>
-              <option value="HP">HP</option>
-              <option value="Ray-Ban">Ray-Ban</option>
-              <option value="Casio">Casio</option>
-              <option value="Canon">Canon</option>
-              <option value="Fitbit">Fitbit</option>
-              <option value="Dyson">Dyson</option>
-              <option value="Philips">Philips</option>
-              <option value="Bose">Bose</option>
-              <option value="GoPro">GoPro</option>
-              <option value="Rolex">Rolex</option>
-              <option value="Oakley">Oakley</option>
-              <option value="Garmin">Garmin</option>
-              <option value="Microsoft">Microsoft</option>
-              <option value="Ring">Ring</option>
-              <option value="Levoit">Levoit</option>
-              <option value="Anker">Anker</option>
-              <option value="NutriBullet">NutriBullet</option>
-              <option value="JBL">JBL</option>
-              <option value="Philips Hue">Philips Hue</option>
-              <option value="Arlo">Arlo</option>
-              <option value="George Foreman">George Foreman</option>
+              <option value="">Restaurant Name</option>
+              <option value="Pizza Palace">Pizza Palace</option>
+              <option value="Burger King">Burger King</option>
+              <option value="Fresh Greens">Fresh Greens</option>
+              <option value="Sakura Sushi">Sakura Sushi</option>
+              <option value="Taco Town">Taco Town</option>
+              <option value="Thai Express">Thai Express</option>
+              <option value="Curry House">Curry House</option>
+              <option value="Burrito Brothers">Burrito Brothers</option>
+              <option value="Grill Master">Grill Master</option>
+              <option value="Middle East Feast">Middle East Feast</option>
+              <option value="Tokyo Bites">Tokyo Bites</option>
+              <option value="Greek Grill">Greek Grill</option>
+              <option value="Cocktail Corner">Cocktail Corner</option>
             </select>
           </div>
 
@@ -184,7 +174,6 @@ const ManuePage = () => {
             <select
               onChange={(e) => {
                 setSort(e.target.value);
-                setSort2("");
               }}
               value={sort}
               name="category"
@@ -196,23 +185,8 @@ const ManuePage = () => {
               <option value="low">Low to High</option>
             </select>
           </div>
-          <div>
-            <select
-              onChange={(e) => {
-                setSort2(e.target.value);
-                setSort("");
-              }}
-              value={sort2}
-              name="date"
-              id="date"
-              className="border p-4 rounded-md"
-            >
-              <option value="">Sort By Date</option>
-              <option value="newest">Newest first</option>
-            </select>
-          </div>
           <button
-            // onClick={handleReset}
+            onClick={handleReset}
             className="btn bg-green-300 hover:bg-green-600 w-16"
           >
             Reset
@@ -221,21 +195,17 @@ const ManuePage = () => {
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
       </div>
 
-      {/* {loading ? (
-        <Spinner></Spinner>
-      ) : allItems.length == 0 ? (
-        <NoData></NoData>
-      ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-          {allItems.map((item) => (
-            <AllItemsCard
-              key={item._id}
-              item={item}
-              loading={loading}
-            ></AllItemsCard>
-          ))}
-        </div>
-      )} */}
+      {loading ? (
+  <Spinner />
+) : !allItems || !allItems.result || allItems.result.length === 0 ? (
+  <NoData />
+) : (
+  <div className="grid  lg:grid-cols-3 gap-6">
+    {allItems.result.map((item) => (
+      <MenuCard key={item._id} item={item} loading={loading} />
+    ))}
+  </div>
+)}
 
       
       
@@ -243,26 +213,12 @@ const ManuePage = () => {
       <div className="md:mb-36  mb-8">
         <div className="flex justify-center mt-12">
           <button
-            // onClick={handlePrevioustBtn}
-            // className={`${
-            //   allItems.length === 0 ? "hidden" : ""
-            // }  px-4 py-2 mx-1 text-gray-700 disabled:text-gray-500 capitalize bg-gray-200 rounded-md disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:bg-blue-500  hover:text-white`}
+            onClick={handlePrevioustBtn}
+            className={`${
+              allItems?.result?.length === 0 ? "hidden" : ""
+            }  px-4 py-2 mx-1 text-gray-700 disabled:text-gray-500 capitalize bg-gray-200 rounded-md disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:bg-blue-500  hover:text-white`}
           >
             <div className="flex items-center -mx-1">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6 mx-1 rtl:-scale-x-100"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M7 16l-4-4m0 0l4-4m-4 4h18"
-                />
-              </svg>
 
               <span className="mx-1">previous</span>
             </div>
@@ -281,28 +237,13 @@ const ManuePage = () => {
           ))}
 
           <button
-            // onClick={handleNextBtn}
-            // className={` ${
-            //   allItems.length === 0 ? "hidden" : ""
-            // } px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-gray-200 rounded-md hover:bg-blue-500 disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500`}
+            onClick={handleNextBtn}
+            className={` ${
+              allItems?.result?.length === 0 ? "hidden" : ""
+            } px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-gray-200 rounded-md hover:bg-blue-500 disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500`}
           >
             <div className="flex items-center -mx-1">
               <span className="mx-1">Next</span>
-
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6 mx-1 rtl:-scale-x-100"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
             </div>
           </button>
         </div>
