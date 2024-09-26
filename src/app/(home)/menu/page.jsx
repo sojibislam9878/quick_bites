@@ -21,7 +21,7 @@ const ManuePage = () => {
       setLoading(true);
       try {
         const res = await fetch(
-          `api/allitem?page=${currentPage}&size=${cardPerPage}&filter=${filter}&brand=${brand}&sort=${sort}&sort2=${sort2}&search=${search}`
+          `https://scica10.vercel.api/allitem?page=${currentPage}&size=${cardPerPage}&filter=${filter}&brand=${brand}&sort=${sort}&sort2=${sort2}&search=${search}`
         );
         const data = await res.json();
         setAllItems(data);
