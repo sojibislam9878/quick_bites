@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { FaDiscord, FaFacebook, FaFacebookF, FaInstagram, FaLinkedin, FaLinkedinIn } from 'react-icons/fa6';
 
@@ -22,7 +23,7 @@ const Footer = () => {
 
                     <div className="text-center  w-full mx-auto lg:w-fit md:text-left">
 
-                        <a className=' ' href="/">
+                        <Link className=' ' href="/">
 
                             <Image className=' w-20  mx-auto lg:mx-0 md:mx-0'
                                 src="https://i.ibb.co/kgT20yy/Quick-Bite-logo-1.webp"
@@ -30,7 +31,7 @@ const Footer = () => {
                                 height={100}
                                 width={100}
                             />
-                        </a>
+                        </Link>
 
 
                         <div className="flex  justify-center md:justify-start space-x-4 mt-4">
