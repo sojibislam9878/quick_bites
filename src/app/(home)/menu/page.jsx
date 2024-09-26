@@ -1,10 +1,10 @@
-"use client"
-import MenuCard from '@/app/component/MenuCard';
-import NoData from '@/app/component/NoData';
-import Spinner from '@/app/component/Spinner';
-import React, { useEffect, useState } from 'react';
+"use client";
+import MenuCard from "@/app/component/MenuCard";
+import NoData from "@/app/component/NoData";
+import Spinner from "@/app/component/Spinner";
+import React, { useEffect, useState } from "react";
 const ManuePage = () => {
-    const [allItems, setAllItems] = useState([]);
+  const [allItems, setAllItems] = useState([]);
   const cardPerPage = 6;
   const [dataCount, setDataCount] = useState(1);
   const [filter, setFilter] = useState("");
@@ -15,15 +15,14 @@ const ManuePage = () => {
   const [loading, setLoading] = useState("");
   const totalPage = Math.ceil(dataCount / cardPerPage);
   const [currentPage, setCurrentPage] = useState(1);
-  const pages = [...Array(totalPage).keys()].map((i) => i + 1);
-
+  const pages = [...Array(totalPage).keys()].map((i) => i + 1) ;
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
         const res = await fetch(
-          `http://localhost:3000/api/allitem?page=${currentPage}&size=${cardPerPage}&filter=${filter}&brand=${brand}&sort=${sort}&search=${search}`
+          `https://quick-bites-tau.vercel.app/api/allitem?page=${currentPage}&size=${cardPerPage}&filter=${filter}&brand=${brand}&sort=${sort}&search=${search}`
         );
         const data = await res.json();
         setAllItems(data);
@@ -45,12 +44,12 @@ const ManuePage = () => {
       setLoading(true);
       try {
         const res = await fetch(
-          `http://localhost:3000/api/itemcounts?filter=${filter}&brand=${brand}&search=${search}`
+          `https://quick-bites-tau.vercel.app/api/itemcounts?filter=${filter}&brand=${brand}&search=${search}`
         );
         const data = await res.json();
         setDataCount(data.count);
       } catch (error) {
-        console.error('Error fetching data count:', error);
+        console.error("Error fetching data count:", error);
       } finally {
         setLoading(false);
       }
@@ -58,9 +57,11 @@ const ManuePage = () => {
 
     fetchDataCount();
   }, [filter, brand, search]);
-  const handleCurrentPageSearch = ()=>{{
-    setCurrentPage(1)
-}}
+  const handleCurrentPageSearch = () => {
+    {
+      setCurrentPage(1);
+    }
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -90,17 +91,13 @@ const ManuePage = () => {
     setSort("");
   };
 
-
   console.log(allItems.result);
 
-
-    return (
-        <div className="pt-24 container mx-auto p-4">
-          <div>
+  return (
+    <div className="pt-24 container mx-auto p-4">
+      <div>
         <div className="flex flex-col lg:flex-row justify-center gap-2">
-          <form 
-          onSubmit={handleSearch}
-          >
+          <form onSubmit={handleSearch}>
             <div className="flex justify-between p-1 overflow-hidden border rounded-lg    focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300 md:w-1/2 lg:w-full">
               <input
                 onChange={(e) => {
@@ -195,19 +192,19 @@ const ManuePage = () => {
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
       </div>
 
-
-     {
-      loading? (<Spinner></Spinner>):allItems?.result?.length== 0 ? (<NoData></NoData>) :( <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-        {(Array.isArray(allItems?.result) ? allItems.result : []).map((item) => (
-          <MenuCard key={item._id} item={item} loading={loading}></MenuCard>
-        ))}
-      </div>)
-     }
-
-      
-
-      
-      
+      {loading ? (
+        <Spinner></Spinner>
+      ) : allItems?.result?.length == 0 ? (
+        <NoData></NoData>
+      ) : (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 ">
+          {(Array.isArray(allItems?.result) ? allItems.result : []).map(
+            (item) => (
+              <MenuCard key={item._id} item={item} loading={loading}></MenuCard>
+            )
+          )}
+        </div>
+      )}
 
       <div className="md:mb-36  mb-8">
         <div className="flex justify-center mt-12">
@@ -247,7 +244,7 @@ const ManuePage = () => {
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default ManuePage;
