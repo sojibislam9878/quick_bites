@@ -1,35 +1,44 @@
 "use client"
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 
-const page = () => {
-    const  handleSubmit = async(e) =>{
+const SignUpPage = () => {
+
+    const router=useRouter()
+
+    const  handleSubmit = async (e) =>{
+
+
+
         e.preventDefault();
+
 
         const name1= e.target.name1.value
         const name2= e.target.name2.value
         const formData = {
-            name: name1+' '+name2,
+            name: name1 + ' ' + name2,
             password: e.target.password.value,
             email: e.target.email.value,
             image: e.target.image.value,
 
-           
-        }
-        console.log(formData);
-        const res= await fetch("http://localhost:3000/signup/api",{
 
-            method: 'POST',
+        }
+        // console.log(formData);
+        const resp = await fetch("http://localhost:3000/signup/api", {
+            method: "POST",
+            body: JSON.stringify(formData),
             headers: {
-                'Content-Type': 'application/json'
+              "content-type": "application/json",
             },
-            body: JSON.stringify(formData)
-        })
-        console.log(res)
+          });
+          if (resp.status === 200) {
+            router.push('/login');
+          }
     }
     return (
         <div className=' ' >
-            <div className="  relative h-full md:py-24 py-12 lg:py-28 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('https://i.ibb.co.com/wC1k5yY/pexels-ella-olsson-572949-1640777.jpg')" }}>
+            <div className="  relative h-screen md:py-24 py-12 lg:py-28 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('https://i.ibb.co/wC1k5yY/pexels-ella-olsson-572949-1640777.jpg')" }}>
                 {/*  Background Blur Overlay  */}
                 <div className="absolute  h-full inset-0 bg-black bg-opacity-50 backdrop-blur-0"></div>
 
@@ -45,7 +54,7 @@ const page = () => {
                                     type="text"
                                     name='name1'
                                     placeholder="First name"
-                                    className="w-1/2 px-4 py-3 text-white bg-transparent border border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" />
+                                    className="w-1/2 dark:text-white px-4 py-3 text-white bg-transparent border border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" />
                                 <input
                                     type="text"
                                     name='name2'
@@ -100,4 +109,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default SignUpPage;

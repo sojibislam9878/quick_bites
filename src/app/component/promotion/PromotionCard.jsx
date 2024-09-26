@@ -8,7 +8,7 @@ const PromotionCard = ({ pData }) => {
     return (
         <div>
 
-            <div className='relative overflow-hidden max-w-xl rounded-xl shadow-lg group'>
+            <div className='relative overflow-hidden max-full rounded-xl shadow-lg group'>
                 <Image
                     src={image}
                     alt='promotion Card'
@@ -27,7 +27,7 @@ const PromotionCard = ({ pData }) => {
                             value={rating}
                             readOnly
                         />
-                        <p className='text-sm font-extralight'>{shortDescription}</p>
+                        {/* <p className='text-sm font-extralight'>{shortDescription}</p> */}
                         <p><span className='text-white font-medium'>Price:</span> ${price}</p>
                         <p><span className='text-white font-medium'>Discount: </span> {discount}</p>
                         {/* <div className='flex text-sm flex-row justify-between items-center px-4 my-2 '>
