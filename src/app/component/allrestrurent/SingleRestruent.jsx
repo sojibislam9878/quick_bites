@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 
 const SingleRestruent = ({data}) => {
-  console.log(data, "data");
+
   return (
     <div className='xl:w-[50%] lg:w-[80%]  mx-auto '>
    <div className='bg-white py-5 px-8 sm:flex justify-between items-center'>
