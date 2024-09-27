@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 
 const SingleRestruent = ({ data }) => {
   return (
@@ -44,9 +45,9 @@ const SingleRestruent = ({ data }) => {
 
         {/* Desktop Button */}
         <div className="hidden sm:block">
-          <button className="btn bg-rose-500 text-white font-medium rounded-md py-2 px-4 shadow hover:bg-rose-600 transition duration-300">
+          <Link href={'/menu'} className="btn bg-rose-500 text-white font-medium rounded-md py-2 px-4 shadow hover:bg-rose-600 transition duration-300">
             View Menu
-          </button>
+          </Link>
         </div>
       </div>
     </div>
