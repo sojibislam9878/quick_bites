@@ -12,11 +12,11 @@ export default function Home() {
   return (
     <div className=" pt-4">
     {/* <Hero/> */}
-    <Banner/>
+   <Banner/>
     <Promotions/>
     <PromotionBanner/>
     <Review/>
-    
+ 
     </div>
   );
 }

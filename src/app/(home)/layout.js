@@ -2,11 +2,12 @@
 
 "use clients"
 import localFont from "next/font/local";
-import "../globals.css";
+//import "../globals.css";
+import '../globals.css'
 import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
 import { Poppins } from 'next/font/google';
-import { SessionProvider } from "next-auth/react";
+// import { SessionProvider } from "next-auth/react";
 import Auth from "../session/Auth";
 
 
