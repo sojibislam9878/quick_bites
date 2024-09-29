@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
       { href: "", label: "Assigned Order" },
       { href: "", label: "Update Assigned" },
       { href: "", label: "Earning" },
-    ],
+    ]
   };
 
   return (

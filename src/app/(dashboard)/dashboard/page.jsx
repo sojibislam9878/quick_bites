@@ -3,8 +3,8 @@ import React from 'react';
 const dashboardPage = () => {
     return (
         <div>
-            <h1>This is dashboardPageest</h1>
-            <h1>This is dashboardPageest</h1>
+            <h1>This is Dashboard page</h1>
+           
         </div>
     );
 };
