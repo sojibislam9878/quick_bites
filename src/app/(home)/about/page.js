@@ -224,6 +224,7 @@ export default function AboutPage() {
               <img
                 src="https://readymadeui.com/team-1.webp"
                 className="rounded-lg"
+                alt="photo"
               />
             </div>
 
@@ -239,6 +240,7 @@ export default function AboutPage() {
               <img
                 src="https://readymadeui.com/team-2.webp"
                 className="rounded-lg"
+                alt="problem"
               />
             </div>
 
@@ -254,6 +256,7 @@ export default function AboutPage() {
               <img
                 src="https://readymadeui.com/team-3.webp"
                 className="rounded-lg"
+                alt="photo"
               />
             </div>
 
@@ -299,6 +302,7 @@ export default function AboutPage() {
               <img
                 src="https://readymadeui.com/team-6.webp"
                 className="rounded-lg"
+                alt="photo"
               />
             </div>
 
