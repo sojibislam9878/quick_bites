@@ -17,7 +17,7 @@ const Hero = () => {
   }, []);
 
  
-  12 
+
 
 
   return (

@@ -17,7 +17,7 @@ const poppins = Poppins({
 export default function RootLayout({ children }) {
 
   // This can be dynamically set based on user authentication
-  const role = "deliveryMan";   //role are customer/admin/deleveryMan
+  const role = "customer";   //role are customer/admin/deleveryMan
 
   const links = {
     customer: [

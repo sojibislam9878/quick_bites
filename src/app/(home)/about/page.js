@@ -4,7 +4,7 @@ import Marque from "../../component/Restaurants&Promotions/Marque";
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-white dark:bg-gray-900 pt-[120px]">
+      <section className="bg-white  pt-[120px]">
         <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
           <div className="mr-auto place-self-center lg:col-span-7">
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white w-[460px] ">
@@ -34,7 +34,7 @@ export default function AboutPage() {
             </a>
             <a
               href="#"
-              className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+              className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100"
             >
               Speak to Sales
             </a>
@@ -48,7 +48,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="bg-white dark:bg-gray-900 my-5">
+      <section className="bg-white my-5">
         <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
           <div className="mt-8">
             <img
@@ -57,8 +57,8 @@ export default function AboutPage() {
               alt="office content 1"
             />
           </div>
-          <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-            <h2 className="mb-4 text-6xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+          <div className="font-light text-gray-500 sm:text-lg ">
+            <h2 className="mb-4 text-6xl tracking-tight font-extrabold text-gray-900 ">
               Our mission is to save your time
             </h2>
             <p className="mb-4">
@@ -75,10 +75,10 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="bg-white dark:bg-gray-900 mb-10">
+      <section className="bg-white  mb-10">
         <div className="container mx-auto px-4 md:px-10">
           <div className="flex flex-col md:flex-row gap-10">
-            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400">
+            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:bg-yellow-400">
               <a href="#" className="">
                 <img
                   className="rounded-t-lg p-2"
@@ -88,18 +88,18 @@ export default function AboutPage() {
               </a>
               <div className="">
                 <a href="#">
-                  <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900">
                     Free Delivery
                   </h5>
                 </a>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 leading-8 ">
+                <p className="mb-3 font-normal text-gray-700 leading-8 ">
                   Here are the biggest enterprise technology acquisitions of
                   2021 so far, in reverse chronological order.
                 </p>
               </div>
             </div>
 
-            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400">
+            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:bg-yellow-400">
               <a href="#">
                 <img
                   className="rounded-t-lg p-2"
@@ -109,18 +109,18 @@ export default function AboutPage() {
               </a>
               <div className="">
                 <a href="#">
-                  <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 ">
                     Save Your Time
                   </h5>
                 </a>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                <p className="mb-3 font-normal text-gray-700 ">
                   Here are the biggest enterprise technology acquisitions of
                   2021 so far, in reverse chronological order.
                 </p>
               </div>
             </div>
 
-            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400">
+            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:bg-yellow-400">
               <a href="#">
                 <img
                   className="rounded-t-lg p-2"
@@ -130,18 +130,18 @@ export default function AboutPage() {
               </a>
               <div className="">
                 <a href="#">
-                  <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 ">
                     Regular Discounts
                   </h5>
                 </a>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                <p className="mb-3 font-normal text-gray-700 ">
                   Here are the biggest enterprise technology acquisitions of
                   2021 so far, in reverse chronological order.
                 </p>
               </div>
             </div>
 
-            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-400">
+            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:bg-yellow-400">
               <a href="#">
                 <img
                   className="rounded-t-lg p-2"
@@ -151,11 +151,11 @@ export default function AboutPage() {
               </a>
               <div className="">
                 <a href="#">
-                  <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 ">
                     Variety Food
                   </h5>
                 </a>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                <p className="mb-3 font-normal text-gray-700 ">
                   Here are the biggest enterprise technology acquisitions of
                   2021 so far, in reverse chronological order.
                 </p>
@@ -164,7 +164,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="bg-[url('https://bslthemes.com/html/quickeat/assets/img/background.png')] bg-cover bg-center dark:bg-gray-900">
+      <section className="bg-[url('https://bslthemes.com/html/quickeat/assets/img/background.png')] bg-cover bg-center ">
         <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
           <div className="lg:col-span-6 col-span-12 flex justify-center items-center rounded-[50px]">
             <img
@@ -175,10 +175,10 @@ export default function AboutPage() {
           </div>
           <div className="mr-auto place-self-center lg:col-span-6 col-span-12">
             <div className="flex my-10">
-              <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white w-[460px]">
+              <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl  w-[460px]">
                 Service shows good taste.
               </h1>
-              <p className="max-w-2xl mb-6  text-black-500 lg:mb-8 md:text-lg text-lg font-semibold dark:text-gray-400 w-[460px]">
+              <p className="max-w-2xl mb-6  text-black-500 lg:mb-8 md:text-lg text-lg font-semibold w-[460px]">
                 <span className="text-[#F29F05] font-bold text-6xl">976 </span>
                 Satisfied Customers
               </p>
