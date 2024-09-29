@@ -8,55 +8,43 @@ function UserProfile() {
   const data = {
     name: "John do",
     email: "john@example.com",
-    image:
-      "https://img.freepik.com/free-vector/delivery-scooter-with-flat-design_23-2147677471.jpg?",
+    image:"https://thumbs.dreamstime.com/b/delivery-boy-ride-scooter-motorcycle-servic-service-order-worldwide-shipping-fast-free-transport-75096257.jpg",
   };
   return (
-    <div>
-      <div className=" bg-white h-screen  w-full p-4">
-        <div className="  mt-8 w-full">
-          <div className="w-full max-w-sm bg-orange-200 border border-gray-200 rounded-lg shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)]">
-            <div className=" flex-col items-center pb-10">
-              <div
-                className="w-full  "
-                style={{
-                  backgroundImage:
-                    "url(https://img.freepik.com/free-photo/fresh-pasta-with-hearty-bolognese-parmesan-cheese-generated-by-ai_188544-9469.jpg?)",
-                }}
-              >
-                <img
-                  className="w-24 h-24 mb-3 rounded-full shadow-lg ring-2 relative top-14 -right-[140px] "
-                  src={data?.image}
-                  alt="User image"
-                />
-              </div>
+    <div className="min-h-screen  flex justify-center items-center">
+    <div className="bg-[#B7A590] text-[#533831] selection:text-white rounded-lg shadow-lg p-8 w-full">
+      <div className="flex flex-col items-center">
+        {/* Profile Picture */}
+        <img
+        src={data.image}
+        alt="Profile Picture"
+          className="w-32 h-32 rounded-full object-cover mb-4  shadow-[-10px_-10px_30px_4px_rgba(223,198,173),_10px_10px_30px_4px_rgba(45,78,255,0.15)]"
+        />
 
-              <div className=" p-5 text-center mt-10">
-                <h5 className="mb-1 text-base bg-red-400 rounded-full font-medium text-gray-900"></h5>
-                <h5 className="mb-1 text-base bg-red-400 rounded-full font-medium text-gray-900"></h5>
-                <h5 className="mb-1 text-2xl font-medium text-gray-900">
-                  email
-                </h5>
-                <h5 className="mb-1 text-xl font-medium text-gray-900">
-                  {data.email}
-                </h5>
-                <span className="text-sm text-gray-500">
-                  Last log in :{/*  {dateOnly} */}
-                </span>
-              </div>
-              {/*  <!-- Action base sized with lead icon buttons  --> */}
-              <div className="flex justify-end gap-2 p-6 pt-0 mt-6  ">
-                <button className="btn  btn-outline outline-red-700 text-orange-500">
-                  Update
-                </button>
-              </div>
-            </div>
+        {/* Name */}
+        <h2 className="text-2xl font-bold text-[#533831]">{data.name}</h2>
+
+        {/* Email */}
+        <p className="text-gray-600 mb-6">{data.email}</p>
+
+        {/* Additional Info */}
+        <div className="w-full text-left">
+          <h3 className="text-xl font-semibold mb-2 text-[#533831]">About Me</h3>
+          <p className="text-gray-600 mb-4">
+            I am a passionate frontend developer specializing in creating interactive and responsive user interfaces.
+          </p>
+
+          {/* Social Links */}
+          <h3 className="text-xl font-semibold mb-2 text-[#533831]">Connect with me</h3>
+          <div className="flex space-x-4">
+            <a href="#" className="text-blue-500 hover:text-blue-700">LinkedIn</a>
+            <a href="#" className="text-blue-400 hover:text-blue-600">Twitter</a>
+            <a href="#" className="text-gray-800 hover:text-black">GitHub</a>
           </div>
         </div>
       </div>
-
-    
     </div>
+  </div>
   );
 }
 
