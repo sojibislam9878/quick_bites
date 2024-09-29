@@ -15,7 +15,7 @@ function UserProfile() {
   };
   return (
     <div>
-  {/*   <UseTitle heading={"YOUR PROFILE"}></UseTitle> */}
+  {/* */}
     <div className="min-h-screen flex justify-center items-center p-4 lg:p-0">
 
 
