@@ -7,7 +7,7 @@ export const POST = async (request) => {
   const newUser = await request.json();
   try {
     const db = await connectDB();
-    const userCollection = db.collection("users");
+    const userCollection = db.collection("allUser");
     const exist =await userCollection.findOne({ email: newUser.email });
     console.log(exist);
     if(exist) {
@@ -17,9 +17,9 @@ export const POST = async (request) => {
     const resp = await userCollection.insertOne({...newUser, password: hashedPassword});
 
       const token = jwt.sign(
-      { email: newUser.email },    // Payload containing the user ID
-     ' process.env.JWT_SECRET',         // Secret key from environment variables
-      { expiresIn: "1h" }             // Token expiry time
+      { email: newUser.email }, 
+     ' process.env.JWT_SECRET',   
+      { expiresIn: "1h" }  
     );
     
     return NextResponse

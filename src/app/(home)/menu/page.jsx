@@ -92,7 +92,7 @@ const ManuePage = () => {
   };
 
 
-  console.log(allItems);
+
 
 
     return (

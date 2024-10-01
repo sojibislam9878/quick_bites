@@ -25,7 +25,7 @@ const SignUpPage = () => {
 
         }
         // console.log(formData);
-        const resp = await fetch("https://quick-bites-tau.vercel.app/signup/api", {
+        const resp = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}signup/api`, {
             method: "POST",
             body: JSON.stringify(formData),
             headers: {

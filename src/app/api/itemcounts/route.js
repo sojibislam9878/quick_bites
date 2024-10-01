@@ -36,7 +36,7 @@ export const GET = async(request)=>{
 
 
         const db =await connectDB();
-        const foodCollection = db.collection('foodList')
+        const foodCollection = db.collection('allFoods')
 
         const result = await foodCollection.countDocuments( query)
 
