@@ -46,7 +46,7 @@ sortOption.price = 1
 
  
     const db = await connectDB();
-    const foodCollection = db.collection('foodList');
+    const foodCollection = db.collection('allFoods');
 
 
     const result = await foodCollection.find(query).skip(skip).limit(perPage).sort(sortOption).toArray();

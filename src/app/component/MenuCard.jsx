@@ -9,7 +9,7 @@ const MenuCard = ({ item }) => {
         brand,
         category,
         // createdAt,
-        // description,
+        description,
         image,
         foodName,
         price,
@@ -34,8 +34,8 @@ const MenuCard = ({ item }) => {
           <h2 className="text-4xl font-bold mt-4 font-play bg-gradient-to-r from-[#EA6A12] to-[#fa9049] bg-clip-text text-transparent">
             {foodName}
           </h2>
-          {/* <p className="text-lg">{description}</p> */}
-          <p className="text-lg font-medium">Category: {category}</p>
+          <p className="text-lg">{description}</p>
+          {/* <p className="text-lg font-medium">Category: {category}</p> */}
           <p className="text-lg font-medium">Brand: {brand}</p>
           <p className="flex gap-6 text-lg font-medium">
             Price: $ {price}
