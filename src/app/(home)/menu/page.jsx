@@ -23,7 +23,7 @@ const ManuePage = () => {
       setLoading(true);
       try {
         const res = await fetch(
-          `http://localhost:3000/api/allitem?page=${currentPage}&size=${cardPerPage}&filter=${filter}&brand=${brand}&sort=${sort}&search=${search}`
+          `${process.env.NEXT_PUBLIC_BASEURL}api/allitem?page=${currentPage}&size=${cardPerPage}&filter=${filter}&brand=${brand}&sort=${sort}&search=${search}`
         );
         const data = await res.json();
         
@@ -46,7 +46,7 @@ const ManuePage = () => {
       setLoading(true);
       try {
         const res = await fetch(
-          `http://localhost:3000/api/itemcounts?filter=${filter}&brand=${brand}&search=${search}`
+          `${process.env.NEXT_PUBLIC_BASEURL}api/itemcounts?filter=${filter}&brand=${brand}&search=${search}`
         );
         const data = await res.json();
         setDataCount(data.count);
