@@ -54,6 +54,9 @@ const Navbar = () => {
 
     }
 
+    const normalLink = "lg:font-bold px-3 lg:text-lg lg:mr-2 mt-2 py-2 rounded-lg lg:mt-0 hover:bg-gray-200";
+  const activeLink = `bg-gradient-to-r from-[#EA6A12] to-[#EA6A12]   border border-blure-500 text-white border-none hover:bg-transparent focus:bg-transparent focus:text-white ${normalLink}`;
+
 
 
 
@@ -81,19 +84,15 @@ const Navbar = () => {
                                 {navLinks?.map((link, index) => (<Link href={link.path} key={index}
 
                                     className={
-                                        link.path == pathName ? "text-orange-500 font-serif flex hover:border-solid hover:border underline-offset-4 underline hover:border-white border-solid border-transparent border box-border w-full p-3 font-semibold" : "w-full  font-sans   hover:border-solid   hover:text-orange-500 hover:border border border-transparent box-border p-3"
+                                        link.path === pathName ? activeLink : normalLink
                                     }
                                 >
                                     {link.name}
                                 </Link>
 
                                 ))}
-
-
-                            </li>
-
-
-                        </ul>}
+                                </li>
+                            </ul>}
                     </div>
                     {/* image logo */}
 
@@ -107,16 +106,17 @@ const Navbar = () => {
                         />
                     </Link>
                 </div>
+                
                 {/* for large  */}
                 <div className="navbar-center hidden gap-4 lg:flex">
-                    {navLinks?.map((link, index) => (<a key={index}
+                    {navLinks?.map((link, index) => (<Link key={index}
                         href={link.path}
                         className={
-                            link.path == pathName ? "text-orange-500 font-sans flex hover:border-solid hover:border underline-offset-4 underline hover:border-white border-solid border-transparent border box-border w-full p-3 font-semibold" : "w-full  font-sans hover:border-solid   hover:text-orange-500 hover:border border border-transparent box-border p-3"
+                            link.path == pathName ? activeLink : normalLink
                         }
                     >
                         {link.name}
-                    </a>
+                    </Link>
 
                     ))}
                 </div>
