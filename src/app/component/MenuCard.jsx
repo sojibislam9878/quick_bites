@@ -1,4 +1,7 @@
-import React from 'react';
+"use clint"
+import React, { useState } from 'react';
+import FavoriteBtn from './favoriteBtn/FavoriteBtn';
+import FavoriteBtnFill from './favoriteBtn/FavoriteBtnFill';
 
 const MenuCard = ({ item }) => {
     const {
@@ -12,6 +15,10 @@ const MenuCard = ({ item }) => {
         price,
         // ratings,
       } = item || {};
+
+      const oldPrice = (price+5).toFixed(2)
+      const [favorite, setFavorite] = useState(false)
+      
 
     return (
         <div>
@@ -32,9 +39,9 @@ const MenuCard = ({ item }) => {
           <p className="text-lg font-medium">Brand: {brand}</p>
           <p className="flex gap-6 text-lg font-medium">
             Price: $ {price}
-            {/* <span className="text-red-400">
-              <del>$ {slicedOldPrice}</del>
-            </span> */}
+            <span className="text-red-400">
+              <del>$ {oldPrice}</del>
+            </span>
           </p>
           {/* <div className="flex items-center justify-between">
             <p className="text-lg font-semibold flex gap-2 items-center">
@@ -45,6 +52,7 @@ const MenuCard = ({ item }) => {
               Date: {date} Time:{time}
             </p>
           </div> */}
+          <div className='flex items-center justify-between'>
           <div className="card-actions flex gap-8 mt-4">
             <button className="btn btn-outline border-[#EA6A12] hover:border-[#EA6A12] text-[#EA6A12] hover:bg-[#EA6A12]">
               Add To Cart
@@ -52,6 +60,11 @@ const MenuCard = ({ item }) => {
             <button className="btn bg-[#EA6A12]  text-white  hover:bg-transparent hover:border-[#EA6A12] hover:text-[#EA6A12]">
               Buy Now
             </button>
+          </div>
+          <div className='mt-5 mr-5'>
+            {favorite ? <FavoriteBtnFill setFavorite={setFavorite} favorite={favorite}></FavoriteBtnFill> : <FavoriteBtn setFavorite={setFavorite} favorite={favorite}></FavoriteBtn>}
+            
+          </div>
           </div>
         </div>
       </div>
