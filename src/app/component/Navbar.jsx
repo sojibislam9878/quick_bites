@@ -1,11 +1,8 @@
-
-
-
 'use client'
 
 
 // import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext  } from "react";
 import { FiAlignJustify } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
 import { FaUserLarge } from "react-icons/fa6";
@@ -17,23 +14,23 @@ import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
 // import { useRouter } from "next/router";
-
+import CartContext from "../Context/CartContext";
 
 const navLinks = [
     { path: '/', name: 'Home' },
     { path: '/menu', name: 'Menu' },
     // { path: '/restaurants', name: 'Restaurants' },
-    // { path: '/orders', name: 'Orders' },
+    { path: '/cart', name: 'Cart' },
     { path: '/contact', name: 'Contact' },
     { path: '/about', name: 'About' },
     { path: '/allRestaurant', name: ' Restaurant' },
-    // { path: '/Support/FAQs', name: 'Support/FAQs' },
 ];
 
 
 const Navbar = () => {
 
-
+    const { cart } = useContext(CartContext);
+    const cartItems = cart?.cartItems;
     const session = useSession()
     console.log(session)
     const pathName = usePathname()
@@ -104,7 +101,7 @@ const Navbar = () => {
                             alt="QuickBite"
                             height={100}
                             width={100}
-                        />
+                        />  
                     </Link>
                 </div>
                 {/* for large  */}
@@ -133,7 +130,10 @@ const Navbar = () => {
                     </Link>}
                     {/* for cart */}
                     <div className="w-fit hover:text-orange-600 hover:scale-[1.08] ">
-                        <BsCart4 size={25} />
+                    <div className="flex justify-between">   <BsCart4 size={25} />
+                        <span className=" lg:inline ml-1 text-orange-600">
+                 (<b>{cartItems?.length || 0}</b>)
+              </span></div>
                     </div>
 
                     {/* for use icon */}
