@@ -22,13 +22,7 @@ export const POST = async (request) => {
       { expiresIn: "1h" }             // Token expiry time
     );
 
-    // NextResponse.setHeader('Set-Cookie', cookie.serialize('authToken', token, {
-    //   httpOnly: true,  // Prevent JavaScript from accessing this cookie
-    //   secure: process.env.NODE_ENV === 'production',  // In production, cookie will only be sent over HTTPS
-    //   maxAge: 60 * 60, // 1 hour expiration
-    //   sameSite: 'strict',  // Cookie will only be sent to the same domain
-    //   path: '/',  // Cookie will be available across the whole site
-    // }));
+   
     return NextResponse
     .json({ message: "User Created" }, { status: 200 });
   } catch (error) {
