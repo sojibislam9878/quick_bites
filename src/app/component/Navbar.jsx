@@ -99,11 +99,11 @@ const Navbar = () => {
 
                     <Link className="" href="/">
 
-                        <Image className=' w-10  md:w-16 lg:w-16 mx-auto lg:mx-0 md:mx-0'
-                            src="https://i.ibb.co/kgT20yy/Quick-Bite-logo-1.webp"
+                        <Image className=' w-40  md:w-16 lg:w-16 mx-auto lg:mx-0 md:mx-0'
+                            src="https://i.ibb.co/VL1QJJC/quitebites-logo2.png"
                             alt="QuickBite"
-                            height={100}
-                            width={100}
+                            height={200}
+                            width={200}
                         />
                     </Link>
                 </div>

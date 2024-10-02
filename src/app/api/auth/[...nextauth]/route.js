@@ -62,9 +62,9 @@ export const handler = NextAuth({
   callbacks: {
     async session({ session, token, user }) {
       // Add custom fields to the session object
-      session.user.id = token.sub;  // Example: Add user ID
-      session.user.role = 'admin';  // Example: Add a user role
-      session.customInfo = 'Some custom data'; // Example: Add custom data
+      session.user.id = token.sub;  
+      session.user.role = 'admin'; 
+      session.customInfo = 'Some custom data'; 
       return session;
     },
     async jwt({ token, user }) {
