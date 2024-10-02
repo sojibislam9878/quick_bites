@@ -4,18 +4,17 @@ import FavoriteBtn from "./favoriteBtn/FavoriteBtn";
 import FavoriteBtnFill from "./favoriteBtn/FavoriteBtnFill";
 import CartContext from "./../Context/CartContext";
 const MenuCard = ({ item }) => {
-  const { addItemToCart } = useContext(CartContext);
-  const {
-    _id,
-    brand,
-    category,
-    // createdAt,
-    // description,
-    image,
-    foodName,
-    price,
-    // ratings,
-  } = item || {};
+    const {
+        _id,
+        brand,
+        category,
+        // createdAt,
+        description,
+        image,
+        foodName,
+        price,
+        // ratings,
+      } = item || {};
 
   const oldPrice = (price + 5).toFixed(2);
   const [favorite, setFavorite] = useState(false);
@@ -44,8 +43,8 @@ const MenuCard = ({ item }) => {
           <h2 className="text-4xl font-bold mt-4 font-play bg-gradient-to-r from-[#EA6A12] to-[#fa9049] bg-clip-text text-transparent">
             {foodName}
           </h2>
-          {/* <p className="text-lg">{description}</p> */}
-          <p className="text-lg font-medium">Category: {category}</p>
+          <p className="text-lg">{description}</p>
+          {/* <p className="text-lg font-medium">Category: {category}</p> */}
           <p className="text-lg font-medium">Brand: {brand}</p>
           <p className="flex gap-6 text-lg font-medium">
             Price: $ {price}
