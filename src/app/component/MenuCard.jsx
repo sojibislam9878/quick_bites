@@ -2,8 +2,10 @@
 import React, { useState, useContext } from "react";
 import FavoriteBtn from "./favoriteBtn/FavoriteBtn";
 import FavoriteBtnFill from "./favoriteBtn/FavoriteBtnFill";
-import CartContext from "./../Context/CartContext";
+import CartContext from "../Context/CartContext";
+
 const MenuCard = ({ item }) => {
+  const { addItemToCart } = useContext(CartContext);
     const {
         _id,
         brand,
