@@ -25,7 +25,7 @@ function WhyChooseUse() {
                 sint occaecat cupidatat non proident, sunt in culpa qui officia
                 deserunt mollit anim id est laborum.
               </p>
-              <div className="space-y-4 mb-6 text-center">
+              <div className="mb-6 text-center flex  gap-10 justify-between mx-5">
                 <h2 className="text-xl font-semibold text-gray-800">
                   1. Ontime Delivery
                 </h2>
