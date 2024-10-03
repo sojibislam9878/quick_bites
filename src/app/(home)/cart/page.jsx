@@ -31,7 +31,7 @@ const PaymentPage = () => {
         // } catch (error) {
         //     console.error('Error during payment request:', error);
         // }
-        fetch('http://localhost:3000/api/sslcommerz/init', {
+        fetch(`${process.env.NEXT_PUBLIC_BASEURL}api/sslcommerz/init`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

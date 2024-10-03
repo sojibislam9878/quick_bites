@@ -27,7 +27,7 @@ export const handler = NextAuth({
         }
 
         const db = await connectDB();
-        const currentUser = await db.collection("users").findOne({ email });
+        const currentUser = await db.collection("allUser").findOne({ email });
         console.log(currentUser)
         if (!currentUser) {
           throw new Error("No user found with that email");
