@@ -1,20 +1,38 @@
-import React from 'react';
+"use clint";
+import React, { useState, useContext } from "react";
+import FavoriteBtn from "./favoriteBtn/FavoriteBtn";
+import FavoriteBtnFill from "./favoriteBtn/FavoriteBtnFill";
+import CartContext from "../Context/CartContext";
 
 const MenuCard = ({ item }) => {
+  const { addItemToCart } = useContext(CartContext);
     const {
         _id,
         brand,
         category,
         // createdAt,
-        // description,
+        description,
         image,
         foodName,
         price,
         // ratings,
       } = item || {};
 
-    return (
-        <div>
+  const oldPrice = (price + 5).toFixed(2);
+  const [favorite, setFavorite] = useState(false);
+  const addToCartHandler = () => {
+    addItemToCart({
+      product: item._id,
+      brand: item.brand,
+      category: item.category,
+      image: item.image,
+      foodName: item.foodName,
+      price: item.price,
+    });
+  };
+
+  return (
+    <div>
       <div className="card card-compact bg-base-100 shadow-xl h-full">
         <figure>
           <img
@@ -27,14 +45,14 @@ const MenuCard = ({ item }) => {
           <h2 className="text-4xl font-bold mt-4 font-play bg-gradient-to-r from-[#EA6A12] to-[#fa9049] bg-clip-text text-transparent">
             {foodName}
           </h2>
-          {/* <p className="text-lg">{description}</p> */}
-          <p className="text-lg font-medium">Category: {category}</p>
+          <p className="text-lg">{description}</p>
+          {/* <p className="text-lg font-medium">Category: {category}</p> */}
           <p className="text-lg font-medium">Brand: {brand}</p>
           <p className="flex gap-6 text-lg font-medium">
             Price: $ {price}
-            {/* <span className="text-red-400">
-              <del>$ {slicedOldPrice}</del>
-            </span> */}
+            <span className="text-red-400">
+              <del>$ {oldPrice}</del>
+            </span>
           </p>
           {/* <div className="flex items-center justify-between">
             <p className="text-lg font-semibold flex gap-2 items-center">
@@ -45,18 +63,36 @@ const MenuCard = ({ item }) => {
               Date: {date} Time:{time}
             </p>
           </div> */}
-          <div className="card-actions flex gap-8 mt-4">
-            <button className="btn btn-outline border-[#EA6A12] hover:border-[#EA6A12] text-[#EA6A12] hover:bg-[#EA6A12]">
-              Add To Cart
-            </button>
-            <button className="btn bg-[#EA6A12]  text-white  hover:bg-transparent hover:border-[#EA6A12] hover:text-[#EA6A12]">
-              Buy Now
-            </button>
+          <div className="flex items-center justify-between">
+            <div className="card-actions flex gap-8 mt-4">
+              <button
+                className="btn btn-outline border-[#EA6A12] hover:border-[#EA6A12] text-[#EA6A12] hover:bg-[#EA6A12]"
+                onClick={addToCartHandler}
+              >
+                Add To Cart
+              </button>
+              <button className="btn bg-[#EA6A12]  text-white  hover:bg-transparent hover:border-[#EA6A12] hover:text-[#EA6A12]">
+                Buy Now
+              </button>
+            </div>
+            <div className="mt-5 mr-5">
+              {favorite ? (
+                <FavoriteBtnFill
+                  setFavorite={setFavorite}
+                  favorite={favorite}
+                ></FavoriteBtnFill>
+              ) : (
+                <FavoriteBtn
+                  setFavorite={setFavorite}
+                  favorite={favorite}
+                ></FavoriteBtn>
+              )}
+            </div>
           </div>
         </div>
       </div>
     </div>
-    );
+  );
 };
 
-export default MenuCard  
+export default MenuCard;
