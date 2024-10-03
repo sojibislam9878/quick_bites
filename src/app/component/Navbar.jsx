@@ -26,7 +26,7 @@ const navLinks = [
   { path: "/allRestaurant", name: " Restaurant" },
   // { path: '/Support/FAQs', name: 'Support/FAQs' },
 ];
-
+console.log(`${process.env.NEXT_PUBLIC_BASEURL}`)
 const Navbar = () => {
     const { cart } = useContext(CartContext);
     const cartItems = cart?.cartItems;
@@ -42,7 +42,7 @@ const Navbar = () => {
   // for sign out functionality
   const handleSignOut = () => {
     signOut("credentials");
-    document.localStorage.removeItem("next-auth.token");
+    // document.localStorage.removeItem("next-auth.token");
   };
 
   const normalLink =

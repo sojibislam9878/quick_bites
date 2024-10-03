@@ -80,7 +80,7 @@ const page = () => {
                     </div>
 
                     <div className="text-center mt-6 text-gray-700 text-sm">
-                        <span>Or login using:</span>
+                        <span className="text-white">Or login using</span>
                         <div className="flex justify-center mt-4 space-x-3">
                             <SocialSignin></SocialSignin>
                         </div>

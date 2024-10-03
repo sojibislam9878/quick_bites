@@ -5,17 +5,17 @@ import React from 'react';
 
 const SignUpPage = () => {
 
-    const router=useRouter()
+    const router = useRouter()
 
-    const  handleSubmit = async (e) =>{
+    const handleSubmit = async (e) => {
 
 
 
         e.preventDefault();
 
 
-        const name1= e.target.name1.value
-        const name2= e.target.name2.value
+        const name1 = e.target.name1.value
+        const name2 = e.target.name2.value
         const formData = {
             name: name1 + ' ' + name2,
             password: e.target.password.value,
@@ -29,12 +29,12 @@ const SignUpPage = () => {
             method: "POST",
             body: JSON.stringify(formData),
             headers: {
-              "content-type": "application/json",
+                "content-type": "application/json",
             },
-          });
-          if (resp.status === 200) {
+        });
+        if (resp.status === 200) {
             router.push('/login');
-          }
+        }
     }
     return (
         <div className=' ' >
@@ -96,10 +96,13 @@ const SignUpPage = () => {
                                 SIGN UP
                             </button>
                         </form>
+                        <p className="text-sm text-loginColor    text-center mt-4">
+                            Already Register?<a className='ml-2 hover:underline' href='/login' >LOG IN</a >
+                        </p>
 
                         {/*  Information and Terms  */}
                         <p className="text-sm text-white text-center mt-4">
-                            Your information is safe & will not be shared. Confirm your birthday & gender for a personalized experience.
+                            Your information is safe & will not be shared.
                         </p>
                     </div>
                 </div>
