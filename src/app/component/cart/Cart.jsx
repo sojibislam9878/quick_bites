@@ -3,6 +3,7 @@
 import React, { useContext, useState } from "react";
 import CartContext from "../../Context/CartContext";
 import Link from "next/link";
+import axios from "axios";
 
 const Cart = () => {
   const { addItemToCart, deleteItemFromCart, cart } = useContext(CartContext);
@@ -56,6 +57,20 @@ const Cart = () => {
       setDiscount(0);
     }
   };
+  const handlePayment= async ()=>{
+
+    axios.post('https://e-commerce-server-side-beta.vercel.app/checkOut')
+    .then((response)=>{ 
+        console.log(response)
+        
+        if (response?.data?.url) {
+            window.location.href = response.data.url; // Redirect to SSLCommerz payment page
+        }        
+    })
+
+
+    
+  }
 
   return (
     <>
@@ -205,7 +220,7 @@ const Cart = () => {
                     </div>
                   )}
 
-                  <a className="px-4 py-3 mb-2 inline-block text-lg w-full text-center font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer">
+                  <a onClick={handlePayment} className="px-4 py-3 mb-2 inline-block text-lg w-full text-center font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer">
                     Continue
                   </a>
 
