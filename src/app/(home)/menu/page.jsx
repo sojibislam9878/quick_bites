@@ -26,6 +26,7 @@ const ManuePage = () => {
           `${process.env.NEXT_PUBLIC_BASEURL}api/allitem?page=${currentPage}&size=${cardPerPage}&filter=${filter}&brand=${brand}&sort=${sort}&search=${search}`
         );
         const data = await res.json();
+        console.log(data);
         
         setAllItems(data);
         setLoading(false);
@@ -90,6 +91,7 @@ const ManuePage = () => {
     setBrand("");
     setSort("");
   };
+
 
 
 
