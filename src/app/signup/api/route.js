@@ -21,7 +21,8 @@ export const POST = async (request) => {
      ' process.env.JWT_SECRET',   
       { expiresIn: "1h" }  
     );
-    
+
+   
     return NextResponse
     .json({ message: "User Created" }, { status: 200 });
   } catch (error) {
