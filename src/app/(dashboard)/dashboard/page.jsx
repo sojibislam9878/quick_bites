@@ -1,4 +1,5 @@
 import React from 'react';
+import UserProfile from './userProfile/page';
 
 const dashboardPage = () => {
 
@@ -7,7 +8,8 @@ const dashboardPage = () => {
     return (
         <div>
      
-THIS IS DASHHBOARD
+<UserProfile></UserProfile>
+
         </div>
     );
 };
