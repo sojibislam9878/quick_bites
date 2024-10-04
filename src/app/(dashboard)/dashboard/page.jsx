@@ -7,7 +7,7 @@ const dashboardPage = () => {
     return (
         <div>
      
-      THIS IS DASHBOARD
+THIS IS DASHHBOARD
         </div>
     );
 };

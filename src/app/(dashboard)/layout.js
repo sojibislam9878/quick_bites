@@ -1,3 +1,4 @@
+import links from "./component/Links";
 import { Poppins } from "next/font/google";
 import "../globals.css";
 import Link from "next/link";
@@ -15,29 +16,7 @@ const poppins = Poppins({
 });
 
 export default function RootLayout({ children }) {
-
-  // This can be dynamically set based on user authentication
-  const role = "customer";   //role are customer/admin/deleveryMan
-
-  const links = {
-    customer: [
-      { href: "/", label: "Home" },
-      { href: "/dashboard/userProfile", label: "Profile" },
-      { href: "", label: "Recent Order" },
-      { href: "", label: "Notification" },
-    ],
-    admin: [
-      { href: "", label: "Admin Overview" },
-      { href: "", label: "Product" },
-      { href: "", label: "Order" },
-      { href: "", label: "Setting" },
-    ],
-    deliveryMan: [
-      { href: "", label: "Assigned Order" },
-      { href: "", label: "Update Assigned" },
-      { href: "", label: "Earning" },
-    ]
-  };
+  const role = "customer"; // Change this dynamically based on the authenticated user
 
   return (
     <html lang="en" data-theme="light" className="bg-[#E5D0BB]">
@@ -57,11 +36,7 @@ export default function RootLayout({ children }) {
             </label>
           </div>
           <div className="drawer-side">
-            <label
-              htmlFor="my-drawer-2"
-              aria-label="close sidebar"
-              className="drawer-overlay"
-            />
+            <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay" />
             <ul className="menu bg-[#DFC6AD] min-h-full w-80 p-4 shadow-xl rounded-r-lg">
               {links[role]?.map((link) => (
                 <li key={link.label}>
