@@ -1,10 +1,15 @@
 import React from 'react';
+import UserProfile from './userProfile/page';
 
 const dashboardPage = () => {
+
+
+  
     return (
         <div>
-            <h1>This is dashboardPageest</h1>
-            <h1>This is dashboardPageest</h1>
+     
+<UserProfile></UserProfile>
+
         </div>
     );
 };
