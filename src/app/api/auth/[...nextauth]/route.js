@@ -38,7 +38,7 @@ export const handler = NextAuth({
           throw new Error("Incorrect password");
         }
 
-        return { id: currentUser._id, email: currentUser.email }; // Ensure this matches the user object
+        return { id: currentUser._id, email: currentUser.email ,image:currentUser.image }; // Ensure this matches the user object
       },
     },
   
@@ -62,15 +62,16 @@ export const handler = NextAuth({
   callbacks: {
     async session({ session, token, user }) {
       // Add custom fields to the session object
-      session.user.id = token.sub;  // Example: Add user ID
-      session.user.role = 'admin';  // Example: Add a user role
+      session.user.email = token.sub;  // Example: Add user ID
+      session.user.image =token.image;  // Example: Add a user role
       session.customInfo = 'Some custom data'; // Example: Add custom data
       return session;
     },
     async jwt({ token, user }) {
       // Persist the user ID in the token
       if (user) {
-        token.sub = user.id;
+        token.sub = user.email;
+        token.image = user.image;
       }
       return token;
     },}

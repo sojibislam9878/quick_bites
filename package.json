@@ -2,7 +2,7 @@
   "name": "quick_bites",
   "version": "0.1.0",
   "private": true,
-"scripts": {
+  "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@smastrom/react-rating": "^1.5.0",
+    "antd": "^5.21.2",
     "aos": "^2.3.4",
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
