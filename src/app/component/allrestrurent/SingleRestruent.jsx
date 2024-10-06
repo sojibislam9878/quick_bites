@@ -4,16 +4,16 @@ import Link from 'next/link';
 
 const SingleRestruent = ({ data }) => {
   return (
-    <div className="xl:w-[50%] lg:w-[80%] mx-auto transition-transform transform hover:scale-105 duration-300">
-      <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6 sm:flex justify-between items-center space-y-4 sm:space-y-0">
+    <div className=" mx-auto w-full md:w-auto">
+      <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6  justify-between items-center space-y-4 sm:space-y-0">
         
-        <div className="flex space-x-4">
+        <div className="space-x-4">
           {/* Image */}
           <div>
             <img
               src={data?.image}
               alt={data?.name}
-              className="w-[130px] h-[130px] object-cover rounded-md border-2 border-gray-300"
+              className=" w-full md:w-[500px] h-[200px] object-cover rounded-md border-2 border-gray-300"
             />
           </div>
 
@@ -33,23 +33,26 @@ const SingleRestruent = ({ data }) => {
 
             <div className="flex text-sm text-gray-600 space-x-2 mt-1">
               <p>{data?.locationDetail}.</p>
-              <p className="text-red-500 font-medium">Opens at {data?.opensAt}</p>
+              <p className="text-red-500 -ml-2 font-medium">Opens at {data?.opensAt}</p>
             </div>
 
             {/* Mobile Button */}
-            <button className="btn w-full mt-4 sm:hidden bg-rose-500 text-white font-medium rounded-md py-2 shadow hover:bg-rose-600 transition duration-300">
+            <Link href={`/allRestaurant/${data?.name}`} className="btn w-full mt-4 sm:hidden bg-rose-500 text-white font-medium rounded-md py-2 shadow hover:bg-rose-600 transition duration-300">
               View Menu
-            </button>
+            </Link>
           </div>
         </div>
 
         {/* Desktop Button */}
-        <div className="hidden sm:block">
-          <Link href={'/menu'} className="btn bg-rose-500 text-white font-medium rounded-md py-2 px-4 shadow hover:bg-rose-600 transition duration-300">
+    <div>
+    <div className="hidden sm:block ml-auto">
+          <Link href={`/allRestaurant/${data?.name}`} className="btn bg-rose-500 text-white font-medium rounded-md py-2 px-4 shadow w-full mt-8 hover:bg-rose-600 transition duration-300">
             View Menu
           </Link>
         </div>
+    </div>
       </div>
+    
     </div>
   );
 };
