@@ -14,7 +14,7 @@ const Detailspage = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await fetch('http://localhost:3000/api/allitem');
+        const res = await fetch('https://quick-bites-tau.vercel.app/api/allitem');
         const data = await res.json();
         setItem(data); // Make sure data has 'result' array
         setLoading(false);
