@@ -75,7 +75,7 @@ const MenuCard = ({item}) => {
               </button>
             </div>
             <div className="mt-5 mr-5">
-              {loading?"":favorite ? (
+              {favorite ? (
                 <FavoriteBtnFill
                   setFavorite={setFavorite}
                   favorite={favorite}
