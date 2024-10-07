@@ -44,7 +44,7 @@ import '@smastrom/react-rating/style.css';
 const ReviewText = ({ name, designation, description, image, rating }) => {
     return (
         <div className="my-4">
-            <div className="card bg-base-100 shadow-xl flex flex-col w-84 h-80">
+            <div className="card bg-base-100 shadow-xl flex flex-col ">
                 <figure className="px-10 pt-5">
                     <div className="  overflow-hidden rounded-full ">
                         <Image

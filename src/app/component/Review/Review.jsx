@@ -5,7 +5,7 @@ import ReviewSlide from "./ReviewSlide";
 const Review = () => {
     return (
         <div>
-            <div className="text-center space-y-2 mb-6">
+            <div className="text-center space-y-2 py-4">
 
                 <section className="bg-white">
                     <div className="max-w-6xl px-6 py-10 mx-auto">
