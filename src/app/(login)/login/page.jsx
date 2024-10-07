@@ -8,6 +8,9 @@ const page = () => {
     // const searchParams = useSearchParams();
     // const path = searchParams.get("redirect");
 
+
+    
+
     const handleSubmit = async e => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -33,7 +36,7 @@ const page = () => {
                 {/* Overlay to darken the background */}
                 <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-0"></div>
 
-                <div className="relative bg-gray-500  bg-opacity-10 p-8 rounded-lg shadow-2xl w-full max-w-md">
+                <div className="relative bg-gray-500  bg-opacity-10 backdrop-blur-md p-8 rounded-lg shadow-2xl w-full max-w-md">
                     <h2 className="text-center justify-center flex w-full text-2xl font-semibold mb-6 text-gray-900">
                         <Image className=' p-3' src="https://i.ibb.co/kgT20yy/Quick-Bite-logo-1.webp" alt="Logo" height={100} width={100} />
                     </h2>
