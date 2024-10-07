@@ -9,7 +9,7 @@ const Detailspage = () => {
   const [loading, setLoading] = useState(false);
   const [item, setItem] = useState({ result: [] }); // Make sure item starts with an object containing 'result' as an array
   const pathName = useParams().name;
-
+// url changed
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
