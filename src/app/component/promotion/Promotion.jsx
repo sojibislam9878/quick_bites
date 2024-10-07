@@ -18,7 +18,7 @@ const Promotion = () => {
                     ))
                 }
             </div>
-            <div className='my-8  flex flex-row justify-center items-center'><button className='outline-2 px-12 py-3 bg-[#de0d67] hover:bg-[#ff0b75]  text-white my-4'>See More</button></div>
+            <div className='my-8  flex flex-row justify-center items-center'><button className='outline-2 px-12 py-3 bg-[#ff7519] hover:bg-[#ff8b3e]  text-white my-4'>See More</button></div>
             <div className='mt-12'>
                 <DiscountBanner />
             </div>
