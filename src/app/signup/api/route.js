@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";  // Import JWT library
 
 export const POST = async (request) => {
   const newUser = await request.json();
+  console.log(newUser);
   try {
     const db = await connectDB();
     const userCollection = db.collection("allUser");
