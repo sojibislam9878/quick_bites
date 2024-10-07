@@ -1,21 +1,29 @@
 // component/Links.js
+import { FaUser, FaHistory, FaCreditCard, FaUtensils, FaTruck, FaUserCog, FaUserShield, FaTag } from "react-icons/fa";
+
 const links = {
-  customer: [
-    { href: "/", label: "Home" },
-    { href: "/dashboard/userProfile", label: "Profile" },
-    { href: "", label: "Recent Order" },
-    { href: "", label: "Notification" },
+  user: [
+    { href: "/dashboard/userProfile", label: "Profile", icon: <FaUser /> },
+    { href: "/dashboard/orderHistory", label: "Order History", icon: <FaHistory /> },
+    { href: "/dashboard/transaction", label: "Transactions", icon: <FaCreditCard /> },
   ],
-  admin: [
-    { href: "", label: "Admin Overview" },
-    { href: "", label: "Product" },
-    { href: "", label: "Order" },
-    { href: "", label: "Setting" },
+  owner: [
+    { href: "/dashboard/ownerProfile", label: "Owner Profile", icon: <FaUser /> },
+    { href: "/dashboard/mangeMenu", label: "Manage Menu", icon: <FaUtensils /> },
+    { href: "/dashboard/Owner-history", label: "History", icon: <FaHistory /> },
   ],
   deliveryMan: [
-    { href: "", label: "Assigned Order" },
-    { href: "", label: "Update Assigned" },
-    { href: "", label: "Earning" },
+    { href: "/dashboard/deleverMan-Profile", label: "Profile", icon: <FaUser /> },
+    { href: "/dashboard/orders", label: "Orders", icon: <FaTruck /> },
+    { href: "/dashboard/historys", label: "History", icon: <FaHistory /> },
+  ],
+  admin: [
+    { href: "/dashboard/adminProfile", label: "AdminProfile", icon: <FaUser /> },
+    { href: "/dashboard/manageResturants", label: "Manage Restaurants", icon: <FaUtensils /> },
+    { href: "/dashboard/manage-user", label: "Manage Users", icon: <FaUserCog /> },
+    { href: "/dashboard/manage-deleveryMan", label: "Manage Delivery Man", icon: <FaTruck /> },
+  
+    { href: "/dashboard/cupons", label: "Coupon", icon: <FaTag /> },
   ],
 };
 

@@ -1,17 +1,9 @@
-import React from 'react';
-import UserProfile from './userProfile/page';
+import React from 'react'
 
-const dashboardPage = () => {
+const DashobarPage = () => {
+  return (
+    <div>DashobarPage</div>
+  )
+}
 
-
-  
-    return (
-        <div>
-     
-<UserProfile></UserProfile>
-
-        </div>
-    );
-};
-
-export default dashboardPage;
+export default DashobarPage
