@@ -9,7 +9,7 @@ const Restrurentpage = () => {
 
   const fetchData = async () => {
     try {
-      const res = await fetch('/api/allrestrurent');
+      const res = await fetch('http://localhost:3000/api/allrestrurent');
       const jsonData = await res.json();
       setData(jsonData);
     } catch (error) {
@@ -20,6 +20,9 @@ const Restrurentpage = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  console.log(data?.result);
+  
 
   const allRestrurent = data?.result;
 
