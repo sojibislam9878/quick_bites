@@ -2,6 +2,8 @@ import links from "./component/Links";
 import { Poppins } from "next/font/google";
 import "../globals.css";
 import Link from "next/link";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import QueryProvider from "../component/QueryProvider/QueryProvider";
 
 export const metadata = {
   title: "Dashboard",
@@ -16,19 +18,24 @@ const poppins = Poppins({
 });
 
 export default function RootLayout({ children }) {
-  const role = "customer"; // Change this dynamically based on the authenticated user
 
+  const role = "customer"; // Change this dynamically based on the authenticated user
   return (
     <html lang="en" data-theme="light" className="bg-[#E5D0BB]">
       <head>
         {/* Head Content */}
       </head>
+      {/* <QueryClientProvider client={query}> */}
       <body className={`${poppins.variable} antialiased`}>
         <div className="drawer lg:drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex flex-col items-center justify-center">
-          {/* children dashboard */}
-            {children}
+            {/* children dashboard */}
+            <QueryProvider>
+              {children}
+
+            </QueryProvider>
+
             <label
               htmlFor="my-drawer-2"
               className="absolute top-4 left-4 bg-[#DFC6AD] text-xl p-2 rounded-full text-[#533831] drawer-button lg:hidden transition ease-in-out duration-300 hover:bg-[#bfa78f]"
@@ -50,6 +57,7 @@ export default function RootLayout({ children }) {
           </div>
         </div>
       </body>
+      {/* </QueryClientProvider> */}
     </html>
   );
 }
