@@ -4,6 +4,8 @@ import { MdEmail } from "react-icons/md";
 import { IoLocation } from "react-icons/io5";
 import { PiBuildingApartmentFill } from "react-icons/pi";
 const contactpage = () => {
+
+  
     return (
         <div className='bg-[#F9F9F9] pb-20'>
             <div className='container mx-auto px-4'>

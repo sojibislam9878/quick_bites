@@ -68,7 +68,7 @@ const Banner = () => {
                                         className=" w-full px-2 md:px-6 py-2 md:py-4 text-black outline-none rounded-s-full"
                                     />
                                     <br /><br />
-                                    <button className="bg-[#de0d67] text-white px-2 md:px-6 py-4 rounded-s-full rounded-e-full font-bold border-none hover:bg-[#90013f] md:w-[50%] w-[240px]">
+                                    <button className="bg-[#ff7519] text-white px-2 md:px-6 py-4 rounded-s-full rounded-e-full font-bold border-none hover:bg-[#ff934a] md:w-[50%] w-[240px]">
                                         Find now
                                     </button>
                                 </div>
