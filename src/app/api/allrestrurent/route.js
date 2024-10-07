@@ -7,7 +7,7 @@ export const GET = async()=>{
     try {
         
 const db = await connectDB();
-const restrurentCollection = db.collection('allrestrurent');
+const restrurentCollection = db.collection('allRestaurant');
 const result =await restrurentCollection.find().toArray()
 return NextResponse.json({
 

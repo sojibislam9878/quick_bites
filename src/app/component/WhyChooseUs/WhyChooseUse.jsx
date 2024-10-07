@@ -6,7 +6,7 @@ function WhyChooseUse() {
       <section className=" ">
         <div className=" mx-auto text-center">
         
-          <h1 className="text-2xl font-bold text-gray-800 capitalize lg:text-3xl dark:text-white">
+          <h1 className="text-2xl font-bold text-gray-800 capitalize lg:text-3xl">
           Why Choose Us
           </h1>
           <div className=" flex flex-col lg:flex-row items-center justify-between gap-10">
