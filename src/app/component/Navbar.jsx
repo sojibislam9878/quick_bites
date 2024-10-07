@@ -13,7 +13,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
-import React, { useEffect, useState,useContext  } from "react";
+import React, { useEffect, useState, useContext } from "react";
 // import { useRouter } from "next/router";
 import CartContext from "../Context/CartContext"
 const navLinks = [
@@ -26,10 +26,10 @@ const navLinks = [
   { path: "/allRestaurant", name: " Restaurant" },
   // { path: '/Support/FAQs', name: 'Support/FAQs' },
 ];
-console.log(`${process.env.NEXT_PUBLIC_BASEURL}`)
+// console.log(`${process.env.NEXT_PUBLIC_BASEURL}`)
 const Navbar = () => {
-    const { cart } = useContext(CartContext);
-    const cartItems = cart?.cartItems;
+  const { cart } = useContext(CartContext);
+  const cartItems = cart?.cartItems;
   const session = useSession();
   console.log(session);
   const pathName = usePathname();
@@ -115,7 +115,7 @@ const Navbar = () => {
             </Link>
           ))}
         </div>
-      
+
         {/* for right icons  */}
         <div className="navbar-end items-center   gap-3 md:gap-8 lg:gap-10 relative w-fit">
           {/* for large device sign in  */}
@@ -129,19 +129,26 @@ const Navbar = () => {
               </div>{" "}
 
               <div className="w-fit hover:text-orange-600 hover:scale-[1.08] ">
-              <Link href="/cart">
-           <div className="flex justify-between">   <BsCart4 size={25} />
-                     <span className=" lg:inline ml-1 text-orange-600">
-              (<b>{cartItems?.length || 0}</b>)
-           </span></div></Link>
-           </div>
+                <Link href="/cart">
+                  <div className="flex justify-between">   <BsCart4 size={25} />
+                    <span className=" lg:inline ml-1 text-orange-600">
+                      (<b>{cartItems?.length || 0}</b>)
+                    </span></div></Link>
+              </div>
               <div className="dropdown dropdown-hover">
                 <div tabIndex={0} role="button" className=" m-1">
-                  <FaUserCircle
+                  {/* <FaUserCircle
                     className="hover:scale-[1.03]  hover:text-orange-600 "
                     onClick={() => setUserIcon(!userIcon)}
                     size={30}
-                  />
+                  /> */}
+                  <img src={`${session?.data?.user?.image}`}
+                    onClick={() => setUserIcon(!userIcon)}
+                    className="hover:scale-[1.03] w-12 rounded-full  "
+
+
+                   alt="Profile picture"
+                    srcset= {`${session?.data?.user?.image},1x`}/>
                 </div>
                 <ul
                   tabIndex={0}
@@ -149,12 +156,12 @@ const Navbar = () => {
                 >
                   <li className="p-2  hover:bg-gray-300">
                     <Link className="flex gap-2" href="">
-                        Profile
+                      Profile
                     </Link>
                   </li>
                   <li className="p-2  hover:bg-gray-300">
                     <Link className="flex gap-2" href="">
-                        Dashboard
+                      Dashboard
                     </Link>
                   </li>
                 </ul>
