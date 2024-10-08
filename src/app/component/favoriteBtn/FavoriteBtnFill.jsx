@@ -1,15 +1,28 @@
 import React from 'react';
 import { FaHeart } from 'react-icons/fa';
 
-const FavoriteBtnFill = ({setFavorite, favorite}) => {
+const FavoriteBtnFill = ({setFavorite, favorite, productId}) => {
   
-    const handleRemove = () => {
-        console.log("removed");
-    };
+    const removeFromFavorites = async () => {
+        const   userId="66fc284611040dc9a85fce72" 
+        const response = await fetch('/api/favorite', {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ userId, productId }), // Pass the necessary data
+        });
+      
+        if (response.ok) {
+            console.log(response);
+        } else {
+          console.error("Error removing from favorites:", response.statusText);
+        }
+      };
 
     const handleClick = () => {
         setFavorite(!favorite); 
-        handleRemove();       
+        removeFromFavorites();       
     };
     return (
         <div>

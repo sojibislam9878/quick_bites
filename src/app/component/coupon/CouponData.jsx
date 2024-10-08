@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
 const CouponData = () => {
-    const { refetch, data } = useQuery({
+    const { refetch,isPending, data,isLoading } = useQuery({
         queryKey: ['couponData'],
 
         queryFn: async() =>{
@@ -13,7 +13,7 @@ const CouponData = () => {
         }})
        
 
-    return [data,refetch]
+    return [data,refetch,isPending,isLoading]
 };
 
 export default CouponData;
