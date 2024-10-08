@@ -56,3 +56,43 @@ export const POST = async (request)=>{
 
   
   }
+
+  // export const DELETE = async (request)=>{
+
+
+
+  //   const  {id} = await request.json();
+  //   console.log('id',id)
+    
+  //   // const db = await connectDB();
+  //   // const couponCollation = db.collection('couponsData');
+  //   // const query = {
+  //   //   _id: new ObjectId(id)
+  //   // }
+  //   // const result = await couponCollation.deleteOne(query)
+  //   // if(result){
+  //   //   return NextResponse.json({result})
+  //   // }
+  // }
+
+  export const DELETE = async (request) => {
+    const { value } = await request.json();
+  
+    try {
+      const db = await connectDB(); 
+      const couponCollation = db.collection("couponsData"); 
+  
+      const query = {_id:new ObjectId(value)};
+  
+     const result=  await couponCollation.deleteOne(query) 
+      
+  
+      return NextResponse.json({result});
+    } catch (error) {
+      console.error('Error removing from favorites:', error); 
+      return NextResponse.json(
+        { message: 'Something Went Wrong', error },
+        { status: 500 }
+      );
+    }
+  };
