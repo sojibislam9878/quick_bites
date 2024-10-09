@@ -46,7 +46,7 @@ const SingleRestruent = ({ data }) => {
         {/* Desktop Button */}
     <div>
     <div className="hidden sm:block ml-auto">
-          <Link href={`/allRestaurant/${data?.name}`} className="btn bg-rose-500 text-white font-medium rounded-md py-2 px-4 shadow w-full mt-8 hover:bg-rose-600 transition duration-300">
+          <Link href={`/allRestaurant/${data?.slug}`} className="btn bg-rose-500 text-white font-medium rounded-md py-2 px-4 shadow w-full mt-8 hover:bg-rose-600 transition duration-300">
             View Menu
           </Link>
         </div>
