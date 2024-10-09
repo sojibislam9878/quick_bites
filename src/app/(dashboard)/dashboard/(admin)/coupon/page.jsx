@@ -23,7 +23,7 @@ const CouponManagement = () => {
         if (value.toLowerCase() == 'active') {
             console.log('Active')
 
-            await axios.post('http://localhost:3000/api/coupon', { id, value })
+            await axios.post('https://quick-bites-tau.vercel.app/api/coupon', { id, value })
                 .then(response => {
 
                     if (response?.data?.result?.matchedCount > 0) {
@@ -42,7 +42,7 @@ const CouponManagement = () => {
         } else {
             console.log('de')
 
-            await axios.post('http://localhost:3000/api/coupon', { id, value })
+            await axios.post('https://quick-bites-tau.vercel.app/api/coupon', { id, value })
                 .then(response => {
 
                     if (response?.data?.result?.matchedCount > 0) {
@@ -66,7 +66,7 @@ const CouponManagement = () => {
 
         console.log(value)
 
-        await fetch('http://localhost:3000/api/coupon', {
+        await fetch('https://quick-bites-tau.vercel.app/api/coupon', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
