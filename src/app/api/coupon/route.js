@@ -1,0 +1,98 @@
+import { connectDB } from "@/app/lib/connectDB";
+import { ObjectId } from "mongodb";
+import { NextResponse } from 'next/server';
+
+export const GET = async (request) => {
+  try {
+    
+ 
+    const db = await connectDB();
+    const couponCollation = db.collection('couponsData');
+
+
+    const result = await couponCollation.find().toArray();
+
+    return NextResponse.json({ result });
+  } catch (error) {
+    return NextResponse.json({
+      status: 400,
+      statusText: "Something went wrong",
+      error: error.message,
+    });
+  }
+};
+
+
+
+export const POST = async (request)=>{
+  const data=await request.json();
+  console.log('data',data)
+  
+  const db = await connectDB();
+  const couponCollation = db.collection('couponsData');
+  const query = {
+    _id:new ObjectId(data?.id)
+  }
+  let UpdateData
+ if (data.value.toLowerCase()=='active') {
+   UpdateData={
+    $set:{
+      status: 'active'
+    }
+  }
+  
+ } else {
+   UpdateData={
+    $set:{
+      status: 'deactive'
+    }
+  }
+  
+ }
+  const result = await couponCollation.updateOne(query,UpdateData)
+  if(result){
+    return NextResponse.json({result})
+  }
+
+  
+  }
+
+  // export const DELETE = async (request)=>{
+
+
+
+  //   const  {id} = await request.json();
+  //   console.log('id',id)
+    
+  //   // const db = await connectDB();
+  //   // const couponCollation = db.collection('couponsData');
+  //   // const query = {
+  //   //   _id: new ObjectId(id)
+  //   // }
+  //   // const result = await couponCollation.deleteOne(query)
+  //   // if(result){
+  //   //   return NextResponse.json({result})
+  //   // }
+  // }
+
+  export const DELETE = async (request) => {
+    const { value } = await request.json();
+  
+    try {
+      const db = await connectDB(); 
+      const couponCollation = db.collection("couponsData"); 
+  
+      const query = {_id:new ObjectId(value)};
+  
+     const result=  await couponCollation.deleteOne(query) 
+      
+  
+      return NextResponse.json({result});
+    } catch (error) {
+      console.error('Error removing from favorites:', error); 
+      return NextResponse.json(
+        { message: 'Something Went Wrong', error },
+        { status: 500 }
+      );
+    }
+  };

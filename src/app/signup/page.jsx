@@ -17,25 +17,8 @@ const SignUpPage = () => {
         setImage(e.target.files[0]);
     };
 
-    // Handle form submission
-    // const handleSubmit1 = async (e) => {
-    //     e.preventDefault();
-    //     if (image) {
-    //         const formData = new FormData();
-    //         formData.append('image', image);
 
-    //         // Send image to ImgBB API
-    //         try {
-    //             const res = await axios.post(
-    //                 `https://api.imgbb.com/1/upload?key=041ade7e4cb9e3652777ac4caca1ef91`, // Replace with your API key
-    //                 formData
-    //             );
-    //             setImageUrl(res.data.data.url); // URL of the uploaded image
-    //         } catch (error) {
-    //             console.error('Error uploading image:', error);
-    //         }
-    //     }
-    // };
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -47,10 +30,10 @@ const SignUpPage = () => {
             // Send image to ImgBB API
             try {
                 const res = await axios.post(
-                    `https://api.imgbb.com/1/upload?key=041ade7e4cb9e3652777ac4caca1ef91`, // Replace with your API key
+                    `https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`, // Replace with your API key
                     formData
                 );
-                setImageUrl(res.data.data.url); 
+                setImageUrl(res.data.data.url);
                 console.log(res.data.data.url)// URL of the uploaded image
             } catch (error) {
                 console.error('Error uploading image:', error);
@@ -60,31 +43,31 @@ const SignUpPage = () => {
 
         // console.log('safd', e.target.sf.value)
 
-      if (imageUrl) {
-        const name1 = e.target.name1.value
-        const name2 = e.target.name2.value
-        const formData = {
-            name: name1 + ' ' + name2,
-            password: e.target.password.value,
-            email: e.target.email.value,
-            image: imageUrl,
-            role: e.target.role.value
+        if (imageUrl) {
+            const name1 = e.target.name1.value
+            const name2 = e.target.name2.value
+            const formData = {
+                name: name1 + ' ' + name2,
+                password: e.target.password.value,
+                email: e.target.email.value,
+                image: imageUrl,
+                role: e.target.role.value
 
 
+            }
+            console.log('alldata', formData);
+            const resp = await fetch(`http://localhost:3000/signup/api`, {
+                method: "POST",
+                body: JSON.stringify(formData),
+                headers: {
+                    "content-type": "application/json",
+                },
+            });
+            if (resp.status === 200) {
+                router.push('/login');
+            }
+
         }
-        console.log('alldata',formData);
-        const resp = await fetch(`http://localhost:3000/signup/api`, {
-            method: "POST",
-            body: JSON.stringify(formData),
-            headers: {
-                "content-type": "application/json",
-            },
-        });
-        if (resp.status === 200) {
-            router.push('/login');
-        }
-        
-      }
     }
     return (
         <div className=' ' >

@@ -9,7 +9,7 @@ const Restrurentpage = () => {
 
   const fetchData = async () => {
     try {
-      const res = await fetch('/api/allrestrurent');
+      const res = await fetch('http://localhost:3000/api/allrestrurent');
       const jsonData = await res.json();
       setData(jsonData);
     } catch (error) {
@@ -21,10 +21,13 @@ const Restrurentpage = () => {
     fetchData();
   }, []);
 
+  console.log(data?.result);
+
+
   const allRestrurent = data?.result;
 
   if (!allRestrurent) {
-    return <Spinner/>;
+    return <Spinner />;
   }
 
   if (allRestrurent.length === 0) {
@@ -33,13 +36,13 @@ const Restrurentpage = () => {
 
   return (
     <div className='max-w-[1300px] mx-auto'>
-    
+
 
       <div className="bg-gray-100  pt-32 pb-24 px-4 md:px-8">
         <h1 className="text-center text-4xl font-bold text-rose-600 mb-12">Explore Our Restaurants</h1>
-        
+
         {/* Grid layout with 1 card on mobile, 3 cards on larger screens */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
           {allRestrurent.map((restaurant) => (
             <SingleRestruent key={restaurant?._id} data={restaurant} />
           ))}

@@ -4,6 +4,7 @@ import React, { useContext, useState } from "react";
 import CartContext from "../../Context/CartContext";
 import Link from "next/link";
 import axios from "axios";
+import Image from "next/image";
 
 const Cart = () => {
   const { addItemToCart, deleteItemFromCart, cart } = useContext(CartContext);
@@ -57,19 +58,19 @@ const Cart = () => {
       setDiscount(0);
     }
   };
-  const handlePayment= async ()=>{
+  const handlePayment = async () => {
 
     axios.post('https://e-commerce-server-side-beta.vercel.app/checkOut')
-    .then((response)=>{ 
+      .then((response) => {
         console.log(response)
-        
+
         if (response?.data?.url) {
-            window.location.href = response.data.url; // Redirect to SSLCommerz payment page
-        }        
-    })
+          window.location.href = response.data.url; // Redirect to SSLCommerz payment page
+        }
+      })
 
 
-    
+
   }
 
   return (
@@ -95,9 +96,11 @@ const Cart = () => {
                           <figure className="flex leading-5">
                             <div>
                               <div className="block w-16 h-16 rounded border border-gray-200 overflow-hidden">
-                                <img
+                                <Image
                                   src={cartItem.image}
                                   alt={cartItem.foodName}
+                                  width={100}
+                                  height={80}
                                 />
                               </div>
                             </div>

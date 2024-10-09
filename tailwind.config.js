@@ -19,7 +19,9 @@ module.exports = {
         loginBTn: "#007dc0"
       },
       fontFamily: {
-        poppins: ['var(--font-poppins)', 'sans-serif'], // Add fallback to 'sans-serif'
+        poppins: ['var(--font-poppins)', 'sans-serif'],
+        lobster: ['Lobster', 'cursive'], // Define Lobster as a font family
+
       },
     },
   },

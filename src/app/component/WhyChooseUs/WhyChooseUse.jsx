@@ -5,7 +5,6 @@ import { FaDotCircle } from "react-icons/fa";
 function WhyChooseUse() {
 
   return (
-
     <div className="max-w-6xl  py-4 mx-auto text-center">
       <p className="text-xl font-medium text-[#6E6B58] ">Choose</p>
 
