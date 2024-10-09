@@ -15,7 +15,7 @@ const Detailspage = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:3000/api/allrestrurent/${slug}`);
+        const res = await fetch(`https://quick-bites-tau.vercel.app/api/allrestrurent/${slug}`);
         const data = await res.json();
         setItem(data.result);
         setReviews(data.result.reviews || []); // Set existing reviews
@@ -42,7 +42,7 @@ const Detailspage = () => {
       return; // Early exit if the rating is invalid
     }
     try {
-      const res = await fetch('http://localhost:3000/api/reviews', {
+      const res = await fetch('https://quick-bites-tau.vercel.app/api/reviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
