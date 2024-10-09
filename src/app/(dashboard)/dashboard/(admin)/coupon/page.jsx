@@ -106,6 +106,7 @@ const CouponManagement = () => {
                 </Link>
             </div>
 
+            <div>
             <table className="min-w-full bg-white">
                 <thead>
                     <tr className="relative bg-gray-100 text-left">
@@ -155,6 +156,7 @@ const CouponManagement = () => {
                     ))}
                 </tbody>
             </table>
+            </div>
             {
                 loading ? <CouponSpinner></CouponSpinner> : ''
             }
