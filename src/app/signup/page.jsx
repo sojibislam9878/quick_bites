@@ -17,25 +17,8 @@ const SignUpPage = () => {
         setImage(e.target.files[0]);
     };
 
-    // Handle form submission
-    // const handleSubmit1 = async (e) => {
-    //     e.preventDefault();
-    //     if (image) {
-    //         const formData = new FormData();
-    //         formData.append('image', image);
-
-    //         // Send image to ImgBB API
-    //         try {
-    //             const res = await axios.post(
-    //                 `https://api.imgbb.com/1/upload?key=041ade7e4cb9e3652777ac4caca1ef91`, // Replace with your API key
-    //                 formData
-    //             );
-    //             setImageUrl(res.data.data.url); // URL of the uploaded image
-    //         } catch (error) {
-    //             console.error('Error uploading image:', error);
-    //         }
-    //     }
-    // };
+    
+   
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -47,7 +30,7 @@ const SignUpPage = () => {
             // Send image to ImgBB API
             try {
                 const res = await axios.post(
-                    `https://api.imgbb.com/1/upload?key=041ade7e4cb9e3652777ac4caca1ef91`, // Replace with your API key
+                    `https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`, // Replace with your API key
                     formData
                 );
                 setImageUrl(res.data.data.url); 
@@ -116,7 +99,7 @@ const SignUpPage = () => {
 
                             {/*  Email Address  */}
                             <div>
-                                <input
+                                <input 
                                     type="email"
                                     name='email'
                                     required

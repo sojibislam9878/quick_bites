@@ -203,7 +203,7 @@ const ManuePage = () => {
 ) : (
   <div className="grid  lg:grid-cols-3 gap-6">
     {allItems.result.map((item) => (
-      <MenuCard key={item._id} item={item} loading={loading} />
+      <MenuCard key={item._id} item={item} loading={loading} setLoading={setLoading}/>
     ))}
   </div>
 )}

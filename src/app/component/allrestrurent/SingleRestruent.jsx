@@ -1,64 +1,100 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import { FaMapMarkerAlt, FaClock, FaStar } from 'react-icons/fa';
 
 const SingleRestruent = ({ data }) => {
+  const renderStars = () => {
+    const rating = data?.avgRating|| 0; // Default to 0 if no rating provided
+    const fullStars = Math.floor(rating); // Full stars
+    const halfStar = rating - fullStars >= 0.5; // Determine if there's a half star
+    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0); // Remaining empty stars
+    console.log(data, "data");
+
+    return (
+      <div className="flex items-center space-x-1 text-yellow-400">
+        {[...Array(fullStars)].map((_, i) => (
+          <FaStar key={`full-${i}`} className="w-5 h-5" />
+        ))}
+        {halfStar && <FaStar className="w-5 h-5 half-star" />} {/* Add half star icon here if needed */}
+        {[...Array(emptyStars)].map((_, i) => (
+          <FaStar key={`empty-${i}`} className="w-5 h-5 text-gray-300" /> // Empty star
+        ))}
+      </div>
+    );
+  };
+
   return (
-    <div className=" mx-auto w-full md:w-auto">
-      <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6  justify-between items-center space-y-4 sm:space-y-0">
+    <div className="w-full md:w-auto mx-auto hover:scale-[1.02] transform transition-transform duration-300">
+      <div className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 p-6 relative">
         
-        <div className="space-x-4">
-          {/* Image */}
-          <div>
-            <img
-              src={data?.image}
-              alt={data?.name}
-              className=" w-full md:w-[500px] h-[200px] object-cover rounded-md border-2 border-gray-300"
-            />
-          </div>
-
-          {/* Restaurant Details */}
-          <div className="pl-2 mt-2">
-            {/* Rating */}
-            <div className="rating mb-2 flex items-center">
-              <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-400" />
-              <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-400" defaultChecked />
-              <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-400" />
-              <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-400" />
-              <input type="radio" name="rating-2" className="mask mask-star-2 bg-yellow-400" />
-            </div>
-
-            <h1 className="text-xl font-semibold text-gray-800">{data?.name}</h1>
-            <p className="italic text-gray-500">{data?.location}</p>
-
-            <div className="flex text-sm text-gray-600 space-x-2 mt-1">
-              <p>{data?.locationDetail}.</p>
-              <p className="text-red-500 -ml-2 font-medium">Opens at {data?.opensAt}</p>
-            </div>
-
-            {/* Mobile Button */}
-            <Link href={`/allRestaurant/${data?.name}`} className="btn w-full mt-4 sm:hidden bg-rose-500 text-white font-medium rounded-md py-2 shadow hover:bg-rose-600 transition duration-300">
-              View Menu
-            </Link>
-          </div>
+        {/* Restaurant Image */}
+        <div className="relative">
+          <img
+            src={data?.image}
+            alt={data?.name}
+            className="w-full md:w-[500px] h-[250px] object-cover rounded-lg border-2 border-gray-100"
+          />
+          {/* Discount Badge */}
+          <span className="absolute top-2 right-2 bg-gradient-to-r from-rose-500 to-pink-600 text-white text-sm font-semibold px-3 py-1 rounded-lg shadow-lg">
+            QuickBites 
+          </span>
         </div>
+
+        {/* Restaurant Info */}
+        <div className="mt-4 space-y-2">
+          {/* Rating */}
+          <div className="flex items-center mb-2">
+            {renderStars()}
+            <span className="ml-2 text-gray-600 text-sm">({data?.rating?.toFixed(1) || 'N/A'})</span>
+          </div>
+
+          {/* Name */}
+          <h1 className="text-2xl font-bold text-gray-800">{data?.name}</h1>
+          
+          {/* Location and Timing */}
+          <div className="flex items-center space-x-2 text-sm text-gray-600 mt-1">
+            <FaMapMarkerAlt className="text-rose-500" />
+            <span>{data?.location}</span>
+          </div>
+
+          <div className="flex items-center space-x-2 text-sm text-gray-600 mt-1">
+            <FaClock className="text-rose-500" />
+            <span>Opens at {data?.opensAt}</span>
+          </div>
+
+          <p className="text-sm text-gray-500 mt-2">{data?.locationDetail}</p>
+        </div>
+
+        {/* Mobile Button */}
+        <Link href={`/allRestaurant/${data?.name}`}>
+          <p className="block sm:hidden w-full bg-gradient-to-r from-rose-500 to-pink-600 text-white text-center font-semibold rounded-md py-2 mt-4 shadow-lg hover:shadow-xl transition duration-300">
+            View Menu
+          </p>
+        </Link>
 
         {/* Desktop Button */}
-    <div>
-    <div className="hidden sm:block ml-auto">
-          <Link href={`/allRestaurant/${data?.slug}`} className="btn bg-rose-500 text-white font-medium rounded-md py-2 px-4 shadow w-full mt-8 hover:bg-rose-600 transition duration-300">
-            View Menu
+        <div className="hidden sm:block mt-8">
+          <Link href={`/allRestaurant/${data?.name}`}>
+            <p className="inline-block text-center w-full bg-gradient-to-r from-rose-500 to-pink-600 text-white font-semibold rounded-md py-2 px-6 shadow-lg hover:shadow-xl transition duration-300">
+              View Menu
+            </p>
           </Link>
         </div>
-    </div>
       </div>
-    
     </div>
   );
 };
 
 SingleRestruent.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    locationDetail: PropTypes.string,
+    opensAt: PropTypes.string,
+    rating: PropTypes.number, // Ensure rating is a number
+  }).isRequired,
 };
 
 export default SingleRestruent;
