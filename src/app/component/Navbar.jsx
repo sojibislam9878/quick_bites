@@ -26,17 +26,17 @@ const navLinks = [
   { path: "/allRestaurant", name: " Restaurant" },
   // { path: '/Support/FAQs', name: 'Support/FAQs' },
 ];
-// console.log(`${process.env.NEXT_PUBLIC_BASEURL}`)
+console.log(`${process.env.NEXT_PUBLIC_BASEURL}`)
 const Navbar = () => {
   const { cart } = useContext(CartContext);
   const cartItems = cart?.cartItems;
   const session = useSession();
-  console.log(session);
+  // console.log(session);
   const pathName = usePathname();
 
-  console.log(pathName);
+  // console.log(pathName);
   const [icon, setIcon] = useState("true");
-  console.log(icon);
+  // console.log(icon);
   const [userIcon, setUserIcon] = useState(false);
 
   // for sign out functionality

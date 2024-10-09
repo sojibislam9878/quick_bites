@@ -1,3 +1,4 @@
+"use Client"
 import React from 'react'
 import { FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
 
@@ -7,6 +8,8 @@ export const metadata = {
 };
 
 const DashboardPage = () => {
+
+
   const data = {
     name: "John do",
     email: "john@example.com",
@@ -16,7 +19,7 @@ const DashboardPage = () => {
     <div> <div className="min-h-screen flex justify-center items-center p-4 lg:p-0">
 
 
-    <div className="bg-[#B7A590] text-[#533831] selection:text-white rounded-lg shadow-lg p-8 w-full">
+    <div className="bg-gray-200 text-[#533831] selection:text-orange-500 rounded-lg shadow-lg p-8 w-full">
       <div className="flex flex-col items-center">
         {/* Profile Picture */}
         <img
