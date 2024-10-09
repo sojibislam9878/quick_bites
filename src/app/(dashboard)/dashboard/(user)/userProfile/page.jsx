@@ -1,4 +1,4 @@
-import "../../../globals.css";
+
 import { FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
 
 export const metadata = {
@@ -65,4 +65,3 @@ function UserProfile() {
 }
 
 export default UserProfile; 
-

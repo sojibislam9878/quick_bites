@@ -16,7 +16,7 @@ const poppins = Poppins({
 });
 
 export default function RootLayout({ children }) {
-  const role = "customer"; // Change this dynamically based on the authenticated user
+  const role = "owner"; // Change this dynamically based on the authenticated user
 
   return (
     <html lang="en" data-theme="light" className="bg-[#E5D0BB]">
@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
               {links[role]?.map((link) => (
                 <li key={link.label}>
                   <Link href={link.href} className="text-[#533831] hover:text-[#333] transition duration-200">
-                    {link.label}
+                {link.icon}    {link.label}
                   </Link>
                 </li>
               ))}
