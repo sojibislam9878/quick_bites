@@ -2,7 +2,6 @@ import links from "./component/Links";
 import { Poppins } from "next/font/google";
 import "../globals.css";
 import Link from "next/link";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import QueryProvider from "../component/QueryProvider/QueryProvider";
 
 export const metadata = {
@@ -18,7 +17,7 @@ const poppins = Poppins({
 });
 
 export default function RootLayout({ children }) {
-  const role = "owner"; // Change this dynamically based on the authenticated user
+  const role = "admin"; // Change this dynamically based on the authenticated user
 
   return (
     <html lang="en" data-theme="light" className="bg-[#E5D0BB]">
