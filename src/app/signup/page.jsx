@@ -30,7 +30,7 @@ const SignUpPage = () => {
             // Send image to ImgBB API
             try {
                 const res = await axios.post(
-                    `https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`, // Replace with your API key
+                    `https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMBB_KEY}`, // Replace with your API key
                     formData
                 );
                 setImageUrl(res.data.data.url); 
@@ -56,7 +56,7 @@ const SignUpPage = () => {
 
         }
         console.log('alldata',formData);
-        const resp = await fetch(`https://quick-bites-tau.vercel.app/signup/api`, {
+        const resp = await fetch(`http://localhost:3000/signup/api`, {
             method: "POST",
             body: JSON.stringify(formData),
             headers: {

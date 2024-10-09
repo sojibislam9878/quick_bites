@@ -5,10 +5,10 @@ import { FaMapMarkerAlt, FaClock, FaStar } from 'react-icons/fa';
 
 const SingleRestruent = ({ data }) => {
   const renderStars = () => {
-    const rating = data?.avgRating|| 0; // Default to 0 if no rating provided
-    const fullStars = Math.floor(rating); // Full stars
-    const halfStar = rating - fullStars >= 0.5; // Determine if there's a half star
-    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0); // Remaining empty stars
+    const rating = data?.avgRating|| 0;
+    const fullStars = Math.floor(rating); 
+    const halfStar = rating - fullStars >= 0.5;
+    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0); 
     console.log(data, "data");
 
     return (
@@ -16,22 +16,22 @@ const SingleRestruent = ({ data }) => {
         {[...Array(fullStars)].map((_, i) => (
           <FaStar key={`full-${i}`} className="w-5 h-5" />
         ))}
-        {halfStar && <FaStar className="w-5 h-5 half-star" />} {/* Add half star icon here if needed */}
+        {halfStar && <FaStar className="w-5 h-5 half-star" />}
         {[...Array(emptyStars)].map((_, i) => (
-          <FaStar key={`empty-${i}`} className="w-5 h-5 text-gray-300" /> // Empty star
+          <FaStar key={`empty-${i}`} className="w-5 h-5 text-gray-300" />
         ))}
       </div>
     );
   };
 
   return (
-    <div className="w-full md:w-auto mx-auto hover:scale-[1.02] transform transition-transform duration-300">
+    <div className=" hover:scale-[1.02] transform transition-transform duration-300">
       <div className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 p-6 relative">
         
         {/* Restaurant Image */}
         <div className="relative">
           <img
-            src={data?.image}
+            src={data?.banner_image}
             alt={data?.name}
             className="w-full md:w-[500px] h-[250px] object-cover rounded-lg border-2 border-gray-100"
           />
@@ -93,7 +93,7 @@ SingleRestruent.propTypes = {
     location: PropTypes.string.isRequired,
     locationDetail: PropTypes.string,
     opensAt: PropTypes.string,
-    rating: PropTypes.number, // Ensure rating is a number
+    rating: PropTypes.number,
   }).isRequired,
 };
 
