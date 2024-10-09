@@ -1,5 +1,6 @@
 // component/Links.js
 import { FaUser, FaHistory, FaCreditCard, FaUtensils, FaTruck, FaUserCog, FaUserShield, FaTag } from "react-icons/fa";
+import { FaBowlFood } from "react-icons/fa6";
 
 const links = {
   user: [
@@ -24,6 +25,7 @@ const links = {
     { href: "/dashboard/manage-deleveryMan", label: "Manage Delivery Man", icon: <FaTruck /> },
   
     { href: "/dashboard/coupon", label: "Coupon", icon: <FaTag /> },
+    { href: "/dashboard/manageResturants", label: "Manage Resturant", icon: <FaBowlFood /> },
   ],
 };
 
