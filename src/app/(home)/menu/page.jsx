@@ -46,7 +46,7 @@ const ManuePage = () => {
       setLoading(true);
       try {
         const res = await fetch(
-          `http://localhost:3000/api/itemcounts?filter=${filter}&brand=${brand}&search=${search}`
+         `http://localhost:3000/api/itemcounts?filter=${filter}&brand=${brand}&search=${search}`
         );
         const data = await res.json();
         setDataCount(data.count);
