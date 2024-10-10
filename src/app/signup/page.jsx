@@ -51,7 +51,8 @@ const SignUpPage = () => {
             password: e.target.password.value,
             email: e.target.email.value,
             image: imageUrl,
-            role: e.target.role.value
+            // role: e.target.role.value
+            role: 'user'
 
 
         }
@@ -140,25 +141,21 @@ const SignUpPage = () => {
                                 <label
 
                                     htmlFor='file-upload'
-                                    className="w-1/2 px-4 py-3 required:  text-white bg-transparent border text-ellipsis  overflow-hidden border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                                    className="w-full px-4 py-3   text-white bg-transparent border text-ellipsis  overflow-hidden border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
 
                                 >
-                                    <span className={` ${image ? 'text-cyan-300 text-nowrap ' : 'text-slate-300'}  `}>{image ? image?.name : "Upload Image "}</span>
+                                    <span className={` ${image ? 'text-cyan-300 text-nowrap ' : 'bg-white text-slate-700 p-2'}  `}>{image ? image?.name : "Upload Image "}</span>
                                 </label>
 
                                 {/* for role */}
-                                <select name='role'
+                                {/* <select name='role'
                                     required
                                     className="lg:w-1/2 md:w-1/2 md:px-4 px-1  lg:px-4 py-3 text-white bg-transparent border border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" >
                                     <option className='  text-xs text-slate-600' disabled selected  >Use For</option>
                                     <option className=' text-xs text-slate-600' value="Delivery Man">Delivery Man</option>
                                     <option className=' text-xs text-slate-600 ' value="Normal User">Normal User</option>
-                                </select>
-                                {/* <input
-                                    type="text"
-                                    name='name2'
-                                    placeholder="Last name"
-                                    className="w-1/2 px-4 py-3 text-white bg-transparent border border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" /> */}
+                                </select> */}
+                               
 
 
                             </div>
@@ -170,7 +167,7 @@ const SignUpPage = () => {
                             </button>
                         </form>
                         <p className="text-sm text-loginColor    text-center mt-4">
-                            Already Register?<a className='ml-2 hover:underline' href='/login' >LOG IN</a >
+                            Already Register?<a className='ml-2 hover:underline hover:text-white' href='/login' >LOG IN</a >
                         </p>
 
                         {/*  Information and Terms  */}

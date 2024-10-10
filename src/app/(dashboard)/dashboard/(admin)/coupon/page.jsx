@@ -65,6 +65,8 @@ const CouponManagement = () => {
     const handleDelete = async (value) => {
 
         console.log(value)
+        setloading(true)
+
 
         await fetch('https://quick-bites-tau.vercel.app/api/coupon', {
             method: 'DELETE',
@@ -99,7 +101,7 @@ const CouponManagement = () => {
         <div className="p-6 ">
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-xl  font-lobster font-semibold">Coupon Management</h2>
-                <Link href={'dashboard/coupon'}>
+                <Link href={'addcoupon'}>
                     <button className="bg-red-500 text-white px-4 py-2 rounded-md">
                         + Add New Coupon
                     </button>
@@ -132,9 +134,9 @@ const CouponManagement = () => {
                             <td className="text-center p-4">{data?.validity?.end}</td>
                             <td className="text-center p-4">{data?.category}</td>
                             <td onClick={() => handleStatus('active', data?._id)} className={`  text-center rounded-md ${data?.status == 'active' ? '  hidden' : 'text-green-400'}  cursor-pointer hover:bg-slate-300 `}>
-                                Active</td>
+                                ACTIVE</td>
                             <td onClick={() => handleStatus('deactive', data?._id)} className={`text-center rounded-md ${data?.status == 'deactive' ? 'hidden ' : 'text-red-400'} cursor-pointer hover:bg-slate-300`}>
-                                Deactive</td>
+                                INACTIVE</td>
                             {/* it will be change by status also color and also to change this icon  */}
 
 
