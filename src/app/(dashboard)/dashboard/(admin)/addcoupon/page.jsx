@@ -2,9 +2,11 @@
 
 import CouponData from "@/app/component/coupon/CouponData"
 import axios from "axios"
+import { useRouter } from "next/navigation"
 
 const AddCouponForm = () => {
     const [,refetch]=CouponData()
+    const route=useRouter()
 
     const add = async (e) => {
         e.preventDefault()
@@ -45,6 +47,8 @@ const AddCouponForm = () => {
                 .then(response => {
                     if(response.data.message=='Coupon updated successfully'){
                         refetch()
+                        route.push('coupon')
+
                     }
                 })
         }
