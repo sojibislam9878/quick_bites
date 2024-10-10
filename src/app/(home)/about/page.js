@@ -472,7 +472,8 @@ export default function AboutPage() {
       </div>
 
       <div className="relative  bg-[#e4c86a] bg-cover bg-center">
-        <div classNameName="absolute inset-0 bg-yellow-500 bg-opacity-40 backdrop-blur-sm"></div>
+        <div class
+        Name="absolute inset-0 bg-yellow-500 bg-opacity-40 backdrop-blur-sm"></div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:py-16 lg:px-8">
           <div className="px-6 py-6 md:px-12 lg:flex lg:items-center lg:px-16">
             <div className="lg:flex-1 xl:w-0">

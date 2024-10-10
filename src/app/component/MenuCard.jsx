@@ -4,14 +4,15 @@ import React, { useState, useEffect, useContext } from "react";
 import FavoriteBtn from "./favoriteBtn/FavoriteBtn";
 import FavoriteBtnFill from "./favoriteBtn/FavoriteBtnFill";
 import CartContext from "../Context/CartContext";
+import Image from "next/image";
 
-const MenuCard = ({item}) => {
+const MenuCard = ({ item }) => {
   const { addItemToCart } = useContext(CartContext);
   const { _id, brand, description, image, foodName, price } = item || {};
 
   const oldPrice = (price + 5).toFixed(2);
   const [favorite, setFavorite] = useState(false);
-  const [loading, setLoading]=useState(true)
+  const [loading, setLoading] = useState(true)
   const userId = "66fc284611040dc9a85fce72"; //to do
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const MenuCard = ({item}) => {
       }
       setLoading(false)
     };
-    
+
     fetchUserFavorites();
   }, [_id, userId]);
 
@@ -45,10 +46,12 @@ const MenuCard = ({item}) => {
     <div>
       <div className="card card-compact bg-base-100 shadow-xl h-full">
         <figure>
-          <img
+          <Image
             src={image}
             alt="food photo"
             className="h-[31rem] w-full object-cover"
+            width={250}
+            height={220}
           />
         </figure>
         <div className="card-body">

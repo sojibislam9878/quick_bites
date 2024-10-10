@@ -5,7 +5,7 @@ const BloogLetter = () => {
     return (
         <div>
             <div className="relative  bg-[#e4c86a] bg-cover bg-center">
-                <div classNameName="absolute inset-0 bg-yellow-500 bg-opacity-40 backdrop-blur-sm"></div>
+                <div className="absolute inset-0 bg-yellow-500 bg-opacity-40 backdrop-blur-sm"></div>
                 <div className="relative z-10 mx-auto max-w-9xl   flex  justify-between">
                     <div>
                         <Image width={300} height={200} src="https://demo.hasthemes.com/aahar-preview/aahar/images/banner/bann-4/1.png" alt="" />
