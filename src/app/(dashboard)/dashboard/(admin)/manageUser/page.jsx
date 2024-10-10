@@ -15,14 +15,13 @@ const MangeUser = () => {
 
   return (
 
-<div  className="antialiased font-sans w-full">
-
+<div className='w-full' >
 
 {
 
-isLoading? <Spinner></Spinner> :
+isLoading ?<Spinner></Spinner> :
 
-<div className="" >
+<div className="antialiased font-sans bg-gray-200 " >
 
 <div class="w-full mx-auto px-4 sm:px-8">
 <div class="py-8">
@@ -63,7 +62,7 @@ data?.result?.map(mangeUser=><tr key={Math.random()}>
     <div class="flex-shrink-0 w-10 h-10">
         <img class="w-full h-full rounded-full"
             src={mangeUser.image}
-            alt="" />
+            alt="image" />
     </div>
     <div class="ml-3">
         <p class="text-gray-900 whitespace-no-wrap">
@@ -104,6 +103,7 @@ data?.result?.map(mangeUser=><tr key={Math.random()}>
 </div>
 </div>
 }
+
 
 
 

@@ -40,7 +40,6 @@ const CouponManagement = () => {
 
 
         } else {
-            console.log('de')
 
             await axios.post('https://quick-bites-tau.vercel.app/api/coupon', { id, value })
                 .then(response => {

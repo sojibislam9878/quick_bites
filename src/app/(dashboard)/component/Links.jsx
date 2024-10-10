@@ -22,7 +22,7 @@ const links = {
     { href: "/dashboard", label: "AdminProfile", icon: <FaUser /> },
     { href: "/dashboard/manageResturants", label: "Manage Restaurants", icon: <FaUtensils /> },
     { href: "/dashboard/manageUser", label: "Manage Users", icon: <FaUserCog /> },
-    { href: "/dashboard/manage-deleveryMan", label: "Manage Delivery Man", icon: <FaTruck /> },
+    { href: "/dashboard/managedeleveryman", label: "Manage Delivery Man", icon: <FaTruck /> },
   
     { href: "/dashboard/coupon", label: "Coupon", icon: <FaTag /> },
   ],
