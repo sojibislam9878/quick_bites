@@ -25,7 +25,6 @@ const links = {
     { href: "/dashboard/manage-deleveryMan", label: "Manage Delivery Man", icon: <FaTruck /> },
   
     { href: "/dashboard/coupon", label: "Coupon", icon: <FaTag /> },
-    { href: "/dashboard/manageResturants", label: "Manage Resturant", icon: <FaBowlFood /> },
   ],
 };
 
