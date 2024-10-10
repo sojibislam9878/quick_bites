@@ -140,7 +140,7 @@ const CouponManagement = () => {
             }
             console.log(updateCouponData);
             
-            await axios.post('http://localhost:3000/api/coupon/updateCoupon',updateCouponData)
+            await axios.post('https://quick-bites-tau.vercel.app/api/coupon/updateCoupon',updateCouponData)
                 .then(result => {
                     console.log(result.data);
 
