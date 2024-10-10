@@ -30,6 +30,7 @@ const MenuCard = ({ item }) => {
     fetchUserFavorites();
   }, [_id, userId]);
 
+  // add
   const addToCartHandler = () => {
     addItemToCart({
       product: item._id,

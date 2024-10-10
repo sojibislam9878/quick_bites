@@ -1,8 +1,6 @@
 
 "use client";
 
-// import { useRouter } from "next/navigation";
-
 import { FiAlignJustify } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
 import { FaUserLarge } from "react-icons/fa6";
@@ -13,41 +11,35 @@ import { FaUserCircle } from "react-icons/fa";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
-import React, { useEffect, useState, useContext } from "react";
-// import { useRouter } from "next/router";
+import React, { useState, useContext } from "react";
 import CartContext from "../Context/CartContext"
 const navLinks = [
   { path: "/", name: "Home" },
   { path: "/menu", name: "Menu" },
-  // { path: '/restaurants', name: 'Restaurants' },
-  // { path: '/orders', name: 'Orders' },
   { path: "/contact", name: "Contact" },
   { path: "/about", name: "About" },
   { path: "/allRestaurant", name: " Restaurant" },
-  // { path: '/Support/FAQs', name: 'Support/FAQs' },
 ];
-// console.log(`${process.env.NEXT_PUBLIC_BASEURL}`)
 const Navbar = () => {
   const { cart } = useContext(CartContext);
   const cartItems = cart?.cartItems;
   const session = useSession();
-  console.log(session);
+  // console.log(session);
   const pathName = usePathname();
 
-  console.log(pathName);
+  // console.log(pathName);
   const [icon, setIcon] = useState("true");
-  console.log(icon);
+  // console.log(icon);
   const [userIcon, setUserIcon] = useState(false);
 
-  // for sign out functionality
   const handleSignOut = () => {
     signOut("credentials");
-    // document.localStorage.removeItem("next-auth.token");
   };
 
   const normalLink =
     "lg:font-bold px-3 lg:text-lg lg:mr-2 mt-2 py-2 rounded-lg lg:mt-0 hover:bg-gray-200";
   const activeLink = `bg-gradient-to-r from-[#EA6A12] to-[#EA6A12]   border border-blure-500 text-white border-none hover:bg-transparent focus:bg-transparent focus:text-white ${normalLink}`;
+console.log(session);
 
   return (
     <div className="lg:px-16 border-b-2 fixed mb-48  border  w-full h-fit z-50 bg-base-100  border-gray-400 md:px-5">
@@ -160,21 +152,24 @@ const Navbar = () => {
                     unoptimized
                   />
                 </div>
+                <div>
                 <ul
                   tabIndex={0}
-                  className="dropdown-content absolute  gap-1  -right-5 lg:-right-10 h-fit  menu border-2 border-red-100  bg-base-100 rounded-md z-[1] w-32 p-2 shadow"
+                  className="dropdown-content absolute  gap-1  -right-5 lg:-right-10 h-fit  menu bg-base-100 rounded-md z-[1] w-32 p-2 shadow"
                 >
-                  <li className="p-2  hover:bg-gray-300">
-                    <Link className="flex gap-2" href="">
+                  <h1>hi sojib</h1>
+                  <li className=" hover:bg-gray-300 hover:rounded-lg">
+                    <Link  href="">
                       Profile
                     </Link>
                   </li>
-                  <li className="p-2  hover:bg-gray-300">
-                    <Link className="flex gap-2" href="">
+                  <li className=" hover:bg-gray-300 hover:rounded-lg">
+                    <Link  href="/dashboard">
                       Dashboard
                     </Link>
                   </li>
                 </ul>
+                </div>
               </div>
             </div>
           ) : (

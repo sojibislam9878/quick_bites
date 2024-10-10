@@ -19,7 +19,7 @@ function UserProfile() {
     <div className="min-h-screen flex justify-center items-center p-4 lg:p-0">
 
 
-    <div className="bg-[#B7A590] text-[#533831] selection:text-white rounded-lg shadow-lg p-8 w-full">
+    <div className="bg-gray-200 text-[#533831] selection:text-white rounded-lg shadow-lg p-8 w-full">
       <div className="flex flex-col items-center">
         {/* Profile Picture */}
         <img
