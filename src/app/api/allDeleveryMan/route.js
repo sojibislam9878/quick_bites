@@ -5,7 +5,8 @@ export const GET = async () => {
   try {
     const db = await connectDB();
     const MangeUser = db.collection("allUser");
-    const result = await MangeUser.find({ role: "user" }).toArray();
+    const result = await MangeUser.find({ role: "Delivery Man" }).toArray();
+
     return NextResponse.json({
       result: result,
     });
