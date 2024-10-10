@@ -59,7 +59,9 @@ const Cart = () => {
   };
   const handlePayment= async ()=>{
 
-    axios.post('https://e-commerce-server-side-beta.vercel.app/checkOut')
+    const amount={amount:totalAmountAfterDiscount || totalAmountBeforeDiscount}
+
+    axios.post('https://e-commerce-server-side-beta.vercel.app/checkOut',amount)
     .then((response)=>{ 
         console.log(response)
         

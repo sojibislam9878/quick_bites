@@ -2,7 +2,6 @@
 import { Poppins } from "next/font/google";
 import "../globals.css";
 import Link from "next/link";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import QueryProvider from "../component/QueryProvider/QueryProvider";
 import links from "./component/Links";
 import { IoMenu } from "react-icons/io5";
@@ -20,7 +19,7 @@ const poppins = Poppins({
 
 export default function RootLayout({ children }) {
   const role = "admin"; // Change this dynamically based on the authenticated user
- 
+
   return (
     <html lang="en" data-theme="light" className="bg-gray-200">
       <head>
