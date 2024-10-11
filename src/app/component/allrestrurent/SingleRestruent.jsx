@@ -1,9 +1,13 @@
+
+"use client"
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { FaMapMarkerAlt, FaClock, FaStar } from 'react-icons/fa';
+import Image from 'next/image';
 
 const SingleRestruent = ({ data }) => {
+  console.log(data);
   const renderStars = () => {
     const rating = data?.avgRating|| 0;
     const fullStars = Math.floor(rating); 
@@ -27,17 +31,19 @@ const SingleRestruent = ({ data }) => {
   return (
     <div className=" hover:scale-[1.02] transform transition-transform duration-300">
       <div className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 p-6 relative">
-        
+
         {/* Restaurant Image */}
         <div className="relative">
           <img
             src={data?.banner_image}
             alt={data?.name}
-            className="w-full md:w-[500px] h-[250px] object-cover rounded-lg border-2 border-gray-100"
+            width={500}
+            height={250}
+            className="w-full h-auto object-cover rounded-lg border-2 border-gray-100"
           />
           {/* Discount Badge */}
           <span className="absolute top-2 right-2 bg-gradient-to-r from-rose-500 to-pink-600 text-white text-sm font-semibold px-3 py-1 rounded-lg shadow-lg">
-            QuickBites 
+            QuickBites
           </span>
         </div>
 
@@ -51,7 +57,7 @@ const SingleRestruent = ({ data }) => {
 
           {/* Name */}
           <h1 className="text-2xl font-bold text-gray-800">{data?.name}</h1>
-          
+
           {/* Location and Timing */}
           <div className="flex items-center space-x-2 text-sm text-gray-600 mt-1">
             <FaMapMarkerAlt className="text-rose-500" />

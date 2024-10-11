@@ -17,8 +17,8 @@ const SignUpPage = () => {
         setImage(e.target.files[0]);
     };
 
-    
-   
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -33,7 +33,7 @@ const SignUpPage = () => {
                     `https://api.imgbb.com/1/upload?key= 041ade7e4cb9e3652777ac4caca1ef91`, // Replace with your API key
                     formData
                 );
-                setImageUrl(res.data.data.url); 
+                setImageUrl(res.data.data.url);
                 console.log(res.data.data.url)// URL of the uploaded image
             } catch (error) {
                 console.error('Error uploading image:', error);
@@ -55,20 +55,20 @@ const SignUpPage = () => {
             role: 'user'
 
 
+            }
+            console.log('alldata', formData);
+            const resp = await fetch(`http://localhost:3000/signup/api`, {
+                method: "POST",
+                body: JSON.stringify(formData),
+                headers: {
+                    "content-type": "application/json",
+                },
+            });
+            if (resp.status === 200) {
+                router.push('/login');
+            }
+
         }
-        console.log('alldata',formData);
-        const resp = await fetch(`https://quick-bites-tau.vercel.app/signup/api`, {
-            method: "POST",
-            body: JSON.stringify(formData),
-            headers: {
-                "content-type": "application/json",
-            },
-        });
-        if (resp.status === 200) {
-            router.push('/login');
-        }
-        
-      }
     }
     return (
         <div className=' ' >
@@ -100,7 +100,7 @@ const SignUpPage = () => {
 
                             {/*  Email Address  */}
                             <div>
-                                <input 
+                                <input
                                     type="email"
                                     name='email'
                                     required
