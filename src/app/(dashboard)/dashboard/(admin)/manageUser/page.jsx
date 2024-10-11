@@ -26,7 +26,7 @@ isLoading ?<Spinner></Spinner> :
 <div class="w-full mx-auto px-4 sm:px-8">
 <div class="py-8">
     <div>
-        <h2 class="text-2xl font-semibold leading-tight text-center  my-4">Mange Users</h2>
+        <h2 class="text-2xl font-semibold leading-tight text-center  my-4">Mange Uasdfasfsers</h2>
     </div>
  
     <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto ">
