@@ -149,6 +149,11 @@ console.log(session);
                     </Link>
                   </li>
                   <li className=" hover:bg-gray-300 hover:rounded-lg">
+                    <Link  href="/favoritelist">
+                    favorte list
+                    </Link>
+                  </li>
+                  <li className=" hover:bg-gray-300 hover:rounded-lg">
                     <Link  href="/dashboard">
                       Dashboard
                     </Link>
