@@ -129,13 +129,28 @@ console.log(session);
               </div>
               <div className="dropdown dropdown-hover">
                 <div tabIndex={0} role="button" className=" m-1">
-                  <img src={`${session?.data?.user?.image}`}
+                  {/* <FaUserCircle
+                    className="hover:scale-[1.03]  hover:text-orange-600 "
                     onClick={() => setUserIcon(!userIcon)}
-                    className="hover:scale-[1.03] w-12 rounded-full  "
+                    size={30}
+                  /> */}
+                  {/* <Image src={`${session?.data?.user?.image}`} width={20} height={20}
+                    onClick={() => setUserIcon(!userIcon)}
+                    className="hover:scale-[1.03] w-12 rounded-full  " referrerPolicy="no-referrer"
 
 
-                   alt="Profile picture"
-                    srcset= {`${session?.data?.user?.image},1x`}/>
+                    alt="Profile picture"
+                    srcset={`${session?.data?.user?.image},1x`} /> */}
+                  <Image
+                    src={session?.data?.user?.image || '/default-avatar.png'} // Fallback image
+                    width={48}
+                    height={48}
+                    onClick={() => setUserIcon(!userIcon)}
+                    className="hover:scale-[1.03] w-12 rounded-full"
+                    alt="Profile picture"
+                    referrerPolicy="no-referrer" // You can remove this if not needed
+                    unoptimized
+                  />
                 </div>
                 <div>
                 <ul
