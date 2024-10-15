@@ -5,7 +5,6 @@ const ListPage = () => {
     return (
         <div>
             <h1>This is favorte list page</h1>
-            <NoData></NoData>
         </div>
     );
 };
