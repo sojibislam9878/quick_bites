@@ -35,9 +35,9 @@ function WhyChooseUse() {
                 </h2>
               </div>
               <p className="text-gray-600 mb-8">
-                We pride ourselves on delivering top-quality service, ensuring
-                your food arrives on time, with no extra delivery costs. We strive
-                to provide the best culinary experience with freshly made,
+                We pride ourselves on delivering top-quality service  &#44;  ensuring
+                your food arrives on time &#44; with no extra delivery costs. We strive
+                to provide the best culinary experience with freshly made &#44;
                 delicious meals.
               </p>
               <button className="px-6 py-3 bg-[#ff7519] text-white rounded-md hover:bg-[#ff8c3f] transition duration-300">

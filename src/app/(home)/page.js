@@ -10,7 +10,7 @@ import Counter from "./counter/page";
 
 export default function Home() {
   return (
-    <div className=" pt-4">
+    <div className="">
     <Banner/>
      <Blog/>
     <Promotion/>
