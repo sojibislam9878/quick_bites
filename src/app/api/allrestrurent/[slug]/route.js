@@ -3,20 +3,21 @@ import { NextResponse } from "next/server";
 
 // Dynamic GET request to fetch a specific restaurant by name
 export const GET = async (req, { params }) => {
-  const { name } = params; // Get the dynamic 'name' from the URL
+  const { slag } = params; // Get the dynamic 'name' from the URL
+  console.log(slug, "slag");
 
   try {
     const db = await connectDB();
     const restaurantCollection = db.collection("allRestaurant");
 
     // Search for a restaurant with a matching name (case-insensitive)
-    const restaurant = await restaurantCollection.findOne({ name: { $regex: new RegExp(name, 'i') } });
+    const restaurant = await restaurantCollection.findOne({ slug: { $regex: new RegExp(slug, 'i') } });
 
     if (!restaurant) {
       return NextResponse.json({
         status: "404",
         statusText: "Restaurant not found",
-        error: `No restaurant found with the name ${name}`,
+        error: `No restaurant found with the name ${slag}`,
       });
     }
 
