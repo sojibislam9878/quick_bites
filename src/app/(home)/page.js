@@ -11,15 +11,15 @@ import Counter from "./counter/page";
 export default function Home() {
   return (
     <div className="">
-      <h2>hello world</h2>
-    {/* <Banner/>
+    
+    <Banner/>
      <Blog/>
     <Promotion/>
-    <WhyChooseUs/> */}
-    {/* <Review/> */}
+    <WhyChooseUs/>
+    <Review/>
    
    {/* <GoogleMap/> */}
-   {/* <BloogLetter/> */}
+   <BloogLetter/>
     </div>
   );
 }

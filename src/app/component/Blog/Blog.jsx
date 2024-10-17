@@ -8,7 +8,7 @@ function Blog() {
   return (
     <>
 
-      <div className="max-w-6xl  py-4 mx-auto text-center">
+      {/* <div className="max-w-6xl  py-4 mx-auto text-center">
         <p className="text-xl font-medium text-[#6E6B58] font-greatVibes ">Website for Restaurant and Cafe</p>
 
         <h1 className="mt-2 text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">
@@ -17,13 +17,7 @@ function Blog() {
 
 
 
-        {/* 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
 
-          {
-            blogs.slice(0, 3).map(blog => (<BlogCard key={blog.id} blog={blog} />))
-          }
-        </div> */}
 
         <div className="flex flex-row justify-center items-center gap-6 w-full mx-auto mt-8">
           <div className="p-12 border-2 rounded-full  ">
@@ -47,7 +41,8 @@ function Blog() {
         </div>
 
 
-      </div >
+      </div > */}
+      <div><h3>Blog</h3></div>
 
     </>
   )
