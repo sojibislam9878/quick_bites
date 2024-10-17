@@ -163,13 +163,7 @@ const Navbar = () => {
                         Profile
                       </Link>
                     </li>
-                    <li
 
-                      onClick={handleSignOut}
-                      className="   px-2 py-1 text-red-400 gap-2  hover:bg-gray-300 hover:rounded-lg"
-                    >
-                      Sign Out
-                    </li>
                     <li className=" hover:bg-gray-300 hover:rounded-lg">
                       <Link href="/favoritelist">
                         favorte list
@@ -179,6 +173,13 @@ const Navbar = () => {
                       <Link href="/dashboard">
                         Dashboard
                       </Link>
+                    </li>
+                    <li
+
+                      onClick={handleSignOut}
+                      className="   px-2 py-1 text-red-400 gap-2  hover:bg-gray-300 hover:rounded-lg"
+                    >
+                      Sign Out
                     </li>
                   </ul>
                 </div>
