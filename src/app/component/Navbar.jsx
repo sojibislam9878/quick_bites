@@ -15,16 +15,16 @@ import React, { useState, useContext } from "react";
 import CartContext from "../Context/CartContext"
 const navLinks = [
   { path: "/", name: "Home" },
-  { path: "/menu", name: "Menu" },
-  { path: "/contact", name: "Contact" },
-  { path: "/about", name: "About" },
   { path: "/allRestaurant", name: " Restaurant" },
+  { path: "/menu", name: "Menu" },
+  { path: "/about", name: "About" },
+  { path: "/contact", name: "Contact" },
 ];
 const Navbar = () => {
   const { cart } = useContext(CartContext);
   const cartItems = cart?.cartItems;
   const session = useSession();
-  // console.log(session);
+  // console.log(session?.data?.user?.name);
   const pathName = usePathname();
 
   // console.log(pathName);
@@ -129,23 +129,43 @@ console.log(session);
               </div>
               <div className="dropdown dropdown-hover">
                 <div tabIndex={0} role="button" className=" m-1">
-                  <img src={`${session?.data?.user?.image}`}
+                  {/* <FaUserCircle
+                    className="hover:scale-[1.03]  hover:text-orange-600 "
                     onClick={() => setUserIcon(!userIcon)}
-                    className="hover:scale-[1.03] w-12 rounded-full  "
+                    size={30}
+                  /> */}
+                  {/* <Image src={`${session?.data?.user?.image}`} width={20} height={20}
+                    onClick={() => setUserIcon(!userIcon)}
+                    className="hover:scale-[1.03] w-12 rounded-full  " referrerPolicy="no-referrer"
 
 
-                   alt="Profile picture"
-                    srcset= {`${session?.data?.user?.image},1x`}/>
+                    alt="Profile picture"
+                    srcset={`${session?.data?.user?.image},1x`} /> */}
+                  <Image
+                    src={session?.data?.user?.image || '/default-avatar.png'} // Fallback image
+                    width={48}
+                    height={48}
+                    onClick={() => setUserIcon(!userIcon)}
+                    className="hover:scale-[1.03] w-12 rounded-full"
+                    alt="Profile picture"
+                    referrerPolicy="no-referrer" // You can remove this if not needed
+                    unoptimized
+                  />
                 </div>
                 <div>
                 <ul
                   tabIndex={0}
                   className="dropdown-content absolute  gap-1  -right-5 lg:-right-10 h-fit  menu bg-base-100 rounded-md z-[1] w-32 p-2 shadow"
                 >
-                  <h1>hi sojib</h1>
+                  <h1 className="text-center">Hi {session?.data?.user?.name}</h1>
                   <li className=" hover:bg-gray-300 hover:rounded-lg">
                     <Link  href="">
                       Profile
+                    </Link>
+                  </li>
+                  <li className=" hover:bg-gray-300 hover:rounded-lg">
+                    <Link  href="/favoritelist">
+                    favorte list
                     </Link>
                   </li>
                   <li className=" hover:bg-gray-300 hover:rounded-lg">
