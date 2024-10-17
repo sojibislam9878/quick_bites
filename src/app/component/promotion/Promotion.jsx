@@ -8,7 +8,7 @@ const Promotion = () => {
     return (
         <div className='px-12'>
             <div className="max-w-6xl px-6 py-10 mx-auto text-center">
-                <h3 className="text-xl font-medium text-[#6E6B58] "> Promotion</h3>
+                <h3 className="text-xl font-medium text-[#6E6B58] font-greatVibes "> Promotion</h3>
                 <h2 className="mt-2 text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">Promotion & Discount</h2>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-4 gap-4 rounded-xl '>

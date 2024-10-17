@@ -78,5 +78,21 @@ export const reviewsAll = [
     "rating": 5,
     "date": "2024-08-30",
     "image": "https://i.ibb.co/LpyzbWh/aleksandr-minakov.jpg"
+  },
+  {
+    "id": 11,
+    "reviewer": "David Brown",
+    "review": "I was disappointed with the product. It stopped working after a few weeks, and the return process was frustrating.",
+    "rating": 2,
+    "date": "2024-09-05",
+    "image": "https://i.ibb.co/LpyzbWh/aleksandr-minakov.jpg"
+  },
+  {
+    "id": 12,
+    "reviewer": "Sarah Taylor",
+    "review": "Good value for the money. The product performs well, and I haven't encountered any issues so far.",
+    "rating": 4,
+    "date": "2024-09-03",
+    "image": "https://i.ibb.co/NVzBBdK/behrouz-sasani-kh-Mxnuos-SV4-unsplash.jpg"
   }
 ];

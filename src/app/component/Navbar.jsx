@@ -39,10 +39,10 @@ const Navbar = () => {
   const normalLink =
     "lg:font-bold px-3 lg:text-lg lg:mr-2 mt-2 py-2 rounded-lg lg:mt-0 hover:bg-gray-200";
   const activeLink = `bg-gradient-to-r from-[#EA6A12] to-[#EA6A12]   border border-blure-500 text-white border-none hover:bg-transparent focus:bg-transparent focus:text-white ${normalLink}`;
-console.log(session);
+  console.log(session);
 
   return (
-    <div className="lg:px-16 border-b-2 fixed mb-48  border  w-full h-fit z-50 bg-base-100  border-gray-400 md:px-5">
+    <div className="lg:px-8 shadow-md  sticky top-0 left-0 w-full h-20 z-50 bg-base-100  md:px-4">
       <div className="navbar  justify-between  lg:justify-between md:justify-between ">
         <div className="navbar-start  w-fit">
           {/* for small */}
@@ -86,11 +86,11 @@ console.log(session);
 
           <Link className="" href="/">
             <Image
-              className=" w-10  md:w-16 lg:w-16 mx-auto lg:mx-0 md:mx-0"
-              src="https://i.ibb.co/kgT20yy/Quick-Bite-logo-1.webp"
+              className=" w-16   md:w-20 lg:w-20 mx-auto lg:mx-0 md:mx-0"
+              src="https://i.ibb.co.com/VCCFP78/logo-01.png"
               alt="QuickBite"
-              height={100}
-              width={100}
+              height={150}
+              width={150}
             />
           </Link>
         </div>
@@ -113,12 +113,12 @@ console.log(session);
           {/* for large device sign in  */}
           {session?.status === "authenticated" ? (
             <div className="flex justify-center items-center gap-6">
-              <div
+              {/* <div
                 onClick={handleSignOut}
                 className="lg:flex cursor-pointer md:flex hidden items-center bg-stone-200  font-thin  Playfair rounded-md  px-2 py-1 text-red-400 gap-2"
               >
                 <VscSignIn size={25} /> Sign Out
-              </div>{" "}
+              </div>{" "} */}
 
               <div className="w-fit hover:text-orange-600 hover:scale-[1.08] ">
                 <Link href="/cart">
@@ -153,27 +153,34 @@ console.log(session);
                   />
                 </div>
                 <div>
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content absolute  gap-1  -right-5 lg:-right-10 h-fit  menu bg-base-100 rounded-md z-[1] w-32 p-2 shadow"
-                >
-                  <h1 className="text-center">Hi {session?.data?.user?.name}</h1>
-                  <li className=" hover:bg-gray-300 hover:rounded-lg">
-                    <Link  href="">
-                      Profile
-                    </Link>
-                  </li>
-                  <li className=" hover:bg-gray-300 hover:rounded-lg">
-                    <Link  href="/favoritelist">
-                    favorte list
-                    </Link>
-                  </li>
-                  <li className=" hover:bg-gray-300 hover:rounded-lg">
-                    <Link  href="/dashboard">
-                      Dashboard
-                    </Link>
-                  </li>
-                </ul>
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content absolute  gap-1  -right-5 lg:-right-10 h-fit  menu bg-base-100 rounded-md z-[1] w-32 p-2 shadow"
+                  >
+                    <h1 className="text-center">Hi {session?.data?.user?.name}</h1>
+                    <li className=" hover:bg-gray-300 hover:rounded-lg">
+                      <Link href="">
+                        Profile
+                      </Link>
+                    </li>
+                    <li
+
+                      onClick={handleSignOut}
+                      className="   px-2 py-1 text-red-400 gap-2  hover:bg-gray-300 hover:rounded-lg"
+                    >
+                      Sign Out
+                    </li>
+                    <li className=" hover:bg-gray-300 hover:rounded-lg">
+                      <Link href="/favoritelist">
+                        favorte list
+                      </Link>
+                    </li>
+                    <li className=" hover:bg-gray-300 hover:rounded-lg">
+                      <Link href="/dashboard">
+                        Dashboard
+                      </Link>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>

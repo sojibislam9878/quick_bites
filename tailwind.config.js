@@ -20,6 +20,8 @@ module.exports = {
       },
       fontFamily: {
         poppins: ['var(--font-poppins)', 'sans-serif'],
+        greatVibes: ['var(--font-greatVibes)', 'sans-serif'],
+       
         lobster: ['Lobster', 'cursive'], // Define Lobster as a font family
 
       },
