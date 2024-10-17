@@ -4,6 +4,8 @@ const http = require('http');
 const { Server } = require('socket.io');
 const { MongoClient } = require('mongodb');  
 
+// just for check
+
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
