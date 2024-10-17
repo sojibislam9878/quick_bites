@@ -1,0 +1,10 @@
+{
+    "builds": [
+      {
+        "src": "src/**/*",
+        "use": "@vercel/next"
+      }
+    ],
+    "ignoreCommand": "cd liveChat && echo 'Ignoring liveChat backend'"
+  }
+  

@@ -1,10 +1,9 @@
-'use client'
 import AdminChat from '@/app/component/LiveChat/AdminChat';
 import React from 'react';
 
 const Admin = () => {
     return (
-        <div>
+        <div className='w-full p-10 h-screen'>
             <AdminChat></AdminChat>
         </div>
     );
