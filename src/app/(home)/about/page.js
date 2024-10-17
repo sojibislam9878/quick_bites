@@ -144,7 +144,7 @@ export default function AboutPage() {
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                   <div className="w-full flex mb-4 items-center">
                     <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <Image height={200} width={200} alt='hello3' src="https://i.pravatar.cc/100?img=1" alt="" />
+                      <Image height={200} width={200} alt='hello3' src="https://i.pravatar.cc/100?img=1"  />
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold text-sm uppercase text-gray-600">
@@ -166,7 +166,7 @@ export default function AboutPage() {
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                   <div className="w-full flex mb-4 items-center">
                     <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <Image height={200} width={200} alt='hello4' src="https://i.pravatar.cc/100?img=2" alt="" />
+                      <Image height={200} width={200} alt='hello4' src="https://i.pravatar.cc/100?img=2" />
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold text-sm uppercase text-gray-600">
@@ -189,7 +189,7 @@ export default function AboutPage() {
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                   <div className="w-full flex mb-4 items-center">
                     <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <Image height={200} width={200} alt='hello6' src="https://i.pravatar.cc/100?img=3" alt="" />
+                      <Image height={200} width={200} alt='hello6' src="https://i.pravatar.cc/100?img=3"  />
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold text-sm uppercase text-gray-600">
@@ -210,7 +210,7 @@ export default function AboutPage() {
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                   <div className="w-full flex mb-4 items-center">
                     <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <Image width={200} height={200} alt='hello7' src="https://i.pravatar.cc/100?img=4" alt="" />
+                      <Image width={200} height={200} alt='hello7' src="https://i.pravatar.cc/100?img=4" />
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold text-sm uppercase text-gray-600">
@@ -235,7 +235,7 @@ export default function AboutPage() {
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                   <div className="w-full flex mb-4 items-center">
                     <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <Image height={200} width={200} alt='hello8' src="https://i.pravatar.cc/100?img=5" alt="" />
+                      <Image height={200} width={200} alt='hello8' src="https://i.pravatar.cc/100?img=5" />
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold text-sm uppercase text-gray-600">
@@ -258,7 +258,7 @@ export default function AboutPage() {
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                   <div className="w-full flex mb-4 items-center">
                     <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <Image width={200} height={200} alt='hello8' src="https://i.pravatar.cc/100?img=6" alt="" />
+                      <Image width={200} height={200} alt='hello8' src="https://i.pravatar.cc/100?img=6"  />
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold text-sm uppercase text-gray-600">

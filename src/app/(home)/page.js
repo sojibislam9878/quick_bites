@@ -12,10 +12,11 @@ export default function Home() {
   return (
     <div className=" pt-4">
     <Banner/>
+     <Blog/>
     <Promotion/>
     <WhyChooseUs/>
     <Review/>
-    <Blog/>
+   
    {/* <GoogleMap/> */}
    <BloogLetter/>
     </div>
