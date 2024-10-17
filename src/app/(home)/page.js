@@ -11,10 +11,11 @@ export default function Home() {
   return (
     <div >
     <Banner/>
+      <Blog/>
     <Promotion/>
     <WhyChooseUs/>
     <Review/>
-    <Blog/>
+  
    {/* <GoogleMap/> */}
    <BloogLetter/>
     </div>
