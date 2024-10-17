@@ -9,7 +9,7 @@ import BloogLetter from "../component/Blog/BloogLetter";
 
 export default function Home() {
   return (
-    <div className=" pt-4">
+    <div >
     <Banner/>
     <Promotion/>
     <WhyChooseUs/>
