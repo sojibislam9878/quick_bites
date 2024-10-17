@@ -79,8 +79,8 @@ const AdminChat = () => {
 
                 <div className='flex-1 p-0 space-y-4 h-[74%] overflow-y-auto'>
                     {/* <h4>Chat History</h4> */}
-                    {chatHistory?.map((data) =>
-                        <div className={`${data?.role == 'admin' ? 'bg-blue-500 flex relative left-[65%] ' : 'justify-start flex relative left-[5%] bg-gray-300'} flex w-fit mt-3 gap-5  rounded-box p-2 items-center`}>
+                    {chatHistory?.map((data,index) =>
+                        <div key={index} className={`${data?.role == 'admin' ? 'bg-blue-500 flex relative left-[65%] ' : 'justify-start flex relative left-[5%] bg-gray-300'} flex w-fit mt-3 gap-5  rounded-box p-2 items-center`}>
                             <Image src={`${data?.image}`} className='rounded-full' width={60} height={60} />
                             <div className={`${data?.role == 'admin' ? ' text-white font-lobster' : 'font-mono'}`}>
                                 <p className='font-bold' >{data?.name}</p>
