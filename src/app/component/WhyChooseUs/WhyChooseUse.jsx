@@ -12,7 +12,7 @@ function WhyChooseUse() {
         <h1 className="mt-2 text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">
           Why Choose Us
         </h1>
-        <div className="">
+        <div >
           <div className=" flex flex-col lg:flex-row items-center justify-between gap-10">
             <div>
               <Image
@@ -20,7 +20,7 @@ function WhyChooseUse() {
                 alt="Service Image 1"
                 width={300}
                 height={200}
-                className=""
+
               />
             </div>
 
@@ -45,13 +45,13 @@ function WhyChooseUse() {
               </button>
             </div>
 
-            <div className="">
+            <div >
               <Image
                 src="https://demo.hasthemes.com/aahar-preview/aahar/images/banner/bann-1/1.png"
                 alt="Service Image 2"
                 width={300}
                 height={200}
-                className=""
+
               />
             </div>
           </div>
