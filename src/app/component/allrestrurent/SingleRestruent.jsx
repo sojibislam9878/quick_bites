@@ -9,10 +9,10 @@ import Image from 'next/image';
 const SingleRestruent = ({ data }) => {
   console.log(data);
   const renderStars = () => {
-    const rating = data?.avgRating|| 0;
-    const fullStars = Math.floor(rating); 
+    const rating = data?.avgRating || 0;
+    const fullStars = Math.floor(rating);
     const halfStar = rating - fullStars >= 0.5;
-    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0); 
+    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
     console.log(data, "data");
 
     return (
@@ -34,7 +34,7 @@ const SingleRestruent = ({ data }) => {
 
         {/* Restaurant Image */}
         <div className="relative">
-          <img
+          <Image
             src={data?.banner_image}
             alt={data?.name}
             width={500}

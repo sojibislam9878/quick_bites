@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import React from 'react';
 
@@ -12,7 +13,7 @@ const Facility = () => {
                                 <Image width={600} height={600}
                                     className="rounded-t-lg p-2"
                                     src="https://bslthemes.com/html/quickeat/assets/img/service-icon-2.svg"
-                                    alt=""
+                                    alt="hello1"
                                 />
                             </a>
                             <div className="">
@@ -23,7 +24,7 @@ const Facility = () => {
                                 </a>
                                 <p className="mb-3 font-normal text-gray-700 leading-8 ">
                                     Here are the biggest enterprise technology acquisitions of
-                                    2021 so far, in reverse chronological order.
+                                    2021 so far  in reverse chronological order.
                                 </p>
                             </div>
                         </div>
@@ -33,10 +34,10 @@ const Facility = () => {
                                 <Image height={600} width={600}
                                     className="rounded-t-lg p-2"
                                     src="https://bslthemes.com/html/quickeat/assets/img/service-icon-3.svg"
-                                    alt=""
+                                    alt="hello6"
                                 />
                             </a>
-                            <div className="">
+                            <div >
                                 <a href="#">
                                     <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 ">
                                         Save Your Time

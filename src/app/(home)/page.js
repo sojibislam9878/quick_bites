@@ -11,7 +11,7 @@ import Counter from "./counter/page";
 export default function Home() {
   return (
     <div className="">
-    {/* <Banner/> */}
+    <Banner/>
      <Blog/>
     <Promotion/>
     <WhyChooseUs/>

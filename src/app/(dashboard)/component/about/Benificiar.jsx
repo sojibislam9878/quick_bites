@@ -13,9 +13,9 @@ const Benificiar = () => {
 
                         />
                     </div>
-                    <div className="">
-                        <div className="">
-                            <h1 className=" mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl  w-[460px]">
+                    <div >
+                        <div >
+                            <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl  w-[460px]">
                                 Service shows good taste.
                             </h1>
                             <p className=" mb-6  text-black-500 lg:mb-8 md:text-lg text-lg font-semibold w-[460px]">
@@ -33,7 +33,7 @@ const Benificiar = () => {
                             </div>
 
                             <div className="flex ">
-                                <h1 className="text-[#F29F05] font-bold text-6xl">1k + </h1>
+                                <h1 className="text-[#F29F05] font-bold text-6xl">1k </h1>
                                 <div className="flex flex-col text-left  ml-4">
                                     <p className="text-lg font-semibold">Food</p>
                                     <p className="text-lg font-semibold">Delivered</p>
