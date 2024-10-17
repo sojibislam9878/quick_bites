@@ -8,7 +8,7 @@ const PromotionBanner = () => {
   const [timeLeft, setTimeLeft] = useState({ hours: 1, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    AOS.init({ duration:1000 });
+    AOS.init({ duration: 1000 });
 
     const countdown = setInterval(() => {
       if (timeLeft.seconds > 0) {
@@ -25,13 +25,13 @@ const PromotionBanner = () => {
 
   return (
     <section
-      
+
       className="w-[96%] md:w-[80%] mx-auto max-w-[1220px] mt-9 flex flex-col md:flex-row  mb-20"
     >
       {/* First Coupon Card */}
       <div
         className="md:flex bg-gradient-to-r from-yellow-400 to-yellow-600 p-6 rounded-l-xl rounded-r-xl md:rounded-r-none relative md:border-r-2 md:border-dashed w-full md:w-1/2"
-        
+
         data-aos="fade-right"
       >
         <div className="flex-1">
@@ -46,13 +46,13 @@ const PromotionBanner = () => {
             </div>
           </div>
         </div>
-    
+
       </div>
 
       {/* Second Coupon Card */}
       <div
         className="flex bg-gradient-to-r from-pink-400 to-pink-600 p-6 relative w-full md:w-1/2 md:border-l-2  md:border-dashed rounded-r-xl rounded-l-xl md:rounded-l-none mt-4 md:mt-0  border-[#25669f]"
-       
+
         data-aos="fade-left"
       >
         <div className="flex-1">
@@ -63,7 +63,7 @@ const PromotionBanner = () => {
             Shop Now
           </button>
         </div>
-    
+
       </div>
     </section>
   );

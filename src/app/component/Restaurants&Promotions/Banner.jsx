@@ -3,95 +3,36 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { FiMapPin } from 'react-icons/fi';
+import { CiLocationOn, CiLocationArrow1 } from "react-icons/ci";
+import Counter from '@/app/(home)/counter/page';
+
 
 const Banner = () => {
-    const banners = [
-        {
-            title: "Fast & Fresh Food Delivery",
-            description: "Quick Bites Home Delivery offers fast, delicious meals delivered straight to your door, ensuring convenience and great taste.",
-            prev: "#slide2",
-            next: "#slide1"
-        },
-        {
-            title: "Fast & Fresh Food Delivery",
-            description: "Quick Bites Home Delivery offers fast, delicious meals delivered straight to your door, ensuring convenience and great taste.",
-            prev: "#slide3",
-            next: "#slide2"
-        },
-        {
-            title: "Fast & Fresh Food Delivery",
-            description: "Quick Bites Home Delivery offers fast, delicious meals delivered straight to your door, ensuring convenience and great taste.",
-            prev: "#slide4",
-            next: "#slide3"
-        },
-        {
-            title: "Fast & Fresh Food Delivery",
-            description: "Quick Bites Home Delivery offers fast, delicious meals delivered straight to your door, ensuring convenience and great taste.",
-            prev: "#slide1",
-            next: "#slide4"
-        }
-    ];
-
-    const [currentSlide, setCurrentSlide] = useState(0);
-
-    // Autoplay functionality using useEffect
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentSlide((prevSlide) => (prevSlide + 1) % banners.length);
-        }, 5000); // Slide changes every 5 seconds (5000 ms)
-
-        return () => clearInterval(interval); // Cleanup interval on component unmount
-    }, [banners.length]);
-
-
     return (
-        <div className=''>
-            <div className="carousel w-full">
-                {banners.map((banner, index) => (
-                    <div
-                        key={index}
-                        id={`slide${index + 1}`}
-                        className={`h-screen bg-cover bg-no-repeat rounded-md carousel-item relative w-full ${index === currentSlide ? 'block' : 'hidden'}`}
-                        style={{ backgroundImage: `linear-gradient(45deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.10)), url(/assets/banner/${index + 1}.jpeg)` }}
-                    >
-                        <div className='w-full flex h-full justify-center  items-center'>
-                            <div className='space-y-6  text-white text-center'>
-                                <h1 className='text-2xl md:text-6xl font-bold tracking-wide'>{banner.title}</h1>
-
-                                <div className="flex items-center justify-between w-[60%] mx-auto bg-white rounded-full shadow-lg">
-                                    <span className="p-4 text-black">
-                                        <FiMapPin size={24} />
-                                    </span>
-                                    <input
-                                        type="text"
-                                        placeholder="Enter your delivery address"
-                                        className=" w-full px-2 md:px-6 py-2 md:py-4 text-black outline-none rounded-s-full"
-                                    />
-                                    <br /><br />
-                                    <button className="bg-[#ff7519] text-white px-2 md:px-6 py-4 rounded-s-full rounded-e-full font-bold border-none hover:bg-[#ff934a] md:w-[50%] w-[240px]">
-                                        Find now
-                                    </button>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        {/* Custom Round Circle Buttons */}
-                        <div className="absolute flex gap-2 justify-center bottom-12 w-full">
-                            {banners.map((_, i) => (
-                                <a
-                                    key={i}
-                                    href={`#slide${i + 1}`}
-                                    className={`w-4 h-4 rounded-full flex items-center justify-center ${currentSlide === i ? 'bg-[#de0d67]' : 'bg-[#ededed]'} hover:bg-[#90013f]`}
-                                    onClick={() => setCurrentSlide(i)} // Manually change slide on click
-                                >
-                                </a>
-                            ))}
-                        </div>
+        <div className='w-full  h-screen  bg-fixed bg-center bg-cover bg-no-repeat flex justify-center items-center'
+            style={{ backgroundImage: "url('/assets/banner/bg-food.jpg')" }}>
+            <div className='space-y-6 text-white text-center '>
+                <h1 className='text-2xl md:text-5xl  font-bold tracking-wide '>Serve <span className='font-greatVibes'>Fast & Fresh Food</span> Delivery</h1>
+                <div className='bg-[#ffbe00]  flex flex-row justify-evenly items-center p-5 gap-4'>
+                    <div className='w-5/12'>
+                        <input placeholder='Restaurant' className='text-black ps-4 w-full py-4' type="text" />
                     </div>
-                ))}
+                    <div className='w-4/12 relative text-black'>
+                        <input placeholder="Search Location" className='w-full py-4 pl-10 pr-10' type="text" />
+                        <span className='flex flex-row justify-between items-center absolute pointer-events-none inset-y-0 left-0 right-0 px-4 text-[#525252]'>
+                            <CiLocationOn className='mr-2' />
+                            <CiLocationArrow1 />
+                        </span>
+                    </div>
+                    <div className='w-3/12'>
+                        <button className='bg-red-600 w-full text-white font-bold py-4'>Search</button>
+                    </div>
+                </div>
+                <Counter />
             </div>
         </div>
+
+
     );
 };
 
