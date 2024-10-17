@@ -1,8 +1,9 @@
-'use client';
+'use client'
+
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
-// Confirmation Modal Component
-const ConfirmationModal = ({ isOpen, onClose, onConfirm, restaurantName }) => {
+const ConfirmationModal = ({ isOpen, onClose, restaurantName }) => {
   if (!isOpen) return null;
 
   return (
@@ -12,7 +13,7 @@ const ConfirmationModal = ({ isOpen, onClose, onConfirm, restaurantName }) => {
         <h2 className="text-xl font-bold mb-4">Confirm Action</h2>
         <p>Are you sure you want to block/unblock {restaurantName}?</p>
         <div className="flex justify-end mt-4">
-          <button className="bg-red-500 text-white px-4 py-2 rounded mr-2" onClick={onConfirm}>
+          <button className="bg-red-500 text-white px-4 py-2 rounded mr-2" onClick={onClose}>
             Confirm
           </button>
           <button className="bg-gray-300 text-gray-700 px-4 py-2 rounded" onClick={onClose}>
@@ -24,7 +25,6 @@ const ConfirmationModal = ({ isOpen, onClose, onConfirm, restaurantName }) => {
   );
 };
 
-// Report Modal Component
 const ReportModal = ({ isOpen, onClose, restaurant }) => {
   if (!isOpen || !restaurant) return null;
 
@@ -55,73 +55,29 @@ const ReportModal = ({ isOpen, onClose, restaurant }) => {
 
 // Main Component
 const ManageRestaurants = () => {
-  const [data, setData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
-  const [actionRestaurant, setActionRestaurant] = useState(null);
-
-  const fetchData = async () => {
-    try {
-      const res = await fetch('/api/allrestrurent');
-      const jsonData = await res.json();
-      setData(jsonData.result);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
+  const [searchTerm, setSearchTerm] = useState('');
+  const [statusFilter, setStatusFilter] = useState('');
+  const [restaurants, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(`https://quick-bites-tau.vercel.app/api/allrestrurent`);
+        const data = await res.json();
+        setData(data?.result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchData();
   }, []);
-
-  const handleToggleStatus = async (restaurant) => {
-    setActionRestaurant(restaurant);
-    setIsConfirmationOpen(true);
-  };
-
-console.log(data);
-  const updateData = async (id, status) => {
-    try {
-      const resp = await fetch(`/api/updateRestaurant/${id}?status=${status}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-  
-    
-  
-     
-    } catch (error) {
-      console.log('Error updating restaurant status:', error);
-    }
-  };
-  
-  const confirmToggleStatus = async () => {
-    try {
-      let status;
-      // Determine the new status based on the current status
-      if (actionRestaurant?.status === 'active') {
-        status = 'block';
-      } else if (actionRestaurant?.status === 'block') {
-        status = 'active';
-      }
-  
-      // Call the update function
-      await updateData(actionRestaurant._id, status);
-  
-      // Close the confirmation modal after the action is completed
-      setIsConfirmationOpen(false);
-  
-      // Optionally, you can refetch data or manually update the UI
-      fetchData();
-  
-    } catch (error) {
-      console.error('Error updating status:', error);
-    }
-  };
-  
 
   const handleOpenReport = (restaurant) => {
     setSelectedRestaurant(restaurant);
@@ -133,12 +89,81 @@ console.log(data);
     setSelectedRestaurant(null);
   };
 
+  const handleToggleStatus = (restaurant) => {
+    setSelectedRestaurant(restaurant);
+    setIsConfirmationOpen(true);
+  };
+
+  const handleCloseConfirmation = () => {
+    setIsConfirmationOpen(false);
+  };
+
+  const filteredData = restaurants
+    .filter((restaurant) => restaurant.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    .filter((restaurant) => (statusFilter ? restaurant.status === statusFilter : true));
+
+  // CSV Export Functionality
+  const exportToCSV = () => {
+    const csvRows = [];
+    // Define the header row
+    const headers = ['Name', 'Location', 'Opens At', 'Status'];
+    csvRows.push(headers.join(','));
+
+    // Add restaurant data
+    filteredData.forEach((restaurant) => {
+      const row = [
+        restaurant.name,
+        restaurant.location,
+        restaurant.opensAt,
+        restaurant.status === 'block' ? 'Blocked' : 'Active',
+      ];
+      csvRows.push(row.join(','));
+    });
+
+    // Create a Blob from the CSV data
+    const csvData = new Blob([csvRows.join('\n')], { type: 'text/csv;charset=utf-8;' });
+
+    // Create a link element to trigger the download
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(csvData);
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'restaurants.csv');
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-2xl font-bold mb-4">Manage Restaurants</h1>
+
+      {/* Search & Filters */}
+      <div className="flex items-center justify-between mb-4">
+        <input
+          type="text"
+          placeholder="Search by name..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="border p-2 rounded"
+        />
+        <select
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+          className="border p-2 rounded"
+        >
+          <option value="">All</option>
+          <option value="active">Active</option>
+          <option value="block">Blocked</option>
+        </select>
+        <button className="bg-green-500 text-white px-4 py-2 rounded" onClick={exportToCSV}>
+          Export CSV
+        </button>
+      </div>
+
+      {/* Table */}
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
-          {/* Head */}
           <thead>
             <tr className="bg-gray-100 border-b">
               <th className="py-3 px-4 text-left text-sm font-medium text-gray-600">Name</th>
@@ -148,52 +173,59 @@ console.log(data);
               <th className="py-3 px-4 text-left text-sm font-medium text-gray-600">Action</th>
             </tr>
           </thead>
-          {/* Body */}
-          
           <tbody>
-  {data && data.length > 0 ? (
-    data.map((restaurant) => (
-      <tr key={restaurant._id} className="border-b hover:bg-gray-50">
-        <td className="py-4 px-4 text-sm text-gray-700">{restaurant.name}</td>
-        <td className="py-4 px-4 text-sm text-gray-700">{restaurant.location}</td>
-        <td className="py-4 px-4 text-sm text-gray-700">{restaurant.opensAt}</td>
-        <td className="py-4 px-4 text-sm text-gray-700">
-          <span className={`inline-flex text-xs font-semibold rounded-full px-2.5 py-0.5 ${restaurant.status === "block" ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'}`}>
-            {restaurant.status === 'block' ? 'Blocked' : 'Active'}
-          </span>
-        </td>
-        <td className="py-4 px-4 text-sm">
-          <button
-            className={`py-2 px-4 rounded-lg text-white ${restaurant.status === 'block' ? 'bg-green-500 hover:bg-green-400' : 'bg-red-500 hover:bg-red-400'}`}
-            onClick={() => handleToggleStatus(restaurant)}
-          >
-            {restaurant.status === 'block' ? 'Unblock' : 'Block'}
-          </button>
-          <button
-            className="ml-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-400"
-            onClick={() => handleOpenReport(restaurant)}
-          >
-            Details
-          </button>
-        </td>
-      </tr>
-    ))
-  ) : (
-    <tr>
-      <td colSpan="5" className="py-4 text-center text-gray-700">Loading...</td>
-    </tr>
-  )}
-</tbody>
-
-
+            {filteredData.length > 0 ? (
+              filteredData.map((restaurant) => (
+                <tr key={restaurant._id} className="border-b hover:bg-gray-50">
+                  <td className="py-4 px-4 text-sm text-gray-700">{restaurant.name}</td>
+                  <td className="py-4 px-4 text-sm text-gray-700">{restaurant.location}</td>
+                  <td className="py-4 px-4 text-sm text-gray-700">{restaurant.opensAt}</td>
+                  <td className="py-4 px-4 text-sm text-gray-700">
+                    <span
+                      className={`inline-flex text-xs font-semibold rounded-full px-2.5 py-0.5 ${
+                        restaurant.status === 'block' ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'
+                      }`}
+                    >
+                      {restaurant.status === 'block' ? 'Blocked' : 'Active'}
+                    </span>
+                  </td>
+                  <td className="py-4 px-4 text-sm">
+                    <button
+                      className="bg-blue-500 text-white px-3 py-1 rounded mr-2"
+                      
+                    >
+                     <Link  href={`/dashboard/manageResturants/${restaurant?.slug}`}> View Details</Link>
+                    </button>
+                    <button
+                      className="bg-red-500 text-white px-3 py-1 rounded"
+                      onClick={() => handleToggleStatus(restaurant)}
+                    >
+                      {restaurant.status === 'active' ? 'Block' : 'Unblock'}
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="5" className="py-4 text-center text-gray-700">No restaurants found</td>
+              </tr>
+            )}
+          </tbody>
         </table>
       </div>
-      <ReportModal isOpen={isModalOpen} onClose={handleCloseModal} restaurant={selectedRestaurant} />
+
+      {/* Confirmation Modal */}
       <ConfirmationModal
         isOpen={isConfirmationOpen}
-        onClose={() => setIsConfirmationOpen(false)}
-        onConfirm={confirmToggleStatus}
-        restaurantName={actionRestaurant ? actionRestaurant.name : ''}
+        onClose={handleCloseConfirmation}
+        restaurantName={selectedRestaurant ? selectedRestaurant.name : ''}
+      />
+
+      {/* Report Modal */}
+      <ReportModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        restaurant={selectedRestaurant}
       />
     </div>
   );
