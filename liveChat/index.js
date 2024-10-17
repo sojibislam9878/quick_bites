@@ -2,7 +2,7 @@ const express = require('express');
 require('dotenv').config();
 const http = require('http');
 const { Server } = require('socket.io');
-const { MongoClient } = require('mongodb');  // MongoDB driver
+const { MongoClient } = require('mongodb');  
 
 const app = express();
 const server = http.createServer(app);
