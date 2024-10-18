@@ -96,6 +96,9 @@ io.on('connection', (socket) => {
         delete users[socket.id];  // Remove user from the list when they disconnect
     });
 });
+server.get("/", (req, res)=>{
+    res.send("This server is runing")
+})
 
 server.listen(PORT, () => {
     console.log('Server is running on port 4000');
