@@ -23,10 +23,10 @@ const Footer = () => {
 
                     <div className="text-center  w-full mx-auto lg:w-fit md:text-left">
 
-                        <Link className=' ' href="/">
+                        <Link href="/">
 
                             <Image className=' w-20  mx-auto lg:mx-0 md:mx-0'
-                                src="https://i.ibb.co/VL1QJJC/quitebites-logo2.png"
+                                src="https://i.ibb.co.com/MP6sd6v/logo-02.png"
                                 alt="QuickBite"
                                 height={100}
                                 width={100}

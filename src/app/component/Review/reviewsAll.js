@@ -78,5 +78,22 @@ export const reviewsAll = [
     "rating": 5,
     "date": "2024-08-30",
     "image": "https://i.ibb.co/LpyzbWh/aleksandr-minakov.jpg"
+  },
+  {
+    "id": 11,
+    "reviewer": "Sarah Taylor",
+    "review": "Good value for the money. The product performs well, and I haven't encountered any issues so far.",
+    "rating": 4,
+    "date": "2024-09-03",
+    "image": "https://i.ibb.co/NVzBBdK/behrouz-sasani-kh-Mxnuos-SV4-unsplash.jpg"
+  }
+  ,
+  {
+    "id": 12,
+    "reviewer": "Emily Davis",
+    "review": "Excellent customer service and fast delivery. The product works as advertised, and I'm very satisfied.",
+    "rating": 5,
+    "date": "2024-09-07",
+    "image": "https://i.ibb.co/kQMMKjY/behrouz-sasani.jpg"
   }
 ];
