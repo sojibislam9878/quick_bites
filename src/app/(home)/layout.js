@@ -9,6 +9,7 @@ import { Poppins } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
 import Auth from "../session/Auth";
 import { GlobalProvider } from "./../GlobalProvider";
+import LiveChat from "../component/LiveChat/LiveChat";
 
 const poppins = Poppins({
   subsets: ["latin"], // Specify subsets
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
         <body className={`${poppins.variable} antialiased`}>
           <Navbar></Navbar>
           {children}
+          <LiveChat></LiveChat>
           <Footer></Footer>
         </body>
       </Auth></GlobalProvider>
