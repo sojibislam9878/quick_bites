@@ -4,6 +4,7 @@ import AdminProfile from './(admin)/adminProfile/page';
 import DeleveryProfile from './(deleveryMan)/deleveryProfile/page';
 import OwnerProfile from './(owner)/ownerProfile/page';
 import UserProfile from './(user)/userProfile/page';
+import { useSession } from 'next-auth/react';
 
 export const metadata = {
   title: "Dashboard-UserProfile",
@@ -17,7 +18,8 @@ const DashboardPage = () => {
     image:"https://thumbs.dreamstime.com/b/delivery-boy-ride-scooter-motorcycle-servic-service-order-worldwide-shipping-fast-free-transport-75096257.jpg",
   };
 
-  const role="user"
+const role= "user"
+  
   return (
     <div> 
     {
