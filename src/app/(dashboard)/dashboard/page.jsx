@@ -18,7 +18,7 @@ const DashboardPage = () => {
     image:"https://thumbs.dreamstime.com/b/delivery-boy-ride-scooter-motorcycle-servic-service-order-worldwide-shipping-fast-free-transport-75096257.jpg",
   };
 
-const role= "user"
+const role= "admin"
   
   return (
     <div> 
