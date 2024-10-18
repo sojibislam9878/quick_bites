@@ -17,7 +17,7 @@ const io = new Server(server, {
 const PORT = process.env.PORT || 4000;
 
 // MongoDB connection string (replace with your MongoDB URL)
-const uri = `mongodb+srv://${process.env.NEXT_PUBLIC_MONGOUSER}:${process.env.NEXT_PUBLIC_MONGOPASS}@cluster0.lel6e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+const uri = `mongodb+srv://endGameProject:ezyPAm3Cgs6gT0IL@cluster0.lel6e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 const { ServerApiVersion, ObjectId } = require('mongodb');
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
