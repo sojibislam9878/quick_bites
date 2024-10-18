@@ -20,10 +20,10 @@ const ChatMessage = ({ role, text, timestamp }) => {
   
 
   return (
-    <div className={`flex ${role ==='admin' ? ' justify-end' : 'justify-start'}`}>
-      <div className={`max-w-xs p-3 rounded-lg ${role ==='admin' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}>
+    <div className={`flex ${role ==='admin' ? ' justify-start' : 'justify-end'}`}>
+      <div className={`max-w-xs p-3 rounded-lg ${role ==='admin' ? 'bg-gray-200' : ' bg-blue-500 text-white'}`}>
         <p className="text-sm">{text}</p>
-        <span className={`block mt-2 text-xs ${role ==='admin' ? 'text-slate-300':'text-gray-500'}`}>{format(timestamp,'en_short')}</span>
+        <span className={`block mt-2 text-xs ${role ==='admin' ? 'text-gray-500':' text-slate-300'}`}>{format(timestamp,'en_short')}</span>
       </div>
     </div>
   );
