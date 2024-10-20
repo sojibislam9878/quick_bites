@@ -40,7 +40,7 @@ function UserProfile() {
         <div className="w-full text-left">
           <h3 className="text-xl font-semibold mb-2 text-[#533831]">About Me</h3>
           <p className="text-gray-600 mb-4">
-            I am a passionates frontend developer specializing in creating interactive and responsive user interfaces.
+            I am a passionates frontend developer specializing in creating interactive and responsive user interfaces.s
           </p>
 
           {/* Social Links */}
