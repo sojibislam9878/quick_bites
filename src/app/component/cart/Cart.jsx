@@ -5,8 +5,11 @@ import CartContext from "../../Context/CartContext";
 import Link from "next/link";
 import axios from "axios";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 const Cart = () => {
+  const userData=useSession()
+  
   const { addItemToCart, deleteItemFromCart, cart } = useContext(CartContext);
   const [hasCoupon, setHasCoupon] = useState(false); // State to handle checkbox
   const [coupon, setCoupon] = useState(""); // State to store coupon input
@@ -58,11 +61,20 @@ const Cart = () => {
       setDiscount(0);
     }
   };
+
+ 
   const handlePayment = async () => {
 
-    const amount={amount:totalAmountAfterDiscount || totalAmountBeforeDiscount}
+   
+    const amount=totalAmountAfterDiscount || totalAmountBeforeDiscount
 
-const data= axios.post('http://localhost:4000/checkOut',amount)
+    const allData={
+      amount,
+      name:userData?.data?.user?.name,
+      email: userData?.data?.user?.email
+    }
+
+const data= axios.post('http://localhost:4000/checkOut',allData)
     .then((response)=>{ 
         console.log(response)
 

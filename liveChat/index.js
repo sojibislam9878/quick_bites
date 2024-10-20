@@ -5,6 +5,11 @@ const { Server } = require('socket.io');
 const { MongoClient } = require('mongodb');  
 const SSLCommerzPayment = require('sslcommerz-lts')
 const bodyParser = require('body-parser')
+const { v4: uuidv4 } = require('uuid');
+
+// Generate a unique transaction ID
+const transactionId = uuidv4();
+
 
 // just for check
 
@@ -56,7 +61,7 @@ try {
       const paymentData = {
         total_amount: data?.amount, // payment amount
         currency: 'USD', // e.g., 'BDT'
-        tran_id: 'REF123', // unique transaction id
+        tran_id: transactionId, // unique transaction id
         success_url: 'http://localhost:5000/payment-success',
         fail_url: 'https://e-commerce-server-side-beta.vercel.app/payment-fail',
         cancel_url: 'https://e-commerce-server-side-beta.vercel.app/payment-cancel',
@@ -65,8 +70,8 @@ try {
         product_name: 'Test Product',
         product_category: 'Test Category',
         product_profile: 'general',
-        cus_name: 'SAFWAN',
-        cus_email: 'SAFWAN@example.com',
+        cus_name: data?.name,
+        cus_email: data?.email,
         cus_add1: 'Dhaka',
         cus_add2: 'Dhaka',
         cus_city: 'Dhaka',
@@ -81,8 +86,7 @@ try {
     try {
         const sslcz = new SSLCommerzPayment(`${process.env.PAYMENT_ID}`, `${process.env.PAYMENT_PASSWORD}`, false); // Use true for live, false for sandbox
         const paymentResponse = await sslcz.init(paymentData);
-        console.log(paymentResponse)
-        console.log(sslcz)
+   
         if (paymentResponse.GatewayPageURL) {
             res.status(200).send({ url: paymentResponse.GatewayPageURL });
         } else {
@@ -95,6 +99,8 @@ try {
     })
     
     app.post('/payment-success', (req, res) => {
+        const data=req.body
+        console.log(data)
         // Handle success response
         res.status(200).redirect('http://localhost:3000/paymentSuccess');
       });
