@@ -34,26 +34,7 @@ const  OwnerProfile = () => {
         <p className="text-gray-600 mb-6">{data.email}</p>
 <h1 className="text-red-500 font-bold text-2xl">{data.role}</h1>
         {/* Additional Info */}
-        <div className="w-full text-left">
-          <h3 className="text-xl font-semibold mb-2 text-[#533831]">About Me</h3>
-          <p className="text-gray-600 mb-4">
-            I am a passionates frontend developer specializing in creating interactive and responsive user interfaces.
-          </p>
-
-          {/* Social Links */}
-          <h3 className="text-xl font-semibold mb-2 text-[#533831]">Connect with me</h3>
-          <div className="flex space-x-4">
-            <a href="#" className="text-blue-500 hover:text-blue-700" aria-label="LinkedIn">
-              <FaLinkedin size={24} />
-            </a>
-            <a href="#" className="text-blue-400 hover:text-blue-600" aria-label="Twitter">
-              <FaTwitter size={24} />
-            </a>
-            <a href="#" className="text-gray-800 hover:text-black" aria-label="GitHub">
-              <FaGithub size={24} />
-            </a>
-          </div>
-        </div>
+      
       </div>
     </div>
   </div></div></div>
