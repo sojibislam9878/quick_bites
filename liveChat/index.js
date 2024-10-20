@@ -3,15 +3,28 @@ require('dotenv').config();
 const http = require('http');
 const { Server } = require('socket.io');
 const { MongoClient } = require('mongodb');  
+const SSLCommerzPayment = require('sslcommerz-lts')
+const bodyParser = require('body-parser')
 
 // just for check
 
 const app = express();
+app.use(express.json());
+const cors = require('cors')
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors(
+    {
+      origin: [,"http://localhost:3000",'https://quick-bites-tau.vercel.app'],
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    }
+  
+  )); 
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
         origin: "*",
-        methods: ["GET", "POST"]
+        methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     }
 });
 const PORT = process.env.PORT || 4000;
@@ -31,6 +44,66 @@ const client = new MongoClient(uri, {
 
 
 const database =client.db("Quick_Bites")
+
+
+
+  async function run() {
+
+try {
+    app.post('/checkout', async (req, res) => {
+        const data = req.body;
+    console.log(data)
+      const paymentData = {
+        total_amount: data?.amount, // payment amount
+        currency: 'USD', // e.g., 'BDT'
+        tran_id: 'REF123', // unique transaction id
+        success_url: 'http://localhost:5000/payment-success',
+        fail_url: 'https://e-commerce-server-side-beta.vercel.app/payment-fail',
+        cancel_url: 'https://e-commerce-server-side-beta.vercel.app/payment-cancel',
+        ipn_url: 'https://e-commerce-server-side-beta.vercel.app/ipn',
+        shipping_method: 'No',
+        product_name: 'Test Product',
+        product_category: 'Test Category',
+        product_profile: 'general',
+        cus_name: 'SAFWAN',
+        cus_email: 'SAFWAN@example.com',
+        cus_add1: 'Dhaka',
+        cus_add2: 'Dhaka',
+        cus_city: 'Dhaka',
+        cus_state: 'Dhaka',
+        cus_postcode: '1000',
+        cus_country: 'Bangladesh',
+        cus_phone: '123',
+        cus_fax: '123',
+        multi_card_name: 'mastercard',
+    };
+    
+    try {
+        const sslcz = new SSLCommerzPayment(`${process.env.PAYMENT_ID}`, `${process.env.PAYMENT_PASSWORD}`, false); // Use true for live, false for sandbox
+        const paymentResponse = await sslcz.init(paymentData);
+        console.log(paymentResponse)
+        console.log(sslcz)
+        if (paymentResponse.GatewayPageURL) {
+            res.status(200).send({ url: paymentResponse.GatewayPageURL });
+        } else {
+            res.status(400).send({ error: 'Failed to initiate payment' });
+        }
+    } catch (error) {
+        res.status(500).send({ error: error.message });
+    }
+       
+    })
+    
+    app.post('/payment-success', (req, res) => {
+        // Handle success response
+        res.status(200).redirect('http://localhost:3000/paymentSuccess');
+      });
+
+  }catch (error){
+    console.error('Failed to connect to MongoDB:', error);
+  }}
+
+  
 
 const chatCollection = database.collection("massages")
 
@@ -100,3 +173,11 @@ io.on('connection', (socket) => {
 server.listen(PORT, () => {
     console.log('Server is running on port 4000');
 });
+
+run().catch(console.dir);
+
+app.get('/', (req, res) => {
+    res.send('done')
+  })
+  
+  app.listen(5000)

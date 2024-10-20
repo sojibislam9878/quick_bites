@@ -62,7 +62,7 @@ const Cart = () => {
 
     const amount={amount:totalAmountAfterDiscount || totalAmountBeforeDiscount}
 
-    axios.post('https://e-commerce-server-side-beta.vercel.app/checkOut',amount)
+const data= axios.post('http://localhost:4000/checkOut',amount)
     .then((response)=>{ 
         console.log(response)
 
@@ -70,6 +70,8 @@ const Cart = () => {
           window.location.href = response.data.url; // Redirect to SSLCommerz payment page
         }
       })
+      console.log(data);
+      
 
 
 
