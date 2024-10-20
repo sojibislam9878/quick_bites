@@ -27,37 +27,37 @@ const DashboardPage = () => {
 
   return (
 
-    <div >  
-    <Stats></Stats>
-
-    <div className="grid grid-cols-1 lg:grid-cols-2  lg:gap-10 p-6 lg:p-10 bg-gray-50">
-
-    {/* Profile Page */}
-    <div className="bg-white shadow-lg rounded-lg p-6 flex items-center justify-center h-64">
-      {role === "user" && <UserProfile />}
-      {role === "admin" && <AdminProfile />}
-      {role === "deleveryMan" && <DeleveryProfile />}
-      {role === "owner" && <OwnerProfile />}
-    </div>
+    <div>  
+    <Stats />
   
-    {/* User Chart */}
-    <div className="bg-white shadow-lg rounded-lg p-6 flex items-center justify-center h-64">
-      <UserChart />
-    </div>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 p-6 lg:p-10 bg-gray-50">
   
-    {/* Payment */}
-    <div className="bg-white shadow-lg rounded-lg p-6 flex items-center justify-center h-64">
-      <MyApexChart />
+      {/* Profile Page */}
+      <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center justify-center h-64 transition-transform duration-300 transform hover:scale-105">
+        {role === "user" && <UserProfile />}
+        {role === "admin" && <AdminProfile />}
+        {role === "deleveryMan" && <DeleveryProfile />}
+        {role === "owner" && <OwnerProfile />}
+      </div>
+    
+      {/* User Chart */}
+      <div className="bg-white shadow-lg rounded-lg p-6 flex items-center justify-center h-64 transition-transform duration-300 transform hover:scale-105">
+        <UserChart />
+      </div>
+    
+      {/* Payment */}
+      <div className="bg-white shadow-lg rounded-lg p-6 flex items-center justify-center h-64 transition-transform duration-300 transform hover:scale-105">
+        <MyApexChart />
+      </div>
+    
+      {/* Earning Chart */}
+      <div className="bg-white shadow-lg rounded-lg p-6 flex items-center justify-center h-64 transition-transform duration-300 transform hover:scale-105">
+        <EarningChart />
+      </div>
+    
     </div>
-  
-    {/* Earning Chart */}
-    <div className="bg-white shadow-lg rounded-lg p-6 flex items-center justify-center h-64">
-      <EarningChart />
-    </div>
-  
   </div>
   
-  </div>
   
   );
 };

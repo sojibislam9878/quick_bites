@@ -13,11 +13,11 @@ const  Stats = () => {
         },
         {
             data: "10K+",
-            title: "Downloads"
+            title: "Total Users"
         },
         {
             data: "40+",
-            title: "Countries"
+            title: "Owners"
         },
         {
             data: "30M+",
