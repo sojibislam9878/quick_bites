@@ -30,10 +30,10 @@ const DashboardPage = () => {
     <div>  
     <Stats />
   
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 p-6 lg:p-10 bg-gray-50">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 p-6 lg:p-10 bg-gray-50 mt-20 ">
   
       {/* Profile Page */}
-      <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center justify-center h-64 transition-transform duration-300 transform hover:scale-105">
+      <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center justify-center h-64 transition-transform duration-300 transform hover:scale-105  mt-20">
         {role === "user" && <UserProfile />}
         {role === "admin" && <AdminProfile />}
         {role === "deleveryMan" && <DeleveryProfile />}
@@ -41,17 +41,17 @@ const DashboardPage = () => {
       </div>
     
       {/* User Chart */}
-      <div className="bg-white shadow-lg rounded-lg p-6 flex items-center justify-center h-64 transition-transform duration-300 transform hover:scale-105">
+      <div className="bg-white shadow-lg rounded-lg p-6 flex items-center justify-center h-64 transition-transform duration-300 transform hover:scale-105 mt-20">
         <UserChart />
       </div>
     
       {/* Payment */}
-      <div className="bg-white shadow-lg rounded-lg p-6 flex items-center justify-center h-64 transition-transform duration-300 transform hover:scale-105">
+      <div className="bg-white shadow-lg rounded-lg p-6 flex items-center justify-center h-64 transition-transform duration-300 transform hover:scale-105  mt-20">
         <MyApexChart />
       </div>
     
       {/* Earning Chart */}
-      <div className="bg-white shadow-lg rounded-lg p-6 flex items-center justify-center h-64 transition-transform duration-300 transform hover:scale-105">
+      <div className="bg-white shadow-lg rounded-lg p-6 flex items-center justify-center h-64 transition-transform duration-300 transform hover:scale-105  mt-20">
         <EarningChart />
       </div>
     

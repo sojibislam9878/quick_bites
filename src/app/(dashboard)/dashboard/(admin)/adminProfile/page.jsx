@@ -15,29 +15,41 @@ const AdminProfile = () => {
       };
     
   return (
-    <div><div> <div className="min-h-screen flex justify-center items-center p-4 lg:p-0">
-
-
-    <div className="bg-white shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)] text-[#533831] selection:text-orange-500 rounded-lg shadow-lg p-8 w-full">
-      <div className="flex flex-col items-center">
-        {/* Profile Picture */}
-        <img
-          src={data.image}
-          alt="Profile Picture"
-          className="w-32 h-32 rounded-full object-cover mb-4 shadow-[-10px_-10px_30px_4px_rgba(223,198,173),_10px_10px_30px_4px_rgba(45,78,255,0.15)]"
-        />
-
-        {/* Name */}
-        <h2 className="text-2xl font-bold text-[#533831]">{data.name}</h2>
-
-        {/* Email */}
-        <p className="text-gray-600 mb-6">{data.email}</p>
-<h1 className="text-red-500 font-bold text-2xl">{data.role}</h1>
-        {/* Additional Info */}
-   
-      </div>
-    </div>
-  </div></div></div>
+    <div class="flex flex-col justify-center items-center h-[100vh] ">
+    <div class="relative flex flex-col items-center rounded-[20px] w-[400px] mx-auto p-4 bg-white bg-clip-border shadow-3xl shadow-shadow-500 dark:!bg-navy-800 dark:text-white dark:!shadow-none">
+        <div class="relative flex h-32 w-full justify-center rounded-xl bg-cover" >
+            <img src='https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/media/banner.ef572d78f29b0fee0a09.png' class="absolute flex h-32 w-full justify-center rounded-xl bg-cover"/> 
+            <div class="absolute -bottom-12 flex h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white bg-pink-400 dark:!border-navy-700">
+                <img class="h-full w-full rounded-full" src={data.image} alt="" />
+            </div>
+        </div> 
+        <div class="mt-16 flex flex-col items-center">
+            <h4 class="text-xl font-bold text-navy-700 dark:text-white">
+          {data.name}
+            </h4>
+            <p class="text-base font-normal text-gray-600">{data.role}</p>
+        </div> 
+        <div class="mt-6 mb-3 flex gap-14 md:!gap-14">
+            <div class="flex flex-col items-center justify-center">
+            <p class="text-2xl font-bold text-navy-700 dark:text-white">{data.name}</p>
+            <p class="text-sm font-normal text-gray-600">{data.email}</p>
+            </div>
+            <div class="flex flex-col items-center justify-center">
+            <p class="text-2xl font-bold text-navy-700 dark:text-white">
+                9.7K
+            </p>
+            <p class="text-sm font-normal text-gray-600">Followers</p>
+            </div>
+            <div class="flex flex-col items-center justify-center">
+            <p class="text-2xl font-bold text-navy-700 dark:text-white">
+                434
+            </p>
+            <p class="text-sm font-normal text-gray-600">Following</p>
+            </div>
+        </div>
+    </div>  
+    <p class="font-normal text-navy-700 mt-20 mx-auto w-max">Profile Card component from <a href="https://horizon-ui.com?ref=tailwindcomponents.com" target="_blank" class="text-brand-500 font-bold">Horizon UI Tailwind React</a></p>  
+</div>
   )
 }
 
