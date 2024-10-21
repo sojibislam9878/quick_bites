@@ -6,10 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { MdOutlineWatchLater } from 'react-icons/md';
 
 const DiscountBanner = () => {
-    // Set initial countdown time for 1 hour (3600 seconds)
     const [timeLeft, setTimeLeft] = useState(3600);
-
-    // Countdown logic
     useEffect(() => {
         if (timeLeft > 0) {
             const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
@@ -29,7 +26,6 @@ const DiscountBanner = () => {
 
     return (
         <div className='flex flex-col md:flex-row justify-center items-center my-4 gap-8  rounded-xl overflow-hidden'>
-            {/* First Banner with Timer */}
             <div className='relative overflow-hidden w-full rounded-xl shadow-lg group'>
                 <Image
                     src={'/assets/discount/2.jpg'}
@@ -60,8 +56,6 @@ const DiscountBanner = () => {
                     <p className="mt-2 text-lg font-bold">Deal ends soon!</p>
                 </div>
             </div >
-
-            {/* Second Banner */}
             < div className='relative overflow-hidden w-full rounded-xl shadow-lg group' >
                 <Image
                     src={'/assets/discount/3.jpg'}
