@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CartContext from "../../Context/CartContext";
 import Link from "next/link";
 import axios from "axios";
@@ -14,6 +14,25 @@ const Cart = () => {
   const [hasCoupon, setHasCoupon] = useState(false); // State to handle checkbox
   const [coupon, setCoupon] = useState(""); // State to store coupon input
   const [discount, setDiscount] = useState(0); // State to store discount
+
+  // const [foodName, setFoodName] =useState()
+  // const [quantity, setQuantity] =useState()
+  // const [brand, setBrand] =useState()
+  // const [brand, setBrand] =useState()
+  // const [brand, setBrand] =useState()
+
+
+  console.log(cart.cartItems,'cart is here ');
+//   useEffect(()=>{
+//     const foodName=cart?.cartItems?.map(data => data?.foodName)
+//     setFoodName(foodName)
+//     const quantity=cart?.cartItems?.map(data => data?.quantity)
+// setQuantity(quantity)
+// const brand=cart?.cartItems?.map(data => data?.brand)
+
+
+
+//   },[cart])
 
   const increaseQty = (cartItem) => {
     const newQty = cartItem?.quantity + 1;
@@ -71,7 +90,15 @@ const Cart = () => {
     const allData={
       amount,
       name:userData?.data?.user?.name,
-      email: userData?.data?.user?.email
+      email: userData?.data?.user?.email,
+      productData:cart?.cartItems
+      // productName:cart?.cartItems?.foodName,
+      // productImage:cart?.cartItems?.image,
+      // productQuantity:cart?.cartItems?.quantity,
+      // productBrand:cart?.cartItems?.brand,
+      // productCategory:cart?.cartItems?.category,
+      // productId:cart?.cartItems?.product
+      
     }
 
 const data= axios.post('http://localhost:4000/checkOut',allData)
@@ -88,6 +115,8 @@ const data= axios.post('http://localhost:4000/checkOut',allData)
 
 
   }
+
+
 
   return (
     <>

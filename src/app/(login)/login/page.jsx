@@ -2,11 +2,10 @@
 import SocialSignin from "@/app/component/shared/SocialSignin";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
-// import { useSearchParams } from "next/navigation";
 
 const page = () => {
-    // const searchParams = useSearchParams();
-    // const path = searchParams.get("redirect");
+
+
 
 
     
@@ -15,6 +14,8 @@ const page = () => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
+
+
         const resp = await signIn("credentials", {
             email,
             password,
@@ -30,7 +31,9 @@ const page = () => {
 
 
 
+
     return (
+       <>
         <div className='h-screen  items-center text-justify'>
             <div className="flex justify-center md:py-24 py-12 lg:py-28  items-center h-full bg-cover bg-center relative" style={{ backgroundImage: "url('https://i.ibb.co.com/wC1k5yY/pexels-ella-olsson-572949-1640777.jpg')" }}>
                 {/* Overlay to darken the background */}
@@ -93,6 +96,9 @@ const page = () => {
                 </div>
             </div>
         </div>
+       
+       
+       </>
     );
 };
 

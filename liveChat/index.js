@@ -57,7 +57,7 @@ const database =client.db("Quick_Bites")
 try {
     app.post('/checkout', async (req, res) => {
         const data = req.body;
-    console.log(data)
+    console.log(data?.productData[0])
       const paymentData = {
         total_amount: data?.amount, // payment amount
         currency: 'USD', // e.g., 'BDT'
@@ -67,8 +67,10 @@ try {
         cancel_url: 'https://e-commerce-server-side-beta.vercel.app/payment-cancel',
         ipn_url: 'https://e-commerce-server-side-beta.vercel.app/ipn',
         shipping_method: 'No',
-        product_name: 'Test Product',
-        product_category: 'Test Category',
+        product_name: data.productData.length>1 ? 'Multiple Food items':data.productData[0].foodName ,
+        product_category: 'Food',
+        
+        product_data:data,
         product_profile: 'general',
         cus_name: data?.name,
         cus_email: data?.email,
@@ -86,6 +88,7 @@ try {
     try {
         const sslcz = new SSLCommerzPayment(`${process.env.PAYMENT_ID}`, `${process.env.PAYMENT_PASSWORD}`, false); // Use true for live, false for sandbox
         const paymentResponse = await sslcz.init(paymentData);
+        console.log(paymentResponse);
    
         if (paymentResponse.GatewayPageURL) {
             res.status(200).send({ url: paymentResponse.GatewayPageURL });
