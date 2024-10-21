@@ -49,6 +49,7 @@ const client = new MongoClient(uri, {
 
 
 const database =client.db("Quick_Bites")
+const transaction=database.collection("Transaction");
 
 
 
@@ -63,9 +64,8 @@ try {
         currency: 'USD', // e.g., 'BDT'
         tran_id: transactionId, // unique transaction id
         success_url: 'http://localhost:5000/payment-success',
-        fail_url: 'https://e-commerce-server-side-beta.vercel.app/payment-fail',
-        cancel_url: 'https://e-commerce-server-side-beta.vercel.app/payment-cancel',
-        ipn_url: 'https://e-commerce-server-side-beta.vercel.app/ipn',
+        fail_url: 'http://localhost:5000/payment-fail',
+        cancel_url: 'http://localhost:5000/payment-cancel',
         shipping_method: 'No',
         product_name: data.productData.length>1 ? 'Multiple Food items':data.productData[0].foodName ,
         product_category: 'Food',
@@ -91,6 +91,9 @@ try {
         console.log(paymentResponse);
    
         if (paymentResponse.GatewayPageURL) {
+            transaction.insertOne(paymentData)
+         
+
             res.status(200).send({ url: paymentResponse.GatewayPageURL });
         } else {
             res.status(400).send({ error: 'Failed to initiate payment' });
@@ -101,12 +104,47 @@ try {
        
     })
     
-    app.post('/payment-success', (req, res) => {
+    app.post('/payment-success', async(req, res) => {
         const data=req.body
-        console.log(data)
+
+        const query = {
+            tran_id: data?.tran_id,
+        }
+        const update = {
+            $set: {
+                status: 'pending',
+            },
+        }
+     const updateData=  await transaction.updateOne(query,update)
+
+
+        console.log(updateData)
         // Handle success response
         res.status(200).redirect('http://localhost:3000/paymentSuccess');
       });
+
+      app.post('/payment-cancel',async (req, res) => {
+        const data=req.body
+
+        const query = {
+            tran_id: data?.tran_id,
+        }
+       
+        await transaction.deleteOne(query)
+
+        
+      })
+      app.post('/payment-fail', async(req, res) => {
+        const data=req.body
+
+        const query = {
+            tran_id: data?.tran_id,
+        }
+       
+      await  transaction.deleteOne(query)
+
+        
+      })
 
   }catch (error){
     console.error('Failed to connect to MongoDB:', error);
