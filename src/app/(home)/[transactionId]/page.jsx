@@ -27,7 +27,7 @@ export default function PaymentSuccess() {
     })
       .then(response => {
           if (response.data.status == 'completed'){
-            route.push('/')
+            route.replace('/')
 
           }
 
@@ -47,6 +47,7 @@ export default function PaymentSuccess() {
           <FcOk className=' w-full' size={70} />
         </div>
         <h1 className="text-2xl font-semibold mt-4">Payment Successful</h1>
+        <p className="text-gray-600 mt-2">{transactionId}</p>
         <p className="text-gray-600 mt-2">Thank you for your payment! We have received your payment, and your order is being processed.</p>
         <div className="mt-6">
           <p onClick={handleGotoDashBoard} className="bg-green-500 cursor-pointer text-white py-2 px-4 rounded-lg shadow-md hover:bg-green-600 transition duration-300">

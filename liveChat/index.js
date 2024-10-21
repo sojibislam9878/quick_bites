@@ -66,6 +66,7 @@ try {
         success_url: 'http://localhost:5000/payment-success',
         fail_url: 'http://localhost:5000/payment-fail',
         cancel_url: 'http://localhost:5000/payment-cancel',
+        ipn_url: 'http://localhost:5000/ipn',
         shipping_method: 'No',
         product_name: data?.productData?.length>1 ? 'Multiple Food items':'food' ,
         product_category: 'Food',
@@ -88,7 +89,7 @@ try {
     try {
         const sslcz = new SSLCommerzPayment(`${process.env.PAYMENT_ID}`, `${process.env.PAYMENT_PASSWORD}`, false); // Use true for live, false for sandbox
         const paymentResponse = await sslcz.init(paymentData);
-        console.log(paymentResponse);
+        // console.log(paymentResponse);
    
         if (paymentResponse.GatewayPageURL) {
             transaction.insertOne(paymentData)
@@ -169,6 +170,14 @@ try {
         res.status(200).json(result);
       })
 
+
+    //   for ipn
+
+    app.post('/ipn', async(req, res) => {
+    
+        res.send(req.body)
+       
+    })
     //   for validation payment methods
     app.post('/validate',async(req,res) => {
 
