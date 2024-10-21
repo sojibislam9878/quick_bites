@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import SingleRestruent from '@/app/component/allrestrurent/SingleRestruent';
-import Head from 'next/head'; // For adding dynamic title
+import Head from 'next/head';
 import Spinner from '@/app/component/Spinner';
 
 const Restrurentpage = () => {

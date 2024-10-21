@@ -21,13 +21,11 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en" data-theme="light" className="bg-gray-100 text-gray-900 ">
-      {/* <QueryClientProvider client={query}> */}
       <body className={`${poppins.variable} antialiased`}>
 
         <div className="drawer lg:drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex flex-col items-center justify-center">
-            {/* children dashboard */}
             <QueryProvider>
               <Auth>
               {children}
@@ -46,7 +44,7 @@ export default function RootLayout({ children }) {
 
 
             <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay" />
-            <ul className="menu bg-gray-200  shadow   shadow-lg shadow-blue-400 min-h-full w-80 p-4  rounded-r-lg">
+            <ul className="menu bg-gray-200 shadow-lg shadow-blue-400 min-h-full w-80 p-4  rounded-r-lg">
 
               <Link href="/"><h1 className="text-2xl my-6 text-start font-bold text-orange-500">Quick Bites</h1>
 
@@ -69,7 +67,6 @@ export default function RootLayout({ children }) {
           </div>
         </div>
       </body>
-      {/* </QueryClientProvider> */}
     </html>
   );
 }
