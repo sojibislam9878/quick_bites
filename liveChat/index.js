@@ -58,7 +58,7 @@ const transaction=database.collection("Transaction");
 try {
     app.post('/checkout', async (req, res) => {
         const data = req.body;
-    console.log(data?.productData[0])
+    // console.log(data?.productData[0])
       const paymentData = {
         total_amount: data?.amount, // payment amount
         currency: 'USD', // e.g., 'BDT'
@@ -67,7 +67,7 @@ try {
         fail_url: 'http://localhost:5000/payment-fail',
         cancel_url: 'http://localhost:5000/payment-cancel',
         shipping_method: 'No',
-        product_name: data.productData.length>1 ? 'Multiple Food items':data.productData[0].foodName ,
+        product_name: data?.productData?.length>1 ? 'Multiple Food items':'food' ,
         product_category: 'Food',
         
         product_data:data,
@@ -104,8 +104,11 @@ try {
        
     })
     
+    // when use click the payment success
     app.post('/payment-success', async(req, res) => {
         const data=req.body
+        console.log(data);
+        
 
         const query = {
             tran_id: data?.tran_id,
@@ -113,6 +116,7 @@ try {
         const update = {
             $set: {
                 status: 'pending',
+                validId:data.val_id
             },
         }
      const updateData=  await transaction.updateOne(query,update)
@@ -120,9 +124,11 @@ try {
 
         console.log(updateData)
         // Handle success response
-        res.status(200).redirect('http://localhost:3000/paymentSuccess');
+        res.status(200).redirect(`http://localhost:3000/${data.tran_id}`);
       });
 
+
+    //   when user cancel the payment request
       app.post('/payment-cancel',async (req, res) => {
         const data=req.body
 
@@ -131,9 +137,12 @@ try {
         }
        
         await transaction.deleteOne(query)
+        res.status(200).redirect('http://localhost:3000');
 
         
       })
+
+    //   when use click the payment failed
       app.post('/payment-fail', async(req, res) => {
         const data=req.body
 
@@ -143,8 +152,46 @@ try {
        
       await  transaction.deleteOne(query)
 
+      res.status(200).redirect('http://localhost:3000');
+
         
       })
+
+    //   get payment information by transaction id 
+      app.get('/order/:id',async(req,res)=>{
+        const data=req.params.id
+        const query = {
+            tran_id: data,
+        }
+        const result = await transaction.findOne(query)
+        console.log(result)
+        // Handle success response
+        res.status(200).json(result);
+      })
+
+    //   for validation payment methods
+    app.post('/validate',async(req,res) => {
+
+        const data = req.body;
+        const query = {
+            tran_id: data.transactionId,
+        }
+        const paymentData=await transaction.findOne(query)
+        if (paymentData.validId==data.id) {
+            const update={
+                $set: {
+                    status: 'completed',
+                },
+            }
+            await transaction.updateOne(query,update)
+            res.status(200).send({ status: 'completed' });
+            
+        }
+        else {
+            res.status(403).send({ error: 'Invalid ID' });
+        }
+    })
+
 
   }catch (error){
     console.error('Failed to connect to MongoDB:', error);

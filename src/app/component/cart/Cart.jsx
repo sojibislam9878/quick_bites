@@ -91,7 +91,7 @@ const Cart = () => {
       amount,
       name:userData?.data?.user?.name,
       email: userData?.data?.user?.email,
-      productData:cart?.cartItems
+      foodItems:cart?.cartItems
       // productName:cart?.cartItems?.foodName,
       // productImage:cart?.cartItems?.image,
       // productQuantity:cart?.cartItems?.quantity,
