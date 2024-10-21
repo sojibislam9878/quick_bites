@@ -10,7 +10,7 @@ const FavoriteBtnFill = ({setFavorite, favorite, productId}) => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ userId, productId }), // Pass the necessary data
+          body: JSON.stringify({ userId, productId }),
         });
       
         if (response.ok) {
