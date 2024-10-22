@@ -1,4 +1,7 @@
+import { Tabs } from "antd";
 import { BsExclamationCircle } from "react-icons/bs";
+import { FaUser } from "react-icons/fa";
+import { Tab, TabList, TabPanel } from "react-tabs";
 
 
 const DashBoardReview = ({review}) => {
@@ -16,7 +19,7 @@ const DashBoardReview = ({review}) => {
 
         {/* Summary Tab */}
         <TabPanel>
-          <h2 className="px-8 py-4">{product?.summary}</h2>
+          <h2 className="px-8 py-4">Product summury</h2>
         </TabPanel>
 
         {/* Specification Tab */}
@@ -29,7 +32,7 @@ const DashBoardReview = ({review}) => {
                     Title
                   </td>
                   <td className="p-2 border border-gray-400 w-2/3">
-                    {product?.productName}
+                  prouct name
                   </td>
                 </tr>
                 <tr>
@@ -37,7 +40,7 @@ const DashBoardReview = ({review}) => {
                     Author
                   </td>
                   <td className="p-2 border border-gray-400 w-2/3">
-                    {product?.author}
+                product author
                   </td>
                 </tr>
                 <tr>
@@ -61,7 +64,7 @@ const DashBoardReview = ({review}) => {
                     Edition
                   </td>
                   <td className="p-2 border border-gray-400 w-2/3">
-                    {product?.edition}
+                  product edition
                   </td>
                 </tr>
                 <tr>
@@ -69,7 +72,7 @@ const DashBoardReview = ({review}) => {
                     Number of Pages
                   </td>
                   <td className="p-2 border border-gray-400 w-2/3">
-                    {product?.productLength}
+                 product length
                   </td>
                 </tr>
                 <tr>
@@ -77,7 +80,7 @@ const DashBoardReview = ({review}) => {
                     Country
                   </td>
                   <td className="p-2 border border-gray-400 w-2/3">
-                    {product?.country}
+                product country
                   </td>
                 </tr>
                 <tr>
@@ -85,7 +88,7 @@ const DashBoardReview = ({review}) => {
                     Language
                   </td>
                   <td className="p-2 border border-gray-400 w-2/3">
-                    {product?.language}
+         product language
                   </td>
                 </tr>
               </tbody>
@@ -97,7 +100,7 @@ const DashBoardReview = ({review}) => {
         <TabPanel>
           <div className="md:flex gap-12 px-8">
             <div className="mt-4">
-              <img src={tipoImg} alt="Author Image" />
+            <FaUser/>
               <p className="md:text-center md:flex gap-2 justify-center">
                 <span className="font-semibold">{product?.authorFollower}</span>
                 <span className="text-gray-500">Followers</span>
@@ -107,8 +110,8 @@ const DashBoardReview = ({review}) => {
               </button>
             </div>
             <div className="mt-4">
-              <h1 className="text-xl font-semibold my-4">{product?.author}</h1>
-              <h2>{product?.authorDetails}</h2>
+              <h1 className="text-xl font-semibold my-4">Product author</h1>
+              <h2>product autor details</h2>
             </div>
           </div>
         </TabPanel>
