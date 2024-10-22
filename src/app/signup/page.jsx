@@ -12,7 +12,9 @@ const SignUpPage = () => {
 
     const [image, setImage] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
-    const [eye,setEye]=useState(true)
+    const [eye, setEye] = useState(true)
+    const [checkbox, setCheckbox] = useState()
+    const [emailCheck, setEmailCheck] = useState()
 
 
     // Handle file input change
@@ -59,6 +61,20 @@ const SignUpPage = () => {
 
 
             }
+
+            if (formData?.password.length < 6) {
+
+                setCheckbox("Your password must be 6 letters")
+                return
+            }
+            else if (!/[A-Z]/.test(formData?.password) || !/[a-z]/.test(formData?.password)) {
+
+                setCheckbox("Password must include both uppercase and lowercase letters")
+
+
+                return
+            }
+
             console.log('alldata', formData);
             const resp = await fetch(`https://quick-bites-tau.vercel.app/signup/api`, {
                 method: "POST",
@@ -67,9 +83,11 @@ const SignUpPage = () => {
                     "content-type": "application/json",
                 },
             });
-            if (resp.status === 200) {
+            if (resp?.status === 200) {
                 router.push('/login');
-            }
+            } else (
+                setEmailCheck('Email already in use')
+            )
 
         }
     }
@@ -111,6 +129,11 @@ const SignUpPage = () => {
                                     className="w-full px-4 py-3 text-white bg-transparent border border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" />
                             </div>
 
+                            {
+                                emailCheck && <p className=' ml-2 text-red-500'>{emailCheck}</p>
+                            }
+
+
                             {/* Password  */}
                             <div className='relative'>
                                 <input
@@ -121,7 +144,11 @@ const SignUpPage = () => {
                                     className="w-full px-4 py-3 text-white bg-transparent border border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" />
                                 <FaEye onClick={() => setEye(false)} className={`absolute     ${eye ? 'visible' : 'hidden'} cursor-pointer right-3 text-gray-500 top-1/2 -translate-y-1/2`} />
                                 <FaEyeSlash onClick={() => setEye(true)} className={`absolute ${eye ? 'hidden' : 'visible'} cursor-pointer right-3 text-gray-500 top-1/2 -translate-y-1/2`} />
+
                             </div>
+                            {
+                                checkbox && <p className=' ml-2 text-red-500 font-poppins'>{checkbox}</p>
+                            }
 
                             {/* for image  */}
 

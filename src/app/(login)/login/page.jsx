@@ -4,16 +4,30 @@ import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const page = () => {
 
 
 
 const [eye,setEye]=useState(true)
+const [emailCheck,setEmailCheckbox]=useState()
     
 
     const handleSubmit = async e => {
         e.preventDefault();
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top",
+            showConfirmButton: false,
+            timer: 4000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
         const email = e.target.email.value;
         const password = e.target.password.value;
 
@@ -21,9 +35,21 @@ const [eye,setEye]=useState(true)
         const resp = await signIn("credentials", {
             email,
             password,
-            redirect: true,
+            redirect: false,
             callbackUrl: "/",
+
         });
+        if (resp?.ok==false){
+            Toast.fire({
+                icon: "error",
+                color:'red',
+                title: "Invalid email or password."
+              });
+
+        }else{
+            router.push("/"); 
+
+        }
         console.log(resp)
     };
 
@@ -37,6 +63,7 @@ const [eye,setEye]=useState(true)
     return (
        <>
         <div className='h-screen  items-center text-justify'>
+        
             <div className="flex justify-center md:py-24 py-12 lg:py-28  items-center h-full bg-cover bg-center relative" style={{ backgroundImage: "url('https://i.ibb.co.com/wC1k5yY/pexels-ella-olsson-572949-1640777.jpg')" }}>
                 {/* Overlay to darken the background */}
                 <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-0"></div>
