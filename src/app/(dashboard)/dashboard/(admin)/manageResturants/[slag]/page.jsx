@@ -1,5 +1,6 @@
 'use client';
 
+import DashBoardReview from '@/app/(dashboard)/component/dashBoardReview/DashBoardReview';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { BsCart3 } from 'react-icons/bs';
@@ -171,6 +172,10 @@ const RestuarantDetailsPage = () => {
           </article>
         </div>
       </section>
+
+
+<DashBoardReview  review={review}/>
+
     </div>
   );
 };
