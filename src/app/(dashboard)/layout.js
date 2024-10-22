@@ -7,7 +7,8 @@ import links from "./component/Links";
 import { IoMenu } from "react-icons/io5";
 import { CiLogout } from "react-icons/ci";
 import Auth from "../session/Auth";
-import { SessionProvider } from 'next-auth/react';
+import { SessionProvider, useSession } from 'next-auth/react';
+import Dashboard from "../component/dashboard/Dashboard";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -17,18 +18,21 @@ const poppins = Poppins({
 });
 
 export default function RootLayout({ children }) {
-  const role = "admin"; 
+  const role = "admin";
+  // const data=useSession()
+  // console.log(data);
+
 
   return (
     <html lang="en" data-theme="light" className="bg-gray-100 text-gray-900 ">
       <body className={`${poppins.variable} antialiased`}>
 
-        <div className="drawer lg:drawer-open">
+        {/* <div className="drawer lg:drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex flex-col items-center justify-center">
             <QueryProvider>
               <Auth>
-              {children}
+                {children}
               </Auth>
 
             </QueryProvider>
@@ -65,7 +69,17 @@ export default function RootLayout({ children }) {
               </Link>
             </ul>
           </div>
-        </div>
+        </div> */}
+        <QueryProvider>
+          <Auth>
+            <Dashboard>
+              {children}
+
+            </Dashboard>
+
+          </Auth>
+
+        </QueryProvider>
       </body>
     </html>
   );
