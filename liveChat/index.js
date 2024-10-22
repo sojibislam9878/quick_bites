@@ -63,10 +63,10 @@ try {
         total_amount: data?.amount, // payment amount
         currency: 'USD', // e.g., 'BDT'
         tran_id: transactionId, // unique transaction id
-        success_url: 'http://localhost:5000/payment-success',
-        fail_url: 'http://localhost:5000/payment-fail',
-        cancel_url: 'http://localhost:5000/payment-cancel',
-        ipn_url: 'http://localhost:5000/ipn',
+        success_url: 'https://quick-bites-ljsf.onrender.com/payment-success',
+        fail_url: 'https://quick-bites-ljsf.onrender.com/payment-fail',
+        cancel_url: 'https://quick-bites-ljsf.onrender.com/payment-cancel',
+        ipn_url: 'https://quick-bites-ljsf.onrender.com/ipn',
         shipping_method: 'No',
         product_name: data?.productData?.length>1 ? 'Multiple Food items':'food' ,
         product_category: 'Food',
@@ -125,7 +125,7 @@ try {
 
         console.log(updateData)
         // Handle success response
-        res.status(200).redirect(`http://localhost:3000/${data.tran_id}`);
+        res.status(200).redirect(`https://quick-bites-tau.vercel.app/${data.tran_id}`);
       });
 
 
@@ -138,7 +138,7 @@ try {
         }
        
         await transaction.deleteOne(query)
-        res.status(200).redirect('http://localhost:3000');
+        res.status(200).redirect('https://quick-bites-tau.vercel.app');
 
         
       })
@@ -153,7 +153,7 @@ try {
        
       await  transaction.deleteOne(query)
 
-      res.status(200).redirect('http://localhost:3000');
+      res.status(200).redirect('https://quick-bites-tau.vercel.app');
 
         
       })

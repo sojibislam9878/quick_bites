@@ -16,17 +16,20 @@ export default function PaymentSuccess() {
 
   const [id, setId] = useState()
   useEffect(() => {
-    axios.get(`http://localhost:5000/order/${transactionId}`)
+    axios.get(`https://quick-bites-ljsf.onrender.com/order/${transactionId}`)
       .then(response => {
         setId(response.data.validId)
       }, [transactionId])
   })
   const handleGotoDashBoard = () => {
-    axios.post('http://localhost:5000/validate', {
+    axios.post('https://quick-bites-ljsf.onrender.com/validate', {
       transactionId, id
     })
       .then(response => {
           if (response.data.status == 'completed'){
+           localStorage.removeItem('cart')
+            // console.log(data);
+            
             route.replace('/')
 
           }
