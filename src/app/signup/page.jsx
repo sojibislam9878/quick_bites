@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 
 
@@ -11,6 +12,8 @@ const SignUpPage = () => {
 
     const [image, setImage] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
+    const [eye,setEye]=useState(true)
+
 
     // Handle file input change
     const handleImageChange = (e) => {
@@ -43,16 +46,16 @@ const SignUpPage = () => {
 
         // console.log('safd', e.target.sf.value)
 
-      if (imageUrl) {
-        const name1 = e.target.name1.value
-        const name2 = e.target.name2.value
-        const formData = {
-            name: name1 + ' ' + name2,
-            password: e.target.password.value,
-            email: e.target.email.value,
-            image: imageUrl,
-            // role: e.target.role.value
-            role: 'user'
+        if (imageUrl) {
+            const name1 = e.target.name1.value
+            const name2 = e.target.name2.value
+            const formData = {
+                name: name1 + ' ' + name2,
+                password: e.target.password.value,
+                email: e.target.email.value,
+                image: imageUrl,
+                // role: e.target.role.value
+                role: 'user'
 
 
             }
@@ -109,13 +112,15 @@ const SignUpPage = () => {
                             </div>
 
                             {/* Password  */}
-                            <div>
+                            <div className='relative'>
                                 <input
-                                    type="password"
+                                    type={`${eye ? 'password' : 'text'}`}
                                     name='password'
                                     required
                                     placeholder="Enter your password"
                                     className="w-full px-4 py-3 text-white bg-transparent border border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" />
+                                <FaEye onClick={() => setEye(false)} className={`absolute     ${eye ? 'visible' : 'hidden'} cursor-pointer right-3 text-gray-500 top-1/2 -translate-y-1/2`} />
+                                <FaEyeSlash onClick={() => setEye(true)} className={`absolute ${eye ? 'hidden' : 'visible'} cursor-pointer right-3 text-gray-500 top-1/2 -translate-y-1/2`} />
                             </div>
 
                             {/* for image  */}
@@ -155,7 +160,7 @@ const SignUpPage = () => {
                                     <option className=' text-xs text-slate-600' value="Delivery Man">Delivery Man</option>
                                     <option className=' text-xs text-slate-600 ' value="Normal User">Normal User</option>
                                 </select> */}
-                               
+
 
 
                             </div>

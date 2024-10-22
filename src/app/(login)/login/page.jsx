@@ -2,12 +2,14 @@
 import SocialSignin from "@/app/component/shared/SocialSignin";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const page = () => {
 
 
 
-
+const [eye,setEye]=useState(true)
     
 
     const handleSubmit = async e => {
@@ -55,14 +57,16 @@ const page = () => {
                             />
                         </div>
 
-                        <div className="mb-4">
+                        <div className="mb-4 relative">
                             {/* <label className="block text-gray-700 text-sm font-medium">Password</label> */}
                             <input
-                                type="password"
+                                type={`${eye?'password':'text'}`}
                                 name='password'
-                                className="w-full p-3  border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full p-3 relative border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="Password"
                             />
+                            <FaEye onClick={()=>setEye(false)} className={`absolute     ${eye?'visible':'hidden'} cursor-pointer right-3 text-gray-500 top-1/2 -translate-y-1/2`} />
+                            <FaEyeSlash onClick={()=>setEye(true)} className={`absolute ${eye?'hidden':'visible'} cursor-pointer right-3 text-gray-500 top-1/2 -translate-y-1/2`} />
                         </div>
 
                         <div className="flex items-center justify-between mb-4">
