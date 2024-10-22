@@ -101,7 +101,7 @@ const Cart = () => {
       
     }
 
-const data= axios.post('http://localhost:4000/checkOut',allData)
+const data= axios.post('https://quick-bites-ljsf.onrender.com/checkOut',allData)
     .then((response)=>{ 
         console.log(response)
 

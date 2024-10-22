@@ -26,6 +26,7 @@ export default function PaymentSuccess() {
       transactionId, id
     })
       .then(response => {
+        console.log(response.data);
           if (response.data.status == 'completed'){
            localStorage.removeItem('cart')
             // console.log(data);
