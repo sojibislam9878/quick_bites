@@ -7,12 +7,12 @@ const FavoriteBtn = ({ setFavorite, favorite , productId}) => {
     const addToFavorites = async () => {
 
      const   userId="66fc284611040dc9a85fce72" 
-        const response = await fetch('/api/favorite', { // Ensure this matches the API route
+        const response = await fetch('/api/favorite', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ userId, productId }), // Ensure you're sending the correct data
+          body: JSON.stringify({ userId, productId }),
         });
       
         if (response.ok) {

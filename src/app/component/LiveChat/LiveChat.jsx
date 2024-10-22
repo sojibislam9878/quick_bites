@@ -8,11 +8,10 @@ import { SiLivechat } from "react-icons/si";
 
 export default function LiveChat() {
     const [open, setOpen] = useState(false)
-    const data = useSession()?.data?.user //for user data from when user is logged in
+    const data = useSession()?.data?.user 
     const route = useRouter()
 
     const handleLiveChat = () => {
-        // console.log(data)
 
         if (data) {
             setOpen(true)
