@@ -11,7 +11,7 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     setCartToState();
-  }, [cart]);
+  },[]);
 
   const setCartToState = () => {
     setCart(
