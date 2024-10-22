@@ -1,41 +1,52 @@
 // pages/success.js
 'use client'
+import CartContext from '@/app/Context/CartContext';
 import axios from 'axios';
+import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { FcOk } from "react-icons/fc";
 
 export default function PaymentSuccess() {
 
+  const userData=useSession()?.data?.user?.email;
+  // console.log(userData);
+  
+
   const { transactionId } = useParams()
   // console.log(transactionId);
   const route = useRouter()
+  const { setCart, cart } = useContext(CartContext);
+
 
 
   const [id, setId] = useState()
   useEffect(() => {
-    axios.get(`https://quick-bites-ljsf.onrender.com/order/${transactionId}`)
+    axios.get(`https://quick-bites-ljsf.onrender.com /order/${transactionId}`)
       .then(response => {
         setId(response.data.validId)
       }, [transactionId])
   })
   const handleGotoDashBoard = () => {
-    axios.post('https://quick-bites-ljsf.onrender.com/validate', {
-      transactionId, id
+    axios.post('https://quick-bites-ljsf.onrender.com /validate', {
+      transactionId, id,userData
     })
       .then(response => {
         console.log(response.data);
-          if (response.data.status == 'completed'){
-           localStorage.removeItem('cart')
-            // console.log(data);
-            
-            route.replace('/')
+        if (response.data.status == 'completed') {
+          localStorage.removeItem('cart')
 
-          }
+          route.replace('/')
+          
+          setTimeout(() => {
+            setCart('')
+          }, 1000);
 
-        })
+        }
+
+      })
 
 
   }

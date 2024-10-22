@@ -9,6 +9,9 @@ export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState({ cartItems: [] }); // Initialize with cartItems
   const router = useRouter(); // Call useRouter function
 
+  // let cartData=localStorage.getItem("cart")?.cartItems
+  // console.log(cartData);
+  
   useEffect(() => {
     setCartToState();
   },[]);
@@ -70,6 +73,7 @@ export const CartProvider = ({ children }) => {
     <CartContext.Provider
       value={{
         cart,
+        setCart,
         addItemToCart,
         deleteItemFromCart,
       }}
