@@ -75,7 +75,7 @@ useEffect(() => {
     avgRating: 3,
   };
     return (
-        <div>
+        <div className='mt-8'> 
          
 
          <section className="">
@@ -86,7 +86,7 @@ useEffect(() => {
               src={item?.banner_image}
               height={300}
               width={100}
-              alt={product.productName}
+              alt={item?.name}
               className="w-full border p-6"
             />
             <div>
@@ -138,10 +138,11 @@ useEffect(() => {
                 <div className="text-[#0397d3]">
                   ✅ Active{" "}
                   <span className="text-red-600">
-                    (Only {product?.available} copies left)
+                    (43 Customer Report!)
                   </span>
                   <p className="text-gray-700 mt-2">
-                    *স্টক আউট হওয়ার আগেই অর্ডার করুন
+                    অতিরিক্ত বাজে Report দেখলে রেস্ট্রুরেন্টকে ব্লক করুন।
+                
                   </p>
                 </div>
               ) : (
@@ -160,23 +161,24 @@ useEffect(() => {
             {/* some details */}
             <div className="mt-8 flex gap-8">
               <div className="space-y-1">
-                <p className="text-gray-600">Book Length</p>
+                <p className="text-gray-600">Avg. Rating</p>
                 <p className="text-center ml-6">
                   {" "}
-                  <IoBookOutline className="text-xl" />
+                  
                 </p>
-                <p> {product?.productLength} Pages </p>
+                <p> {item?.avgRating
+                } </p>
               </div>
               <div className="space-y-1">
-                <p className="text-gray-600"> Edition</p>
+                <p className="text-gray-600"> Starting Year</p>
                 <p className="text-center ml-6">
                   {" "}
-                  <FaEdit className="text-xl" />
+                
                 </p>
-                <p className="font-medium"> {product?.edition} </p>
+                <p className="font-medium"> 2024 </p>
               </div>
               <div className="space-y-1">
-                <p className="text-gray-600">Publication</p>
+                <p className="text-gray-600"></p>
                 <p className="text-center ml-6">
                   {" "}
                   <FaBookReader className="text-xl" />
