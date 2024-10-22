@@ -4,9 +4,10 @@ import { BsExclamationCircle } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
 import { useState } from "react";
 
-const DashBoardReview = () => {
+const DashBoardReview = ({item}) => {
   const [showReport, setShowReport] = useState(false);
   const [reportText, setReportText] = useState("");
+  console.log(item);
 
   const handleReportClick = () => {
     setShowReport(!showReport);
@@ -19,23 +20,11 @@ const DashBoardReview = () => {
   };
 
   // Static data for demonstration
-  const product = {
-    summary: "This is a great product that provides numerous benefits and features.",
-    productName: "Awesome Product",
-    author: "John Doe",
-    publication: "Top Publishers",
-    isbn: "1234567890",
-    edition: "2nd Edition",
-    productLength: "320 pages",
-    country: "USA",
-    language: "English",
-    authorDetails: "John Doe is a well-known author in the field of product innovation.",
-    authorFollower: 2500,
-  };
+ 
 
   return (
     <div className="bg-white px-4 pt-4 pb-12 mt-12">
-      <h1 className="text-2xl">Product Specification & Summary</h1>
+      <h1 className="text-2xl">Restuarant Specification & Summary</h1>
 
       <Tabs>
         <TabList>
@@ -46,7 +35,8 @@ const DashBoardReview = () => {
 
         {/* Summary Tab */}
         <TabPanel>
-          <h2 className="px-8 py-4">{product.summary}</h2>
+          <h2 className="px-8 py-4">{item?.about_us
+          }</h2>
         </TabPanel>
 
         {/* Specification Tab */}
@@ -56,35 +46,35 @@ const DashBoardReview = () => {
               <tbody>
                 <tr>
                   <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">Title</td>
-                  <td className="p-2 border border-gray-400 w-2/3">{product.productName}</td>
+                  <td className="p-2 border border-gray-400 w-2/3">{item?.name}</td>
                 </tr>
                 <tr>
                   <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">Author</td>
-                  <td className="p-2 border border-gray-400 w-2/3">{product.author}</td>
+                  <td className="p-2 border border-gray-400 w-2/3">Sajib wazed Joy</td>
                 </tr>
                 <tr>
-                  <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">Publisher</td>
-                  <td className="p-2 border border-gray-400 w-2/3">{product.publication}</td>
+                  <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">Opens At</td>
+                  <td className="p-2 border border-gray-400 w-2/3">{item?.opensAt}</td>
                 </tr>
                 <tr>
-                  <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">ISBN</td>
+                  <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">Trend no</td>
                   <td className="p-2 border border-gray-400 w-2/3">{product.isbn}</td>
                 </tr>
                 <tr>
-                  <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">Edition</td>
-                  <td className="p-2 border border-gray-400 w-2/3">{product.edition}</td>
+                  <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">Start With Quick Bites</td>
+                  <td className="p-2 border border-gray-400 w-2/3">2024</td>
                 </tr>
                 <tr>
-                  <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">Number of Pages</td>
-                  <td className="p-2 border border-gray-400 w-2/3">{product.productLength}</td>
+                  <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">Number of Delevery</td>
+                  <td className="p-2 border border-gray-400 w-2/3">26</td>
                 </tr>
                 <tr>
-                  <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">Country</td>
-                  <td className="p-2 border border-gray-400 w-2/3">{product.country}</td>
+                  <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">Location</td>
+                  <td className="p-2 border border-gray-400 w-2/3">{item?.location}</td>
                 </tr>
                 <tr>
-                  <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">Language</td>
-                  <td className="p-2 border border-gray-400 w-2/3">{product.language}</td>
+                  <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">Active</td>
+                  <td className="p-2 border border-gray-400 w-2/3">Yes</td>
                 </tr>
               </tbody>
             </table>
@@ -97,16 +87,14 @@ const DashBoardReview = () => {
             <div className="mt-4">
               <FaUser size={64} />
               <p className="md:text-center md:flex gap-2 justify-center">
-                <span className="font-semibold">{product.authorFollower}</span>
-                <span className="text-gray-500">Followers</span>
+                
+               
               </p>
-              <button className="text-center bg-[#0397d3] text-white px-4 py-2 rounded mt-2 flex justify-center">
-                Follow
-              </button>
+             
             </div>
             <div className="mt-4">
-              <h1 className="text-xl font-semibold my-4">{product.author}</h1>
-              <h2>{product.authorDetails}</h2>
+              <h1 className="text-xl font-semibold my-4">Sajib Wazed Joy</h1>
+              <h2>Sheikh hasinar chele</h2>
             </div>
           </div>
         </TabPanel>
@@ -116,7 +104,7 @@ const DashBoardReview = () => {
         className={`text-red-600 text-center mt-6 border-b border-t pt-4 pb-6 cursor-pointer flex justify-center ${showReport && "border-none"} gap-4 items-center`}
         onClick={handleReportClick}
       >
-        <BsExclamationCircle /> Report incorrect information
+        <BsExclamationCircle /> Report to Restuarant Owner if something is else 
       </h1>
 
       {showReport && (

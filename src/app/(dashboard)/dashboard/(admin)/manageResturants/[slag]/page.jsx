@@ -1,17 +1,16 @@
-'use client';
-
-import DashBoardReview from '@/app/(dashboard)/component/dashBoardReview/DashBoardReview';
-import { useParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+'use client'
 import { BsCart3 } from 'react-icons/bs';
 import { FaPhone } from 'react-icons/fa';
 import Swal from 'sweetalert2'; // Import SweetAlert
+import DashBoardReview from '@/app/(dashboard)/component/dashBoardReview/DashBoardReview';
+import { useParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 
 const RestuarantDetailsPage = () => {
   const [item, setItem] = useState({});
   const [loading, setLoading] = useState(false);
   const [isBlocked, setIsBlocked] = useState(false); 
-  const [review , setReviews] = useState([])
+  const [reviews , setReviews] = useState([]);
 
   const { slag } = useParams();
 
@@ -23,7 +22,7 @@ const RestuarantDetailsPage = () => {
         const data = await res.json();
         setItem(data?.result);
         setIsBlocked(data?.result?.status === 'block');
-        setReviews(data.result.reviews || []); // Set initial block status
+        setReviews(data.result.reviews || []); 
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -68,10 +67,7 @@ const RestuarantDetailsPage = () => {
       confirmButtonText: `Yes, ${isBlocked ? 'unblock' : 'block'} it!`,
     }).then((result) => {
       if (result.isConfirmed) {
-        // Toggle block/unblock status
         setIsBlocked(!isBlocked);
-
-        // Show confirmation message
         Swal.fire({
           title: `${isBlocked ? 'Unblocked' : 'Blocked'}!`,
           text: `The restaurant is now ${isBlocked ? 'active' : 'blocked'}.`,
@@ -81,13 +77,11 @@ const RestuarantDetailsPage = () => {
       }
     });
   };
-  console.log(review, 'this is review page ');
 
   return (
     <div className='mt-8'>
-      <section className="">
+      <section>
         <div className="col-span-9 pb-12 md:grid md:grid-cols-12 gap-6 bg-white min-h-screen border">
-          {/* Image Section */}
           <div className="image md:col-span-5 ml-8 mt-8">
             <img
               src={item?.banner_image}
@@ -98,29 +92,26 @@ const RestuarantDetailsPage = () => {
             />
             <div>
               <button className="bg-[#ebebeb] text-[#737373] rounded mt-4 px-8 py-4 text-center w-full">
-                Want to Readdddd
+                Want to Read Again?
               </button>
             </div>
           </div>
 
-          {/* product Details Section */}
           <article className="productDetails space-y-4 md:col-span-7 mt-8 px-6">
             <h1 className="text-3xl text-gray-600">{item?.name}</h1>
             <h1 className="text-gray-600">
               Restuarant Author <span className="text-[#0397d3]">Sajib Wazed Joy</span>
             </h1>
             <h1 className="text-gray-600">
-              Opens At:{" "}
-              <span className="text-[#0397d3]">{item?.opensAt}</span>
+              Opens At: <span className="text-[#0397d3]">{item?.opensAt}</span>
             </h1>
 
             <div>
               {item?.status === "active" ? (
                 <div className="text-[#0397d3]">
-                  ✅ Active{" "}
-                  <span className="text-red-600">(43 Customer Report!)</span>
+                  ✅ Active <span className="text-red-600">(43 Customer Reports)</span>
                   <p className="text-gray-700 mt-2">
-                    অতিরিক্ত বাজে Report দেখলে রেস্ট্রুরেন্টকে ব্লক করুন।
+                    If there are too many reports, consider blocking the restaurant.
                   </p>
                 </div>
               ) : (
@@ -128,7 +119,6 @@ const RestuarantDetailsPage = () => {
               )}
             </div>
 
-            {/* some details */}
             <div className="mt-8 flex gap-8">
               <div className="space-y-1">
                 <p className="text-gray-600">Avg. Rating</p>
@@ -144,7 +134,6 @@ const RestuarantDetailsPage = () => {
               </div>
             </div>
 
-            {/* Call button */}
             <div className="space-x-6 flex gap-2 items-center">
               <button
                 className="border-2 px-2 font-bold py-2 rounded text-green-600 hover:bg-green-600 hover:text-white border-green-600 flex items-center gap-4"
@@ -154,28 +143,18 @@ const RestuarantDetailsPage = () => {
               </button>
 
               <button
-                className="border-2 px-2 font-bold py-2 rounded text-red-600 hover:bg-red-600 hover:text-white border-red-600 flex items-center gap-4"
+                className={`border-2 px-2 font-bold py-2 rounded text-${isBlocked ? 'gray-500' : 'red-600'} hover:bg-${isBlocked ? 'gray-500' : 'red-600'} hover:text-white border-${isBlocked ? 'gray-500' : 'red-600'} flex items-center gap-4`}
                 onClick={toggleBlockStatus}
-                disabled={isBlocked} // Disable Block button if already blocked
               >
-                Block
-              </button>
-
-              <button
-                className="border-2 px-2 font-bold py-2 rounded text-blue-600 hover:bg-blue-600 hover:text-white border-blue-600 flex items-center gap-4"
-                onClick={toggleBlockStatus}
-                disabled={!isBlocked} // Disable Unblock button if already unblocked
-              >
-                Unblock
+                {isBlocked ? 'Unblock' : 'Block'}
               </button>
             </div>
           </article>
         </div>
       </section>
 
-
-<DashBoardReview  review={review}/>
-
+      {/* Reviews Section */}
+      <DashBoardReview item={item} />
     </div>
   );
 };
