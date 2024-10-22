@@ -48,7 +48,7 @@ const DashBoardReview = ({review}) => {
                     Publisher
                   </td>
                   <td className="p-2 border border-gray-400 w-2/3">
-                    {product?.publication}
+                product publication
                   </td>
                 </tr>
                 <tr>
@@ -56,7 +56,7 @@ const DashBoardReview = ({review}) => {
                     ISBN
                   </td>
                   <td className="p-2 border border-gray-400 w-2/3">
-                    {product?.isbn}
+               product isbn
                   </td>
                 </tr>
                 <tr>
