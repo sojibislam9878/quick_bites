@@ -18,11 +18,11 @@ const PaymentChart = () => {
     },
     yaxis: {
       title: {
-        text: 'Sales in USD',
+        text: '',
       },
     },
     title: {
-      text: 'Monthly Sales Scatter Data',
+      text: '',
       align: 'center',
       style: {
         fontSize: '18px',

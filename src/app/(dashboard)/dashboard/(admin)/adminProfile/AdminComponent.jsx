@@ -1,7 +1,7 @@
 'use client'
 
 import EarningChart from '@/app/(dashboard)/component/EarningChart';
-import UserChart from '@/app/(dashboard)/component/UserChart';
+import UserChart from '@/app/(dashboard)/component/PaymentChart';
 import React from 'react'
 import { FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
 import ProfileAdmin from './profileAdmin';
