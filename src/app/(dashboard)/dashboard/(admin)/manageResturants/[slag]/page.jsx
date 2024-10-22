@@ -27,7 +27,7 @@ useEffect(() => {
       try {
         const res = await fetch(`/api/allrestrurent/${slag}`);
         const data = await res.json();
-        setItem(data);
+        setItem(data?.result);
         setReviews(data.result.reviews || []); // Set existing reviews
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -83,7 +83,7 @@ useEffect(() => {
           {/* Image Section */}
           <div className="image md:col-span-5 ml-8 mt-8">
             <img
-              src={image}
+              src={item?.banner_image}
               height={300}
               width={100}
               alt={product.productName}
@@ -98,13 +98,14 @@ useEffect(() => {
 
           {/* product Details Section */}
           <article className="productDetails  space-y-4 md:col-span-7 mt-8 px-6">
-            <h1 className="text-3xl text-gray-600">{product?.productName}</h1>
+            <h1 className="text-3xl text-gray-600">{item?.name}</h1>
             <h1 className=" text-gray-600">
-              By <span className="text-[#0397d3]">{product?.author}</span>
+             Restuarant Author <span className="text-[#0397d3]">Sajib Wazed Joy</span>
             </h1>
             <h1 className=" text-gray-600">
-              Category:{" "}
-              <span className="text-[#0397d3]">{product?.category}</span>
+             Opens At:{" "}
+              <span className="text-[#0397d3]">{item?.opensAt
+              }</span>
             </h1>
 
             <h1 className="text-xl text-gray-600 font-bold">
@@ -133,9 +134,9 @@ useEffect(() => {
             </h1>
 
             <div>
-              {product?.stockStatus === "In Stock" ? (
+              {item?.status === "active" ? (
                 <div className="text-[#0397d3]">
-                  ✅ In stock{" "}
+                  ✅ Active{" "}
                   <span className="text-red-600">
                     (Only {product?.available} copies left)
                   </span>
@@ -144,7 +145,7 @@ useEffect(() => {
                   </p>
                 </div>
               ) : (
-                <p className="text-red-600 font-semibold">Stock Out</p>
+                <p className="text-red-600 font-semibold">Block</p>
               )}
 
               {product?.promoCode && (

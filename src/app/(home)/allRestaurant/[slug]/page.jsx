@@ -31,9 +31,9 @@ const Detailspage = () => {
     }
   }, [slug]);
 
-  
 
-  console.log('Slug:', slug); // Check the slug value
+
+
 
   // Handle review submission
   const handleReviewSubmit = async (e) => {
