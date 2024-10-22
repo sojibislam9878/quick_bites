@@ -179,7 +179,7 @@ const Navbar = () => {
                     <li
 
                       onClick={handleSignOut}
-                      className="   px-2 py-1 text-red-400 gap-2  hover:bg-gray-300 hover:rounded-lg"
+                      className="   px-3 py-2 text-red-500 gap-2 cursor-pointer  hover:bg-gray-300 hover:rounded-lg"
                     >
                       Sign Out
                     </li>
@@ -189,7 +189,7 @@ const Navbar = () => {
             </div>
           ) : (
             <Link
-              className="lg:flex md:flex hidden items-center bg-rose-500 font-thin  Playfair rounded-md  px-2 py-1 text-white gap-2"
+              className="lg:flex md:flex flex items-center bg-rose-500 font-thin  Playfair rounded-md  px-2 py-1 text-white gap-2"
               href="/login"
             >
               <VscSignIn size={25} /> Sign In
