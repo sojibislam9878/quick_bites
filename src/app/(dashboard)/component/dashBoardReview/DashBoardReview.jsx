@@ -58,7 +58,7 @@ const DashBoardReview = ({item}) => {
                 </tr>
                 <tr>
                   <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">Trend no</td>
-                  <td className="p-2 border border-gray-400 w-2/3">{product.isbn}</td>
+                  <td className="p-2 border border-gray-400 w-2/3">35464565466</td>
                 </tr>
                 <tr>
                   <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">Start With Quick Bites</td>
