@@ -92,7 +92,7 @@ const RestuarantDetailsPage = () => {
             />
             <div>
               <button className="bg-[#ebebeb] text-[#737373] rounded mt-4 px-8 py-4 text-center w-full">
-                Want to Read Again?
+                {item?.slug}
               </button>
             </div>
           </div>
