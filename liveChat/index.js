@@ -87,7 +87,7 @@ try {
     };
     
     try {
-        const sslcz = new SSLCommerzPayment(`${process.env.PAYMENT_ID}`, `${process.env.PAYMENT_PASSWORD}`, false); // Use true for live, false for sandbox
+        const sslcz = new SSLCommerzPayment(`zephy66edc01f83108`, `zephy66edc01f83108@ssl`, false); // Use true for live, false for sandbox
         const paymentResponse = await sslcz.init(paymentData);
         // console.log(paymentResponse);
    
