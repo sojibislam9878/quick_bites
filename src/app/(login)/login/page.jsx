@@ -6,12 +6,11 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
 
-const page = () => {
+const Page = () => {
 
 
 
 const [eye,setEye]=useState(true)
-const [emailCheck,setEmailCheckbox]=useState()
     
 
     const handleSubmit = async e => {
@@ -133,4 +132,4 @@ const [emailCheck,setEmailCheckbox]=useState()
     );
 };
 
-export default page;
+export default Page;
