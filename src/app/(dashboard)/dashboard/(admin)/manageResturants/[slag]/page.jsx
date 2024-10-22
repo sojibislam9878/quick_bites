@@ -41,7 +41,7 @@ const RestuarantDetailsPage = () => {
       text: "You are about to call +8801234567890.",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      confirmButtonColor: "#aa1936", // Primary color
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, call now!"
     }).then((result) => {
@@ -51,7 +51,7 @@ const RestuarantDetailsPage = () => {
           title: "Calling...",
           text: "You are now calling the restaurant.",
           icon: "success",
-          confirmButtonColor: "#3085d6"
+          confirmButtonColor: "#aa1936" // Primary color
         });
       }
     });
@@ -62,7 +62,7 @@ const RestuarantDetailsPage = () => {
       title: `Are you sure you want to ${isBlocked ? 'unblock' : 'block'} this restaurant?`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#aa1936', // Primary color
       cancelButtonColor: '#d33',
       confirmButtonText: `Yes, ${isBlocked ? 'unblock' : 'block'} it!`,
     }).then((result) => {
@@ -72,7 +72,7 @@ const RestuarantDetailsPage = () => {
           title: `${isBlocked ? 'Unblocked' : 'Blocked'}!`,
           text: `The restaurant is now ${isBlocked ? 'active' : 'blocked'}.`,
           icon: 'success',
-          confirmButtonColor: '#3085d6',
+          confirmButtonColor: '#aa1936', // Primary color
         });
       }
     });
@@ -136,14 +136,14 @@ const RestuarantDetailsPage = () => {
 
             <div className="space-x-6 flex gap-2 items-center">
               <button
-                className="border-2 px-2 font-bold py-2 rounded text-green-600 hover:bg-green-600 hover:text-white border-green-600 flex items-center gap-4"
+                className="border-2 px-2 font-bold py-2 rounded text-[#aa1936] hover:bg-[#aa1936] hover:text-white border-[#aa1936] flex items-center gap-4"
                 onClick={handleCall}
               >
                 <FaPhone /> <span>Call</span>
               </button>
 
               <button
-                className={`border-2 px-2 font-bold py-2 rounded text-${isBlocked ? 'gray-500' : 'red-600'} hover:bg-${isBlocked ? 'gray-500' : 'red-600'} hover:text-white border-${isBlocked ? 'gray-500' : 'red-600'} flex items-center gap-4`}
+                className={`border-2 px-2 font-bold py-2 rounded text-${isBlocked ? 'gray-500' : '#aa1936'} hover:bg-${isBlocked ? 'gray-500' : '#aa1936'} hover:text-white border-${isBlocked ? 'gray-500' : '#aa1936'} flex items-center gap-4`}
                 onClick={toggleBlockStatus}
               >
                 {isBlocked ? 'Unblock' : 'Block'}

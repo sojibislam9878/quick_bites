@@ -4,10 +4,10 @@ import { BsExclamationCircle } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
 import { useState } from "react";
 
-const DashBoardReview = ({item}) => {
+
+const DashBoardReview = ({ item }) => {
   const [showReport, setShowReport] = useState(false);
   const [reportText, setReportText] = useState("");
-  console.log(item);
 
   const handleReportClick = () => {
     setShowReport(!showReport);
@@ -19,9 +19,6 @@ const DashBoardReview = ({item}) => {
     setShowReport(false);
   };
 
-  // Static data for demonstration
- 
-
   return (
     <div className="bg-white px-4 pt-4 pb-12 mt-12">
       <h1 className="text-2xl">Restuarant Specification & Summary</h1>
@@ -31,12 +28,12 @@ const DashBoardReview = ({item}) => {
           <Tab>Summary</Tab>
           <Tab>Specification</Tab>
           <Tab>Author</Tab>
+          <Tab>Report</Tab> {/* New Report Tab */}
         </TabList>
 
         {/* Summary Tab */}
         <TabPanel>
-          <h2 className="px-8 py-4">{item?.about_us
-          }</h2>
+          <h2 className="px-8 py-4">{item?.about_us}</h2>
         </TabPanel>
 
         {/* Specification Tab */}
@@ -50,7 +47,7 @@ const DashBoardReview = ({item}) => {
                 </tr>
                 <tr>
                   <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">Author</td>
-                  <td className="p-2 border border-gray-400 w-2/3">Sajib wazed Joy</td>
+                  <td className="p-2 border border-gray-400 w-2/3">Sajib Wazed Joy</td>
                 </tr>
                 <tr>
                   <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">Opens At</td>
@@ -65,7 +62,7 @@ const DashBoardReview = ({item}) => {
                   <td className="p-2 border border-gray-400 w-2/3">2024</td>
                 </tr>
                 <tr>
-                  <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">Number of Delevery</td>
+                  <td className="p-2 bg-gray-200 border border-gray-400 w-1/3">Number of Delivery</td>
                   <td className="p-2 border border-gray-400 w-2/3">26</td>
                 </tr>
                 <tr>
@@ -86,25 +83,48 @@ const DashBoardReview = ({item}) => {
           <div className="md:flex gap-12 px-8">
             <div className="mt-4">
               <FaUser size={64} />
-              <p className="md:text-center md:flex gap-2 justify-center">
-                
-               
-              </p>
-             
             </div>
             <div className="mt-4">
               <h1 className="text-xl font-semibold my-4">Sajib Wazed Joy</h1>
-              <h2>Sheikh hasinar chele</h2>
+              <h2>Sheikh Hasina's son</h2>
             </div>
+          </div>
+        </TabPanel>
+
+        {/* Report Tab */}
+        <TabPanel>
+          <div className="px-8 py-4">
+            <h2 className="text-xl font-semibold mb-4">Reports</h2>
+            {item?.report?.length > 0 ? (
+              <div className="space-y-4">
+                {item?.report?.map((rep, index) => (
+                  <div
+                    key={index}
+                    className="border p-4 rounded-lg shadow-sm bg-gray-50"
+                  >
+                    <p className="font-semibold">Report:</p>
+                    <p>{rep.report}</p>
+                    <p className="text-sm text-gray-500 mt-2">
+                      Date: {(rep.date)}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p>No reports available.</p>
+            )}
           </div>
         </TabPanel>
       </Tabs>
 
+      {/* Report Submission Section */}
       <h1
-        className={`text-red-600 text-center mt-6 border-b border-t pt-4 pb-6 cursor-pointer flex justify-center ${showReport && "border-none"} gap-4 items-center`}
+        className={`text-red-600 text-center mt-6 border-b border-t pt-4 pb-6 cursor-pointer flex justify-center ${
+          showReport && "border-none"
+        } gap-4 items-center`}
         onClick={handleReportClick}
       >
-        <BsExclamationCircle /> Report to Restuarant Owner if something is else 
+        <BsExclamationCircle /> Report to Restaurant Owner if something is wrong
       </h1>
 
       {showReport && (
@@ -114,7 +134,7 @@ const DashBoardReview = ({item}) => {
             rows={4}
             value={reportText}
             onChange={(e) => setReportText(e.target.value)}
-            placeholder="Describe the incorrect information..."
+            placeholder="Warning to the restuarant owner if something went wrong..."
           />
           <button
             className="bg-green-600 text-white px-4 py-2 rounded mt-2"
