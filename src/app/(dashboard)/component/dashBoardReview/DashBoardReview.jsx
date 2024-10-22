@@ -137,7 +137,7 @@ const DashBoardReview = ({ item }) => {
             placeholder="Warning to the restuarant owner if something went wrong..."
           />
           <button
-            className="bg-green-600 text-white px-4 py-2 rounded mt-2"
+            className="bg-orange-600 text-white px-4 py-2 rounded mt-2"
             onClick={handleSubmit}
           >
             Submit
