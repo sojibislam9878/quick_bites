@@ -1,10 +1,12 @@
 import { Tabs } from "antd";
+import { useState } from "react";
 import { BsExclamationCircle } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
 import { Tab, TabList, TabPanel } from "react-tabs";
 
 
 const DashBoardReview = ({review}) => {
+    const    [ showReport, setShowReport] = useState(false)
     return (
         <div>
              <div className="bg-white px-4 pt-4 pb-12 mt-12">
@@ -102,7 +104,7 @@ const DashBoardReview = ({review}) => {
             <div className="mt-4">
             <FaUser/>
               <p className="md:text-center md:flex gap-2 justify-center">
-                <span className="font-semibold">{product?.authorFollower}</span>
+                <span className="font-semibold"></span>
                 <span className="text-gray-500">Followers</span>
               </p>
               <button className="text-center bg-[#0397d3] text-white px-4 py-2 rounded mt-2 flex justify-center">
@@ -120,7 +122,7 @@ const DashBoardReview = ({review}) => {
         className={`text-red-600 text-center mt-6 border-b border-t pt-4 pb-6 cursor-pointer flex justify-center ${
           showReport && "border-none"
         } gap-4 items-center`}
-        onClick={handleReportClick}
+        // onClick={handleReportClick}
       >
         <BsExclamationCircle /> Report incorrect information
       </h1>
