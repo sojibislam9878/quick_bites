@@ -3,15 +3,33 @@ require('dotenv').config();
 const http = require('http');
 const { Server } = require('socket.io');
 const { MongoClient } = require('mongodb');  
+const SSLCommerzPayment = require('sslcommerz-lts')
+const bodyParser = require('body-parser')
+const { v4: uuidv4 } = require('uuid');
+
+// Generate a unique transaction ID
+const transactionId = uuidv4();
+
 
 // just for check
 
 const app = express();
+app.use(express.json());
+const cors = require('cors')
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors(
+    {
+      origin: [,"http://localhost:3000",'https://quick-bites-tau.vercel.app'],
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    }
+  
+  )); 
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
         origin: "*",
-        methods: ["GET", "POST"]
+        methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     }
 });
 const PORT = process.env.PORT || 4000;
@@ -31,6 +49,164 @@ const client = new MongoClient(uri, {
 
 
 const database =client.db("Quick_Bites")
+const transaction=database.collection("Transaction");
+
+
+
+  async function run() {
+
+try {
+    app.post('/checkout', async (req, res) => {
+        const data = req.body;
+    // console.log(data?.productData[0])
+      const paymentData = {
+        total_amount: data?.amount, // payment amount
+        currency: 'USD', // e.g., 'BDT'
+        tran_id: transactionId, // unique transaction id
+        success_url: 'https://quick-bites-ljsf.onrender.com/payment-success',
+        fail_url: 'https://quick-bites-ljsf.onrender.com/payment-fail',
+        cancel_url: 'https://quick-bites-ljsf.onrender.com/payment-cancel',
+        ipn_url: 'https://quick-bites-ljsf.onrender.com/ipn',
+        shipping_method: 'No',
+        product_name: data?.productData?.length>1 ? 'Multiple Food items':'food' ,
+        product_category: 'Food',
+        
+        product_data:data,
+        product_profile: 'general',
+        cus_name: data?.name,
+        cus_email: data?.email,
+        cus_add1: 'Dhaka',
+        cus_add2: 'Dhaka',
+        cus_city: 'Dhaka',
+        cus_state: 'Dhaka',
+        cus_postcode: '1000',
+        cus_country: 'Bangladesh',
+        cus_phone: '123',
+        cus_fax: '123',
+        multi_card_name: 'mastercard',
+    };
+    
+    try {
+        const sslcz = new SSLCommerzPayment(`${process.env.PAYMENT_ID}`, `${process.env.PAYMENT_PASSWORD}`, false); // Use true for live, false for sandbox
+        const paymentResponse = await sslcz.init(paymentData);
+        // console.log(paymentResponse);
+   
+        if (paymentResponse.GatewayPageURL) {
+            transaction.insertOne(paymentData)
+         
+
+            res.status(200).send({ url: paymentResponse.GatewayPageURL });
+        } else {
+            res.status(400).send({ error: 'Failed to initiate payment' });
+        }
+    } catch (error) {
+        res.status(500).send({ error: error.message });
+    }
+       
+    })
+    
+    // when use click the payment success
+    app.post('/payment-success', async(req, res) => {
+        const data=req.body
+        console.log(data);
+        
+
+        const query = {
+            tran_id: data?.tran_id,
+        }
+        const update = {
+            $set: {
+                status: 'pending',
+                validId:data.val_id
+            },
+        }
+     const updateData=  await transaction.updateOne(query,update)
+
+
+        console.log(updateData)
+        // Handle success response
+        res.status(200).redirect(`https://quick-bites-tau.vercel.app/${data.tran_id}`);
+      });
+
+
+    //   when user cancel the payment request
+      app.post('/payment-cancel',async (req, res) => {
+        const data=req.body
+
+        const query = {
+            tran_id: data?.tran_id,
+        }
+       
+        await transaction.deleteOne(query)
+        res.status(200).redirect('https://quick-bites-tau.vercel.app');
+
+        
+      })
+
+    //   when use click the payment failed
+      app.post('/payment-fail', async(req, res) => {
+        const data=req.body
+
+        const query = {
+            tran_id: data?.tran_id,
+        }
+       
+      await  transaction.deleteOne(query)
+
+      res.status(200).redirect('https://quick-bites-tau.vercel.app');
+
+        
+      })
+
+    //   get payment information by transaction id 
+      app.get('/order/:id',async(req,res)=>{
+        const data=req.params.id
+        const query = {
+            tran_id: data,
+        }
+        const result = await transaction.findOne(query)
+        console.log(result)
+        // Handle success response
+        res.status(200).json(result);
+      })
+
+
+    //   for ipn
+
+    app.post('/ipn', async(req, res) => {
+    
+        res.send(req.body)
+       
+    })
+    //   for validation payment methods
+    app.post('/validate',async(req,res) => {
+
+        const data = req.body;
+        const query = {
+            tran_id: data.transactionId,
+        }
+        const paymentData=await transaction.findOne(query)
+        if (paymentData.validId==data.id) {
+            const update={
+                $set: {
+                    status: 'completed',
+                },
+            }
+            await transaction.updateOne(query,update)
+            res.status(200).send({ status: 'completed' });
+            
+        }
+        else {
+            res.status(403).send({ error: 'Invalid ID' });
+        }
+    })
+
+
+  }catch (error){
+    console.error('Failed to connect to MongoDB:', error);
+  }}
+
+  
 
 const chatCollection = database.collection("massages")
 
@@ -100,3 +276,11 @@ io.on('connection', (socket) => {
 server.listen(PORT, () => {
     console.log('Server is running on port 4000');
 });
+
+run().catch(console.dir);
+
+app.get('/', (req, res) => {
+    res.send('done')
+  })
+  
+  app.listen(5000)
