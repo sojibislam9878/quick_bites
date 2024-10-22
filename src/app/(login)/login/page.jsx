@@ -2,6 +2,7 @@
 import SocialSignin from "@/app/component/shared/SocialSignin";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -11,7 +12,7 @@ const Page = () => {
 
 
 const [eye,setEye]=useState(true)
-    
+ const router=useRouter()    
 
     const handleSubmit = async e => {
         e.preventDefault();
