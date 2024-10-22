@@ -15,24 +15,11 @@ const Cart = () => {
   const [coupon, setCoupon] = useState(""); // State to store coupon input
   const [discount, setDiscount] = useState(0); // State to store discount
 
-  // const [foodName, setFoodName] =useState()
-  // const [quantity, setQuantity] =useState()
-  // const [brand, setBrand] =useState()
-  // const [brand, setBrand] =useState()
-  // const [brand, setBrand] =useState()
+  
 
 
-  console.log(cart.cartItems,'cart is here ');
-//   useEffect(()=>{
-//     const foodName=cart?.cartItems?.map(data => data?.foodName)
-//     setFoodName(foodName)
-//     const quantity=cart?.cartItems?.map(data => data?.quantity)
-// setQuantity(quantity)
-// const brand=cart?.cartItems?.map(data => data?.brand)
+  // console.log(cart.cartItems,'cart is here ');
 
-
-
-//   },[cart])
 
   const increaseQty = (cartItem) => {
     const newQty = cartItem?.quantity + 1;
@@ -101,7 +88,7 @@ const Cart = () => {
       
     }
 
-const data= axios.post('https://quick-bites-ljsf.onrender.com/checkOut',allData)
+const data= axios.post('https://quick-bites-ljsf.onrender.com /checkOut',allData)
     .then((response)=>{ 
         console.log(response)
 

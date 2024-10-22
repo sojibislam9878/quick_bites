@@ -37,6 +37,7 @@ const PORT = process.env.PORT || 4000;
 // MongoDB connection string (replace with your MongoDB URL)
 const uri = `mongodb+srv://endGameProject:ezyPAm3Cgs6gT0IL@cluster0.lel6e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 const { ServerApiVersion, ObjectId } = require('mongodb');
+const { default: axios } = require('axios');
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -50,6 +51,8 @@ const client = new MongoClient(uri, {
 
 const database =client.db("Quick_Bites")
 const transaction=database.collection("Transaction");
+const userCollection = database.collection("allUser");
+
 
 
 
@@ -63,10 +66,10 @@ try {
         total_amount: data?.amount, // payment amount
         currency: 'USD', // e.g., 'BDT'
         tran_id: transactionId, // unique transaction id
-        success_url: 'https://quick-bites-ljsf.onrender.com/payment-success',
-        fail_url: 'https://quick-bites-ljsf.onrender.com/payment-fail',
-        cancel_url: 'https://quick-bites-ljsf.onrender.com/payment-cancel',
-        ipn_url: 'https://quick-bites-ljsf.onrender.com/ipn',
+        success_url: 'https://quick-bites-ljsf.onrender.com /payment-success',
+        fail_url: 'https://quick-bites-ljsf.onrender.com /payment-fail',
+        cancel_url: 'https://quick-bites-ljsf.onrender.com /payment-cancel',
+        ipn_url: 'https://quick-bites-ljsf.onrender.com /ipn',
         shipping_method: 'No',
         product_name: data?.productData?.length>1 ? 'Multiple Food items':'food' ,
         product_category: 'Food',
@@ -87,7 +90,7 @@ try {
     };
     
     try {
-        const sslcz = new SSLCommerzPayment(`zephy66edc01f83108`, `zephy66edc01f83108@ssl`, false); // Use true for live, false for sandbox
+        const sslcz = new SSLCommerzPayment(`${process.env.PAYMENT_ID}`, `${process.env.PAYMENT_PASSWORD}`, false); // Use true for live, false for sandbox
         const paymentResponse = await sslcz.init(paymentData);
         // console.log(paymentResponse);
    
@@ -123,7 +126,7 @@ try {
      const updateData=  await transaction.updateOne(query,update)
 
 
-        console.log(updateData)
+        // console.log(updateData)
         // Handle success response
         res.status(200).redirect(`https://quick-bites-tau.vercel.app/${data.tran_id}`);
       });
@@ -165,7 +168,7 @@ try {
             tran_id: data,
         }
         const result = await transaction.findOne(query)
-        console.log(result)
+        // console.log(result)
         // Handle success response
         res.status(200).json(result);
       })
@@ -186,7 +189,24 @@ try {
             tran_id: data.transactionId,
         }
         const paymentData=await transaction.findOne(query)
+
+       
         if (paymentData.validId==data.id) {
+
+          const  userData={
+                email:data?.userData
+            }
+
+            const amount= Math.ceil(paymentData?.product_data?.amount*(20/100))
+            
+            const point={
+                $set:{
+                    points:amount
+                }
+
+            }
+
+           await userCollection.updateOne(userData, point)
             const update={
                 $set: {
                     status: 'completed',
