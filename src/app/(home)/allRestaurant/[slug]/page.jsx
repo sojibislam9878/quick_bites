@@ -5,35 +5,30 @@ import React, { useEffect, useState } from 'react';
 
 const Detailspage = () => {
   const [loading, setLoading] = useState(false);
-  const [item, setItem] = useState(null); // Restaurant details
+  const [item, setItem] = useState({}); // Restaurant details
   const [reviews, setReviews] = useState([]); // Reviews array
   const [newReview, setNewReview] = useState({ rating: 0, comment: '' });
   const [error, setError] = useState(null); // Error state for review submission
   const { slug } = useParams(); // Get 'slug' from the URL parameters
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const res = await fetch(`https://quick-bites-tau.vercel.app/api/allrestrurent/${slug}`);
-        const data = await res.json();
-        setItem(data.result);
-        setReviews(data.result.reviews || []); // Set existing reviews
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
 
-    if (slug) {
-      fetchData();
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/allrestrurent/${slug}`);
+      const data = await res.json();
+      setItem(data?.result);
+      setReviews(data.result.reviews || []); 
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      setLoading(false);
     }
+  };
+
+  useEffect(() => {
+    fetchData();
   }, [slug]);
-
-
-
-
 
   // Handle review submission
   const handleReviewSubmit = async (e) => {
@@ -44,14 +39,14 @@ const Detailspage = () => {
       return; // Early exit if the rating is invalid
     }
     try {
-      const res = await fetch('https://quick-bites-tau.vercel.app/api/reviews', {
+      const res = await fetch(`/api/reviews/${slug}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           restaurantName: slug, // Use slug for the restaurant name
-          user: 'John Doe', // Replace with actual user info
+          user: 'John Doe', // Replace with actual user info or authentication user
           rating: newReview.rating,
           comment: newReview.comment,
         }),
@@ -83,8 +78,8 @@ const Detailspage = () => {
           <>
             {/* Restaurant Details */}
             <div className="bg-white shadow-lg rounded-lg p-6">
-              <h1 className="text-3xl font-bold text-rose-600">{item.name}</h1>
-              <p className="text-gray-600 italic">{item.type} Cuisine</p>
+              <h1 className="text-3xl font-bold text-rose-600">{item?.name}</h1>
+              <p className="text-gray-600 italic">{item?.type} Cuisine</p>
               <p className="mt-2 text-gray-700">{item.location}</p>
               <p>Price Range: {item.priceRange}</p>
               <p>Rating: {item.rating || "N/A"}</p>
@@ -136,7 +131,7 @@ const Detailspage = () => {
               {reviews.length > 0 ? (
                 reviews.map((review, index) => (
                   <div key={index} className="mb-6 p-4 bg-white shadow rounded-lg">
-                    <p className="font-semibold">{review.user}</p>
+                    <p className="font-semibold">{review?.user}</p>
                     <p className="text-sm text-gray-600">Rating: {review.rating} / 5</p>
                     <p className="mt-2">{review.comment}</p>
                     <p className="text-xs text-gray-500">Reviewed on {new Date(review.date).toLocaleDateString()}</p>
