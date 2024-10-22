@@ -9,7 +9,8 @@ import Swal from 'sweetalert2'; // Import SweetAlert
 const RestuarantDetailsPage = () => {
   const [item, setItem] = useState({});
   const [loading, setLoading] = useState(false);
-  const [isBlocked, setIsBlocked] = useState(false); // New state for block/unblock status
+  const [isBlocked, setIsBlocked] = useState(false); 
+  const [review , setReviews] = useState([])
 
   const { slag } = useParams();
 
@@ -20,7 +21,8 @@ const RestuarantDetailsPage = () => {
         const res = await fetch(`/api/allrestrurent/${slag}`);
         const data = await res.json();
         setItem(data?.result);
-        setIsBlocked(data?.result?.status === 'block'); // Set initial block status
+        setIsBlocked(data?.result?.status === 'block');
+        setReviews(data.result.reviews || []); // Set initial block status
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -78,6 +80,7 @@ const RestuarantDetailsPage = () => {
       }
     });
   };
+  console.log(review, 'this is review page ');
 
   return (
     <div className='mt-8'>
