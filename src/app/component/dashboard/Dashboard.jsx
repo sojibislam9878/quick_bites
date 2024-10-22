@@ -14,6 +14,8 @@ const Dashboard = ({children}) => {
     // console.log(data.data.user.role);
     
     const role = data?.data?.user?.role;
+    console.log(role);
+    
 
     return (
         <div className="drawer lg:drawer-open">
