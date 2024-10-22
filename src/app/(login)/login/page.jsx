@@ -2,25 +2,53 @@
 import SocialSignin from "@/app/component/shared/SocialSignin";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
-// import { useSearchParams } from "next/navigation";
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Swal from "sweetalert2";
 
-const page = () => {
-    // const searchParams = useSearchParams();
-    // const path = searchParams.get("redirect");
+const Page = () => {
 
 
+
+const [eye,setEye]=useState(true)
     
 
     const handleSubmit = async e => {
         e.preventDefault();
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top",
+            showConfirmButton: false,
+            timer: 4000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
         const email = e.target.email.value;
         const password = e.target.password.value;
+
+
         const resp = await signIn("credentials", {
             email,
             password,
-            redirect: true,
+            redirect: false,
             callbackUrl: "/",
+
         });
+        if (resp?.ok==false){
+            Toast.fire({
+                icon: "error",
+                color:'red',
+                title: "Invalid email or password."
+              });
+
+        }else{
+            router.push("/"); 
+
+        }
         console.log(resp)
     };
 
@@ -30,8 +58,11 @@ const page = () => {
 
 
 
+
     return (
+       <>
         <div className='h-screen  items-center text-justify'>
+        
             <div className="flex justify-center md:py-24 py-12 lg:py-28  items-center h-full bg-cover bg-center relative" style={{ backgroundImage: "url('https://i.ibb.co.com/wC1k5yY/pexels-ella-olsson-572949-1640777.jpg')" }}>
                 {/* Overlay to darken the background */}
                 <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-0"></div>
@@ -52,14 +83,16 @@ const page = () => {
                             />
                         </div>
 
-                        <div className="mb-4">
+                        <div className="mb-4 relative">
                             {/* <label className="block text-gray-700 text-sm font-medium">Password</label> */}
                             <input
-                                type="password"
+                                type={`${eye?'password':'text'}`}
                                 name='password'
-                                className="w-full p-3  border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full p-3 relative border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="Password"
                             />
+                            <FaEye onClick={()=>setEye(false)} className={`absolute     ${eye?'visible':'hidden'} cursor-pointer right-3 text-gray-500 top-1/2 -translate-y-1/2`} />
+                            <FaEyeSlash onClick={()=>setEye(true)} className={`absolute ${eye?'hidden':'visible'} cursor-pointer right-3 text-gray-500 top-1/2 -translate-y-1/2`} />
                         </div>
 
                         <div className="flex items-center justify-between mb-4">
@@ -93,7 +126,10 @@ const page = () => {
                 </div>
             </div>
         </div>
+       
+       
+       </>
     );
 };
 
-export default page;
+export default Page;
