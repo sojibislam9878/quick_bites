@@ -36,6 +36,8 @@ useEffect(() => {
     }
   }, [slag]);
 
+  console.log(item);
+
 
   console.log('item---->' ,item,'reviews --->', reviews );
     return (
