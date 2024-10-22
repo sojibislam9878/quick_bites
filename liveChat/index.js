@@ -63,10 +63,10 @@ try {
         total_amount: data?.amount, // payment amount
         currency: 'USD', // e.g., 'BDT'
         tran_id: transactionId, // unique transaction id
-        success_url: 'http://localhost:5000https://quick-bites-ljsf.onrender.com/payment-success',
-        fail_url: 'http://localhost:5000https://quick-bites-ljsf.onrender.com/payment-fail',
-        cancel_url: 'http://localhost:5000https://quick-bites-ljsf.onrender.com/payment-cancel',
-        ipn_url: 'http://localhost:5000https://quick-bites-ljsf.onrender.com/ipn',
+        success_url: 'https://quick-bites-ljsf.onrender.com/payment-success',
+        fail_url: 'https://quick-bites-ljsf.onrender.com/payment-fail',
+        cancel_url: 'https://quick-bites-ljsf.onrender.com/payment-cancel',
+        ipn_url: 'https://quick-bites-ljsf.onrender.com/ipn',
         shipping_method: 'No',
         product_name: data?.productData?.length>1 ? 'Multiple Food items':'food' ,
         product_category: 'Food',
