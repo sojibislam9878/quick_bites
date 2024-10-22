@@ -27,7 +27,7 @@ useEffect(() => {
       try {
         const res = await fetch(`/api/allrestrurent/${slag}`);
         const data = await res.json();
-        setItem(data.result);
+        setItem(data);
         setReviews(data.result.reviews || []); // Set existing reviews
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -78,7 +78,7 @@ useEffect(() => {
         <div>
          
 
-         <section className="lg:grid  pt-12 lg:grid-cols-12 md:w-[90%] mx-auto shadow-sm">
+         <section className="">
         <div className="col-span-9 pb-12 md:grid md:grid-cols-12 gap-6 bg-white min-h-screen border">
           {/* Image Section */}
           <div className="image md:col-span-5 ml-8 mt-8">
