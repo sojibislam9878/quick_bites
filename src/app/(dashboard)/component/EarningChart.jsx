@@ -13,7 +13,7 @@ const EarningChart = () => {
       categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
     },
     title: {
-      text: 'Monthly Sales Data',
+      text: '',
       align: 'center',
       style: {
         fontSize: '18px',

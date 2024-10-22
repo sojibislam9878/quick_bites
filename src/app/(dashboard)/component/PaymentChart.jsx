@@ -1,99 +1,64 @@
-"use client";  // Required for client-side rendering
+"use client"
+// MyApexChart.js
+import React, { useState } from 'react';
+import Chart from 'react-apexcharts';
 
-import React from 'react';
-import dynamic from 'next/dynamic';
-
-// Dynamically import the chart to prevent SSR issues
-const ReactApexChart = dynamic(() => import('react-apexcharts'), { ssr: false });
-
-// Generate random bubble chart data function
-function generateData(baseval, count, yrange) {
-  const series = [];
-  for (let i = 0; i < count; i++) {
-    const x = new Date(baseval).getTime();
-    const y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
-    const z = Math.floor(Math.random() * (75 - 15 + 1)) + 15;
-
-    series.push([x, y, z]);
-    baseval += 86400000; // increment by one day
-  }
-  return series;
-}
-
-class ApexChart extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      series: [
-        {
-          name: 'Bubble1',
-          data: generateData(new Date('11 Feb 2017 GMT').getTime(), 20, {
-            min: 10,
-            max: 60,
-          }),
-        },
-        {
-          name: 'Bubble2',
-          data: generateData(new Date('11 Feb 2017 GMT').getTime(), 20, {
-            min: 10,
-            max: 60,
-          }),
-        },
-        {
-          name: 'Bubble3',
-          data: generateData(new Date('11 Feb 2017 GMT').getTime(), 20, {
-            min: 10,
-            max: 60,
-          }),
-        },
-        {
-          name: 'Bubble4',
-          data: generateData(new Date('11 Feb 2017 GMT').getTime(), 20, {
-            min: 10,
-            max: 60,
-          }),
-        },
-      ],
-      options: {
-        chart: {
-          height: 350,
-          type: 'bubble',
-        },
-        dataLabels: {
-          enabled: false,
-        },
-        fill: {
-          opacity: 0.8,
-        },
-        title: {
-          text: 'Simple Bubble Chart',
-        },
-        xaxis: {
-          tickAmount: 12,
-          type: 'category',
-        },
-        yaxis: {
-          max: 70,
-        },
+const PaymentChart = () => {
+  // Define the chart options
+  const [chartOptions] = useState({
+    chart: {
+      id: '',
+    },
+    xaxis: {
+      title: {
+        text: 'Months',
       },
-    };
-  }
+      tickAmount: 10, // Ensure a reasonable number of ticks on x-axis
+      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+    },
+    yaxis: {
+      title: {
+        text: 'Sales in USD',
+      },
+    },
+    title: {
+      text: 'Monthly Sales Scatter Data',
+      align: 'center',
+      style: {
+        fontSize: '18px',
+      },
+    },
+  });
 
-  render() {
-    return (
-      <div>
-        <div id="chart">
-          <ReactApexChart
-            options={this.state.options}
-            series={this.state.series}
-            type="bubble"
-            height={350}
-          />
-        </div>
-      </div>
-    );
-  }
-}
+  // Define the chart data (scatter points with x, y coordinates)
+  const [chartData] = useState([
+    {
+      name: 'Sales',
+      data: [
+        [0, 30], // 'Jan' corresponds to 0 on x-axis
+        [1, 40], // 'Feb' corresponds to 1, and so on
+        [2, 45],
+        [3, 50],
+        [4, 49],
+        [5, 60],
+        [6, 70],
+        [7, 91],
+        [8, 125],
+        [9, 110], // 'Oct'
+      ],
+    },
+  ]);
 
-export default ApexChart;
+  return (
+    <div>
+      <Chart
+        options={chartOptions}
+        series={chartData}
+        type="scatter" // Updated to scatter chart
+        width="600"
+      />
+    </div>
+  );
+};
+
+export default PaymentChart;
