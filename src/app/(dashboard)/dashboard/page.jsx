@@ -10,19 +10,19 @@ import Spinner from '@/app/component/Spinner';
 
 const DashboardPage = () => {
   const { data: session, status } = useSession(); // Get session and status
-  const role = useRole();
-
+  // const role = useRole();
+const role= "admin"
   // Handle loading state while session is being fetched
-  if (status === 'loading') {
-    return <div>
-    <Spinner></Spinner>
-    </div>; // You can replace this with a spinner if desired
-  }
+  // if (status === 'loading') {
+  //   return <div>
+  //   <Spinner></Spinner>
+  //   </div>; // You can replace this with a spinner if desired
+  // }
 
   // If there is no session, return null or redirect the user (if needed)
-  if (!session) {
-    return <div>NO SESSION</div>; // Or handle redirection
-  }
+  // if (!session) {
+  //   return <div>NO SESSION</div>; // Or handle redirection
+  // }
 
   return (
     <div>
