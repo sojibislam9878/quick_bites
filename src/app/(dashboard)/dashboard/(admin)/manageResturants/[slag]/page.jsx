@@ -108,30 +108,7 @@ useEffect(() => {
               }</span>
             </h1>
 
-            <h1 className="text-xl text-gray-600 font-bold">
-              {product?.discount ? (
-                <span>
-                  <span className="line-through text-gray-600">
-                    TK. {product?.price.toFixed(2)}
-                  </span>
-                  <span className="ml-2 text-[#0397d3]">
-                    TK.{" "}
-                    {(
-                      product.price -
-                      (product.price * product.discount) / 100
-                    ).toFixed(2)}
-                    <span className="text-green-600 text-sm font-light">
-                      {" "}
-                      You save TK.{" "}
-                      {((product.price * product.discount) / 100).toFixed(2)} (
-                      {product?.discount}%)
-                    </span>
-                  </span>
-                </span>
-              ) : (
-                <>TK. {product?.price.toFixed(2)}</>
-              )}
-            </h1>
+      
 
             <div>
               {item?.status === "active" ? (
@@ -178,12 +155,13 @@ useEffect(() => {
                 <p className="font-medium"> 2024 </p>
               </div>
               <div className="space-y-1">
-                <p className="text-gray-600"></p>
+                <p className="text-gray-600">Location</p>
                 <p className="text-center ml-6">
                   {" "}
-                  <FaBookReader className="text-xl" />
+                 
                 </p>
-                <p> {product?.publication} </p>
+                <p> {item?.location}({item?.locationDetail
+                }) </p>
               </div>
             </div>
 
