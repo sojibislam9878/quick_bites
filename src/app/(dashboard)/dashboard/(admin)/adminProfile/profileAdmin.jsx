@@ -1,4 +1,5 @@
 'use client'
+
 import React from 'react'
 import { FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
 
@@ -25,20 +26,13 @@ const ProfileAdmin = () => {
     </div> 
     <div class="mt-6 mb-3 flex gap-14 md:!gap-14">
         <div class="flex flex-col items-center justify-center">
-        <p class="text-2xl font-bold text-navy-700 dark:text-gray">{data.name}</p>
+      
         <p class="text-sm font-normal text-gray-600">{data.email}</p>
         </div>
+  
         <div class="flex flex-col items-center justify-center">
-        <p class="text-2xl font-bold text-navy-700 dark:text-white">
-            9.7K
-        </p>
-        <p class="text-sm font-normal text-gray-600">Followers</p>
-        </div>
-        <div class="flex flex-col items-center justify-center">
-        <p class="text-2xl font-bold text-navy-700 dark:text-white">
-            434
-        </p>
-        <p class="text-sm font-normal text-gray-600">Following</p>
+
+        <p class="text-sm font-normal text-gray-600"></p>
         </div>
     </div>
 </div>  </div>
