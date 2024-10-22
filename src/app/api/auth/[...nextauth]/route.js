@@ -80,26 +80,6 @@ export const handler = NextAuth({
       return true; // Proceed with the login
     },
       
-//       console.log(data);
-      
-//       const db = await connectDB();
-      
-
-//       const existingUser = await db.collection("allUser").findOne({ email: data?.email });
-// console.log(existingUser,user ,'this is what i want to sign in')
-
-//       if (!existingUser) {
-//         await db.collection('allUser').insertOne({
-//           email: user?.email,
-//           name: user?.name,
-//           image: user?.image,
-//           role: 'user', // Set role as user
-//         });
-//       }
-
-//       return true; // Return true to sign in the user
-//     },
-    
 
 async session({ session, token }) {
   // Add custom fields to the session object
