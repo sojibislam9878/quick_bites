@@ -131,12 +131,18 @@ const RestuarantDetailsPage = () => {
             </div>
 
             {/* Call button */}
-            <div className="space-x-6">
+            <div className="space-x-6 flex gap-2 items-center">
               <button
                 className="border-2 px-2 font-bold py-2 rounded text-green-600 hover:bg-green-600 hover:text-white border-green-600 flex items-center gap-4"
                 onClick={handleCall} // Use the handleCall function
               >
                 <FaPhone /> <span>Call</span>
+              </button>
+              <button
+                className="border-2 px-2 font-bold py-2 rounded text-blue-600 hover:bg-blue-600 hover:text-white border-blue-600 flex items-center gap-4"
+            
+              >
+                <BsCart3 /> <span>New Action</span>
               </button>
             </div>
 
