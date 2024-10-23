@@ -2,54 +2,52 @@
 import Spinner from '@/app/component/Spinner';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Detailspage = () => {
   const [loading, setLoading] = useState(false);
-  const [item, setItem] = useState(null); // Restaurant details
+  const [item, setItem] = useState({}); // Restaurant details
   const [reviews, setReviews] = useState([]); // Reviews array
   const [newReview, setNewReview] = useState({ rating: 0, comment: '' });
+  const [newReport, setNewReport] = useState(''); // New report state
   const [error, setError] = useState(null); // Error state for review submission
+  const [isReportModalOpen, setIsReportModalOpen] = useState(false); // Modal state
   const { slug } = useParams(); // Get 'slug' from the URL parameters
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const res = await fetch(`https://quick-bites-tau.vercel.app/api/allrestrurent/${slug}`);
-        const data = await res.json();
-        setItem(data.result);
-        setReviews(data.result.reviews || []); // Set existing reviews
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (slug) {
-      fetchData();
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/allrestrurent/${slug}`);
+      const data = await res.json();
+      setItem(data?.result);
+      setReviews(data.result.reviews || []); 
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      setLoading(false);
     }
+  };
+
+  useEffect(() => {
+    fetchData();
   }, [slug]);
 
-  console.log('Slug:', slug); // Check the slug value
-
-  // Handle review submission
+ 
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
-    setError(null); // Reset any previous errors
+    setError(null);
     if (newReview.rating <= 0) {
       setError('Please select a valid rating.');
-      return; // Early exit if the rating is invalid
+      return;
     }
     try {
-      const res = await fetch('https://quick-bites-tau.vercel.app/api/reviews', {
+      const res = await fetch(`/api/reviews/${slug}`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          restaurantName: slug, // Use slug for the restaurant name
-          user: 'John Doe', // Replace with actual user info
+          restaurantName: slug,
+          user: 'John Doe', 
           rating: newReview.rating,
           comment: newReview.comment,
         }),
@@ -57,23 +55,46 @@ const Detailspage = () => {
 
       const data = await res.json();
       if (data.status === '200') {
-        // Append the new review to the existing reviews array
         setReviews((prevReviews) => [
           ...prevReviews,
-          { user: 'John Doe', rating: newReview.rating, comment: newReview.comment, date: new Date() }
+          { user: 'John Doe', rating: newReview.rating, comment: newReview.comment, date: new Date() },
         ]);
-        setNewReview({ rating: 0, comment: '' }); // Reset form
+        setNewReview({ rating: 0, comment: '' });
       } else {
         setError(data.message || 'Failed to submit review.');
       }
     } catch (error) {
-      console.error('Error submitting review:', error);
+      setError('Something went wrong. Please try again later.');
+    }
+  };
+
+  // Handle report submission
+  const handleReportSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch(`/api/report/${slug}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ report: newReport }),
+      });
+
+      const data = await res.json();
+      if (data.status === '200') {
+        setNewReport(''); 
+        setIsReportModalOpen(false); 
+        toast.success('report sent to admin')
+      } else {
+        setError(data.message || 'Failed to submit report.');
+        
+      }
+    } catch (error) {
       setError('Something went wrong. Please try again later.');
     }
   };
 
   return (
     <div className="pt-24 container mx-auto p-4">
+      <ToastContainer/>
       {loading ? (
         <Spinner />
       ) : (
@@ -81,11 +102,33 @@ const Detailspage = () => {
           <>
             {/* Restaurant Details */}
             <div className="bg-white shadow-lg rounded-lg p-6">
-              <h1 className="text-3xl font-bold text-rose-600">{item.name}</h1>
-              <p className="text-gray-600 italic">{item.type} Cuisine</p>
+              <h1 className="text-3xl font-bold text-rose-600">{item?.name}</h1>
+              <p className="text-gray-600 italic">{item?.type} Cuisine</p>
               <p className="mt-2 text-gray-700">{item.location}</p>
               <p>Price Range: {item.priceRange}</p>
-              <p>Rating: {item.rating || "N/A"}</p>
+              <p>Rating: {item.rating || 'N/A'}</p>
+
+              {/* Report Button */}
+              <button
+                onClick={() => setIsReportModalOpen(true)}
+                className="mt-4 bg-red-500 text-white py-2 px-4 rounded-lg flex items-center space-x-2"
+              >
+                <span>Report</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 8.25v4.5m0 3v.75m9-8.25a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </button>
             </div>
 
             {/* Review Form */}
@@ -134,7 +177,7 @@ const Detailspage = () => {
               {reviews.length > 0 ? (
                 reviews.map((review, index) => (
                   <div key={index} className="mb-6 p-4 bg-white shadow rounded-lg">
-                    <p className="font-semibold">{review.user}</p>
+                    <p className="font-semibold">{review?.user}</p>
                     <p className="text-sm text-gray-600">Rating: {review.rating} / 5</p>
                     <p className="mt-2">{review.comment}</p>
                     <p className="text-xs text-gray-500">Reviewed on {new Date(review.date).toLocaleDateString()}</p>
@@ -144,6 +187,36 @@ const Detailspage = () => {
                 <p className="text-gray-500">No reviews yet.</p>
               )}
             </div>
+
+            {/* Report Modal */}
+            {isReportModalOpen && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                <div className="bg-white rounded-lg p-6 w-96">
+                  <h2 className="text-2xl font-bold mb-4">Report Restaurant</h2>
+                  <textarea
+                    className="w-full border-gray-300 rounded-lg mb-4"
+                    value={newReport}
+                    onChange={(e) => setNewReport(e.target.value)}
+                    rows="4"
+                    placeholder="Describe the issue..."
+                  />
+                  <div className="flex justify-end space-x-4">
+                    <button
+                      onClick={() => setIsReportModalOpen(false)}
+                      className="bg-gray-300 text-black py-2 px-4 rounded-lg"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      onClick={handleReportSubmit}
+                      className="bg-red-500 text-white py-2 px-4 rounded-lg"
+                    >
+                      Submit Report
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </>
         )
       )}

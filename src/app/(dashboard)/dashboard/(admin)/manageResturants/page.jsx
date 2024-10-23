@@ -197,7 +197,7 @@ const ManageRestaurants = () => {
                      <Link  href={`/dashboard/manageResturants/${restaurant?.slug}`}> View Details</Link>
                     </button>
                     <button
-                      className="bg-red-500 text-white px-3 py-1 rounded"
+                      className="bg-red-500 text-white w-24 px-3 py-1 rounded"
                       onClick={() => handleToggleStatus(restaurant)}
                     >
                       {restaurant.status === 'active' ? 'Block' : 'Unblock'}
