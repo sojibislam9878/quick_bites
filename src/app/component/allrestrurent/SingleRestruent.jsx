@@ -3,10 +3,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { FaMapMarkerAlt, FaClock, FaStar } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaClock, FaStar, FaHeart } from 'react-icons/fa';
 import Image from 'next/image';
 import { BsCash } from 'react-icons/bs';
 import img from '../../../asset/image/ddd.webp'
+import { AiOutlineHeart } from "react-icons/ai";
 
 const SingleRestruent = ({ data }) => {
   console.log(data);
@@ -58,11 +59,25 @@ const SingleRestruent = ({ data }) => {
             <span className="ml-2 text-gray-600 text-sm">({data?.rating?.toFixed(1) || 'N/A'})</span>
           </div> */}
 
-          <p className='text-rose-600 flex gap-2 items-center'>          <FaMapMarkerAlt className="text-rose-500" /> {data?.location}{data?.locationDetail
-          }</p>
+       <div className='flex justify-between'>
 
-          {/* Name */}
-          <h1 className="text-xl font-bold text-gray-800">{data?.name}</h1>
+        <div>   <p className='text-rose-600 flex gap-2 items-center'>          <FaMapMarkerAlt className="text-rose-500" /> {data?.location}</p>
+
+{/* Name */}
+<h1 className="text-xl font-bold text-gray-800">{data?.name}</h1></div>
+
+
+
+<div>
+<p className='flex items-center gap-2'>
+  
+<AiOutlineHeart className='text-rose-500 text-xl'/>
+<span className='font-bold text-rose-500'>12</span>
+</p>
+
+<button  className='flex items-center gap-2 bg-yellow-500 rounded px-2 text-white mt-2'>  <FaStar/>   {data?.avgRating} </button>
+</div>
+       </div>
           <h1 className=" "> <span className='font-semibold text-rose-800'> Type Of Food: </span>Type</h1>
 
           {/* Location and Timing */}
