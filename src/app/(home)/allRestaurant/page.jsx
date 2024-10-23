@@ -48,12 +48,12 @@ const Restrurentpage = () => {
 <h1 className='font-semibold'>Search Filters</h1>
 </div> 
 
-<div className='bg-gray-200 px-8 mt-6 py-8'>
+<div className='bg-gray-200  mt-6 py-8'>
 {
   restaurantCategories.map(c => 
   
   
-  <div key={c.id}  className='flex py-2 my-4 border-b border-gray-400 justify-between'>  
+  <div key={c.id}  className='flex px-6 hov cursor-pointer hover:bg-white  py-2 my-4 border-b justify-between'>  
   <MdKeyboardDoubleArrowRight />
   <p>{c.name}</p>
   <p>{c.length}</p>
