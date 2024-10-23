@@ -38,7 +38,7 @@ const Restrurentpage = () => {
   return (
     <div className='max-w-[1300px] mx-auto grid md:grid-cols-4'>
 
-<div className='col-span-1 px-6'>
+<div className='col-span-1 px-6 mt-6'>
   {/* search filters */}
 <section className='mt-8 '>  
 
