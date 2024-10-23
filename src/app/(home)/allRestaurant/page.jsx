@@ -4,6 +4,7 @@ import SingleRestruent from '@/app/component/allrestrurent/SingleRestruent';
 import Head from 'next/head';
 import Spinner from '@/app/component/Spinner';
 import { IoIosArrowForward } from 'react-icons/io';
+import { MdKeyboardDoubleArrowRight } from 'react-icons/md';
 
 const Restrurentpage = () => {
   const [data, setData] = useState(null);
@@ -38,7 +39,7 @@ const Restrurentpage = () => {
   return (
     <div className='max-w-[1300px] mx-auto grid md:grid-cols-4'>
 
-<div className='col-span-1 px-6 mt-6'>
+<div className='col-span-1 px-6 mt-6 '>
   {/* search filters */}
 <section className='mt-8 '>  
 
@@ -47,12 +48,13 @@ const Restrurentpage = () => {
 <h1 className='font-semibold'>Search Filters</h1>
 </div> 
 
+<div className='bg-gray-200 px-8 mt-6 py-8'>
 {
   restaurantCategories.map(c => 
   
   
-  <div key={c.id}  className='flex justify-between'>  
-  <IoIosArrowForward />
+  <div key={c.id}  className='flex py-2 my-4 border-b border-gray-400 justify-between'>  
+  <MdKeyboardDoubleArrowRight />
   <p>{c.name}</p>
   <p>{c.length}</p>
   
@@ -60,6 +62,7 @@ const Restrurentpage = () => {
   
   </div>)
 }
+</div>
 
 </section>
 {/* quick filters */}
