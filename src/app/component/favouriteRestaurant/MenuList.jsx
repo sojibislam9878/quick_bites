@@ -4,7 +4,8 @@ import { CgChevronRightO } from 'react-icons/cg';
 import { FaMotorcycle, FaRegStar } from 'react-icons/fa';
 import { menuData } from './menuData';
 
-const MenuList = () => {
+const MenuList = ({ item }) => {
+    const { name, price, minOrder, rating, image, location, deliveryTime } = item;
     return (
         <div>
             <div className=' flex flex-row items-center justify-center gap-4'>
@@ -14,25 +15,25 @@ const MenuList = () => {
                 <div className='space-y-4'>
                     <div className='flex flex-row justify-between items-center '>
                         <div className='space-y-4'>
-                            <p>Address</p>
-                            <h2 className='text-xl font-bold'>Tuna Fish</h2>
+                            <p>{location}</p>
+                            <h2 className='text-xl font-bold'>{name}</h2>
                         </div>
                         <div>
                             <p className='p-1 bg-[#bef754] flex flex-row justify-start items-center'>
                                 <FaRegStar />
-                                <span>Ratings</span>
+                                <span>{rating}</span>
                             </p>
                         </div>
                     </div>
                     <div className='flex flex-row justify-between items-center gap-6'>
-                        <h2 className='text-xl font-bold'>$84.40</h2>
+                        <h2 className='text-xl font-bold'>${price}</h2>
                         <p className='flex flex-row justify-start items-center'>
                             <CgChevronRightO />
-                            <span>Min order $40</span>
+                            <span>Min order: {minOrder}</span>
                         </p>
                         <p className='flex flex-row justify-start items-center'>
                             <FaMotorcycle />
-                            <span>40 Mins</span>
+                            <span>{deliveryTime}</span>
                         </p>
                     </div>
                 </div>
