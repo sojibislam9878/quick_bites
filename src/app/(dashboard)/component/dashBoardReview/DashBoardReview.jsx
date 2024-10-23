@@ -3,32 +3,62 @@ import "react-tabs/style/react-tabs.css";
 import { BsExclamationCircle } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
 import { useState } from "react";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import CouponSpinner from "@/app/component/coupon/CouponSpinner";
 
 const DashBoardReview = ({ item }) => {
   const [showReport, setShowReport] = useState(false);
   const [reportText, setReportText] = useState("");
+  const [loading, setLoading] = useState(false)
 
   const handleReportClick = () => {
     setShowReport(!showReport);
   };
+  console.log(item, 'mono');
 
-  const handleSubmit = () => {
-
-    setReportText("");
-    reportSentToOwner(reportText)
-
+  const handleSubmit = async () => {
+    if (reportText.trim()) {
+      await reportSentToOwner(reportText);
+      setReportText(""); // Clear the textarea after submission
+    } else {
+      toast.error("Please enter a valid report!");
+    }
   };
 
-  // report sent to restuarant owner
-  const reportSentToOwner = async(ReportText)=>{
+  // Send reportText to the API
+  const reportSentToOwner = async (reportText) => {
+    setLoading(true)
+    try {
+      const response = await fetch(`/api/reportToOwner/${item.slug}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ report: reportText }),
+      });
 
-alert(ReportText)
-  }
+      const data = await response.json();
+
+      if (response.ok) {
+        setLoading(false)
+        toast.success(`Report sent to ${item.name} owner!`);
+  
+      } else {
+        setLoading(false)
+        toast.error(data.message || "Failed to send the report.");
+      }
+    } catch (error) {
+      setLoading(false)
+      toast.error("An error occurred while sending the report.");
+    }
+  };
+  
 
   return (
     <div className="bg-white px-4 pt-4 pb-12 mt-12">
-      <h1 className="text-2xl">Restuarant Specification & Summary</h1>
+      <ToastContainer /> {/* Toast container to show notifications */}
+      <h1 className="text-2xl">Restaurant Specification & Summary</h1>
 
       <Tabs>
         <TabList>
@@ -93,7 +123,7 @@ alert(ReportText)
             </div>
             <div className="mt-4">
               <h1 className="text-xl font-semibold my-4">Sajib Wazed Joy</h1>
-              <h2>Sheikh Hasinas son</h2>
+              <h2>Sheikh Hasina  son</h2>
             </div>
           </div>
         </TabPanel>
@@ -102,9 +132,11 @@ alert(ReportText)
         <TabPanel>
           <div className="px-8 py-4">
             <h2 className="text-xl font-semibold mb-4">Reports</h2>
-            {item?.report?.length > 0 ? (
+            {item?.report
+?.length > 0 ? (
               <div className="space-y-4">
-                {item?.report?.map((rep, index) => (
+                {item?.report
+?.map((rep, index) => (
                   <div
                     key={index}
                     className="border p-4 rounded-lg shadow-sm bg-gray-50"
@@ -112,7 +144,7 @@ alert(ReportText)
                     <p className="font-semibold">Report:</p>
                     <p>{rep.report}</p>
                     <p className="text-sm text-gray-500 mt-2">
-                      Date: {(rep.date)}
+                      Date: {new Date(rep.date).toLocaleDateString()}
                     </p>
                   </div>
                 ))}
@@ -141,13 +173,14 @@ alert(ReportText)
             rows={4}
             value={reportText}
             onChange={(e) => setReportText(e.target.value)}
-            placeholder="Warning to the restuarant owner if something went wrong..."
+            placeholder="Warning to the restaurant owner if something went wrong..."
           />
           <button
             className="bg-orange-600 text-white px-4 py-2 rounded mt-2"
+            disabled={loading}
             onClick={handleSubmit}
           >
-            Submit
+           {loading ? 'Loading....': ' Submit'}
           </button>
         </div>
       )}
