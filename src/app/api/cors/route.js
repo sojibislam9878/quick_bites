@@ -1,10 +1,10 @@
 import Cors from 'cors';
 
-// CORS পলিসি সেটআপ করা যেখানে সব মেথড এলাউ করা আছে
+
 const cors = Cors({
-  origin: '*', // সব ডোমেইন এলাউ করা
-  methods: ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // সব মেথড এলাউ করা
-  allowedHeaders: ['Content-Type', 'Authorization'], // এলাউড হেডারস
+  origin: '*',
+  methods: ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'], 
 });
 
 // CORS middleware ফাংশন ব্যবহার করা
@@ -19,12 +19,9 @@ function runMiddleware(req, res, fn) {
   });
 }
 
-// API রুট হ্যান্ডল করা যেখানে CORS এলাউ করা হবে
 export async function GET(req, res) {
-  // প্রথমে CORS middleware রান করাও
   await runMiddleware(req, res, cors);
 
-  // তারপর রেসপন্স ফেরত দাও
   res.json({ message: 'GET request with CORS enabled!' });
 }
 
