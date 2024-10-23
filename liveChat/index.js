@@ -20,7 +20,7 @@ const cors = require('cors')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors(
     {
-      origin: [,"http://localhost:3000",'https://quick-bites-tau.vercel.app'],
+      origin: [,"https://quick-bites-tau.vercel.app",'https://quick-bites-tau.vercel.app'],
       methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     }
   
