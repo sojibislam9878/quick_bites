@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import SectionTitle from '../SectionTitle';
 
 const Section = () => {
     return (
-        <div className='container mx-auto p-4 text-center' > 
+        <div className='container mx-auto p-4 text-center mt-20' > 
+        <SectionTitle head={"Your Favourite Food"} title={"Choose & Enjoy"} para={"Assertively extend goal-oriented web services before leading-edge internal or organic sources. Energistically formulate."}></SectionTitle>
         {/* card parant  */}
         <div className='gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             {/* single card  */}
