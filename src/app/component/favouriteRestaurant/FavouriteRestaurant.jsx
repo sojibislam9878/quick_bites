@@ -9,7 +9,7 @@ import MenuList1 from './MenuList1';
 const FavouriteRestaurant = () => {
     return (
         <div className='px-12'>
-            <div className="max-w-6xl px-6 py-10 mx-auto text-center">
+            <div className="max-w-6xl lg:max-w-7xl px-6 py-10 mx-auto text-center">
                 <h3 className="text-xl font-medium text-[#6E6B58] "> Featured</h3>
                 <h2 className="mt-2 text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">Featured Restaurant</h2>
             </div>

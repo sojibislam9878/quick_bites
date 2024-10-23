@@ -1,21 +1,34 @@
+import Image from 'next/image';
 import React from 'react';
+import FoodItem from './FoodItem';
 
-const PopularFood = () => {
+const PopularFood = ({ item }) => {
+    const { image, priceRange, restaurant, address, dishName } = item;
     return (
-        <div className='px-12'>
-            <div className="max-w-6xl px-6 py-10 mx-auto text-center">
-                <h3 className="text-xl font-medium text-[#6E6B58] "> Your Favourite Food</h3>
-                <h2 className="mt-2 text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">POPULAR THIS MONTH</h2>
-            </div>
-            <div>
-            <div>
-                card
-            </div>
-            <div>
-                
-            </div>
-            </div>
 
+
+        <div className=" space-y-4 bg-base-100 shadow-xl w-full  p-4">
+            <figure className=" ">
+                <Image width={400} height={320}
+                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                    alt="Shoes"
+                    className="rounded-xl" />
+            </figure>
+            <div className=" items-center  flex flex-row justify-center gap-4">
+                <Image className='rounded-full w-16 h-16' alt='round-img' width={40} height={40} src={'/assets/banner/2.jpeg'} />
+                <div>
+                    <h2 className="text-xl">{dishName}</h2>
+                    <p className='text-base text-[#222222ae]'>{address}</p>
+
+                </div>
+            </div>
+            <hr class="border-t-1 border-gray-200 rounded-lg shadow-lg" />
+            <div>
+                <div className='text-center'>
+                    <h2 className='text-xl'>{restaurant}</h2>
+                    <p>{priceRange}</p>
+                </div>
+            </div>
         </div>
     );
 };

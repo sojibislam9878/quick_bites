@@ -7,15 +7,17 @@ const PromotionCard = ({ pData }) => {
     const { image, dishName, rating, shortDescription, reorderButton, price, discount } = pData;
     return (
 
-        <div className="relative overflow-hidden w-full rounded-xl shadow-lg ">
+        <div className="relative overflow-hidden w-full rounded-xl shadow-lg group">
             {/* Wrapper div for hover effects */}
-            <div className="transition-transform hover:scale-110 hover:rotate-3 duration-200 w-full h-[340px]">
+            <div className="transition-transform group-hover:scale-110 duration-200 w-full h-[340px]">
                 <Image
                     src={image}
                     alt="promotion Card"
                     width={340}
                     height={280}
-                    className="object-cover w-full h-full hover:scale-110 hover:rotate-3 cursor-pointer"
+                    className="object-cover w-full h-full group-hover:scale-110 cursor-pointer"
+                    priority={true}
+
                 />
             </div>
 

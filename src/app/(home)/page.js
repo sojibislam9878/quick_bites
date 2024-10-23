@@ -7,6 +7,7 @@ import WhyChooseUs from "../component/WhyChooseUs/WhyChooseUse.jsx";
 import Blog from "../component/Blog/Blog"
 import BloogLetter from "../component/Blog/BloogLetter";
 import FavouriteRestaurant from "../component/favouriteRestaurant/FavouriteRestaurant";
+import PopularFoodItem from "../component/popularFoodItem/PoularFoodItem"
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
     <Banner/>
     <Blog/>
     <FavouriteRestaurant/>
+    <PopularFoodItem/>
     <Promotion/>
     <WhyChooseUs/>
     <Review/>
