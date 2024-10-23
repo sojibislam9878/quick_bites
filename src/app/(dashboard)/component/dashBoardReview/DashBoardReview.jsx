@@ -93,7 +93,7 @@ alert(ReportText)
             </div>
             <div className="mt-4">
               <h1 className="text-xl font-semibold my-4">Sajib Wazed Joy</h1>
-              <h2>Sheikh Hasina's son</h2>
+              <h2>Sheikh Hasinas son</h2>
             </div>
           </div>
         </TabPanel>
