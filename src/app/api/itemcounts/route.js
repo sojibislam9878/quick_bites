@@ -1,10 +1,12 @@
 import { connectDB } from "@/app/lib/connectDB"
+import corsMiddleware from "@/app/lib/cors"
 import { NextResponse } from "next/server"
 
 export const GET = async(request)=>{
 
 
     try {
+      await corsMiddleware(request, NextResponse);
         const {searchParams} = new URL(request.url)
         let currentPage = parseInt(searchParams.get('page')) || 1;
         let perPage = parseInt(searchParams.get('size')) || 10;
