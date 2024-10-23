@@ -39,7 +39,7 @@ const SingleRestruent = ({ data }) => {
         {/* Restaurant Image */}
         <div className="relative">
           <Image
-            src={img}
+            src={data?.banner_image}
             alt={data?.name}
             width={100}
             height={100}
