@@ -32,7 +32,7 @@ export default function ReviewSlide() {
     const chunkedReviews = chunkArray(reviews, 6);
 
     return (
-        <div>
+        <div className=''>
             <Swiper
                 spaceBetween={20}
                 loop={true}
