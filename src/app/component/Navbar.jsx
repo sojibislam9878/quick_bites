@@ -44,8 +44,8 @@ const Navbar = () => {
   
 
   return (
-    <div className="lg:px-8 shadow-md  sticky top-0 left-0 w-full h-20 z-50 bg-base-100  md:px-4">
-      <div className="navbar  justify-between  lg:justify-between md:justify-between ">
+    <div className=" shadow-md  sticky top-0 left-0  z-50 bg-base-100">
+      <div className=" container mx-auto p-4 navbar  justify-between  lg:justify-between md:justify-between ">
         <div className="navbar-start  w-fit">
           {/* for small */}
           <div className={icon ? "" : " relative"}>

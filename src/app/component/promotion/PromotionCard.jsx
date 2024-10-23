@@ -9,7 +9,7 @@ const PromotionCard = ({ pData }) => {
 
         <div className="relative overflow-hidden w-full rounded-xl shadow-lg group">
             {/* Wrapper div for hover effects */}
-            <div className="transition-transform group-hover:scale-110 group-hover:rotate-3 duration-200 w-full h-[340px]">
+            <div className="transition-transform  duration-200 w-full h-[340px]">
                 <Image
                     src={image}
                     alt="promotion Card"
@@ -30,7 +30,7 @@ const PromotionCard = ({ pData }) => {
                     <p><span className="text-white font-medium">Price:</span> ${price}</p>
                     <p><span className="text-white font-medium">Discount:</span> {discount}</p>
 
-                    <div className="mb-3">
+                    <div className="mb-3"> 
                         <button className="outline-2 px-4 py-2 rounded-lg hover:bg-[#EA6A12] font-medium text-white bg-[#ff7519] mb-2">
                             Re-Order
                         </button>
