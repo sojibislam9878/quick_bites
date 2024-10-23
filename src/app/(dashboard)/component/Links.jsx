@@ -19,12 +19,12 @@ const links = {
     { href: "/dashboard/historys", label: "History", icon: <FaHistory /> },
   ],
   admin: [
-    { href: "/dashboard", label: "AdminProfile", icon: <FaUser /> },
+  
     { href: "/dashboard/manageResturants", label: "Manage Restaurants", icon: <FaUtensils /> },
     { href: "/dashboard/manageUser", label: "Manage Users", icon: <FaUserCog /> },
     { href: "/dashboard/managedeleveryman", label: "Manage Delivery Man", icon: <FaTruck /> },
-  
     { href: "/dashboard/coupon", label: "Coupon", icon: <FaTag /> },
+    { href: "/dashboard/adminChat", label: "Chats", icon: <FaTag /> },
   ],
 };
 

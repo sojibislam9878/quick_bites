@@ -1,16 +1,25 @@
 "use client";
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CartContext from "../../Context/CartContext";
 import Link from "next/link";
 import axios from "axios";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 const Cart = () => {
+  const userData=useSession()
+  
   const { addItemToCart, deleteItemFromCart, cart } = useContext(CartContext);
   const [hasCoupon, setHasCoupon] = useState(false); // State to handle checkbox
   const [coupon, setCoupon] = useState(""); // State to store coupon input
   const [discount, setDiscount] = useState(0); // State to store discount
+
+  
+
+
+  // console.log(cart.cartItems,'cart is here ');
+
 
   const increaseQty = (cartItem) => {
     const newQty = cartItem?.quantity + 1;
@@ -58,11 +67,28 @@ const Cart = () => {
       setDiscount(0);
     }
   };
+
+ 
   const handlePayment = async () => {
 
-    const amount={amount:totalAmountAfterDiscount || totalAmountBeforeDiscount}
+   
+    const amount=totalAmountAfterDiscount || totalAmountBeforeDiscount
 
-    axios.post('https://e-commerce-server-side-beta.vercel.app/checkOut',amount)
+    const allData={
+      amount,
+      name:userData?.data?.user?.name,
+      email: userData?.data?.user?.email,
+      foodItems:cart?.cartItems
+      // productName:cart?.cartItems?.foodName,
+      // productImage:cart?.cartItems?.image,
+      // productQuantity:cart?.cartItems?.quantity,
+      // productBrand:cart?.cartItems?.brand,
+      // productCategory:cart?.cartItems?.category,
+      // productId:cart?.cartItems?.product
+      
+    }
+
+const data= axios.post('https://quick-bites-ljsf.onrender.com /checkOut',allData)
     .then((response)=>{ 
         console.log(response)
 
@@ -70,10 +96,14 @@ const Cart = () => {
           window.location.href = response.data.url; // Redirect to SSLCommerz payment page
         }
       })
+      console.log(data);
+      
 
 
 
   }
+
+
 
   return (
     <>
