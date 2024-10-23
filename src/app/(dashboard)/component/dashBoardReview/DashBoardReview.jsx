@@ -14,10 +14,17 @@ const DashBoardReview = ({ item }) => {
   };
 
   const handleSubmit = () => {
-    alert("Report submitted: " + reportText);
+
     setReportText("");
-    setShowReport(false);
+    reportSentToOwner(reportText)
+
   };
+
+  // report sent to restuarant owner
+  const reportSentToOwner = async(ReportText)=>{
+
+alert(ReportText)
+  }
 
   return (
     <div className="bg-white px-4 pt-4 pb-12 mt-12">

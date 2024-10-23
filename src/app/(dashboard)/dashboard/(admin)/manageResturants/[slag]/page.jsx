@@ -5,6 +5,7 @@ import Swal from 'sweetalert2'; // Import SweetAlert
 import DashBoardReview from '@/app/(dashboard)/component/dashBoardReview/DashBoardReview';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const RestuarantDetailsPage = () => {
   const [item, setItem] = useState({});
@@ -83,7 +84,7 @@ const RestuarantDetailsPage = () => {
       <section>
         <div className="col-span-9 pb-12 md:grid md:grid-cols-12 gap-6 bg-white min-h-screen border">
           <div className="image md:col-span-5 ml-8 mt-8">
-            <img
+            <Image
               src={item?.banner_image}
               height={300}
               width={100}
