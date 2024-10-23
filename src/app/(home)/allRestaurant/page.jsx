@@ -42,7 +42,7 @@ const Restrurentpage = () => {
         <h1 className="text-center text-4xl font-bold text-rose-600 mb-12">Explore Our Restaurants</h1>
 
         {/* Grid layout with 1 card on mobile, 3 cards on larger screens */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
           {allRestrurent.map((restaurant) => (
             <SingleRestruent key={restaurant?._id} data={restaurant} />
           ))}

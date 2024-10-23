@@ -1,9 +1,11 @@
 import { connectDB } from "@/app/lib/connectDB";
+import { NextResponse } from "next/server";
 
 export const POST = async(req, {params})=>{
 
 try {
     const {slug} = params;
+ 
 const db = connectDB();
 const restaurantCollection = db.collection('allRestaurant');
 const { report } = await req.json();
