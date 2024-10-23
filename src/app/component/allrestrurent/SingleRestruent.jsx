@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { FaMapMarkerAlt, FaClock, FaStar } from 'react-icons/fa';
 import Image from 'next/image';
 import { BsCash } from 'react-icons/bs';
+import img from '../../../asset/image/ddd.webp'
 
 const SingleRestruent = ({ data }) => {
   console.log(data);
@@ -37,7 +38,7 @@ const SingleRestruent = ({ data }) => {
         {/* Restaurant Image */}
         <div className="relative">
           <Image
-            src={data?.banner_image}
+            src={img}
             alt={data?.name}
             width={100}
             height={100}
