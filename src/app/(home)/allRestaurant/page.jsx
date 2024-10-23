@@ -48,7 +48,7 @@ const Restrurentpage = () => {
 <h1 className='font-semibold'>Search Filters</h1>
 </div> 
 
-<div className='bg-gray-200  mt-6 py-8'>
+<div className='bg-gray-200 rounded-tr-[100px] rounded-tl-[20px] mt-6 py-8'>
 {
   restaurantCategories.map(c => 
   
