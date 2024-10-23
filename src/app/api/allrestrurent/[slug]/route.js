@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 // Dynamic GET request to fetch a specific restaurant by name
 export const GET = async (req, { params }) => {
-  const { slug } = params; // Get the dynamic 'name' from the URL
+  const { slug } = params; 
  
 
   try {
