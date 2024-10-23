@@ -197,7 +197,10 @@ try {
                 email:data?.userData
             }
 
-            const amount= Math.ceil(paymentData?.product_data?.amount*(20/100))
+            const data=await userCollection.findOne(userData)?.points
+
+
+            const amount= Math.ceil(paymentData?.product_data?.amount*(20/100))+data
             
             const point={
                 $set:{
