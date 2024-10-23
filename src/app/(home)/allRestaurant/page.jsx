@@ -5,6 +5,7 @@ import Head from 'next/head';
 import Spinner from '@/app/component/Spinner';
 import { IoIosArrowForward } from 'react-icons/io';
 import { MdKeyboardDoubleArrowRight } from 'react-icons/md';
+import { RiCheckboxBlankCircleLine } from "react-icons/ri";
 
 const Restrurentpage = () => {
   const [data, setData] = useState(null);
@@ -70,14 +71,17 @@ const Restrurentpage = () => {
 }
 </div>
 
-
+<div className='flex items-center gap-2 mt-6'>
+<div className='h-4 w-3 bg-rose-800'></div>
+<h1 className='font-semibold'>Quick Filters</h1>
+</div> 
 <div className='bg-gray-200 rounded mt-6 py-8'>
 {
 type.map(c => 
   
   
   <div key={c.id}  className='flex px-6 hov cursor-pointer hover:bg-white  py-2 my-4 border-b justify-between'>  
-  <MdKeyboardDoubleArrowRight />
+  <RiCheckboxBlankCircleLine />
   <p>{c.name}</p>
   <p>{c.length}</p>
   
