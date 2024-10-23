@@ -32,7 +32,7 @@ const SingleRestruent = ({ data }) => {
 
   return (
     <div className=" hover:scale-[1.02] transform transition-transform duration-300 ">
-      <div className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 flex gap-4 items-center p-6 relative">
+      <div className="bg-gray-100 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 flex gap-4 items-center p-6 relative">
 
         {/* Restaurant Image */}
         <div className="relative">

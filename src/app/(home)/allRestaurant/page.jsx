@@ -70,7 +70,7 @@ const Restrurentpage = () => {
 
 </div>
 
-      <div className="bg-gray-100  col-span-3 pt-32 pb-24 px-4 md:px-8">
+      <div className="  col-span-3 pt-32 pb-24 px-4 md:px-8">
         <h1 className="text-center text-4xl font-bold text-rose-600 mb-12">Explore Our Restaurants</h1>
 
         {/* Grid layout with 1 card on mobile, 3 cards on larger screens */}
