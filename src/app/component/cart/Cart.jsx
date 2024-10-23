@@ -6,9 +6,11 @@ import Link from "next/link";
 import axios from "axios";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const Cart = () => {
   const userData=useSession()
+  const router=useRouter()
   
   const { addItemToCart, deleteItemFromCart, cart } = useContext(CartContext);
   const [hasCoupon, setHasCoupon] = useState(false); // State to handle checkbox
@@ -71,32 +73,34 @@ const Cart = () => {
  
   const handlePayment = async () => {
 
+  
+router.push('/checkoutFrom')
    
     const amount=totalAmountAfterDiscount || totalAmountBeforeDiscount
 
-    const allData={
-      amount,
-      name:userData?.data?.user?.name,
-      email: userData?.data?.user?.email,
-      foodItems:cart?.cartItems
-      // productName:cart?.cartItems?.foodName,
-      // productImage:cart?.cartItems?.image,
-      // productQuantity:cart?.cartItems?.quantity,
-      // productBrand:cart?.cartItems?.brand,
-      // productCategory:cart?.cartItems?.category,
-      // productId:cart?.cartItems?.product
+//     const allData={
+//       amount,
+//       name:userData?.data?.user?.name,
+//       email: userData?.data?.user?.email,
+//       foodItems:cart?.cartItems
+//       // productName:cart?.cartItems?.foodName,
+//       // productImage:cart?.cartItems?.image,
+//       // productQuantity:cart?.cartItems?.quantity,
+//       // productBrand:cart?.cartItems?.brand,
+//       // productCategory:cart?.cartItems?.category,
+//       // productId:cart?.cartItems?.product
       
-    }
+//     }
 
-const data= axios.post('https://quick-bites-ljsf.onrender.com/checkOut',allData)
-    .then((response)=>{ 
-        console.log(response)
+// const data= axios.post('https://quick-bites-ljsf.onrender.com/checkOut',allData)
+//     .then((response)=>{ 
+//         console.log(response)
 
-        if (response?.data?.url) {
-          window.location.href = response.data.url; // Redirect to SSLCommerz payment page
-        }
-      })
-      console.log(data);
+//         if (response?.data?.url) {
+//           window.location.href = response.data.url; // Redirect to SSLCommerz payment page
+//         }
+//       })
+//       console.log(data);
       
 
 

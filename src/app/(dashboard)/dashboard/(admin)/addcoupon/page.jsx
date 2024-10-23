@@ -43,7 +43,7 @@ const AddCouponForm = () => {
         console.log(formData)
 
         if (formData) {
-            axios.post('https://quick-bites-tau.vercel.app/api/addCoupon', formData)
+            axios.post('http://localhost:3000/api/addCoupon', formData)
                 .then(response => {
                     if(response.data.message=='Coupon updated successfully'){
                         refetch()
