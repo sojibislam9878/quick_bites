@@ -48,7 +48,7 @@ const Restrurentpage = () => {
 <h1 className='font-semibold'>Search Filters</h1>
 </div> 
 
-<div className='bg-gray-200 rounded-tr-[100px] rounded-tl-[20px] mt-6 py-8'>
+<div className='bg-gray-200 rounded mt-6 py-8'>
 {
   restaurantCategories.map(c => 
   
@@ -62,8 +62,36 @@ const Restrurentpage = () => {
   
   </div>)
 }
+
+
+{
+
+ 
+}
 </div>
 
+
+<div className='bg-gray-200 rounded mt-6 py-8'>
+{
+type.map(c => 
+  
+  
+  <div key={c.id}  className='flex px-6 hov cursor-pointer hover:bg-white  py-2 my-4 border-b justify-between'>  
+  <MdKeyboardDoubleArrowRight />
+  <p>{c.name}</p>
+  <p>{c.length}</p>
+  
+  
+  
+  </div>)
+}
+
+
+{
+
+ 
+}
+</div>
 </section>
 {/* quick filters */}
 <section></section>
@@ -97,6 +125,14 @@ const restaurantCategories = [
   { id: 7, name: 'Rolls', length: 29 },
   { id: 8, name: 'Coffee', length: 38 },
   { id: 9, name: 'Mughlai', length: 12 }
+];
+
+const type = [
+  { id: 1, name: 'Promotions', length: 34 },
+  { id: 2, name: 'Bookmarked', length: 54 },
+  { id: 3, name: 'Pure Veg', length: 45 },
+  { id: 4, name: 'Free delevery', length: 23 },
+ 
 ];
 
 export default Restrurentpage;
