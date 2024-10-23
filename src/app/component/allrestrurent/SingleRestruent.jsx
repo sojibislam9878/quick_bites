@@ -31,8 +31,8 @@ const SingleRestruent = ({ data }) => {
 
 
   return (
-    <div className=" hover:scale-[1.02] transform transition-transform duration-300 ">
-      <div className="bg-gray-100 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 flex gap-4 items-center p-6 relative">
+    <div className="  ">
+      <div className="bg-gray-100 rounded-lg   flex gap-4 items-center p-6 relative">
 
         {/* Restaurant Image */}
         <div className="relative">
@@ -78,25 +78,32 @@ const SingleRestruent = ({ data }) => {
           </div>
           <p className='flex gap-2 items-center'>   <span><BsCash /></span> <span>Accept Cash And Online payment</span></p>
          
+
+          <Link href={`/allRestaurant/${data?.slug}`}>
+            <p className="inline-block text-center w-full bg-gradient-to-r bg-gray-4 mt-4 border border-gray-500 hover:text-rose-500 text-black  font-semibold rounded-md py-2 px-6 ">
+              View Detalis
+            </p>
+          </Link>
+
         </div>
 
        
       </div>
        {/* Mobile Button */}
-       <Link href={`/allRestaurant/${data?.slug}`}>
+       {/* <Link href={`/allRestaurant/${data?.slug}`}>
           <p className="block sm:hidden w-full bg-gradient-to-r from-rose-500 to-pink-600 text-white text-center font-semibold rounded-md py-2 mt-4 shadow-lg hover:shadow-xl transition duration-300">
             View Menu
           </p>
-        </Link>
+        </Link> */}
 
         {/* Desktop Button */}
-        <div className="hidden sm:block mt-8">
+        {/* <div className="hidden sm:block mt-8">
           <Link href={`/allRestaurant/${data?.slug}`}>
             <p className="inline-block text-center w-full bg-gradient-to-r from-rose-500 to-pink-600 text-white font-semibold rounded-md py-2 px-6 shadow-lg hover:shadow-xl transition duration-300">
-              View Menu
+              View Detalis
             </p>
           </Link>
-        </div>
+        </div> */}
     </div>
   );
 };
