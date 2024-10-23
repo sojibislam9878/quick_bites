@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import SingleRestruent from '@/app/component/allrestrurent/SingleRestruent';
 import Head from 'next/head';
 import Spinner from '@/app/component/Spinner';
+import { IoIosArrowForward } from 'react-icons/io';
 
 const Restrurentpage = () => {
   const [data, setData] = useState(null);
@@ -37,8 +38,32 @@ const Restrurentpage = () => {
   return (
     <div className='max-w-[1300px] mx-auto grid md:grid-cols-4'>
 
-<div className='col-span-1'>
-hi
+<div className='col-span-1 px-6'>
+  {/* search filters */}
+<section className='mt-8 '>  
+
+<div className='flex items-center gap-2'>
+<div className='h-4 w-3 bg-rose-800'></div>
+<h1 className='font-semibold'>Search Filters</h1>
+</div> 
+
+{
+  restaurantCategories.map(c => 
+  
+  
+  <div key={c.id}  className='flex justify-between'>  
+  <IoIosArrowForward />
+  <p>{c.name}</p>
+  <p>{c.length}</p>
+  
+  
+  
+  </div>)
+}
+
+</section>
+{/* quick filters */}
+<section></section>
 
 </div>
 
@@ -55,5 +80,20 @@ hi
     </div>
   );
 };
+
+
+
+
+const restaurantCategories = [
+  { id: 1, name: 'Fast Food', length: 34 },
+  { id: 2, name: 'Nath\'s Indian', length: 54 },
+  { id: 3, name: 'Chinese', length: 45 },
+  { id: 4, name: 'Bakery', length: 23 },
+  { id: 5, name: 'Pizza', length: 67 },
+  { id: 6, name: 'Ice Cream', length: 17 },
+  { id: 7, name: 'Rolls', length: 29 },
+  { id: 8, name: 'Coffee', length: 38 },
+  { id: 9, name: 'Mughlai', length: 12 }
+];
 
 export default Restrurentpage;
