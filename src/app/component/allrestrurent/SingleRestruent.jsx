@@ -73,7 +73,7 @@ const SingleRestruent = ({ data }) => {
         </div>
 
         {/* Mobile Button */}
-        <Link href={`/allRestaurant/${data?.name}`}>
+        <Link href={`/allRestaurant/${data?.slug}`}>
           <p className="block sm:hidden w-full bg-gradient-to-r from-rose-500 to-pink-600 text-white text-center font-semibold rounded-md py-2 mt-4 shadow-lg hover:shadow-xl transition duration-300">
             View Menu
           </p>
@@ -81,7 +81,7 @@ const SingleRestruent = ({ data }) => {
 
         {/* Desktop Button */}
         <div className="hidden sm:block mt-8">
-          <Link href={`/allRestaurant/${data?.name}`}>
+          <Link href={`/allRestaurant/${data?.slug}`}>
             <p className="inline-block text-center w-full bg-gradient-to-r from-rose-500 to-pink-600 text-white font-semibold rounded-md py-2 px-6 shadow-lg hover:shadow-xl transition duration-300">
               View Menu
             </p>
