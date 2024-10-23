@@ -24,13 +24,13 @@ export default function PaymentSuccess() {
 
   const [id, setId] = useState()
   useEffect(() => {
-    axios.get(`https://quick-bites-ljsf.onrender.com /order/${transactionId}`)
+    axios.get(`https://quick-bites-ljsf.onrender.com/order/${transactionId}`)
       .then(response => {
         setId(response.data.validId)
       }, [transactionId])
   })
   const handleGotoDashBoard = () => {
-    axios.post('https://quick-bites-ljsf.onrender.com /validate', {
+    axios.post('https://quick-bites-ljsf.onrender.com/validate', {
       transactionId, id,userData
     })
       .then(response => {
