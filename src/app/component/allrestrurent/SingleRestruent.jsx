@@ -61,7 +61,7 @@ const SingleRestruent = ({ data }) => {
           }</p>
 
           {/* Name */}
-          <h1 className="text-2xl font-bold text-gray-800">{data?.name}</h1>
+          <h1 className="text-xl font-bold text-gray-800">{data?.name}</h1>
           <h1 className=" "> <span className='font-semibold text-rose-800'> Type Of Food: </span>Type</h1>
 
           {/* Location and Timing */}
