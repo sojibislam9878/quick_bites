@@ -130,7 +130,7 @@ const Navbar = () => {
                       (<b>{cart?.cartItems?.reduce(
                           (acc, item) => acc + item.quantity,
                           0
-                        )}|| 0
+                        )|| 0}
                         </b>)
                     </span></div></Link>
               </div>
