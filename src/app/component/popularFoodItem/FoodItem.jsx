@@ -5,8 +5,7 @@ const FoodItem = ({ item }) => {
     const { priceRange, restaurant, address, dishName } = item;
     return (
         <div>
-
-            <div className='flex flex-row justify-between items-center gap-4'>
+            <div className='flex flex-row justify-between items-center gap-6'>
                 <div className='flex flex-row justify-between items-center gap-4'>
                     <Image width={80} height={80}
                         src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"

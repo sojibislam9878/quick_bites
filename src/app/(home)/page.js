@@ -6,15 +6,17 @@ import WhyChooseUs from "../component/WhyChooseUs/WhyChooseUse.jsx";
 // import GoogleMap from "../component/googleMap/GoogleMap.jsx"
 import Blog from "../component/Blog/Blog"
 import BloogLetter from "../component/Blog/BloogLetter";
-import FavouriteRestaurant from "../component/favouriteRestaurant/FavouriteRestaurant";
-import PopularFoodItem from "../component/popularFoodItem/PoularFoodItem"
+import PopularFoodItem from "../component/popularFoodItem/PopularFoodItem"
+import Section from "../component/favoritefoodSection/Section";
+import FeaturedRestaurant from "../component/featuredRestaurant/FeaturedRestaurant";
 
 export default function Home() {
   return (
     <div >
     <Banner/>
     <Blog/>
-    <FavouriteRestaurant/>
+    <Section></Section>
+    <FeaturedRestaurant/>
     <PopularFoodItem/>
     <Promotion/>
     <WhyChooseUs/>

@@ -10,7 +10,7 @@ const MenuList1 = ({ item }) => {
         <div>
             <div className=' flex flex-col justify-start gap-2'>
                 <div>
-                    <Image src={'/assets/banner/3.jpeg'} alt='img' width={500} height={500} className='bg-center' />
+                    <Image src={'/assets/banner/3.jpeg'} alt='img' width={500} height={500} />
                 </div>
                 <div className='space-y-2'>
                     <div className='flex flex-row justify-between items-center '>
