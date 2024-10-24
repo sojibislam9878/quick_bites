@@ -63,7 +63,7 @@ const Cart = () => {
   const handlePayment = async () => {
 
 
-    router.push('/checkoutForm')
+    router.push('/checkoutfrom')
 
 
 
