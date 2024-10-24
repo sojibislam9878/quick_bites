@@ -8,12 +8,12 @@ const MenuList = ({ item }) => {
     const { name, price, minOrder, rating, image, location, deliveryTime } = item;
     return (
         <div>
-            <div className=' flex flex-row items-center justify-center gap-4'>
+            <div className=' flex flex-row  gap-4 '>
                 <div>
                     <Image src={'/assets/banner/3.jpeg'} alt='img' width={100} height={100} className='rounded-full w-24 h-24 bg-center' />
                 </div>
                 <div className='space-y-4'>
-                    <div className='flex flex-row justify-between items-center '>
+                    <div className='flex flex-row justify-between '>
                         <div className='space-y-4'>
                             <p>{location}</p>
                             <h2 className='text-xl font-bold'>{name}</h2>
