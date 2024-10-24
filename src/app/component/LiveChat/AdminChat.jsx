@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { IoMdSend } from 'react-icons/io';
 import io from 'socket.io-client';
 
-const socket = io('https://quick-bites-ljsf.onrender.com');
+const socket = io('http://localhost:5000');
 
 const AdminChat = () => {
     const [selectedUserId, setSelectedUserId] = useState(null);

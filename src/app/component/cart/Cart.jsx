@@ -74,35 +74,9 @@ const Cart = () => {
   const handlePayment = async () => {
 
   
-router.push('/checkoutFrom')
+router.push('/checkoutForm')
    
-    const amount=totalAmountAfterDiscount || totalAmountBeforeDiscount
-
-//     const allData={
-//       amount,
-//       name:userData?.data?.user?.name,
-//       email: userData?.data?.user?.email,
-//       foodItems:cart?.cartItems
-//       // productName:cart?.cartItems?.foodName,
-//       // productImage:cart?.cartItems?.image,
-//       // productQuantity:cart?.cartItems?.quantity,
-//       // productBrand:cart?.cartItems?.brand,
-//       // productCategory:cart?.cartItems?.category,
-//       // productId:cart?.cartItems?.product
-      
-//     }
-
-// const data= axios.post('https://quick-bites-ljsf.onrender.com/checkOut',allData)
-//     .then((response)=>{ 
-//         console.log(response)
-
-//         if (response?.data?.url) {
-//           window.location.href = response.data.url; // Redirect to SSLCommerz payment page
-//         }
-//       })
-//       console.log(data);
-      
-
+  
 
 
   }
@@ -260,7 +234,7 @@ router.push('/checkoutFrom')
                   )}
 
                   <a onClick={handlePayment} className="px-4 py-3 mb-2 inline-block text-lg w-full text-center font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer">
-                    Continue
+                    CheckOut
                   </a>
 
                   <Link

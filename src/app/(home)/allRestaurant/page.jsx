@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 import SingleRestruent from '@/app/component/allrestrurent/SingleRestruent';
 import Head from 'next/head';
 import Spinner from '@/app/component/Spinner';
+import { IoIosArrowForward } from 'react-icons/io';
+import { MdKeyboardDoubleArrowRight } from 'react-icons/md';
+import { RiCheckboxBlankCircleLine } from "react-icons/ri";
 
 const Restrurentpage = () => {
   const [data, setData] = useState(null);
@@ -35,14 +38,75 @@ const Restrurentpage = () => {
   }
 
   return (
-    <div className='max-w-[1300px] mx-auto'>
+    <div className='container mx-auto grid grid-cols-1 lg:grid-cols-4'>
+
+<div className='col-span-1 px-6 mt-6 '>
+  {/* search filters */}
+<section className='mt-8 '>  
+
+<div className='flex items-center gap-2'>
+<div className='h-4 w-3 bg-rose-800'></div>
+<h1 className='font-semibold'>Search Filters</h1>
+</div> 
+
+<div className='bg-gray-200 rounded mt-6 py-8'>
+{
+  restaurantCategories.map(c => 
+  
+  
+  <div key={c.id}  className='flex px-6 hov cursor-pointer hover:bg-white  py-2 my-4 border-b justify-between'>  
+  <MdKeyboardDoubleArrowRight />
+  <p>{c.name}</p>
+  <p>{c.length}</p>
+  
+  
+  
+  </div>)
+}
 
 
-      <div className="bg-gray-100  pt-32 pb-24 px-4 md:px-8">
+{
+
+ 
+}
+</div>
+
+<div className='flex items-center gap-2 mt-6'>
+<div className='h-4 w-3 bg-rose-800'></div>
+<h1 className='font-semibold'>Quick Filters</h1>
+</div> 
+<div className='bg-gray-200 rounded mt-6 py-8'>
+{
+type.map(c => 
+  
+  
+  <div key={c.id}  className='flex px-6 hov cursor-pointer hover:bg-white  py-2 my-4 border-b justify-between'>  
+  <RiCheckboxBlankCircleLine />
+  <p>{c.name}</p>
+  <p>{c.length}</p>
+  
+  
+  
+  </div>)
+}
+
+
+{
+
+ 
+}
+</div>
+</section>
+{/* quick filters */}
+<section></section>
+
+</div>
+
+      <div className="  col-span-3 pt-32 pb-24 px-4 md:px-8">
         <h1 className="text-center text-4xl font-bold text-rose-600 mb-12">Explore Our Restaurants</h1>
 
         {/* Grid layout with 1 card on mobile, 3 cards on larger screens */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
           {allRestrurent.map((restaurant) => (
             <SingleRestruent key={restaurant?._id} data={restaurant} />
           ))}
@@ -51,5 +115,28 @@ const Restrurentpage = () => {
     </div>
   );
 };
+
+
+
+
+const restaurantCategories = [
+  { id: 1, name: 'Fast Food', length: 34 },
+  { id: 2, name: 'Nath\'s Indian', length: 54 },
+  { id: 3, name: 'Chinese', length: 45 },
+  { id: 4, name: 'Bakery', length: 23 },
+  { id: 5, name: 'Pizza', length: 67 },
+  { id: 6, name: 'Ice Cream', length: 17 },
+  { id: 7, name: 'Rolls', length: 29 },
+  { id: 8, name: 'Coffee', length: 38 },
+  { id: 9, name: 'Mughlai', length: 12 }
+];
+
+const type = [
+  { id: 1, name: 'Promotions', length: 34 },
+  { id: 2, name: 'Bookmarked', length: 54 },
+  { id: 3, name: 'Pure Veg', length: 45 },
+  { id: 4, name: 'Free delevery', length: 23 },
+ 
+];
 
 export default Restrurentpage;

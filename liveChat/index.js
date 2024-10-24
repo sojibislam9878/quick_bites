@@ -66,27 +66,20 @@ try {
         total_amount: data?.amount, // payment amount
         currency: 'USD', // e.g., 'BDT'
         tran_id: transactionId, // unique transaction id
-        success_url: 'https://quick-bites-ljsf.onrender.com/payment-success',
-        fail_url: 'https://quick-bites-ljsf.onrender.com/payment-fail',
-        cancel_url: 'https://quick-bites-ljsf.onrender.com/payment-cancel',
-        ipn_url: 'https://quick-bites-ljsf.onrender.com/ipn',
+        success_url: 'http://localhost:5000/payment-success',
+        fail_url: 'http://localhost:5000/payment-fail',
+        cancel_url: 'http://localhost:5000/payment-cancel',
+        ipn_url: 'http://localhost:5000/ipn',
         shipping_method: 'No',
         product_name: data?.productData?.length>1 ? 'Multiple Food items':'food' ,
         product_category: 'Food',
-        
         product_data:data,
         product_profile: 'general',
         cus_name: data?.name,
         cus_email: data?.email,
-        cus_add1: 'Dhaka',
-        cus_add2: 'Dhaka',
-        cus_city: 'Dhaka',
-        cus_state: 'Dhaka',
-        cus_postcode: '1000',
+        cus_address: data?.userAddress,
         cus_country: 'Bangladesh',
-        cus_phone: '123',
-        cus_fax: '123',
-        multi_card_name: 'mastercard',
+        cus_phone: data?.userPhoneNumber,
     };
     
     try {
@@ -128,7 +121,7 @@ try {
 
         // console.log(updateData)
         // Handle success response
-        res.status(200).redirect(`http://localhost:3000/${data.tran_id}`);
+        res.status(200).redirect(`http://localhost:3000/transaction/${data.tran_id}`);
       });
 
 
@@ -194,13 +187,17 @@ try {
         if (paymentData.validId==data.id) {
 
           const  userData={
-                email:data?.userData
+                email: data?.userData
             }
 
-            const data=await userCollection.findOne(userData)?.points
+            const dataa=await userCollection.findOne(userData)
+            console.log(dataa);
+            
 
 
-            const amount= Math.ceil(paymentData?.product_data?.amount*(20/100))+data
+            const amount= parseInt(Math.ceil(paymentData?.product_data?.amount*(20/100)))+parseInt(dataa?.points)||0
+            
+            // console.log(paymentData?.product_data?.amount,Math.ceil(paymentData?.product_data?.amount*(20/100)),parseInt(Math.ceil(paymentData?.product_data?.amount*(20/100))),amount);
             
             const point={
                 $set:{

@@ -67,7 +67,7 @@ const CouponManagement = () => {
         setloading(true)
 
 
-        await fetch('https://quick-bites-ljsf.onrender.com /api/coupon', {
+        await fetch('http://localhost:5000 /api/coupon', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
