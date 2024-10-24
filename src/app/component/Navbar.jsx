@@ -126,7 +126,12 @@ const Navbar = () => {
                 <Link href="/cart">
                   <div className="flex justify-between">   <BsCart4 size={25} />
                     <span className=" lg:inline ml-1 text-orange-600">
-                      (<b>{cartItems?.length || 0}</b>)
+                      {/* (<b>{cartItems?.length || 0}</b>) */}
+                      (<b>{cart?.cartItems?.reduce(
+                          (acc, item) => acc + item.quantity,
+                          0
+                        )}{" "}
+                        </b>)
                     </span></div></Link>
               </div>
               <div className="dropdown dropdown-hover">

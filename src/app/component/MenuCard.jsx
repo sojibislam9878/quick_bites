@@ -42,6 +42,10 @@ const MenuCard = ({ item }) => {
     });
   };
 
+  const handleBuyNow=() =>{
+    
+  }
+
   return (
     <div>
       <div className="card card-compact bg-base-100 shadow-xl h-full">
@@ -74,7 +78,7 @@ const MenuCard = ({ item }) => {
               >
                 Add To Cart
               </button>
-              <button className="btn bg-[#EA6A12] text-white hover:bg-transparent hover:border-[#EA6A12] hover:text-[#EA6A12]">
+              <button onClick={ handleBuyNow} className="btn bg-[#EA6A12] text-white hover:bg-transparent hover:border-[#EA6A12] hover:text-[#EA6A12]">
                 Buy Now
               </button>
             </div>
