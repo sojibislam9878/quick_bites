@@ -9,15 +9,15 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 const Cart = () => {
-  const userData=useSession()
-  const router=useRouter()
-  
+  const userData = useSession()
+  const router = useRouter()
+
   const { addItemToCart, deleteItemFromCart, cart } = useContext(CartContext);
   const [hasCoupon, setHasCoupon] = useState(false); // State to handle checkbox
   const [coupon, setCoupon] = useState(""); // State to store coupon input
   const [discount, setDiscount] = useState(0); // State to store discount
 
-  
+
 
 
   // console.log(cart.cartItems,'cart is here ');
@@ -70,25 +70,45 @@ const Cart = () => {
     }
   };
 
- 
+
   const handlePayment = async () => {
 
-  
-router.push('/checkoutForm')
-   
-  
+
+    router.push('/checkoutForm')
+
+
 
 
   }
 
-
+  const totalItems=cart?.cartItems?.reduce(
+    (acc, item) => acc + item.quantity,
+    0
+  )
 
   return (
     <>
-      <section className="py-5 sm:py-7 bg-blue-100">
-        <div className="container max-w-screen-xl mx-auto px-4">
-          <h2 className="text-3xl font-semibold mb-2">
-            {cart?.cartItems?.length || 0} Item(s) in Cart
+      <section className="py-5 sm:py-7 bg-[#f8efea]">
+        <div className="container  max-w-screen-xl mx-auto px-4">
+          <h2 className={`text-3xl  font-semibold mb-2 ${cart?.cartItems?.length == 0 ? 'h-screen relative text-gray-500' : ''}`}>
+            <span className={`${cart?.cartItems?.length == 0 && 'absolute top-1/3 flex-col  right-1/2 text-center translate-x-1/2'}`}>
+            <span className={`${totalItems == 0?'hidden':'visible'}`}>
+            {totalItems} 
+            Item(s) in Cart
+            </span>
+              {
+                totalItems == 0 && <>
+
+                  <p>
+                    There are no items in this cart
+                  </p>
+                  <Link className="btn border mt-4 text-orange-400  border-orange-400" href={'/menu'}>
+                    Continue Eating
+                  </Link>
+                </>
+              }
+            </span>
+
           </h2>
         </div>
       </section>
@@ -179,7 +199,7 @@ router.push('/checkoutForm')
                   <ul className="mb-5">
                     <li className="flex justify-between text-gray-600  mb-1">
                       <span>Amount before Tax:</span>
-                      <span>${amountWithoutTax}</span>
+                      <span>${(amountWithoutTax).toFixed(2)}</span>
                     </li>
                     <li className="flex justify-between text-gray-600  mb-1">
                       <span>Total Units:</span>
@@ -202,7 +222,7 @@ router.push('/checkoutForm')
                   </ul>
 
                   {/* Checkbox for coupon */}
-                  <div className="mb-4">
+                  {/* <div className="mb-4">
                     <input
                       type="checkbox"
                       id="hasCoupon"
@@ -212,7 +232,7 @@ router.push('/checkoutForm')
                     <label htmlFor="hasCoupon" className="ml-2">
                       Do you have a coupon code?
                     </label>
-                  </div>
+                  </div> */}
 
                   {/* Conditionally render the coupon input */}
                   {hasCoupon && (
@@ -237,12 +257,12 @@ router.push('/checkoutForm')
                     CheckOut
                   </a>
 
-                  <Link
+                  {/* <Link
                     href="/"
                     className="px-4 py-3 inline-block text-lg w-full text-center font-medium text-green-600 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100"
                   >
                     Back to shop
-                  </Link>
+                  </Link> */}
                 </article>
               </aside>
             </div>

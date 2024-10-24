@@ -5,6 +5,9 @@ import CartContext from "@/app/Context/CartContext";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Swal from "sweetalert2";
+import CouponSpinner from "@/app/component/coupon/CouponSpinner";
+import CheckoutSpin from "@/app/component/checkoutSpin/CheckoutSpin";
 
 const DeliveryForm = () => {
   const [formData, setFormData] = useState({
@@ -26,31 +29,40 @@ const DeliveryForm = () => {
 
   const [cities, setCities] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [applied, setApplied] = useState(false)
 
 
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
 
       try {
         if (!formData?.region) {
+          setLoading(true);
+
           axios.get('https://bdapis.com/api/v1.2/divisions')
-            .then(response => setDivisions(response?.data?.data))
+            .then(response => {setDivisions(response?.data?.data)
+
+              setLoading(false)
+            })
         }
         if (formData?.region) {
+          setLoading(true);
+
 
           const region = formData?.region
-          axios.post('http://localhost:3000/api/location', { region })
+          axios.post('https://quick-bites-tau.vercel.app/api/location', { region })
             .then(response => {
               console.log(response?.data),
                 setCity(response?.data)
+                setLoading(false)
+
             })
         }
         if (formData?.city) {
 
           const city = formData?.city
-          axios.post(`http://localhost:3000/api/location`, { city })
+          axios.post(`https://quick-bites-tau.vercel.app/api/location`, { city })
             .then(response => {
               console.log(response?.data),
                 setArea(response?.data)
@@ -89,7 +101,6 @@ const DeliveryForm = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  console.log(dd?.city);
 
 
   const handleSubmit = (e) => {
@@ -100,37 +111,14 @@ const DeliveryForm = () => {
 
 
 
-  const userData=useSession()
+  const userData = useSession()
   // const router=useRouter()
-  
+
   const { addItemToCart, deleteItemFromCart, cart } = useContext(CartContext);
   const [hasCoupon, setHasCoupon] = useState(false); // State to handle checkbox
-  const [coupon, setCoupon] = useState(""); // State to store coupon input
+  const [coupon, setCoupon] = useState(); // State to store coupon input
   const [discount, setDiscount] = useState(0); // State to store discount
-
-  
-
-
-  // console.log(cart.cartItems,'cart is here ');
-
-
-  const increaseQty = (cartItem) => {
-    const newQty = cartItem?.quantity + 1;
-    const item = { ...cartItem, quantity: newQty };
-
-    if (newQty > Number(cartItem.stock)) return;
-
-    addItemToCart(item);
-  };
-
-  const decreaseQty = (cartItem) => {
-    const newQty = cartItem?.quantity - 1;
-    const item = { ...cartItem, quantity: newQty };
-
-    if (newQty <= 0) return;
-
-    addItemToCart(item);
-  };
+  const [couponData, setCouponData] = useState(); // State to store coupon
 
   // Calculate amounts
   const amountWithoutTax = cart?.cartItems?.reduce(
@@ -148,49 +136,133 @@ const DeliveryForm = () => {
     totalAmountBeforeDiscount * (1 - discount / 100)
   ).toFixed(2);
 
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top",
+    showConfirmButton: false,
+    timer: 4000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
+
+
+  // Toast Function
+
+  const handleToast = (icon, title, width) => {
+
+    Toast.fire({
+      icon: icon,
+      color: 'red',
+      width: width,
+      title: title
+    });
+
+  }
+
+const totalItems=cart?.cartItems?.reduce(
+  (acc, item) => acc + item.quantity,
+  0
+)
+console.log(totalItems);
+
+
   // Apply coupon code logic
   const applyCoupon = () => {
+
+    console.log(coupon);
+    setCouponData('')
+
+
+    setLoading(true);
+
+    axios.post('https://quick-bites-tau.vercel.app/api/coupon/getCoupon', { coupon })
+      .then((response) => {
+
+        console.log(response.data);
+
+        setCouponData(response?.data)
+
+
+        // setTimeout(() => {
+        setLoading(false);
+
+        if (response.data && response.data?.message == 'invalid') {
+          setCouponData('')
+          return handleToast("error", `Invalid coupon code`)
+
+        }
+        if (response.data?.couponData?.minimumPurchase !== totalItems && response.data?.message !== 'invalid') {
+
+          return handleToast("info", ` Purchase minimum ${response.data?.couponData?.minimumPurchase} items for this coupon`, '450px')
+        }
+
+        if (coupon === response.data?.couponData?.code && !loading) {
+
+          setCouponData('')
+
+
+          setDiscount(response.data?.couponData?.discountValue);
+
+          setApplied(true)
+        }
+
+        // }, 1000);
+      })
+
+
+
+
+
+    console.log(couponData?.couponData);
+
+
+
+
+
+
+
+
+
+
     // Example coupon logic (you can replace this with your own logic)
-    if (coupon === "SAVE10") {
-      setDiscount(10);
-    } else if (coupon === "SAVE20") {
-      setDiscount(20);
-    } else {
-      alert("Invalid coupon code");
-      setDiscount(0);
-    }
+
+
+
   };
 
- 
+
   const handlePayment = async () => {
 
-  
-// router.push('/checkoutForm')
-   
-    const amount=totalAmountAfterDiscount || totalAmountBeforeDiscount
 
-    const allData={
+    // router.push('/checkoutForm')
+
+    const amount = totalAmountAfterDiscount || totalAmountBeforeDiscount
+
+    const allData = {
       amount,
-      name:formData?.fullName,
+      name: formData?.fullName,
       email: userData?.data?.user?.email,
-      foodItems:cart?.cartItems,
+      foodItems: cart?.cartItems,
       userPhoneNumber: formData?.phoneNumber,
       userAddress: `${formData?.address}, ${formData?.building}, ${formData?.area}, , ${formData?.city}, ${formData?.region}`,
-      
-  
-      
+
+
+
     }
 
-const data= axios.post('http://localhost:5000/checkOut',allData)
-    .then((response)=>{ 
+    const data = axios.post('https://quick-bites-ljsf.onrender.com/checkOut', allData)
+      .then((response) => {
         console.log(response)
 
         if (response?.data?.url) {
           window.location.href = response.data.url; // Redirect to SSLCommerz payment page
         }
       })
-//       console.log(data);
-      
+    //       console.log(data);
+
 
 
 
@@ -242,9 +314,9 @@ const data= axios.post('http://localhost:5000/checkOut',allData)
               value={formData.phoneNumber}
               onChange={handleChange}
               placeholder="Please enter your phone number"
-              className="border border-red-500 p-2 rounded mt-2 focus:ring focus:ring-red-500"
+              className={`border border-gray-300 p-2 rounded mt-2 focus:ring focus:ring-blue-500`}
             />
-            <span className="text-red-500 text-sm mt-1">You can't leave this empty.</span>
+            {/* <span className="text-red-500 text-sm mt-1">You can't leave this empty.</span> */}
           </div>
 
           <div className="flex flex-col">
@@ -273,9 +345,9 @@ const data= axios.post('http://localhost:5000/checkOut',allData)
               value={formData.building}
               onChange={handleChange}
               placeholder="Please enter Your Building or Others"
-              className="border border-red-500 p-2 rounded mt-2 focus:ring focus:ring-red-500"
+              className={`border border-gray-300 p-2 rounded mt-2 focus:ring focus:ring-blue-500`}
             />
-            <span className="text-red-500 text-sm mt-1">You can't leave this empty.</span>
+            {/* <span className="text-red-500 text-sm mt-1">You can't leave this empty.</span> */}
           </div>
 
           <div className="flex flex-col">
@@ -332,74 +404,89 @@ const data= axios.post('http://localhost:5000/checkOut',allData)
           </button> */}
         </form>
         <article className="border lg:w-[30%] md:w-[30%] w-full border-gray-200 bg-white shadow-sm rounded mb-5 p-3 lg:p-5">
-                  <ul className="mb-5">
-                    <li className="flex justify-between text-gray-600  mb-1">
-                      <span>Amount before Tax:</span>
-                      <span>${amountWithoutTax}</span>
-                    </li>
-                    <li className="flex justify-between text-gray-600  mb-1">
-                      <span>Total Units:</span>
-                      <span className="text-green-500">
-                        {cart?.cartItems?.reduce(
-                          (acc, item) => acc + item.quantity,
-                          0
-                        )}{" "}
-                        (Units)
-                      </span>
-                    </li>
-                    <li className="flex justify-between text-gray-600  mb-1">
-                      <span>TAX:</span>
-                      <span>${taxAmount}</span>
-                    </li>
-                    <li className="text-lg font-bold border-t flex justify-between mt-3 pt-3">
-                      <span>Total price:</span>
-                      <span>${totalAmountAfterDiscount}</span>
-                    </li>
-                  </ul>
+          <ul className="mb-5">
+            <li className="flex justify-between text-gray-600  mb-1">
+              <span>Amount before Tax:</span>
+              <span>${amountWithoutTax}</span>
+            </li>
+            <li className="flex justify-between text-gray-600  mb-1">
+              <span>Total Units:</span>
+              <span className="text-green-500">
+                {cart?.cartItems?.reduce(
+                  (acc, item) => acc + item.quantity,
+                  0
+                )}{" "}
+                (Units)
+              </span>
+            </li>
+            <li className="flex justify-between text-gray-600  mb-1">
+              <span>TAX:</span>
+              <span>${taxAmount}</span>
+            </li>
+            <li className="text-lg font-bold border-t flex justify-between mt-3 pt-3">
+              <span>Total price:</span>
+              <span>${totalAmountBeforeDiscount}</span>
+            </li>
+            {applied && <>
+              <li className="text-lg font-bold flex justify-between mt-3 pt-3">
+                <span>Discount price:</span>
+                <span>$-{(totalAmountBeforeDiscount - totalAmountAfterDiscount).toFixed(2)}</span>
+              </li>
+              <li className="text-lg font-bold border-t flex justify-between mt-3 pt-3">
+                <span>Grand Total:</span>
+                <span>${(totalAmountAfterDiscount)}</span>
+              </li>
 
-                  {/* Checkbox for coupon */}
-                  <div className="mb-4">
-                    <input
-                      type="checkbox"
-                      id="hasCoupon"
-                      checked={hasCoupon}
-                      onChange={(e) => setHasCoupon(e.target.checked)}
-                    />
-                    <label htmlFor="hasCoupon" className="ml-2">
-                      Do you have a coupon code?
-                    </label>
-                  </div>
+            </>}
+          </ul>
 
-                  {/* Conditionally render the coupon input */}
-                  {hasCoupon && (
-                    <div className="mb-4">
-                      <input
-                        type="text"
-                        value={coupon}
-                        onChange={(e) => setCoupon(e.target.value)}
-                        placeholder="Enter coupon code"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md"
-                      />
-                      <button
-                        onClick={applyCoupon}
-                        className="mt-2 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
-                      >
-                        Apply Coupon
-                      </button>
-                    </div>
-                  )}
+          {/* Checkbox for coupon */}
+          <div className="mb-4">
+            <input
+              type="checkbox"
+              id="hasCoupon"
+              checked={hasCoupon}
+              onChange={(e) => setHasCoupon(e.target.checked)}
+            />
+            <label htmlFor="hasCoupon" className="ml-2">
+              Do you have a coupon code?
+            </label>
+          </div>
 
-                  <a onClick={handlePayment} className="px-4 py-3 mb-2 inline-block text-lg w-full text-center font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer">
-                    Continue
-                  </a>
+          {/* Conditionally render the coupon input */}
+          {hasCoupon && (
+            <div className="mb-4">
+              <input
+                type="text"
+                value={coupon}
+                onChange={(e) => setCoupon(e.target.value)}
+                placeholder="Enter coupon code"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md"
+              />
+              <button
+                disabled={loading ? true : false}
+                onClick={applyCoupon}
+                className="mt-2 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+              >
+                Apply Coupon
+              </button>
+            </div>
+          )}
 
-                  <Link
-                    href="/"
-                    className="px-4 py-3 inline-block text-lg w-full text-center font-medium text-green-600 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100"
-                  >
-                    Back to shop
-                  </Link>
-                </article>
+          <a onClick={handlePayment} className="px-4 py-3 mb-2 inline-block text-lg w-full text-center font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer">
+            Continue
+          </a>
+
+          <Link
+            href="/menu"
+            className="px-4 py-3 inline-block text-lg w-full text-center font-medium text-green-600 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100"
+          >
+            Back to Menu
+          </Link>
+        </article>
+        {
+          loading ? <CheckoutSpin></CheckoutSpin> : ''
+        }
       </div>
 
 
