@@ -191,7 +191,7 @@ console.log(totalItems);
           return handleToast("error", `Invalid coupon code`)
 
         }
-        if (response.data?.couponData?.minimumPurchase !== totalItems && response.data?.message !== 'invalid') {
+        if (response.data?.couponData?.minimumPurchase > totalItems && response.data?.message !== 'invalid') {
 
           return handleToast("info", ` Purchase minimum ${response.data?.couponData?.minimumPurchase} items for this coupon`, '450px')
         }
