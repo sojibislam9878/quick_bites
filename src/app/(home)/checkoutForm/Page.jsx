@@ -331,7 +331,7 @@ console.log(totalItems);
             >
               <option className={`text-gray-300 ${formData?.region ? '' : 'cursor-not-allowed disabled'}`}>{formData?.city || 'Please choose Your City'}</option>
 
-              {dd?.map(data => <option value={`${data?.city}`}>{data?.city}</option>)}
+              {dd?.map((data,index) => <option key={index} value={`${data?.city}`}>{data?.city}</option>)}
 
             </select>
           </div>
@@ -364,7 +364,7 @@ console.log(totalItems);
               <option className={`text-gray-300 ${formData?.city ? '' : 'cursor-not-allowed disabled'}`}>{formData?.area || 'Please choose Your City'}</option>
 
               {
-                area?.map((data) => <option value={`${data}`}>{data}</option>)
+                area?.map((data,index) => <option key={index} value={`${data}`}>{data}</option>)
               }
             </select>
           </div>
