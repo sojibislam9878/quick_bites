@@ -57,18 +57,7 @@ const Cart = () => {
     totalAmountBeforeDiscount * (1 - discount / 100)
   ).toFixed(2);
 
-  // Apply coupon code logic
-  const applyCoupon = () => {
-    // Example coupon logic (you can replace this with your own logic)
-    if (coupon === "SAVE10") {
-      setDiscount(10);
-    } else if (coupon === "SAVE20") {
-      setDiscount(20);
-    } else {
-      alert("Invalid coupon code");
-      setDiscount(0);
-    }
-  };
+  
 
 
   const handlePayment = async () => {
