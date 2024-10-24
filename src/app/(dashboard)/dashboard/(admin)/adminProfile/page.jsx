@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
@@ -17,10 +18,12 @@ const AdminProfile = () => {
                 <div className="flex flex-col lg:flex-row items-center lg:space-x-8">
                     {/* Profile Picture */}
                     <div className="lg:w-1/4 mb-8 lg:mb-0">
-                        <img
+                        <Image
                             src={data.image}
                             alt="Profile Picture"
                             className="w-40 h-40 lg:w-48 lg:h-48 rounded-full object-cover shadow-lg"
+                            width={160}
+                            height={160}
                         />
                     </div>
 
@@ -41,7 +44,7 @@ const AdminProfile = () => {
                             <Link href={'/dashboard/registarOwner'} className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition">
                                 Register as Restaurant Owner
                             </Link>
-                            <Link href={'/dashboard/registarOwner'} className="bg-green-500 text-white px-6 py-3 rounded-lg shadow hover:bg-green-600 transition">
+                            <Link href={'/dashboard/registarDeleveryBoy'} className="bg-green-500 text-white px-6 py-3 rounded-lg shadow hover:bg-green-600 transition">
                                 Apply as Delivery Partner
                             </Link>
                         </div>
