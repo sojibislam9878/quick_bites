@@ -9,13 +9,15 @@ const PromotionCard = ({ pData }) => {
 
         <div className="relative overflow-hidden w-full rounded-xl shadow-lg group">
             {/* Wrapper div for hover effects */}
-            <div className="transition-transform  duration-200 w-full h-[340px]">
+            <div className="transition-transform group-hover:scale-110 duration-200 w-full h-[340px]">
                 <Image
                     src={image}
                     alt="promotion Card"
                     width={340}
                     height={280}
-                    className="object-cover w-full h-full"
+                    className="object-cover w-full h-full group-hover:scale-110 cursor-pointer"
+                    priority={true}
+
                 />
             </div>
 

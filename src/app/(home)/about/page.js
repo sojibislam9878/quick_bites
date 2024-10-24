@@ -1,210 +1,22 @@
 import Image from "next/image";
 import Marque from "../../component/Restaurants&Promotions/Marque";
+import BannerPage from "@/app/component/about/BannerPage";
+import Benificiar from "@/app/component/about/Benificiar";
+import Facility from "@/app/component/about/Facility";
+import Mission from "@/app/component/about/Mission";
 
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-white  pt-[120px]">
-        <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-          <div className="mr-auto place-self-center lg:col-span-7">
-            <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white w-[460px] ">
-              Nothing to worry about with QuickBites
-            </h1>
-            <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400 w-[460px]">
-              From checkout to global sales tax compliance, companies around the
-              world use Flowbite to simplify their payment stack.
-            </p>
-            <a
-              href="#"
-              className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
-            >
-              Get started
-              <svg
-                className="w-5 h-5 ml-2 -mr-1"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-            </a>
-            <a
-              href="#"
-              className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100"
-            >
-              Speak to Sales
-            </a>
-          </div>
-          <div className="hidden lg:mt-0 lg:col-span-5 lg:flex rounded-[50px] ">
-            <img
-              src="https://bslthemes.com/html/quickeat/assets/img/photo-9.jpg"
-              alt="mockup"
-              className="rounded-[50px] rotate-45"
-            />
-          </div>
-        </div>
-      </section>
-      <section className="bg-white my-5">
-        <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
-          <div className="mt-8">
-            <img
-              className="w-full rounded-lg"
-              src="https://bslthemes.com/html/quickeat/assets/img/illustration-5.png"
-              alt="office content 1"
-            />
-          </div>
-          <div className="font-light text-gray-500 sm:text-lg ">
-            <h2 className="mb-4 text-6xl tracking-tight font-extrabold text-gray-900 ">
-              Our mission is to save your time
-            </h2>
-            <p className="mb-4">
-              We are strategists, designers and developers. Innovators and
-              problem solvers. Small enough to be simple and quick, but big
-              enough to deliver the scope you want at the pace you need. Small
-              enough to be simple and quick, but big enough to deliver the scope
-              you want at the pace you need.
-            </p>
-            <p>
-              We are strategists, designers and developers. Innovators and
-              problem solvers. Small enough to be simple and quick.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section className="bg-white  mb-10">
-        <div className="container mx-auto px-4 md:px-10">
-          <div className="flex flex-col md:flex-row gap-10">
-            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:bg-yellow-400">
-              <a href="#" className="">
-                <img
-                  className="rounded-t-lg p-2"
-                  src="https://bslthemes.com/html/quickeat/assets/img/service-icon-2.svg"
-                  alt=""
-                />
-              </a>
-              <div className="">
-                <a href="#">
-                  <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900">
-                    Free Delivery
-                  </h5>
-                </a>
-                <p className="mb-3 font-normal text-gray-700 leading-8 ">
-                  Here are the biggest enterprise technology acquisitions of
-                  2021 so far, in reverse chronological order.
-                </p>
-              </div>
-            </div>
-
-            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:bg-yellow-400">
-              <a href="#">
-                <img
-                  className="rounded-t-lg p-2"
-                  src="https://bslthemes.com/html/quickeat/assets/img/service-icon-3.svg"
-                  alt=""
-                />
-              </a>
-              <div className="">
-                <a href="#">
-                  <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 ">
-                    Save Your Time
-                  </h5>
-                </a>
-                <p className="mb-3 font-normal text-gray-700 ">
-                  Here are the biggest enterprise technology acquisitions of
-                  2021 so far, in reverse chronological order.
-                </p>
-              </div>
-            </div>
-
-            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:bg-yellow-400">
-              <a href="#">
-                <img
-                  className="rounded-t-lg p-2"
-                  src="https://bslthemes.com/html/quickeat/assets/img/service-icon-5.svg"
-                  alt=""
-                />
-              </a>
-              <div className="">
-                <a href="#">
-                  <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 ">
-                    Regular Discounts
-                  </h5>
-                </a>
-                <p className="mb-3 font-normal text-gray-700 ">
-                  Here are the biggest enterprise technology acquisitions of
-                  2021 so far, in reverse chronological order.
-                </p>
-              </div>
-            </div>
-
-            <div className="p-7 max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:bg-yellow-400">
-              <a href="#">
-                <img
-                  className="rounded-t-lg p-2"
-                  src="https://bslthemes.com/html/quickeat/assets/img/service-icon-7.svg"
-                  alt=""
-                />
-              </a>
-              <div className="">
-                <a href="#">
-                  <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 ">
-                    Variety Food
-                  </h5>
-                </a>
-                <p className="mb-3 font-normal text-gray-700 ">
-                  Here are the biggest enterprise technology acquisitions of
-                  2021 so far, in reverse chronological order.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="bg-[url('https://bslthemes.com/html/quickeat/assets/img/background.png')] bg-cover bg-center ">
-        <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-          <div className="lg:col-span-6 col-span-12 flex justify-center items-center rounded-[50px]">
-            <img
-              src="https://bslthemes.com/html/quickeat/assets/img/photo-10.png"
-              alt="mockup"
-              className="rounded-[50px]"
-            />
-          </div>
-          <div className="mr-auto place-self-center lg:col-span-6 col-span-12">
-            <div className="flex my-10">
-              <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl  w-[460px]">
-                Service shows good taste.
-              </h1>
-              <p className="max-w-2xl mb-6  text-black-500 lg:mb-8 md:text-lg text-lg font-semibold w-[460px]">
-                <span className="text-[#F29F05] font-bold text-6xl">976 </span>
-                Satisfied Customers
-              </p>
-            </div>
-            <div className="flex  bg-white p-8 rounded-lg shadow-md w-[600px] justify-between">
-              <div className="flex ">
-                <h1 className="text-[#F29F05] font-bold text-6xl">12 </h1>
-                <div className="flex flex-col text-left ml-4">
-                  <p className="text-lg font-semibold">Best</p>
-                  <p className="text-lg font-semibold">Restaurants</p>
-                </div>
-              </div>
-
-              <div className="flex ">
-                <h1 className="text-[#F29F05] font-bold text-6xl">1k + </h1>
-                <div className="flex flex-col text-left  ml-4">
-                  <p className="text-lg font-semibold">Food</p>
-                  <p className="text-lg font-semibold">Delivered</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="py-24 ">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    
+     
+      <BannerPage/>
+      <Benificiar/>
+      <Facility/>
+      <Mission/>
+   
+       <section className="py-24 ">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="mb-14 text-center">
                 <h4 className="text-6xl text-black-400 text-center font-bold">Our trusted partners</h4>
             </div>
@@ -212,7 +24,7 @@ export default function AboutPage() {
             
         </div>
       </section>
-      <div className="lg:max-w-7xl sm:max-w-2xl max-sm:max-w-sm mx-auto mt-4">
+      <div className="lg:max-w-6xl  mx-auto mt-4">
         <div className="mb-14 text-center">
           <h4 className="text-6xl text-black-400 text-center font-bold">
             Our chef
@@ -221,7 +33,7 @@ export default function AboutPage() {
         <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-6 max-md:justify-center mt-12">
           <div className="grid grid-cols-3 items-center bg-gray-100 p-4 rounded-lg relative">
             <div className="col-span-2 min-h-[190px]">
-              <img
+              <Image height={200} width={200} alt="hello"
                 src="https://readymadeui.com/team-1.webp"
                 className="rounded-lg"
               />
@@ -236,7 +48,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-3 items-center bg-gray-100 p-4 rounded-lg relative">
             <div className="col-span-2 min-h-[190px]">
-              <img
+              <Image height={400} width={400} alt="hello10"
                 src="https://readymadeui.com/team-2.webp"
                 className="rounded-lg"
               />
@@ -251,7 +63,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-3 items-center bg-gray-100 p-4 rounded-lg relative">
             <div className="col-span-2 min-h-[190px]">
-              <img
+              <Image height={200} width={200} alt="hello12"
                 src="https://readymadeui.com/team-3.webp"
                 className="rounded-lg"
               />
@@ -266,7 +78,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-3 items-center bg-gray-100 p-4 rounded-lg relative">
             <div className="col-span-2 min-h-[190px]">
-              <img
+              <Image height={200} width={200} alt="hello15"
                 src="https://readymadeui.com/team-4.webp"
                 className="rounded-lg"
               />
@@ -281,7 +93,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-3 items-center bg-gray-100 p-4 rounded-lg relative">
             <div className="col-span-2 min-h-[190px]">
-              <img
+              <Image height={200} width={200} alt="hello13"
                 src="https://readymadeui.com/team-5.webp"
                 className="rounded-lg"
               />
@@ -296,7 +108,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-3 items-center bg-gray-100 p-4 rounded-lg relative">
             <div className="col-span-2 min-h-[190px]">
-              <img
+              <Image height={200} width={200} alt="hello2"
                 src="https://readymadeui.com/team-6.webp"
                 className="rounded-lg"
               />
@@ -311,7 +123,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="min-w-screen min-h-screen bg-gray-50 flex items-center justify-center py-5">
+      <div className=" bg-gray-50 flex items-center justify-center py-5">
         <div className="w-full bg-white border-t border-b border-gray-200 px-5 py-16 md:py-24 text-gray-800">
           <div className="w-full max-w-6xl mx-auto">
             <div className="text-center max-w-xl mx-auto">
@@ -334,7 +146,7 @@ export default function AboutPage() {
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                   <div className="w-full flex mb-4 items-center">
                     <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=1" alt="" />
+                      <Image height={200} width={200} alt='hello3' src="https://i.pravatar.cc/100?img=1"  />
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold text-sm uppercase text-gray-600">
@@ -356,7 +168,7 @@ export default function AboutPage() {
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                   <div className="w-full flex mb-4 items-center">
                     <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=2" alt="" />
+                      <Image height={200} width={200} alt='hello4' src="https://i.pravatar.cc/100?img=2" />
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold text-sm uppercase text-gray-600">
@@ -379,7 +191,7 @@ export default function AboutPage() {
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                   <div className="w-full flex mb-4 items-center">
                     <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=3" alt="" />
+                      <Image height={200} width={200} alt='hello6' src="https://i.pravatar.cc/100?img=3"  />
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold text-sm uppercase text-gray-600">
@@ -400,7 +212,7 @@ export default function AboutPage() {
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                   <div className="w-full flex mb-4 items-center">
                     <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=4" alt="" />
+                      <Image width={200} height={200} alt='hello7' src="https://i.pravatar.cc/100?img=4" />
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold text-sm uppercase text-gray-600">
@@ -425,7 +237,7 @@ export default function AboutPage() {
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                   <div className="w-full flex mb-4 items-center">
                     <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=5" alt="" />
+                      <Image height={200} width={200} alt='hello8' src="https://i.pravatar.cc/100?img=5" />
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold text-sm uppercase text-gray-600">
@@ -448,7 +260,7 @@ export default function AboutPage() {
                 <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                   <div className="w-full flex mb-4 items-center">
                     <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                      <img src="https://i.pravatar.cc/100?img=6" alt="" />
+                      <Image width={200} height={200} alt='hello8' src="https://i.pravatar.cc/100?img=6"  />
                     </div>
                     <div className="flex-grow pl-3">
                       <h6 className="font-bold text-sm uppercase text-gray-600">

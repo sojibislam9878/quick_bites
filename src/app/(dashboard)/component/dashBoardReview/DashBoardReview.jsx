@@ -10,12 +10,11 @@ import CouponSpinner from "@/app/component/coupon/CouponSpinner";
 const DashBoardReview = ({ item }) => {
   const [showReport, setShowReport] = useState(false);
   const [reportText, setReportText] = useState("");
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const handleReportClick = () => {
     setShowReport(!showReport);
   };
-  console.log(item, 'mono');
 
   const handleSubmit = async () => {
     if (reportText.trim()) {
@@ -28,7 +27,7 @@ const DashBoardReview = ({ item }) => {
 
   // Send reportText to the API
   const reportSentToOwner = async (reportText) => {
-    setLoading(true)
+    setLoading(true);
     try {
       const response = await fetch(`/api/reportToOwner/${item.slug}`, {
         method: "POST",
@@ -41,19 +40,17 @@ const DashBoardReview = ({ item }) => {
       const data = await response.json();
 
       if (response.ok) {
-        setLoading(false)
+        setLoading(false);
         toast.success(`Report sent to ${item.name} owner!`);
-  
       } else {
-        setLoading(false)
+        setLoading(false);
         toast.error(data.message || "Failed to send the report.");
       }
     } catch (error) {
-      setLoading(false)
+      setLoading(false);
       toast.error("An error occurred while sending the report.");
     }
   };
-  
 
   return (
     <div className="bg-white px-4 pt-4 pb-12 mt-12">
@@ -123,7 +120,7 @@ const DashBoardReview = ({ item }) => {
             </div>
             <div className="mt-4">
               <h1 className="text-xl font-semibold my-4">Sajib Wazed Joy</h1>
-              <h2>Sheikh Hasina  son</h2>
+              <h2>Sheikh Hasinas son</h2>
             </div>
           </div>
         </TabPanel>
@@ -132,11 +129,9 @@ const DashBoardReview = ({ item }) => {
         <TabPanel>
           <div className="px-8 py-4">
             <h2 className="text-xl font-semibold mb-4">Reports</h2>
-            {item?.report
-?.length > 0 ? (
+            {item?.report?.length > 0 ? (
               <div className="space-y-4">
-                {item?.report
-?.map((rep, index) => (
+                {item?.report?.map((rep, index) => (
                   <div
                     key={index}
                     className="border p-4 rounded-lg shadow-sm bg-gray-50"
@@ -180,7 +175,7 @@ const DashBoardReview = ({ item }) => {
             disabled={loading}
             onClick={handleSubmit}
           >
-           {loading ? 'Loading....': ' Submit'}
+            {loading ? 'Loading....' : 'Submit'}
           </button>
         </div>
       )}

@@ -2,6 +2,7 @@ import React from 'react';
 import { promotionsData } from './PromotionsData';
 import PromotionCard from './PromotionCard';
 import DiscountBanner from '../discount/DiscountBanner';
+import Link from 'next/link';
 
 
 const Promotion = () => {
@@ -18,7 +19,7 @@ const Promotion = () => {
                     ))
                 }
             </div>
-            <div className='my-8  flex flex-row justify-center items-center'><button className='outline-2 px-12 py-3 bg-[#ff7519] hover:bg-[#ff8b3e]  text-white my-4'>See More</button></div>
+            <div className='my-8  flex flex-row justify-center items-center'><Link href="/menu"><button className='outline-2 px-12 py-3 bg-[#ff7519] hover:bg-[#ff8b3e]  text-white my-4'>See More</button></Link></div>
             <div className='mt-12'>
                 <DiscountBanner />
             </div>
