@@ -3,8 +3,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { FaMapMarkerAlt, FaClock, FaStar } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaClock, FaStar, FaHeart } from 'react-icons/fa';
 import Image from 'next/image';
+import { BsCash } from 'react-icons/bs';
+import img from '../../../asset/image/ddd.webp'
+import { AiOutlineHeart } from "react-icons/ai";
 
 const SingleRestruent = ({ data }) => {
   console.log(data);
@@ -28,66 +31,95 @@ const SingleRestruent = ({ data }) => {
     );
   };
 
+
   return (
-    <div className=" hover:scale-[1.02] transform transition-transform duration-300">
-      <div className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 p-6 relative">
+    <div className="  ">
+      <div className="bg-gray-100 rounded-lg   flex gap-4 items-center p-6 relative">
 
         {/* Restaurant Image */}
         <div className="relative">
-          <img
+          <Image
             src={data?.banner_image}
             alt={data?.name}
-            width={500}
-            height={250}
-            className="w-full h-auto object-cover rounded-lg border-2 border-gray-100"
+            width={100}
+            height={100}
+            className="   rounded-full  "
           />
           {/* Discount Badge */}
-          <span className="absolute top-2 right-2 bg-gradient-to-r from-rose-500 to-pink-600 text-white text-sm font-semibold px-3 py-1 rounded-lg shadow-lg">
+          {/* <span className="absolute top-2 right-2 bg-gradient-to-r from-rose-500 to-pink-600 text-white text-sm font-semibold px-3 py-1 rounded-lg shadow-lg">
             QuickBites
-          </span>
+          </span> */}
         </div>
 
         {/* Restaurant Info */}
         <div className="mt-4 space-y-2">
           {/* Rating */}
-          <div className="flex items-center mb-2">
+          {/* <div className="flex items-center mb-2">
             {renderStars()}
             <span className="ml-2 text-gray-600 text-sm">({data?.rating?.toFixed(1) || 'N/A'})</span>
-          </div>
+          </div> */}
 
-          {/* Name */}
-          <h1 className="text-2xl font-bold text-gray-800">{data?.name}</h1>
+       <div className='flex justify-between'>
+
+        <div>   <p className='text-rose-600 flex gap-2 items-center'>          <FaMapMarkerAlt className="text-rose-500" /> {data?.location}</p>
+
+{/* Name */}
+<h1 className="text-xl font-bold text-gray-800">{data?.name}</h1></div>
+
+
+
+<div>
+<p className='flex items-center gap-2'>
+  
+<AiOutlineHeart className='text-rose-500 text-xl'/>
+<span className='font-bold text-rose-500'>12</span>
+</p>
+
+<button  className='flex items-center gap-2 bg-yellow-500 rounded px-2 text-white mt-2'>  <FaStar/>   {data?.avgRating} </button>
+</div>
+       </div>
+          <h1 className=" "> <span className='font-semibold text-rose-800'> Type Of Food: </span>Type</h1>
 
           {/* Location and Timing */}
           <div className="flex items-center space-x-2 text-sm text-gray-600 mt-1">
-            <FaMapMarkerAlt className="text-rose-500" />
-            <span>{data?.location}</span>
+      
+            
           </div>
+
+          
 
           <div className="flex items-center space-x-2 text-sm text-gray-600 mt-1">
             <FaClock className="text-rose-500" />
             <span>Opens at {data?.opensAt}</span>
           </div>
+          <p className='flex gap-2 items-center'>   <span><BsCash /></span> <span>Accept Cash And Online payment</span></p>
+         
 
-          <p className="text-sm text-gray-500 mt-2">{data?.locationDetail}</p>
+          <Link href={`/allRestaurant/${data?.slug}`}>
+            <p className="inline-block text-center w-full bg-gradient-to-r bg-gray-4 mt-4 border border-gray-500 hover:text-rose-500 text-black  font-semibold rounded-md py-2 px-6 ">
+              View Detalis
+            </p>
+          </Link>
+
         </div>
 
-        {/* Mobile Button */}
-        <Link href={`/allRestaurant/${data?.slug}`}>
+       
+      </div>
+       {/* Mobile Button */}
+       {/* <Link href={`/allRestaurant/${data?.slug}`}>
           <p className="block sm:hidden w-full bg-gradient-to-r from-rose-500 to-pink-600 text-white text-center font-semibold rounded-md py-2 mt-4 shadow-lg hover:shadow-xl transition duration-300">
             View Menu
           </p>
-        </Link>
+        </Link> */}
 
         {/* Desktop Button */}
-        <div className="hidden sm:block mt-8">
+        {/* <div className="hidden sm:block mt-8">
           <Link href={`/allRestaurant/${data?.slug}`}>
             <p className="inline-block text-center w-full bg-gradient-to-r from-rose-500 to-pink-600 text-white font-semibold rounded-md py-2 px-6 shadow-lg hover:shadow-xl transition duration-300">
-              View Menu
+              View Detalis
             </p>
           </Link>
-        </div>
-      </div>
+        </div> */}
     </div>
   );
 };

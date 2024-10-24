@@ -41,11 +41,11 @@ const Navbar = () => {
     "lg:font-bold px-3 lg:text-lg lg:mr-2 mt-2 py-2 rounded-lg lg:mt-0 hover:bg-gray-200";
   const activeLink = `bg-gradient-to-r from-[#EA6A12] to-[#EA6A12]   border border-blure-500 text-white border-none hover:bg-transparent focus:bg-transparent focus:text-white ${normalLink}`;
   console.log(session);
-  
+
 
   return (
-    <div className="lg:px-8 shadow-md  sticky top-0 left-0 w-full h-20 z-50 bg-base-100  md:px-4">
-      <div className="navbar  justify-between  lg:justify-between md:justify-between ">
+    <div className=" shadow-md  sticky top-0 left-0  z-50 bg-base-100">
+      <div className=" container mx-auto p-4 navbar  justify-between  lg:justify-between md:justify-between ">
         <div className="navbar-start  w-fit">
           {/* for small */}
           <div className={icon ? "" : " relative"}>
