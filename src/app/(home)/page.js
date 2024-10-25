@@ -18,8 +18,8 @@ export default function Home() {
     <Section></Section>
     <FeaturedRestaurant/>
     <PopularFoodItem/>
-    <Promotion/>
-    <WhyChooseUs/>
+    {/* <Promotion/> */}
+    {/* <WhyChooseUs/> */}
     <Review/>
   
    {/* <GoogleMap/> */}

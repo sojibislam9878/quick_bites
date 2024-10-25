@@ -9,7 +9,7 @@ import SectionTitle from '../SectionTitle';
 const PopularFoodItem = () => {
     return (
         <div className='container mx-auto text-center mt-12 lg:mt-20'>
-            <SectionTitle head={'Your Favourite Food'} title={'Popular This Month'} />
+            <SectionTitle head={'Your Favourite Food'} title={'Popular This Month'} para={" Discover this months most popular picks across tech, design, and web development!"}/>
 
             {/* Responsive Grid Layout */}
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
