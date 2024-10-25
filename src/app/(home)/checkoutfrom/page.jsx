@@ -32,34 +32,35 @@ const DeliveryForm = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
 
       try {
         if (!formData?.region) {
           setLoading(true);
 
           axios.get('https://bdapis.com/api/v1.2/divisions')
-            .then(response => {setDivisions(response?.data?.data)
+            .then(response => {
+              setDivisions(response?.data?.data)
 
               setLoading(false)
             })
         }
         if (formData?.region) {
-          setLoading(true);
 
 
           const region = formData?.region
-          axios.post('https://quick-bites-tau.vercel.app/api/location', { region })
+          axios.post('http://localhost:3000/api/location', { region })
             .then(response => {
               console.log(response?.data),
                 setCity(response?.data)
-                setLoading(false)
+              setLoading(false)
 
             })
         }
         if (formData?.city) {
 
           const city = formData?.city
-          axios.post(`https://quick-bites-tau.vercel.app/api/location`, { city })
+          axios.post(`http://localhost:3000/api/location`, { city })
             .then(response => {
               console.log(response?.data),
                 setArea(response?.data)
@@ -74,10 +75,11 @@ const DeliveryForm = () => {
 
         // Retry logic (optional)
         setTimeout(() => {
-          fetchData();  // Retry the request
-        }, 3000);  // Retry after 3 seconds
+          fetchData();
+          setLoading(false);
+          // Retry the request
+        }, 1000);  // Retry after 3 seconds
       } finally {
-        setLoading(false);
       }
     }
 
@@ -101,7 +103,7 @@ const DeliveryForm = () => {
 
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e?.preventDefault();
     console.log("Form data submitted:", formData);
   };
 
@@ -159,11 +161,11 @@ const DeliveryForm = () => {
 
   }
 
-const totalItems=cart?.cartItems?.reduce(
-  (acc, item) => acc + item.quantity,
-  0
-)
-console.log(totalItems);
+  const totalItems = cart?.cartItems?.reduce(
+    (acc, item) => acc + item.quantity,
+    0
+  )
+  console.log(totalItems);
 
 
   // Apply coupon code logic
@@ -175,7 +177,7 @@ console.log(totalItems);
 
     setLoading(true);
 
-    axios.post('https://quick-bites-tau.vercel.app/api/coupon/getCoupon', { coupon })
+    axios.post('http://localhost:3000/api/coupon/getCoupon', { coupon })
       .then((response) => {
 
         console.log(response.data);
@@ -230,8 +232,20 @@ console.log(totalItems);
 
   };
 
-
+  const [checkoutBtn, setCheckoutBtn] = useState(false)
+  const [required, setRequired] = useState(false)
   const handlePayment = async () => {
+
+    if (!formData.address || !formData.phoneNumber || !formData.fullName || !formData.area || !formData.city || !formData.building || !formData.region) {
+
+      setRequired(true)
+      return handleToast("error", "Please fill all the required fields")
+
+    }
+    setRequired(false)
+    // handleSubmit
+
+    setCheckoutBtn(true)
 
 
     // router.push('/checkoutForm')
@@ -250,12 +264,17 @@ console.log(totalItems);
 
     }
 
-    const data = axios.post('https://quick-bites-ljsf.onrender.com/checkOut', allData)
+    const data = axios.post('http://localhost:5000/checkOut', allData)
       .then((response) => {
         console.log(response)
 
         if (response?.data?.url) {
-          window.location.href = response.data.url; // Redirect to SSLCommerz payment page
+
+          window.location.href = response.data.url;
+          setCheckoutBtn(false)
+
+          
+          // Redirect to SSLCommerz payment page
         }
       })
     //       console.log(data);
@@ -273,6 +292,8 @@ console.log(totalItems);
           <div className="flex flex-col">
             <label htmlFor="fullName" className="font-medium">Full name</label>
             <input
+
+              required
               type="text"
               name="fullName"
               id="fullName"
@@ -281,6 +302,9 @@ console.log(totalItems);
               placeholder="Full name"
               className={`border border-gray-300 p-2 rounded mt-2 focus:ring focus:ring-blue-500`}
             />
+             {
+             required && (formData.fullName ?'': <span className="text-red-500 text-sm mt-1">This field is required</span>
+             )}
           </div>
 
           <div className="flex flex-col">
@@ -300,11 +324,15 @@ console.log(totalItems);
               }
 
             </select>
+            {
+             required && (formData.region ?'': <span className="text-red-500 text-sm mt-1">This field is required</span>
+           ) }
           </div>
 
           <div className="flex flex-col">
             <label htmlFor="phoneNumber" className="font-medium">Phone Number</label>
             <input
+              required
               type="text"
               name="phoneNumber"
               id="phoneNumber"
@@ -313,8 +341,9 @@ console.log(totalItems);
               placeholder="Please enter your phone number"
               className={`border border-gray-300 p-2 rounded mt-2 focus:ring focus:ring-blue-500`}
             />
-            {/* <span className="text-red-500 text-sm mt-1">You can't leave this empty.</span> */}
-          </div>
+ {
+             required &&( formData.phoneNumber ?'': <span className="text-red-500 text-sm mt-1">This field is required</span>
+            )}          </div>
 
           <div className="flex flex-col">
             <label htmlFor="city" className="font-medium">City</label>
@@ -324,18 +353,22 @@ console.log(totalItems);
               value={`${formData.city || 'Please select a city'}`}
               onChange={handleChange}
               disabled={formData?.region ? false : true}
-              className={`border  ${formData?.region ? '' : 'cursor-not-allowed disabled'} border-gray-300 p-2 rounded mt-2 focus:ring focus:ring-blue-500`}
+              className={`border  ${formData?.region ? '' : 'cursor-not-allowed disabled'}  border-gray-300 p-2 rounded mt-2 focus:ring focus:ring-blue-500`}
             >
               <option className={`text-gray-300 ${formData?.region ? '' : 'cursor-not-allowed disabled'}`}>{formData?.city || 'Please choose Your City'}</option>
 
-              {dd?.map((data,index) => <option key={index} value={`${data?.city}`}>{data?.city}</option>)}
+              {dd?.map((data, index) => <option key={index} value={`${data?.city}`}>{data?.city}</option>)}
 
             </select>
+            {
+             required && ( formData.city ?'': <span className="text-red-500 text-sm mt-1">This field is required</span>
+            )}
           </div>
 
           <div className="flex flex-col">
             <label htmlFor="building" className="font-medium">Building / House No / Floor / Street</label>
             <input
+              required
               type="text"
               name="building"
               id="building"
@@ -344,8 +377,9 @@ console.log(totalItems);
               placeholder="Please enter Your Building or Others"
               className={`border border-gray-300 p-2 rounded mt-2 focus:ring focus:ring-blue-500`}
             />
-            {/* <span className="text-red-500 text-sm mt-1">You can't leave this empty.</span> */}
-          </div>
+            {
+             required && (formData.building ?'': <span className="text-red-500 text-sm mt-1">This field is required</span>
+            )}          </div>
 
           <div className="flex flex-col">
             <label htmlFor="area" className="font-medium">Area</label>
@@ -354,16 +388,20 @@ console.log(totalItems);
               id="area"
               value={`${formData.area || 'Please select a city'}`}
               disabled={formData?.city ? false : true}
-
+              required
               onChange={handleChange}
               className={`border  ${formData?.city ? '' : 'cursor-not-allowed disabled'} border-gray-300 p-2 rounded mt-2 focus:ring focus:ring-blue-500`}
             >
               <option className={`text-gray-300 ${formData?.city ? '' : 'cursor-not-allowed disabled'}`}>{formData?.area || 'Please choose Your City'}</option>
 
               {
-                area?.map((data,index) => <option key={index} value={`${data}`}>{data}</option>)
+                area?.map((data, index) => <option key={index} value={`${data}`}>{data}</option>)
               }
             </select>
+
+            {
+              required && (formData.area?'': <span className="text-red-500 text-sm mt-1">This field is required</span>
+           )}
           </div>
 
           {/* <div className="flex flex-col">
@@ -391,6 +429,9 @@ console.log(totalItems);
               placeholder="Ex: Haydarabad 39 no word tongi gazipur"
               className="border border-gray-300 p-2 rounded mt-2 focus:ring focus:ring-blue-500"
             />
+             {
+             required && (formData.address ?'': <span className="text-red-500 text-sm mt-1">This field is required</span>
+              ) }
           </div>
 
           {/* <button
@@ -470,7 +511,9 @@ console.log(totalItems);
             </div>
           )}
 
-          <a onClick={handlePayment} className="px-4 py-3 mb-2 inline-block text-lg w-full text-center font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer">
+          <a onClick={handlePayment}
+            disabled={checkoutBtn ? true : false}
+            className={`${checkoutBtn ? 'cursor-progress bg-slate-400 hover:bg-slate-400 ' : 'cursor-pointer'} px-4 py-3 mb-2 inline-block text-lg w-full text-center font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer`}>
             Continue
           </a>
 
