@@ -81,7 +81,7 @@ console.log(totalItems);
       <section className="py-5 sm:py-7 bg-[#f8efea]">
         <div className="container  max-w-screen-xl mx-auto px-4">
           <h2 className={`text-3xl  font-semibold mb-2 ${cart?.cartItems?.length == 0 ? 'h-screen relative text-gray-500' : ''}`}>
-            <span className={`${cart?.cartItems?.length == 0 && 'absolute top-1/3 flex-col  right-1/2 text-center translate-x-1/2'}`}>
+            <span className={`${cart?.cartItems?.length == 0 || totalItems ==0 || totalItems == undefined && 'absolute top-1/3 flex-col  right-1/2 text-center translate-x-1/2'}`}>
             <span className={`${totalItems > 0 ? 'visible':'hidden'}`}>
             {totalItems} 
             Item(s) in Cart
@@ -89,12 +89,14 @@ console.log(totalItems);
               {
                 totalItems == 0 || totalItems == undefined? ( <>
 
-                  <p>
+                 <span className="h-screen">
+                 <p>
                     There are no items in this cart
                   </p>
                   <Link className="btn border mt-4 text-orange-400  border-orange-400" href={'/menu'}>
                     Continue Eating
                   </Link>
+                 </span>
                 </>):''
               }
             </span>
