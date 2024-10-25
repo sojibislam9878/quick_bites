@@ -17,7 +17,7 @@ const FeaturedRestaurant = () => {
                 {/* Left Column */}
                 <div className=' flex flex-col  gap-8'>
                     {
-                        menuData.slice(0, 3).map(item => (
+                        menuData.slice(1, 5).map(item => (
                             <MenuList key={item._id} item={item} />
                         ))
                     }

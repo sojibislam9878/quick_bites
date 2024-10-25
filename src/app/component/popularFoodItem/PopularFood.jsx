@@ -3,7 +3,7 @@ import Image from 'next/image';
 import React from 'react';
 
 const PopularFood = ({ item }) => {
-    const { priceRange, restaurant, address, dishName } = item;
+    const { priceRange, restaurant, address, dishName, restaurantImage, image } = item;
 
     return (
         <div className="bg-base-100 w-full shadow-xl rounded-lg p-4">
@@ -11,7 +11,7 @@ const PopularFood = ({ item }) => {
                 <Image
                     width={260}
                     height={220}
-                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                    src={restaurantImage}
                     alt="Shoes"
                     className="rounded-xl w-full object-cover"
                 />
@@ -22,7 +22,7 @@ const PopularFood = ({ item }) => {
                     alt='round-img'
                     width={48}
                     height={48}
-                    src='/assets/banner/2.jpeg'
+                    src={image}
                 />
                 <div>
                     <h2 className="text-xl">{dishName}</h2>

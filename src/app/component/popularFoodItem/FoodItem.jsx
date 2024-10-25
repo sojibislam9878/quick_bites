@@ -3,7 +3,7 @@ import Image from 'next/image';
 import React from 'react';
 
 const FoodItem = ({ item }) => {
-    const { priceRange, restaurant, address, dishName } = item;
+    const { priceRange, restaurant, address, dishName, restaurantImage, image } = item;
 
     return (
         <div className='flex flex-row justify-between items-center gap-4 p-4 bg-base-100 shadow rounded-lg'>
@@ -11,7 +11,7 @@ const FoodItem = ({ item }) => {
                 <Image
                     width={64}
                     height={64}
-                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                    src={image}
                     alt="Dish Image"
                     className="rounded-full w-12 h-12"
                 />
@@ -26,7 +26,7 @@ const FoodItem = ({ item }) => {
                     alt='restaurant-img'
                     width={48}
                     height={48}
-                    src='/assets/banner/2.jpeg'
+                    src={restaurantImage}
                 />
                 <div>
                     <h2 className='text-xl'>{restaurant}</h2>

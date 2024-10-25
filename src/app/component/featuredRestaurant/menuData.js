@@ -5,7 +5,7 @@ export const menuData = [
     "rating": 4.25,
     "minOrder": "$50",
     "deliveryTime": "30min",
-    "image": "tuna-roast.jpg",
+    "image": "https://i.ibb.co.com/7yydMqg/sam-moghadam-khamseh-yx-ZSAjy-To-P4-unsplash.jpg",
     "location": "5th Avenue New York 68"
   },
   {
@@ -14,7 +14,7 @@ export const menuData = [
     "rating": 4.03,
     "minOrder": "$40",
     "deliveryTime": "20min",
-    "image": "crab-curry.jpg",
+    "image": "https://i.ibb.co.com/B2BnDRZ/mae-mu-en4qp-a-K1h4-unsplash.jpg",
     "location": "5th Avenue New York 68"
   },
   {
@@ -23,7 +23,7 @@ export const menuData = [
     "rating": 5.00,
     "minOrder": "$60",
     "deliveryTime": "45min",
-    "image": "salmon-steak.jpg",
+    "image": "https://i.ibb.co.com/Gpcpqq8/mae-mu-WGGC5-TQx4ek-unsplash.jpg",
     "location": "5th Avenue New York 68"
   },
   {
@@ -32,7 +32,7 @@ export const menuData = [
     "rating": 4.25,
     "minOrder": "$50",
     "deliveryTime": "30min",
-    "image": "thai-restaurant.jpg",
+    "image": "https://i.ibb.co.com/cQb0M6M/mae-mu-d-TNNDTb-Zr8-I-unsplash-1.jpg",
     "location": "5th Avenue New York 68"
   },
   {
@@ -41,7 +41,7 @@ export const menuData = [
     "rating": 4.15,
     "minOrder": "$45",
     "deliveryTime": "25min",
-    "image": "spicy-chicken.jpg",
+    "image": "https://i.ibb.co.com/2sF57nf/mae-mu-E1yr3ph1k-SU-unsplash.jpg",
     "location": "5th Avenue New York 68"
   },
   {
@@ -50,7 +50,7 @@ export const menuData = [
     "rating": 4.35,
     "minOrder": "$55",
     "deliveryTime": "40min",
-    "image": "szechuan-shrimp.jpg",
+    "image": "https://i.ibb.co.com/cQb0M6M/mae-mu-d-TNNDTb-Zr8-I-unsplash-1.jpg",
     "location": "5th Avenue New York 68"
   },
   {
