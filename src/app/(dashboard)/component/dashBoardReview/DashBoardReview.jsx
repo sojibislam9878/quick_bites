@@ -139,7 +139,7 @@ const DashBoardReview = ({ item }) => {
                     <p className="font-semibold">Report:</p>
                     <p>{rep.report}</p>
                     <p className="text-sm text-gray-500 mt-2">
-                      Date: {new Date(rep.date).toLocaleDateString()}
+                      Datee: {new Date(rep.date).toLocaleDateString()}
                     </p>
                   </div>
                 ))}
