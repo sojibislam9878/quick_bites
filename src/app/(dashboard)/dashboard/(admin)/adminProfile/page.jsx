@@ -1,68 +1,97 @@
-'use client'
+'use client';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
-import { FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
 
 const AdminProfile = () => {
+    const { data: session } = useSession();
+    const user = session?.user;
+
     const data = {
-        name: "John do",
-        role: "user",
-        email: "john@example.com",
-        image: "https://thumbs.dreamstime.com/b/delivery-boy-ride-scooter-motorcycle-servic-service-order-worldwide-shipping-fast-free-transport-75096257.jpg",
+        name: user?.name || "Admin Name", // Fallback name if user data is not available
+        image: user?.image || "https://randomuser.me/api/portraits/women/44.jpg", // Fallback image
+        stats: {
+            totalUsers: 150, // Replace with actual data
+            totalDeliveries: 200, // Replace with actual data
+            totalCommissions: 5000, // Replace with actual data
+            averageRating: "4.8/5", // Replace with actual data
+        },
+        strongestTopics: [
+            { name: "Overall Satisfaction", percentage: 95, color: "bg-green-400" },
+            { name: "Delivery Success Rate", percentage: 90, color: "bg-blue-400" },
+            { name: "System Uptime", percentage: 98, color: "bg-yellow-400" },
+        ],
+        weakestTopics: [
+            { name: "Customer Support Response", percentage: 65, color: "bg-red-400" },
+            { name: "Order Fulfillment Time", percentage: 70, color: "bg-red-400" },
+        ]
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 flex justify-center items-center py-12">
-            <div className="bg-white shadow-2xl rounded-lg w-full lg:w-3/4 xl:w-2/3 p-8 lg:p-12 mx-4">
-                <div className="flex flex-col lg:flex-row items-center lg:space-x-8">
-                    {/* Profile Picture */}
-                    <div className="lg:w-1/4 mb-8 lg:mb-0">
-                        <Image
-                            src={data.image}
-                            alt="Profile Picture"
-                            className="w-40 h-40 lg:w-48 lg:h-48 rounded-full object-cover shadow-lg"
-                            width={160}
-                            height={160}
-                        />
+        <div className="min-h-screen w-full bg-gray-100 flex justify-center items-center p-8">
+            <div className="border-2 rounded-3xl w-full max-w-6xl p-10">
+                {/* Profile Picture and Name */}
+                <div className="flex flex-col items-center text-center mb-6">
+                    <Image
+                        src={data.image}
+                        alt="Profile Picture"
+                        className="w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg"
+                        width={112}
+                        height={112}
+                    />
+                    <h2 className="text-2xl font-semibold text-gray-800 mt-4">{data.name}</h2>
+                </div>
+
+                {/* Stats Section */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <div className="bg-gray-100 p-6 rounded-lg shadow-sm text-center">
+                        <p className="text-sm font-medium text-gray-500">Total Users</p>
+                        <p className="text-xl font-bold text-gray-800">{data.stats.totalUsers}</p>
                     </div>
-
-                    {/* Profile Info */}
-                    <div className="lg:w-3/4 text-center lg:text-left">
-                        <h2 className="text-4xl font-bold text-gray-800">{data.name}</h2>
-                        <p className="text-xl text-gray-600 mb-2">{data.role}</p>
-                        <p className="text-lg text-gray-500 mb-6">{data.email}</p>
-
-                        {/* About */}
-                        <h3 className="text-2xl font-semibold text-gray-700 mb-4">About Me</h3>
-                        <p className="text-gray-600 mb-6">
-                            I am a passionate frontend developer specializing in creating interactive and responsive user interfaces.
-                        </p>
-
-                        {/* Action Buttons */}
-                        <div className="flex justify-center lg:justify-start space-x-4 mb-6">
-                            <Link href={'/dashboard/registarOwner'} className="bg-blue-500 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition">
-                                Register as Restaurant Owner
-                            </Link>
-                            <Link href={'/dashboard/registarDeleveryBoy'} className="bg-green-500 text-white px-6 py-3 rounded-lg shadow hover:bg-green-600 transition">
-                                Apply as Delivery Partner
-                            </Link>
-                        </div>
-
-                        {/* Social Links */}
-                        <h3 className="text-2xl font-semibold text-gray-700 mb-4">Connect with Me</h3>
-                        <div className="flex justify-center lg:justify-start space-x-6">
-                            <a href="#" className="text-blue-600 hover:text-blue-800" aria-label="LinkedIn">
-                                <FaLinkedin size={30} />
-                            </a>
-                            <a href="#" className="text-blue-400 hover:text-blue-600" aria-label="Twitter">
-                                <FaTwitter size={30} />
-                            </a>
-                            <a href="#" className="text-gray-800 hover:text-black" aria-label="GitHub">
-                                <FaGithub size={30} />
-                            </a>
-                        </div>
+                    <div className="bg-gray-100 p-6 rounded-lg shadow-sm text-center">
+                        <p className="text-sm font-medium text-gray-500">Total Deliveries</p>
+                        <p className="text-xl font-bold text-gray-800">{data.stats.totalDeliveries}</p>
                     </div>
+                    <div className="bg-gray-100 p-6 rounded-lg shadow-sm text-center">
+                        <p className="text-sm font-medium text-gray-500">Total Commissions</p>
+                        <p className="text-xl font-bold text-gray-800">${data.stats.totalCommissions}</p>
+                    </div>
+                    <div className="bg-gray-100 p-6 rounded-lg shadow-sm text-center">
+                        <p className="text-sm font-medium text-gray-500">Average Rating</p>
+                        <p className="text-xl font-bold text-gray-800">{data.stats.averageRating}</p>
+                    </div>
+                </div>
+
+                {/* Strongest Topics */}
+                <h3 className="text-lg font-semibold text-gray-700 mb-4">Strongest Areas</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    {data.strongestTopics.map((topic, index) => (
+                        <div key={index} className="flex items-center">
+                            <div className="w-1/2 text-sm text-gray-600">{topic.name}</div>
+                            <div className="w-1/2 flex items-center">
+                                <div className="w-full bg-gray-200 rounded-full h-2 mr-2">
+                                    <div className={`h-2 rounded-full ${topic.color}`} style={{ width: `${topic.percentage}%` }}></div>
+                                </div>
+                                <span className="text-sm text-gray-600">{topic.percentage}%</span>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Weakest Topics */}
+                <h3 className="text-lg font-semibold text-gray-700 mb-4">Areas to Improve</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {data.weakestTopics.map((topic, index) => (
+                        <div key={index} className="flex items-center">
+                            <div className="w-1/2 text-sm text-gray-600">{topic.name}</div>
+                            <div className="w-1/2 flex items-center">
+                                <div className="w-full bg-gray-200 rounded-full h-2 mr-2">
+                                    <div className={`h-2 rounded-full ${topic.color}`} style={{ width: `${topic.percentage}%` }}></div>
+                                </div>
+                                <span className="text-sm text-gray-600">{topic.percentage}%</span>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
