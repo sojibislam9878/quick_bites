@@ -3,13 +3,14 @@ import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { FaClipboardList, FaUtensils, FaHeart, FaClock } from 'react-icons/fa'; // Import relevant icons
 import React from 'react';
+import Link from 'next/link';
 
 const UserProfile = () => {
     const userData = useSession();
     const user = userData?.data?.user;
     const data = {
-        name: "Arya Muller",
-        image: "https://randomuser.me/api/portraits/women/44.jpg",
+        name: user?.name || "Arya Muller",
+        image: user?.image || "https://randomuser.me/api/portraits/women/44.jpg",
         stats: {
             totalOrders: 120,
             favoriteRestaurants: 5,
@@ -28,13 +29,13 @@ const UserProfile = () => {
                 {/* Profile Picture and Name */}
                 <div className="flex flex-col items-center text-center mb-6">
                     <Image
-                        src={user?.image}
+                        src={data.image}
                         alt="Profile Picture"
                         className="w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg"
                         width={112}
                         height={112}
                     />
-                    <h2 className="text-2xl font-semibold text-gray-800 mt-4">{user?.name}</h2>
+                    <h2 className="text-2xl font-semibold text-gray-800 mt-4">{data.name}</h2>
                 </div>
 
                 {/* Stats Section */}
@@ -63,7 +64,7 @@ const UserProfile = () => {
 
                 {/* Recent Orders */}
                 <h3 className="text-lg font-semibold text-gray-700 mb-4">Recent Orders</h3>
-                <div className="grid grid-cols-1 gap-6">
+                <div className="grid grid-cols-1 gap-6 mb-6">
                     {data.recentOrders.map((order, index) => (
                         <div key={index} className="flex justify-between items-center p-4 bg-gray-100 rounded-lg shadow-sm">
                             <div className="text-gray-800">
@@ -73,6 +74,16 @@ const UserProfile = () => {
                             <p className="text-sm text-gray-500">{order.date}</p>
                         </div>
                     ))}
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex justify-around mt-8">
+                    <Link href={'/dashboard/registarOwner'} className="bg-rose-500 text-white py-2 px-6 rounded-lg shadow-md hover:bg-rose-600 transition duration-200">
+                        Apply to Delivery Boy
+                    </Link>
+                    <Link href={'/dashboard/registarDeleveryBoy'} className="bg-yellow-500 text-white py-2 px-6 rounded-lg shadow-md hover:bg-yellow-600 transition duration-200">
+                        Register Your Restaurant
+                    </Link>
                 </div>
             </div>
         </div>
