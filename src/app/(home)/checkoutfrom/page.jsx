@@ -3,10 +3,8 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import CartContext from "@/app/Context/CartContext";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Swal from "sweetalert2";
-import CouponSpinner from "@/app/component/coupon/CouponSpinner";
 import CheckoutSpin from "@/app/component/checkoutSpin/CheckoutSpin";
 
 const DeliveryForm = () => {
@@ -27,7 +25,6 @@ const DeliveryForm = () => {
   // console.log(formData);
 
 
-  const [cities, setCities] = useState([]);
   const [loading, setLoading] = useState(true);
   const [applied, setApplied] = useState(false)
 
@@ -194,7 +191,7 @@ console.log(totalItems);
           return handleToast("error", `Invalid coupon code`)
 
         }
-        if (response.data?.couponData?.minimumPurchase !== totalItems && response.data?.message !== 'invalid') {
+        if (response.data?.couponData?.minimumPurchase > totalItems && response.data?.message !== 'invalid') {
 
           return handleToast("info", ` Purchase minimum ${response.data?.couponData?.minimumPurchase} items for this coupon`, '450px')
         }
