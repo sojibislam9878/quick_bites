@@ -26,7 +26,7 @@ export default function PaymentSuccess() {
   useEffect(() => {
     axios.get(`http://localhost:5000/order/${transactionId}`)
       .then(response => {
-        setId(response.data.validId)
+        setId(response.data?.validId)
       }, [transactionId])
   })
   const handleGotoDashBoard = () => {

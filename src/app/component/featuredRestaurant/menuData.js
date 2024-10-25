@@ -5,7 +5,7 @@ export const menuData = [
     "rating": 4.25,
     "minOrder": "$50",
     "deliveryTime": "30min",
-    "image": "tuna-roast.jpg",
+    "image": "https://i.ibb.co.com/NCs7yHL/7.jpg",
     "location": "5th Avenue New York 68"
   },
   {
@@ -14,7 +14,7 @@ export const menuData = [
     "rating": 4.03,
     "minOrder": "$40",
     "deliveryTime": "20min",
-    "image": "crab-curry.jpg",
+    "image": "https://i.ibb.co.com/N1QN1Kc/5.jpg",
     "location": "5th Avenue New York 68"
   },
   {
@@ -23,7 +23,7 @@ export const menuData = [
     "rating": 5.00,
     "minOrder": "$60",
     "deliveryTime": "45min",
-    "image": "salmon-steak.jpg",
+    "image": "https://i.ibb.co.com/GFT9mwy/4.jpg",
     "location": "5th Avenue New York 68"
   },
   {
