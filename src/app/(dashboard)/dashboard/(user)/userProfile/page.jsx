@@ -1,15 +1,11 @@
 'use client';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
+import { FaClipboardList, FaUtensils, FaHeart, FaClock } from 'react-icons/fa'; // Import relevant icons
 import React from 'react';
 
 const UserProfile = () => {
-
-
-  const userData= useSession();
-  console.log(userData?.data?.user
-    ,"userdata");
-
+    const userData = useSession();
     const user = userData?.data?.user;
     const data = {
         name: "Arya Muller",
@@ -29,12 +25,10 @@ const UserProfile = () => {
     return (
         <div className="min-h-screen w-full bg-gray-100 flex justify-center items-center p-8">
             <div className="border-2 rounded-3xl w-full max-w-6xl p-10 bg-white shadow-md">
-              
                 {/* Profile Picture and Name */}
                 <div className="flex flex-col items-center text-center mb-6">
                     <Image
-                        src={user?.image
-                        }
+                        src={user?.image}
                         alt="Profile Picture"
                         className="w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg"
                         width={112}
@@ -45,19 +39,23 @@ const UserProfile = () => {
 
                 {/* Stats Section */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-                    <div className="bg-gray-100 p-6 rounded-lg shadow-sm text-center">
+                    <div className="bg-gray-100 p-6 rounded-lg shadow-sm text-center flex flex-col items-center">
+                        <FaClipboardList className="text-2xl text-gray-600 mb-2" />
                         <p className="text-sm font-medium text-gray-500">Total Orders</p>
                         <p className="text-xl font-bold text-gray-800">{data.stats.totalOrders}</p>
                     </div>
-                    <div className="bg-gray-100 p-6 rounded-lg shadow-sm text-center">
+                    <div className="bg-gray-100 p-6 rounded-lg shadow-sm text-center flex flex-col items-center">
+                        <FaUtensils className="text-2xl text-gray-600 mb-2" />
                         <p className="text-sm font-medium text-gray-500">Favorite Restaurants</p>
                         <p className="text-xl font-bold text-gray-800">{data.stats.favoriteRestaurants}</p>
                     </div>
-                    <div className="bg-gray-100 p-6 rounded-lg shadow-sm text-center">
+                    <div className="bg-gray-100 p-6 rounded-lg shadow-sm text-center flex flex-col items-center">
+                        <FaHeart className="text-2xl text-gray-600 mb-2" />
                         <p className="text-sm font-medium text-gray-500">Favorite Cuisine</p>
                         <p className="text-xl font-bold text-gray-800">{data.stats.favoriteCuisine}</p>
                     </div>
-                    <div className="bg-gray-100 p-6 rounded-lg shadow-sm text-center">
+                    <div className="bg-gray-100 p-6 rounded-lg shadow-sm text-center flex flex-col items-center">
+                        <FaClock className="text-2xl text-gray-600 mb-2" />
                         <p className="text-sm font-medium text-gray-500">Order Frequency</p>
                         <p className="text-xl font-bold text-gray-800">{data.stats.orderFrequency}</p>
                     </div>
