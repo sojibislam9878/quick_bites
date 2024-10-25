@@ -1,7 +1,7 @@
 export  const dishItem = [
   {
     "id": 1,
-    "image": "/path/to/image1.jpg",
+    "image": "https://i.ibb.co.com/NCs7yHL/7.jpg",
     "priceRange": "$10.00–$30.00",
     "dishName": "Tequila & Lime hake",
     "restaurant": "Ocean Food",
@@ -9,7 +9,7 @@ export  const dishItem = [
   },
   {
     "id": 2,
-    "image": "/path/to/image2.jpg",
+    "image": "https://i.ibb.co.com/N1QN1Kc/5.jpg",
     "priceRange": "$10.00–$30.00",
     "dishName": "Maximus nibh facilisis",
     "restaurant": "Dream Food",
@@ -17,7 +17,7 @@ export  const dishItem = [
   },
   {
     "id": 3,
-    "image": "/path/to/image3.jpg",
+    "image": "https://i.ibb.co.com/GFT9mwy/4.jpg",
     "priceRange": "$10.00–$30.00",
     "dishName": "Hendreit nisi venenatis",
     "restaurant": "Dream Food",
@@ -25,7 +25,7 @@ export  const dishItem = [
   },
   {
     "id": 4,
-    "image": "/path/to/image4.jpg",
+    "image": "https://i.ibb.co.com/wL3MHQF/9.jpg",
     "priceRange": "$10.00–$30.00",
     "dishName": "Grilled Shrimp Scampi",
     "restaurant": "Food Garden",
@@ -33,7 +33,7 @@ export  const dishItem = [
   },
   {
     "id": 5,
-    "image": "/path/to/image5.jpg",
+    "image": "https://i.ibb.co.com/GxjR4WF/2.jpg",
     "priceRange": "$10.00–$30.00",
     "dishName": "Jagnetina Na Raznju",
     "restaurant": "Ocean Food",
@@ -41,7 +41,7 @@ export  const dishItem = [
   },
   {
     "id": 6,
-    "image": "/path/to/image6.jpg",
+    "image": "https://i.ibb.co.com/QmfLcs2/6.jpg",
     "priceRange": "$10.00–$30.00",
     "dishName": "Korean Bibimbap Yamyam",
     "restaurant": "Central Caffe Pizzeria",
