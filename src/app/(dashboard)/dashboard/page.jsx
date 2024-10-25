@@ -25,8 +25,8 @@ const DashboardPage = () => {
   return (
     <div>
       {/* Render components based on the role */}
-      {role === 'user' && <UserProfile />}
-      {role === 'admin' && <AdminProfile />}
+      {role === 'usr' && <UserProfile />}
+      {role === 'user' && <AdminProfile />}
       {role === 'deleveryMan' && <DeleveryProfile />}
       {role === 'owner' && <OwnerProfile />}
     </div>
