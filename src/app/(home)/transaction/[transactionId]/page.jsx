@@ -26,7 +26,7 @@ export default function PaymentSuccess() {
   useEffect(() => {
     axios.get(`https://quick-bites-ljsf.onrender.com/order/${transactionId}`)
       .then(response => {
-        setId(response.data.validId)
+        setId(response.data?.validId)
       }, [transactionId])
   })
   const handleGotoDashBoard = () => {
