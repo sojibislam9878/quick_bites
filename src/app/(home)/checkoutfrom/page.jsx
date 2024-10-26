@@ -49,7 +49,7 @@ const DeliveryForm = () => {
 
 
           const region = formData?.region
-          axios.post('https://quick-bites-tau.vercel.app/api/location', { region })
+          axios.post('http://localhost:3000/api/location', { region })
             .then(response => {
               console.log(response?.data),
                 setCity(response?.data)
@@ -60,7 +60,7 @@ const DeliveryForm = () => {
         if (formData?.city) {
 
           const city = formData?.city
-          axios.post(`https://quick-bites-tau.vercel.app/api/location`, { city })
+          axios.post(`http://localhost:3000/api/location`, { city })
             .then(response => {
               console.log(response?.data),
                 setArea(response?.data)
@@ -113,7 +113,7 @@ const DeliveryForm = () => {
   const userData = useSession()
   // const router=useRouter()
 
-  const { addItemToCart, deleteItemFromCart, cart } = useContext(CartContext);
+  const { cart, buyNowBtn } = useContext(CartContext);
   const [hasCoupon, setHasCoupon] = useState(false); // State to handle checkbox
   const [coupon, setCoupon] = useState(); // State to store coupon input
   const [discount, setDiscount] = useState(0); // State to store discount
@@ -177,7 +177,7 @@ const DeliveryForm = () => {
 
     setLoading(true);
 
-    axios.post('https://quick-bites-tau.vercel.app/api/coupon/getCoupon', { coupon })
+    axios.post('http://localhost:3000/api/coupon/getCoupon', { coupon })
       .then((response) => {
 
         console.log(response.data);
@@ -234,6 +234,8 @@ const DeliveryForm = () => {
 
   const [checkoutBtn, setCheckoutBtn] = useState(false)
   const [required, setRequired] = useState(false)
+  // const [allData, setAllData] = useState()
+
   const handlePayment = async () => {
 
     if (!formData.address || !formData.phoneNumber || !formData.fullName || !formData.area || !formData.city || !formData.building || !formData.region) {
@@ -252,19 +254,57 @@ const DeliveryForm = () => {
 
     const amount = totalAmountAfterDiscount || totalAmountBeforeDiscount
 
-    const allData = {
-      amount,
-      name: formData?.fullName,
-      email: userData?.data?.user?.email,
-      foodItems: cart?.cartItems,
-      userPhoneNumber: formData?.phoneNumber,
-      userAddress: `${formData?.address}, ${formData?.building}, ${formData?.area}, , ${formData?.city}, ${formData?.region}`,
+
+
+    const buyNow = JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
+    // console.log(JSON.parse(buyNow).buyNow, 'buyNowData');
+    let allData
+
+    if (buyNow?.price) {
+
+      console.log('if condition is here')
+
+      allData = {
+        amount: buyNow?.price,
+        name: formData?.fullName,
+        email: userData?.data?.user?.email,
+        foodItems: buyNow,
+        userPhoneNumber: formData?.phoneNumber,
+        userAddress: `${formData?.address}, ${formData?.building}, ${formData?.area}, , ${formData?.city}, ${formData?.region}`,
+
+
+      }
+
+
+      console.log('if', allData, buyNowBtn);
 
 
 
     }
 
-    const data = axios.post('https://quick-bites-ljsf.onrender.com/checkOut', allData)
+
+
+    else {
+      console.log(dd, 'else');
+
+      allData = {
+        amount,
+        name: formData?.fullName,
+        email: userData?.data?.user?.email,
+        foodItems: cart?.cartItems,
+        userPhoneNumber: formData?.phoneNumber,
+        userAddress: `${formData?.address}, ${formData?.building}, ${formData?.area}, , ${formData?.city}, ${formData?.region}`,
+
+
+
+      }
+    }
+    console.log(allData, 'outsideif');
+
+
+    if (allData) {
+
+      const data = axios.post('http://localhost:5000/checkOut', allData)
       .then((response) => {
         console.log(response)
 
@@ -273,10 +313,14 @@ const DeliveryForm = () => {
           window.location.href = response.data.url;
           setCheckoutBtn(false)
 
-          
+
           // Redirect to SSLCommerz payment page
         }
       })
+
+    }
+
+
     //       console.log(data);
 
 
@@ -302,9 +346,9 @@ const DeliveryForm = () => {
               placeholder="Full name"
               className={`border border-gray-300 p-2 rounded mt-2 focus:ring focus:ring-blue-500`}
             />
-             {
-             required && (formData.fullName ?'': <span className="text-red-500 text-sm mt-1">This field is required</span>
-             )}
+            {
+              required && (formData.fullName ? '' : <span className="text-red-500 text-sm mt-1">This field is required</span>
+              )}
           </div>
 
           <div className="flex flex-col">
@@ -325,8 +369,8 @@ const DeliveryForm = () => {
 
             </select>
             {
-             required && (formData.region ?'': <span className="text-red-500 text-sm mt-1">This field is required</span>
-           ) }
+              required && (formData.region ? '' : <span className="text-red-500 text-sm mt-1">This field is required</span>
+              )}
           </div>
 
           <div className="flex flex-col">
@@ -341,9 +385,9 @@ const DeliveryForm = () => {
               placeholder="Please enter your phone number"
               className={`border border-gray-300 p-2 rounded mt-2 focus:ring focus:ring-blue-500`}
             />
- {
-             required &&( formData.phoneNumber ?'': <span className="text-red-500 text-sm mt-1">This field is required</span>
-            )}          </div>
+            {
+              required && (formData.phoneNumber ? '' : <span className="text-red-500 text-sm mt-1">This field is required</span>
+              )}          </div>
 
           <div className="flex flex-col">
             <label htmlFor="city" className="font-medium">City</label>
@@ -361,8 +405,8 @@ const DeliveryForm = () => {
 
             </select>
             {
-             required && ( formData.city ?'': <span className="text-red-500 text-sm mt-1">This field is required</span>
-            )}
+              required && (formData.city ? '' : <span className="text-red-500 text-sm mt-1">This field is required</span>
+              )}
           </div>
 
           <div className="flex flex-col">
@@ -378,8 +422,8 @@ const DeliveryForm = () => {
               className={`border border-gray-300 p-2 rounded mt-2 focus:ring focus:ring-blue-500`}
             />
             {
-             required && (formData.building ?'': <span className="text-red-500 text-sm mt-1">This field is required</span>
-            )}          </div>
+              required && (formData.building ? '' : <span className="text-red-500 text-sm mt-1">This field is required</span>
+              )}          </div>
 
           <div className="flex flex-col">
             <label htmlFor="area" className="font-medium">Area</label>
@@ -400,8 +444,8 @@ const DeliveryForm = () => {
             </select>
 
             {
-              required && (formData.area?'': <span className="text-red-500 text-sm mt-1">This field is required</span>
-           )}
+              required && (formData.area ? '' : <span className="text-red-500 text-sm mt-1">This field is required</span>
+              )}
           </div>
 
           {/* <div className="flex flex-col">
@@ -429,9 +473,9 @@ const DeliveryForm = () => {
               placeholder="Ex: Haydarabad 39 no word tongi gazipur"
               className="border border-gray-300 p-2 rounded mt-2 focus:ring focus:ring-blue-500"
             />
-             {
-             required && (formData.address ?'': <span className="text-red-500 text-sm mt-1">This field is required</span>
-              ) }
+            {
+              required && (formData.address ? '' : <span className="text-red-500 text-sm mt-1">This field is required</span>
+              )}
           </div>
 
           {/* <button

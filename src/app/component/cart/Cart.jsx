@@ -63,6 +63,14 @@ const Cart = () => {
   const handlePayment = async () => {
 
 
+    const buyNowData = JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
+    if (buyNowData) {
+
+      localStorage.removeItem('buyNowData');
+      
+    }
+
+
     router.push('/checkoutfrom')
 
 
