@@ -12,7 +12,7 @@ const Restrurentpage = () => {
 
   const fetchData = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/allrestrurent');
+      const res = await fetch('https://quick-bites-tau.vercel.app/api/allrestrurent');
       const jsonData = await res.json();
       setData(jsonData);
     } catch (error) {
