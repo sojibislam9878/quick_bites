@@ -79,10 +79,11 @@ const UserProfile = () => {
                 {/* Action Buttons */}
                 <div className="flex justify-around mt-8">
                     <Link href={'/dashboard/registarOwner'} className="bg-rose-500 text-white py-2 px-6 rounded-lg shadow-md hover:bg-rose-600 transition duration-200">
-                        Apply to Delivery Boy
+                      
+                        Register Your Restaurant
                     </Link>
                     <Link href={'/dashboard/registarDeleveryBoy'} className="bg-yellow-500 text-white py-2 px-6 rounded-lg shadow-md hover:bg-yellow-600 transition duration-200">
-                        Register Your Restaurant
+                    Apply to Delivery Boy
                     </Link>
                 </div>
             </div>
