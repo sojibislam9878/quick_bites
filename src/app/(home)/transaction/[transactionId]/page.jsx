@@ -11,6 +11,9 @@ import { FcOk } from "react-icons/fc";
 
 export default function PaymentSuccess() {
 
+  const { setCart } = useContext(CartContext);
+
+
   const userData=useSession()?.data?.user?.email;
   // console.log(userData);
   
@@ -18,7 +21,6 @@ export default function PaymentSuccess() {
   const { transactionId } = useParams()
   // console.log(transactionId);
   const route = useRouter()
-  const { setCart, cart } = useContext(CartContext);
 
 
 
@@ -36,13 +38,35 @@ export default function PaymentSuccess() {
       .then(response => {
         console.log(response.data);
         if (response.data.status == 'completed') {
-          localStorage.removeItem('cart')
 
-          route.replace('/')
+
+
+          const buyNowBtn=JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
+
+
+          if (buyNowBtn ) {
+
+            // setBuyNowBtn(false)
+            console.log(buyNowBtn);
+
+
+            
+
+         return route.replace('/')
+
+            
+          }
+
+          if(!buyNowBtn){
+            localStorage.removeItem('cart')
+
+            route.replace('/')
+            
+            setTimeout(() => {
+              setCart('')
+            }, 1000);
+          }
           
-          setTimeout(() => {
-            setCart('')
-          }, 1000);
 
         }
 
