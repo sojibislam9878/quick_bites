@@ -5,9 +5,10 @@ import FavoriteBtn from "./favoriteBtn/FavoriteBtn";
 import FavoriteBtnFill from "./favoriteBtn/FavoriteBtnFill";
 import CartContext from "../Context/CartContext";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const MenuCard = ({ item }) => {
-  const { addItemToCart } = useContext(CartContext);
+  const { addItemToCart,setBuyNowBtn,buyNowBtn,setBuyNow } = useContext(CartContext);
   const { _id, brand, description, image, foodName, price } = item || {};
 
   const oldPrice = (price + 5).toFixed(2);
@@ -42,7 +43,38 @@ const MenuCard = ({ item }) => {
     });
   };
 
+
+  const router=useRouter()
+
   const handleBuyNow=() =>{
+
+    setBuyNowBtn('true')
+    
+
+
+   const buyNow={
+      product: item._id,
+      brand: item.brand,
+      category: item.category,
+      image: item.image,
+      foodName: item.foodName,
+      price: item.price,
+    };
+
+    const buyNowData = JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
+    if (buyNowData) {
+
+      localStorage.removeItem('buyNowData');
+      
+    }
+
+       localStorage.setItem("buyNowData", JSON.stringify({ buyNow }));
+
+
+
+    router.push('/checkoutfrom')
+
+    
     
   }
 

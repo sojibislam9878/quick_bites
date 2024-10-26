@@ -63,6 +63,14 @@ const Cart = () => {
   const handlePayment = async () => {
 
 
+    const buyNowData = JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
+    if (buyNowData) {
+
+      localStorage.removeItem('buyNowData');
+      
+    }
+
+
     router.push('/checkoutfrom')
 
 
@@ -80,14 +88,14 @@ console.log(totalItems);
     <>
       <section className="py-5 sm:py-7 bg-[#f8efea]">
         <div className="container  max-w-screen-xl mx-auto px-4">
-          <h2 className={`text-3xl  font-semibold mb-2 ${cart?.cartItems?.length == 0 ? 'h-screen relative text-gray-500' : ''}`}>
+          <h2 className={`text-3xl  font-semibold mb-2 ${cart?.cartItems?.length == 0 ? 'h-screen  relative text-gray-500' : ''}`}>
             <span className={`${cart?.cartItems?.length == 0 || totalItems ==0 || totalItems == undefined && 'absolute top-1/3 flex-col  right-1/2 text-center translate-x-1/2'}`}>
             <span className={`${totalItems > 0 ? 'visible':'hidden'}`}>
             {totalItems} 
             Item(s) in Cart
             </span>
               {
-                totalItems == 0 || totalItems == undefined? ( <>
+                totalItems == 0 || totalItems == undefined? ( <div className="h-screen absolute  top-[25%] text-center  w-full ">
 
                  <span className="h-screen">
                  <p>
@@ -97,7 +105,7 @@ console.log(totalItems);
                     Continue Eating
                   </Link>
                  </span>
-                </>):''
+                </div>):''
               }
             </span>
 
