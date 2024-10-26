@@ -115,6 +115,20 @@ const RegisterRestaurant = () => {
         }
     };
 
+    // New function to validate slug
+    const validateSlug = () => {
+        if (formData.slug.includes(' ')) {
+            Swal.fire({
+                title: 'Error',
+                text: 'Slug is not accepted with spaces.',
+                icon: 'error',
+                confirmButtonText: 'OK',
+            });
+            return false;
+        }
+        return true;
+    };
+
     return (
         <div className="min-h-screen w-full flex items-center justify-center py-8">
             <div className="border rounded-lg p-8 w-full max-w-2xl">
@@ -236,7 +250,11 @@ const RegisterRestaurant = () => {
                             <div className="mt-6 text-right">
                                 <button
                                     type="button"
-                                    onClick={() => setStep(2)}
+                                    onClick={() => {
+                                        if (validateSlug()) {
+                                            setStep(2);
+                                        }
+                                    }}
                                     className="bg-rose-500 text-white px-6 py-2 rounded-lg hover:bg-rose-600 transition"
                                 >
                                     Next
@@ -273,6 +291,18 @@ const RegisterRestaurant = () => {
                                     </div>
 
                                     <div>
+                                        <label className="block text-gray-700">Opens At</label>
+                                        <input
+                                            type="time"
+                                            name="opensAt"
+                                            value={formData.opensAt}
+                                            onChange={handleChange}
+                                            required
+                                            className="w-full p-2 border border-yellow-300 rounded"
+                                        />
+                                    </div>
+
+                                    <div>
                                         <label className="block text-gray-700">Working Hours</label>
                                         <input
                                             type="text"
@@ -285,23 +315,11 @@ const RegisterRestaurant = () => {
                                     </div>
 
                                     <div>
-                                        <label className="block text-gray-700">Opens At</label>
-                                        <input
-                                            type="text"
-                                            name="opensAt"
-                                            value={formData.opensAt}
-                                            onChange={handleChange}
-                                            required
-                                            className="w-full p-2 border border-yellow-300 rounded"
-                                        />
-                                    </div>
-
-                                    <div>
                                         <label className="block text-gray-700">Seating Capacity</label>
                                         <input
                                             type="number"
                                             name="seatingCapacity"
-                                            value={formData.seatingCapacity || ''}
+                                            value={formData.seatingCapacity}
                                             onChange={handleChange}
                                             required
                                             className="w-full p-2 border border-yellow-300 rounded"
@@ -309,31 +327,29 @@ const RegisterRestaurant = () => {
                                     </div>
 
                                     <div>
-                                        <label className="block text-gray-700">Delivery Service Available</label>
+                                        <label className="block text-gray-700">Delivery Service</label>
                                         <input
                                             type="checkbox"
                                             name="deliveryService"
-                                            checked={formData.deliveryService || false}
-                                            onChange={(e) =>
-                                                setFormData((prev) => ({ ...prev, deliveryService: e.target.checked }))
-                                            }
-                                            className="form-checkbox"
+                                            checked={formData.deliveryService}
+                                            onChange={handleChange}
+                                            className="ml-2"
                                         />
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="mt-6 flex justify-between">
+                            <div className="mt-6 text-right">
                                 <button
                                     type="button"
                                     onClick={() => setStep(1)}
-                                    className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition"
+                                    className="bg-gray-300 text-black px-4 py-2 rounded-lg hover:bg-gray-400 transition"
                                 >
                                     Previous
                                 </button>
                                 <button
                                     type="submit"
-                                    className="bg-rose-500 text-white px-6 py-2 rounded-lg hover:bg-rose-600 transition"
+                                    className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition"
                                 >
                                     Submit
                                 </button>
