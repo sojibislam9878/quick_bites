@@ -17,6 +17,8 @@ const Page = () => {
         fetchDeliveryMen();
     }, []);
 
+    console.log(deliveryMen, 'alld develever man');
+
     const handleViewDetails = (man) => {
         setSelectedDeliveryMan(man);
         setIsModalOpen(true);
@@ -45,7 +47,7 @@ const Page = () => {
         setSelectedDeliveryMan(null);
     };
 
-    console.log(deliveryMen);
+    console.log(deliveryMen, 'delevery man');
 
     return (
         <div className="container mx-auto p-4">
