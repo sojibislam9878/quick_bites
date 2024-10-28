@@ -7,7 +7,7 @@ const MangeDeleveryman = () => {
     queryKey: ["mangedeleveryman"],
 
     queryFn: async () => {
-      const res = await axios.get(`https://quick-bites-tau.vercel.app/api/allDeleveryMan`);
+      const res = await axios.get(`http://localhost:3000/api/allDeleveryMan`);
       return res?.data;
     },
   });

@@ -18,6 +18,10 @@ const DeliveryForm = () => {
     address: "",
   });
 
+  // for buyNow data form localHost
+  const buyNow = JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
+
+
   const [divisions, setDivisions] = useState()
   const [dd, setCity] = useState()
   const [area, setArea] = useState()
@@ -49,7 +53,7 @@ const DeliveryForm = () => {
 
 
           const region = formData?.region
-          axios.post('https://quick-bites-tau.vercel.app/api/location', { region })
+          axios.post('http://localhost:3000/api/location', { region })
             .then(response => {
               console.log(response?.data),
                 setCity(response?.data)
@@ -60,7 +64,7 @@ const DeliveryForm = () => {
         if (formData?.city) {
 
           const city = formData?.city
-          axios.post(`https://quick-bites-tau.vercel.app/api/location`, { city })
+          axios.post(`http://localhost:3000/api/location`, { city })
             .then(response => {
               console.log(response?.data),
                 setArea(response?.data)
@@ -125,9 +129,9 @@ const DeliveryForm = () => {
     0
   );
 
-  const taxAmount = (amountWithoutTax * 0.15).toFixed(2);
+  const taxAmount = ((buyNow?.price || amountWithoutTax )* 0.15).toFixed(2);
   const totalAmountBeforeDiscount = (
-    Number(amountWithoutTax) + Number(taxAmount)
+    Number(buyNow?.price || amountWithoutTax) + Number(taxAmount)
   ).toFixed(2);
 
   // Apply discount
@@ -177,7 +181,7 @@ const DeliveryForm = () => {
 
     setLoading(true);
 
-    axios.post('https://quick-bites-tau.vercel.app/api/coupon/getCoupon', { coupon })
+    axios.post('http://localhost:3000/api/coupon/getCoupon', { coupon })
       .then((response) => {
 
         console.log(response.data);
@@ -236,6 +240,8 @@ const DeliveryForm = () => {
   const [required, setRequired] = useState(false)
   // const [allData, setAllData] = useState()
 
+
+
   const handlePayment = async () => {
 
     if (!formData.address || !formData.phoneNumber || !formData.fullName || !formData.area || !formData.city || !formData.building || !formData.region) {
@@ -256,7 +262,6 @@ const DeliveryForm = () => {
 
 
 
-    const buyNow = JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
     // console.log(JSON.parse(buyNow).buyNow, 'buyNowData');
     let allData
 
@@ -265,7 +270,7 @@ const DeliveryForm = () => {
       console.log('if condition is here')
 
       allData = {
-        amount: buyNow?.price,
+        amount,
         name: formData?.fullName,
         email: userData?.data?.user?.email,
         foodItems: buyNow,
@@ -304,7 +309,7 @@ const DeliveryForm = () => {
 
     if (allData) {
 
-      const data = axios.post('https://quick-bites-ljsf.onrender.com/checkOut', allData)
+      const data = axios.post('http://localhost:5000/checkOut', allData)
       .then((response) => {
         console.log(response)
 
@@ -468,7 +473,7 @@ const DeliveryForm = () => {
               name="address"
               id="address"
               required
-              value={formData.address}
+              value={formData?.address}
               onChange={handleChange}
               placeholder="Ex: Haydarabad 39 no word tongi gazipur"
               className="border border-gray-300 p-2 rounded mt-2 focus:ring focus:ring-blue-500"
@@ -489,15 +494,16 @@ const DeliveryForm = () => {
           <ul className="mb-5">
             <li className="flex justify-between text-gray-600  mb-1">
               <span>Amount before Tax:</span>
-              <span>${amountWithoutTax}</span>
+              <span>${buyNow?.price || amountWithoutTax}</span>
             </li>
             <li className="flex justify-between text-gray-600  mb-1">
               <span>Total Units:</span>
               <span className="text-green-500">
-                {cart?.cartItems?.reduce(
+               {
+                buyNow?.price? '1' :cart?.cartItems?.reduce(
                   (acc, item) => acc + item.quantity,
                   0
-                )}{" "}
+                ) }
                 (Units)
               </span>
             </li>

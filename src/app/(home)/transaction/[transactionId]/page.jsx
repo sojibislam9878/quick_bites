@@ -19,20 +19,20 @@ export default function PaymentSuccess() {
   
 
   const { transactionId } = useParams()
-  // console.log(transactionId);
+  console.log(transactionId);
   const route = useRouter()
 
 
 
   const [id, setId] = useState()
   useEffect(() => {
-    axios.get(`https://quick-bites-ljsf.onrender.com/order/${transactionId}`)
+    axios.get(`http://localhost:5000/order/${transactionId}`)
       .then(response => {
         setId(response.data?.validId)
       }, [transactionId])
   })
   const handleGotoDashBoard = () => {
-    axios.post('https://quick-bites-ljsf.onrender.com/validate', {
+    axios.post('http://localhost:5000/validate', {
       transactionId, id,userData
     })
       .then(response => {
