@@ -11,7 +11,7 @@ const Page = () => {
 
 <<<<<<< HEAD
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:3000/api/allDeleveryMan`);
+      const res = await axios.get(`https://quick-bites-tau.vercel.app/api/allDeleveryMan`);
       return res?.data;
     },
   });

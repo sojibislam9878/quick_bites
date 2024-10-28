@@ -53,7 +53,7 @@ const DeliveryForm = () => {
 
 
           const region = formData?.region
-          axios.post('http://localhost:3000/api/location', { region })
+          axios.post('https://quick-bites-tau.vercel.app/api/location', { region })
             .then(response => {
               console.log(response?.data),
                 setCity(response?.data)
@@ -64,7 +64,7 @@ const DeliveryForm = () => {
         if (formData?.city) {
 
           const city = formData?.city
-          axios.post(`http://localhost:3000/api/location`, { city })
+          axios.post(`https://quick-bites-tau.vercel.app/api/location`, { city })
             .then(response => {
               console.log(response?.data),
                 setArea(response?.data)
@@ -181,7 +181,7 @@ const DeliveryForm = () => {
 
     setLoading(true);
 
-    axios.post('http://localhost:3000/api/coupon/getCoupon', { coupon })
+    axios.post('https://quick-bites-tau.vercel.app/api/coupon/getCoupon', { coupon })
       .then((response) => {
 
         console.log(response.data);
@@ -309,7 +309,7 @@ const DeliveryForm = () => {
 
     if (allData) {
 
-      const data = axios.post('http://localhost:5000/checkOut', allData)
+      const data = axios.post('https://quick-bites-ljsf.onrender.com/checkOut', allData)
       .then((response) => {
         console.log(response)
 
