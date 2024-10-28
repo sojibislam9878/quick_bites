@@ -6,12 +6,20 @@ import { createContext, useState, useEffect } from "react";
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
+
+  const [buyNowBtn,setBuyNowBtn] = useState('false')
+
   const [cart, setCart] = useState({ cartItems: [] }); // Initialize with cartItems
   const router = useRouter(); // Call useRouter function
 
+
+  const [buyNow,setBuyNow] = useState()
+  // let cartData=localStorage.getItem("cart")?.cartItems
+  console.log(buyNow);
+  
   useEffect(() => {
     setCartToState();
-  }, []);
+  },[]);
 
   const setCartToState = () => {
     setCart(
@@ -56,6 +64,8 @@ export const CartProvider = ({ children }) => {
     }
 
     localStorage.setItem("cart", JSON.stringify({ cartItems: newCartItems }));
+
+
     setCartToState();
   };
 
@@ -70,8 +80,13 @@ export const CartProvider = ({ children }) => {
     <CartContext.Provider
       value={{
         cart,
+        setCart,
         addItemToCart,
         deleteItemFromCart,
+        buyNow,
+        setBuyNow,
+        setBuyNowBtn,
+        buyNowBtn
       }}
     >
       {children}

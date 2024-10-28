@@ -41,11 +41,11 @@ const Navbar = () => {
     "lg:font-bold px-3 lg:text-lg lg:mr-2 mt-2 py-2 rounded-lg lg:mt-0 hover:bg-gray-200";
   const activeLink = `bg-gradient-to-r from-[#EA6A12] to-[#EA6A12]   border border-blure-500 text-white border-none hover:bg-transparent focus:bg-transparent focus:text-white ${normalLink}`;
   console.log(session);
-  
+
 
   return (
-    <div className="lg:px-8 shadow-md  sticky top-0 left-0 w-full h-20 z-50 bg-base-100  md:px-4">
-      <div className="navbar  justify-between  lg:justify-between md:justify-between ">
+    <div className=" shadow-md  sticky top-0 left-0  z-50 bg-base-100">
+      <div className=" container mx-auto p-4 navbar  justify-between  lg:justify-between md:justify-between ">
         <div className="navbar-start  w-fit">
           {/* for small */}
           <div className={icon ? "" : " relative"}>
@@ -126,7 +126,12 @@ const Navbar = () => {
                 <Link href="/cart">
                   <div className="flex justify-between">   <BsCart4 size={25} />
                     <span className=" lg:inline ml-1 text-orange-600">
-                      (<b>{cartItems?.length || 0}</b>)
+                      {/* (<b>{cartItems?.length || 0}</b>) */}
+                      (<b>{cart?.cartItems?.reduce(
+                          (acc, item) => acc + item.quantity,
+                          0
+                        )|| 0}
+                        </b>)
                     </span></div></Link>
               </div>
               <div className="dropdown dropdown-hover">
@@ -179,7 +184,7 @@ const Navbar = () => {
                     <li
 
                       onClick={handleSignOut}
-                      className="   px-2 py-1 text-red-400 gap-2  hover:bg-gray-300 hover:rounded-lg"
+                      className="   px-3 py-2 text-red-500 gap-2 cursor-pointer  hover:bg-gray-300 hover:rounded-lg"
                     >
                       Sign Out
                     </li>
@@ -189,7 +194,7 @@ const Navbar = () => {
             </div>
           ) : (
             <Link
-              className="lg:flex md:flex hidden items-center bg-rose-500 font-thin  Playfair rounded-md  px-2 py-1 text-white gap-2"
+              className="lg:flex md:flex flex items-center bg-rose-500 font-thin  Playfair rounded-md  px-2 py-1 text-white gap-2"
               href="/login"
             >
               <VscSignIn size={25} /> Sign In

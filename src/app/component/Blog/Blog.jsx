@@ -2,20 +2,17 @@ import Image from "next/image"
 import React from "react"
 import { blogs } from "./blogText"
 import BlogCard from "./BlogCard"
+import SectionTitle from "../SectionTitle"
 
 function Blog() {
 
   return (
     <>
 
-      <div className="max-w-6xl  py-4 mx-auto text-center">
-        <p className="text-xl font-medium text-[#6E6B58] font-greatVibes ">Website for Restaurant and Cafe</p>
+      <div className=" container mx-auto p-4 ">
+       <SectionTitle head={"Website for Restaurant and Cafe"} title={"Top Restaurants"} para={"Things that get tricky are things like burgers and fries, or things that are deep-fried. We do have a couple of burger restaurants that are capable of doing a good job transporting but it's Fries are almost impossible."}></SectionTitle>
 
-        <h1 className="mt-2 text-2xl font-semibold text-gray-800 capitalize lg:text-3xl">
-          Top Restaurants
-        </h1>
-
-        <div className="flex flex-row justify-center items-center gap-6 w-full mx-auto mt-8">
+        <div className="flex flex-row justify-center flex-wrap items-center gap-6 w-full mx-auto mt-8">
           <div className="p-12 border-2 rounded-full  ">
             <Image className="transition-transform hover:scale-125 hover:rotate-6 duration-200" src={"/assets/images/top-restaurant1.png"} alt="res-1" height={100} width={100} />
           </div>

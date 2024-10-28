@@ -8,6 +8,7 @@ const SocialSignin = () => {
 
   // const path = searchParams.get('redirect')
     const handleSocialLogin =async (data) => {
+      
         const resp = await signIn(data, {
           redirect : true,
           callbackUrl :  '/'

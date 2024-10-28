@@ -1,16 +1,27 @@
 "use client";
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CartContext from "../../Context/CartContext";
 import Link from "next/link";
 import axios from "axios";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const Cart = () => {
+  const userData = useSession()
+  const router = useRouter()
+
   const { addItemToCart, deleteItemFromCart, cart } = useContext(CartContext);
   const [hasCoupon, setHasCoupon] = useState(false); // State to handle checkbox
   const [coupon, setCoupon] = useState(""); // State to store coupon input
   const [discount, setDiscount] = useState(0); // State to store discount
+
+
+
+
+  // console.log(cart.cartItems,'cart is here ');
+
 
   const increaseQty = (cartItem) => {
     const newQty = cartItem?.quantity + 1;
@@ -46,41 +57,58 @@ const Cart = () => {
     totalAmountBeforeDiscount * (1 - discount / 100)
   ).toFixed(2);
 
-  // Apply coupon code logic
-  const applyCoupon = () => {
-    // Example coupon logic (you can replace this with your own logic)
-    if (coupon === "SAVE10") {
-      setDiscount(10);
-    } else if (coupon === "SAVE20") {
-      setDiscount(20);
-    } else {
-      alert("Invalid coupon code");
-      setDiscount(0);
-    }
-  };
+  
+
+
   const handlePayment = async () => {
 
-    const amount={amount:totalAmountAfterDiscount || totalAmountBeforeDiscount}
 
-    axios.post('https://e-commerce-server-side-beta.vercel.app/checkOut',amount)
-    .then((response)=>{ 
-        console.log(response)
+    const buyNowData = JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
+    if (buyNowData) {
 
-        if (response?.data?.url) {
-          window.location.href = response.data.url; // Redirect to SSLCommerz payment page
-        }
-      })
+      localStorage.removeItem('buyNowData');
+      
+    }
+
+
+    router.push('/checkoutfrom')
+
 
 
 
   }
 
+  const totalItems=cart?.cartItems?.reduce(
+    (acc, item) => acc + item.quantity,
+    0
+  )
+console.log(totalItems);
+
   return (
     <>
-      <section className="py-5 sm:py-7 bg-blue-100">
-        <div className="container max-w-screen-xl mx-auto px-4">
-          <h2 className="text-3xl font-semibold mb-2">
-            {cart?.cartItems?.length || 0} Item(s) in Cart
+      <section className="py-5 sm:py-7 bg-[#f8efea]">
+        <div className="container  max-w-screen-xl mx-auto px-4">
+          <h2 className={`text-3xl  font-semibold mb-2 ${cart?.cartItems?.length == 0 ? 'h-screen  relative text-gray-500' : ''}`}>
+            <span className={`${cart?.cartItems?.length == 0 || totalItems ==0 || totalItems == undefined && 'absolute top-1/3 flex-col  right-1/2 text-center translate-x-1/2'}`}>
+            <span className={`${totalItems > 0 ? 'visible':'hidden'}`}>
+            {totalItems} 
+            Item(s) in Cart
+            </span>
+              {
+                totalItems == 0 || totalItems == undefined? ( <div className="h-screen absolute  top-[25%] text-center  w-full ">
+
+                 <span className="h-screen">
+                 <p>
+                    There are no items in this cart
+                  </p>
+                  <Link className="btn border mt-4 text-orange-400  border-orange-400" href={'/menu'}>
+                    Continue Eating
+                  </Link>
+                 </span>
+                </div>):''
+              }
+            </span>
+
           </h2>
         </div>
       </section>
@@ -171,7 +199,7 @@ const Cart = () => {
                   <ul className="mb-5">
                     <li className="flex justify-between text-gray-600  mb-1">
                       <span>Amount before Tax:</span>
-                      <span>${amountWithoutTax}</span>
+                      <span>${(amountWithoutTax).toFixed(2)}</span>
                     </li>
                     <li className="flex justify-between text-gray-600  mb-1">
                       <span>Total Units:</span>
@@ -194,7 +222,7 @@ const Cart = () => {
                   </ul>
 
                   {/* Checkbox for coupon */}
-                  <div className="mb-4">
+                  {/* <div className="mb-4">
                     <input
                       type="checkbox"
                       id="hasCoupon"
@@ -204,7 +232,7 @@ const Cart = () => {
                     <label htmlFor="hasCoupon" className="ml-2">
                       Do you have a coupon code?
                     </label>
-                  </div>
+                  </div> */}
 
                   {/* Conditionally render the coupon input */}
                   {hasCoupon && (
@@ -226,15 +254,15 @@ const Cart = () => {
                   )}
 
                   <a onClick={handlePayment} className="px-4 py-3 mb-2 inline-block text-lg w-full text-center font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer">
-                    Continue
+                    CheckOut
                   </a>
 
-                  <Link
+                  {/* <Link
                     href="/"
                     className="px-4 py-3 inline-block text-lg w-full text-center font-medium text-green-600 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100"
                   >
                     Back to shop
-                  </Link>
+                  </Link> */}
                 </article>
               </aside>
             </div>

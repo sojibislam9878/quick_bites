@@ -14,15 +14,13 @@ const DashboardPage = () => {
 const role="admin"
   // Handle loading state while session is being fetched
   if (status === 'loading') {
-    return <div>
-    <Spinner></Spinner>
-    </div>; // You can replace this with a spinner if desired
+    return <Spinner/>; 
   }
 
-  // If there is no session, return null or redirect the user (if needed)
-  // if (!session) {
-  //   return <div>NO SESSION</div>; // Or handle redirection
-  // }
+  
+  if (!session) {
+    return <div>No session available</div>; // Or handle redirection
+  }
 
   return (
     <div>

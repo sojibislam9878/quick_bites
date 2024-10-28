@@ -3,8 +3,8 @@ import { NextResponse } from "next/server";
 
 // Dynamic GET request to fetch a specific restaurant by name
 export const GET = async (req, { params }) => {
-  const { slag } = params; // Get the dynamic 'name' from the URL
-  console.log(slug, "slag");
+  const { slug } = params; 
+ 
 
   try {
     const db = await connectDB();

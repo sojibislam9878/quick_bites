@@ -67,7 +67,7 @@ const CouponManagement = () => {
         setloading(true)
 
 
-        await fetch('https://quick-bites-tau.vercel.app/api/coupon', {
+        await fetch('https://quick-bites-ljsf.onrender.com /api/coupon', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

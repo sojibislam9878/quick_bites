@@ -28,7 +28,7 @@ export const handler = NextAuth({
 
         const db = await connectDB();
         const currentUser = await db.collection("allUser").findOne({ email });
-        console.log(currentUser)
+        console.log('currentUser',currentUser)
         if (!currentUser) {
           throw new Error("No user found with that email");
         }
@@ -37,6 +37,9 @@ export const handler = NextAuth({
         if (!passwordMatched) {
           throw new Error("Incorrect password");
         }
+
+        console.log(currentUser,'here is  current user');
+        
 
         return { id: currentUser._id, email: currentUser.email ,image:currentUser.image ,role:currentUser.role,name:currentUser.name }; // Ensure this matches the user object
       },
@@ -60,23 +63,48 @@ export const handler = NextAuth({
     signOut:"/"
   },
   callbacks: {
-    async session({ session, token, user }) {
-      // Add custom fields to the session object
-      session.user.name =token.name; 
-      session.user.email = token.email;  
-      session.user.image =token.image;  
-      session.user.role =token.role; 
-      return session;
-    },
-    async jwt({ token, user }) {
-      // Persist the user ID in the token
-      if (user) {
-        token.email = user.email;
-        token.image = user.image;
-        token.role=user.role
-        token.name=user.name
+    async signIn({ user }) {
+      const db = await connectDB();
+      const existingUser = await db.collection("allUser").findOne({ email: user.email });
+
+ 
+      if (!existingUser) {
+        await db.collection("allUser").insertOne({
+          email: user.email,
+          name: user.name,
+          image: user.image,
+          role: "user",
+        });
       }
-      return token;
+      
+      return true; // Proceed with the login
+    },
+      
+
+async session({ session, token }) {
+  // Add custom fields to the session object
+  session.user.name = token.name;
+  session.user.email = token.email;
+  session.user.image = token.image;
+  session.user.role = token.role; // Include the role in the session
+  return session;
+},
+
+async jwt({ token, user }) {
+  const db = await connectDB();
+
+  // If there is a user object (i.e., sign-in event), get the role from MongoDB
+  if (user) {
+    const currentUser = await db.collection("allUser").findOne({ email: user.email });
+    
+    // Include the role in the token
+    if (currentUser) {
+      token.image=currentUser.image;
+      token.role = currentUser.role;
+    }
+  }
+
+  return token;
     },}
 });
 
