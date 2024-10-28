@@ -27,7 +27,7 @@ const links = {
     { href: "/dashboard/adminChat", label: "Chats", icon: <FaTag /> },
     { href: "/dashboard/manageOwner", label: "Manage Owner", icon: <FaUser /> },
 
-    { href: "/dashboard/manageDeleveryBoy", label: "Pendign Delivery Boy", icon: <FaUser /> },
+    { href: "/dashboard/manageDeleveryBoy", label: "Pending Delivery  Boy", icon: <FaUser /> },
   ],
 };
 

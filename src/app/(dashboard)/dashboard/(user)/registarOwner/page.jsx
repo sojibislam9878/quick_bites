@@ -17,22 +17,44 @@ const RegisterRestaurant = () => {
         locationDetail: '',
         opensAt: '',
         working_hours: '',
-        avgRating: 4.6,
+        seatingCapacity: '',
         mobile: '',
         isbn: '',
         category: '',
         type: '',
         image: '',
+        deliveryService: false,
     });
 
     const [step, setStep] = useState(1);
     const [loading, setLoading] = useState(false);
 
+    // Categories and Types for dropdowns
+    const categories = [
+        { label: 'Fast Food', value: 'fast food' },
+        { label: "Nath's Indian", value: "nath's indian" },
+        { label: 'Chinese', value: 'chinese' },
+        { label: 'Bakery', value: 'bakery' },
+        { label: 'Pizza', value: 'pizza' },
+        { label: 'Ice Cream', value: 'ice cream' },
+        { label: 'Rolls', value: 'rolls' },
+        { label: 'Coffee', value: 'coffee' },
+        { label: 'Mughlai', value: 'mughlai' },
+    ];
+
+    const types = [
+        { label: 'Promotions', value: 'promotions' },
+        { label: 'Bookmarked', value: 'bookmarked' },
+        { label: 'Pure Veg', value: 'pure veg' },
+        { label: 'Free Delivery', value: 'free delivery' },
+        { label: 'Outdoor Seating', value: 'outdoor seating' },
+    ];
+
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value, type, checked } = e.target;
         setFormData({
             ...formData,
-            [name]: value,
+            [name]: type === 'checkbox' ? checked : value,
         });
     };
 
@@ -93,11 +115,25 @@ const RegisterRestaurant = () => {
         }
     };
 
+    // New function to validate slug
+    const validateSlug = () => {
+        if (formData.slug.includes(' ')) {
+            Swal.fire({
+                title: 'Error',
+                text: 'Slug is not accepted with spaces.',
+                icon: 'error',
+                confirmButtonText: 'OK',
+            });
+            return false;
+        }
+        return true;
+    };
+
     return (
-        <div className="min-h-screen w-full flex items-center justify-center  py-8">
+        <div className="min-h-screen w-full flex items-center justify-center py-8">
             <div className="border rounded-lg p-8 w-full max-w-2xl">
                 <h1 className="text-3xl font-bold text-rose-500 text-center mb-6">
-                    {step === 1 ? "Restaurant Registration" : "Restaurant Registration "}
+                    {step === 1 ? "Restaurant Registration" : "Restaurant Registration"}
                 </h1>
 
                 <form onSubmit={handleSubmit}>
@@ -177,26 +213,36 @@ const RegisterRestaurant = () => {
 
                                     <div>
                                         <label className="block text-gray-700">Category</label>
-                                        <input
-                                            type="text"
+                                        <select
                                             name="category"
                                             value={formData.category}
                                             onChange={handleChange}
                                             required
                                             className="w-full p-2 border border-rose-300 rounded"
-                                        />
+                                        >
+                                            {categories.map((cat) => (
+                                                <option key={cat.value} value={cat.value}>
+                                                    {cat.label}
+                                                </option>
+                                            ))}
+                                        </select>
                                     </div>
 
                                     <div>
                                         <label className="block text-gray-700">Type</label>
-                                        <input
-                                            type="text"
+                                        <select
                                             name="type"
                                             value={formData.type}
                                             onChange={handleChange}
                                             required
                                             className="w-full p-2 border border-rose-300 rounded"
-                                        />
+                                        >
+                                            {types.map((type) => (
+                                                <option key={type.value} value={type.value}>
+                                                    {type.label}
+                                                </option>
+                                            ))}
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -204,7 +250,11 @@ const RegisterRestaurant = () => {
                             <div className="mt-6 text-right">
                                 <button
                                     type="button"
-                                    onClick={() => setStep(2)}
+                                    onClick={() => {
+                                        if (validateSlug()) {
+                                            setStep(2);
+                                        }
+                                    }}
                                     className="bg-rose-500 text-white px-6 py-2 rounded-lg hover:bg-rose-600 transition"
                                 >
                                     Next
@@ -241,6 +291,18 @@ const RegisterRestaurant = () => {
                                     </div>
 
                                     <div>
+                                        <label className="block text-gray-700">Opens At</label>
+                                        <input
+                                            type="time"
+                                            name="opensAt"
+                                            value={formData.opensAt}
+                                            onChange={handleChange}
+                                            required
+                                            className="w-full p-2 border border-yellow-300 rounded"
+                                        />
+                                    </div>
+
+                                    <div>
                                         <label className="block text-gray-700">Working Hours</label>
                                         <input
                                             type="text"
@@ -253,11 +315,11 @@ const RegisterRestaurant = () => {
                                     </div>
 
                                     <div>
-                                        <label className="block text-gray-700">Opens At</label>
+                                        <label className="block text-gray-700">Seating Capacity</label>
                                         <input
-                                            type="text"
-                                            name="opensAt"
-                                            value={formData.opensAt}
+                                            type="number"
+                                            name="seatingCapacity"
+                                            value={formData.seatingCapacity}
                                             onChange={handleChange}
                                             required
                                             className="w-full p-2 border border-yellow-300 rounded"
@@ -265,23 +327,26 @@ const RegisterRestaurant = () => {
                                     </div>
 
                                     <div>
-                                        <label className="block text-gray-700">Average Rating</label>
+                                        <label className="block text-gray-700">Delivery Service</label>
                                         <input
-                                            type="number"
-                                            name="avgRating"
-                                            value={formData.avgRating}
+                                            type="checkbox"
+                                            name="deliveryService"
+                                            checked={formData.deliveryService}
                                             onChange={handleChange}
-                                            required
-                                            className="w-full p-2 border border-yellow-300 rounded"
-                                            step="0.1"
-                                            min="0"
-                                            max="5"
+                                            className="ml-2"
                                         />
                                     </div>
                                 </div>
                             </div>
 
                             <div className="mt-6 text-right">
+                                <button
+                                    type="button"
+                                    onClick={() => setStep(1)}
+                                    className="bg-gray-300 text-black px-4 py-2 rounded-lg hover:bg-gray-400 transition"
+                                >
+                                    Previous
+                                </button>
                                 <button
                                     type="submit"
                                     className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition"

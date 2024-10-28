@@ -1,12 +1,18 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { useSession } from 'next-auth/react';
 
 const RegisterDeliveryMan = () => {
     const router = useRouter();
+    const { data: session } = useSession();
+    const email = session?.user?.email;
+    console.log(session, 'sesion re fvai session');
+
     const [formData, setFormData] = useState({
+        email: email || '',
         name: '',
         mobile: '',
         address: '',
@@ -18,9 +24,16 @@ const RegisterDeliveryMan = () => {
         availability: '',
         preferred_area: '',
     });
+
     const [loading, setLoading] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [step, setStep] = useState(1);
+
+    useEffect(() => {
+        if (email) {
+            setFormData((prevData) => ({ ...prevData, email }));
+        }
+    }, [email]);
 
     const handleChange = (e) => {
         const { name, type, checked, value } = e.target;
@@ -32,7 +45,7 @@ const RegisterDeliveryMan = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         if (!formData.termsAccepted) {
             Swal.fire({
                 title: 'Error',
@@ -42,19 +55,22 @@ const RegisterDeliveryMan = () => {
             });
             return;
         }
-
+    
         setLoading(true);
         try {
             const response = await axios.post('/api/saveDeleveryMan', formData);
+            
+            // Display the statusText from the response
+            Swal.fire({
+                title: response.data.status === 200 ? 'Success' : 'Error',
+                text: response.data.statusText,
+                icon: response.data.status === 200 ? 'success' : 'error',
+                confirmButtonText: 'OK',
+            });
+    
             if (response.data.status === 200) {
-                Swal.fire({
-                    title: 'Success',
-                    text: 'Delivery Man registered successfully!',
-                    icon: 'success',
-                    confirmButtonText: 'OK',
-                });
-                // Reset form
                 setFormData({
+                    email: email || '',
                     name: '',
                     mobile: '',
                     address: '',
@@ -80,6 +96,7 @@ const RegisterDeliveryMan = () => {
             setLoading(false);
         }
     };
+    
 
     return (
         <div className="min-h-screen w-full flex items-center justify-center py-8">
@@ -94,17 +111,18 @@ const RegisterDeliveryMan = () => {
                                 <input
                                     type="text"
                                     name="name"
+                                    defaultValue={session?.user?.name || ''}
                                     value={formData.name}
                                     onChange={handleChange}
                                     required
+
                                     className="w-full p-2 border border-rose-300 rounded"
                                 />
                             </div>
-
                             <div>
-                                <label className="block text-gray-700">Mobile Number</label>
+                                <label className="block text-gray-700">Mobile</label>
                                 <input
-                                    type="tel"
+                                    type="text"
                                     name="mobile"
                                     value={formData.mobile}
                                     onChange={handleChange}
@@ -112,10 +130,10 @@ const RegisterDeliveryMan = () => {
                                     className="w-full p-2 border border-rose-300 rounded"
                                 />
                             </div>
-
                             <div>
                                 <label className="block text-gray-700">Address</label>
-                                <textarea
+                                <input
+                                    type="text"
                                     name="address"
                                     value={formData.address}
                                     onChange={handleChange}
@@ -123,7 +141,6 @@ const RegisterDeliveryMan = () => {
                                     className="w-full p-2 border border-rose-300 rounded"
                                 />
                             </div>
-
                             <div>
                                 <label className="block text-gray-700">Resume Link</label>
                                 <input
@@ -135,7 +152,6 @@ const RegisterDeliveryMan = () => {
                                     className="w-full p-2 border border-rose-300 rounded"
                                 />
                             </div>
-
                             <div>
                                 <label className="block text-gray-700">Educational Qualification</label>
                                 <input
@@ -147,20 +163,6 @@ const RegisterDeliveryMan = () => {
                                     className="w-full p-2 border border-rose-300 rounded"
                                 />
                             </div>
-
-                            <div className="flex items-center">
-                                <input
-                                    type="checkbox"
-                                    name="termsAccepted"
-                                    checked={formData.termsAccepted}
-                                    onChange={handleChange}
-                                    required
-                                    className="mr-2"
-                                />
-                                <label className="text-gray-700">I accept the terms and conditions</label>
-                                <button type="button" onClick={() => setShowModal(true)} className="ml-2 text-blue-500 underline">View Terms</button>
-                            </div>
-
                             <div className="mt-6 text-right">
                                 <button
                                     type="button"
@@ -176,18 +178,16 @@ const RegisterDeliveryMan = () => {
                     {step === 2 && (
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-gray-700">Experience (in years)</label>
+                                <label className="block text-gray-700">Experience</label>
                                 <input
-                                    type="number"
+                                    type="text"
                                     name="experience"
                                     value={formData.experience}
                                     onChange={handleChange}
                                     required
-                                    className="w-full p-2 border border-yellow-300 rounded"
-                                    min="0"
+                                    className="w-full p-2 border border-rose-300 rounded"
                                 />
                             </div>
-
                             <div>
                                 <label className="block text-gray-700">Vehicle Type</label>
                                 <input
@@ -196,10 +196,9 @@ const RegisterDeliveryMan = () => {
                                     value={formData.vehicle_type}
                                     onChange={handleChange}
                                     required
-                                    className="w-full p-2 border border-yellow-300 rounded"
+                                    className="w-full p-2 border border-rose-300 rounded"
                                 />
                             </div>
-
                             <div>
                                 <label className="block text-gray-700">Availability</label>
                                 <input
@@ -208,10 +207,9 @@ const RegisterDeliveryMan = () => {
                                     value={formData.availability}
                                     onChange={handleChange}
                                     required
-                                    className="w-full p-2 border border-yellow-300 rounded"
+                                    className="w-full p-2 border border-rose-300 rounded"
                                 />
                             </div>
-
                             <div>
                                 <label className="block text-gray-700">Preferred Area</label>
                                 <input
@@ -220,10 +218,26 @@ const RegisterDeliveryMan = () => {
                                     value={formData.preferred_area}
                                     onChange={handleChange}
                                     required
-                                    className="w-full p-2 border border-yellow-300 rounded"
+                                    className="w-full p-2 border border-rose-300 rounded"
                                 />
                             </div>
-
+                            <div className="flex items-center">
+                                <input
+                                    type="checkbox"
+                                    name="termsAccepted"
+                                    checked={formData.termsAccepted}
+                                    onChange={handleChange}
+                                    className="mr-2"
+                                />
+                                <label className="text-gray-700">I accept the terms and conditions</label>
+                                <button
+                                    type="button"
+                                    onClick={() => setShowModal(true)}
+                                    className="text-rose-500 underline ml-2"
+                                >
+                                    (View Terms)
+                                </button>
+                            </div>
                             <div className="mt-6 flex justify-between">
                                 <button
                                     type="button"
@@ -243,25 +257,21 @@ const RegisterDeliveryMan = () => {
                         </div>
                     )}
                 </form>
-            </div>
 
-            {showModal && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-                    <div className="bg-white rounded-lg p-4 w-11/12 max-w-lg">
-                        <h2 className="text-xl font-bold">Terms and Conditions</h2>
-                        <p>1. You must deliver all items on time.</p>
-                        <p>2. You should follow all traffic rules.</p>
-                        <p>3. Maintain cleanliness while on duty.</p>
-                        <p>4. You must be available during assigned hours.</p>
-                        <p>5. Always communicate with the management regarding any issues.</p>
-                        <div className="mt-4 flex justify-end">
-                            <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => setShowModal(false)}>
-                                Close
-                            </button>
+                {showModal && (
+                    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                        <div className="bg-white rounded-lg p-4 w-11/12 max-w-lg">
+                            <h2 className="text-xl font-bold">Terms and Conditions</h2>
+                            <p>Terms here...</p>
+                            <div className="mt-4 flex justify-end">
+                                <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => setShowModal(false)}>
+                                    Close
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )}
+            </div>
         </div>
     );
 };
