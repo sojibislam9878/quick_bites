@@ -18,6 +18,12 @@ const DeliveryForm = () => {
     address: "",
   });
 
+  // for buyNow data form localHost
+  const [buyNow,setBuyNow]=useState(); 
+
+  // const buyNow = JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
+
+
   const [divisions, setDivisions] = useState()
   const [dd, setCity] = useState()
   const [area, setArea] = useState()
@@ -33,7 +39,8 @@ const DeliveryForm = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-
+setBuyNow(  JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
+)
       try {
         if (!formData?.region) {
           setLoading(true);
@@ -104,6 +111,8 @@ const DeliveryForm = () => {
 
   const handleSubmit = (e) => {
     e?.preventDefault();
+
+
     console.log("Form data submitted:", formData);
   };
 
@@ -118,16 +127,15 @@ const DeliveryForm = () => {
   const [coupon, setCoupon] = useState(); // State to store coupon input
   const [discount, setDiscount] = useState(0); // State to store discount
   const [couponData, setCouponData] = useState(); // State to store coupon
-
   // Calculate amounts
   const amountWithoutTax = cart?.cartItems?.reduce(
     (acc, item) => acc + item.quantity * item.price,
     0
   );
 
-  const taxAmount = (amountWithoutTax * 0.15).toFixed(2);
+  const taxAmount = ((buyNow?.price || amountWithoutTax )* 0.15).toFixed(2);
   const totalAmountBeforeDiscount = (
-    Number(amountWithoutTax) + Number(taxAmount)
+    Number(buyNow?.price || amountWithoutTax) + Number(taxAmount)
   ).toFixed(2);
 
   // Apply discount
@@ -236,6 +244,8 @@ const DeliveryForm = () => {
   const [required, setRequired] = useState(false)
   // const [allData, setAllData] = useState()
 
+
+
   const handlePayment = async () => {
 
     if (!formData.address || !formData.phoneNumber || !formData.fullName || !formData.area || !formData.city || !formData.building || !formData.region) {
@@ -256,7 +266,6 @@ const DeliveryForm = () => {
 
 
 
-    const buyNow = JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
     // console.log(JSON.parse(buyNow).buyNow, 'buyNowData');
     let allData
 
@@ -265,7 +274,7 @@ const DeliveryForm = () => {
       console.log('if condition is here')
 
       allData = {
-        amount: buyNow?.price,
+        amount,
         name: formData?.fullName,
         email: userData?.data?.user?.email,
         foodItems: buyNow,
@@ -468,7 +477,7 @@ const DeliveryForm = () => {
               name="address"
               id="address"
               required
-              value={formData.address}
+              value={formData?.address}
               onChange={handleChange}
               placeholder="Ex: Haydarabad 39 no word tongi gazipur"
               className="border border-gray-300 p-2 rounded mt-2 focus:ring focus:ring-blue-500"
@@ -489,15 +498,16 @@ const DeliveryForm = () => {
           <ul className="mb-5">
             <li className="flex justify-between text-gray-600  mb-1">
               <span>Amount before Tax:</span>
-              <span>${amountWithoutTax}</span>
+              <span>${buyNow?.price || amountWithoutTax}</span>
             </li>
             <li className="flex justify-between text-gray-600  mb-1">
               <span>Total Units:</span>
               <span className="text-green-500">
-                {cart?.cartItems?.reduce(
+               {
+                buyNow?.price? '1' :cart?.cartItems?.reduce(
                   (acc, item) => acc + item.quantity,
                   0
-                )}{" "}
+                ) }
                 (Units)
               </span>
             </li>
