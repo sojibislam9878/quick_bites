@@ -67,7 +67,7 @@ const ManageRestaurants = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`https://quick-bites-tau.vercel.app/api/allrestrurent`);
+        const res = await fetch(`http://localhost:3000/api/allrestrurent`);
         const data = await res.json();
         setData(data?.result);
       } catch (error) {
@@ -182,9 +182,8 @@ const ManageRestaurants = () => {
                   <td className="py-4 px-4 text-sm text-gray-700">{restaurant.opensAt}</td>
                   <td className="py-4 px-4 text-sm text-gray-700">
                     <span
-                      className={`inline-flex text-xs font-semibold rounded-full px-2.5 py-0.5 ${
-                        restaurant.status === 'block' ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'
-                      }`}
+                      className={`inline-flex text-xs font-semibold rounded-full px-2.5 py-0.5 ${restaurant.status === 'block' ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'
+                        }`}
                     >
                       {restaurant.status === 'block' ? 'Blocked' : 'Active'}
                     </span>
@@ -192,9 +191,9 @@ const ManageRestaurants = () => {
                   <td className="py-4 px-4 text-sm">
                     <button
                       className="bg-blue-500 text-white px-3 py-1 rounded mr-2"
-                      
+
                     >
-                     <Link  href={`/dashboard/manageResturants/${restaurant?.slug}`}> View Details</Link>
+                      <Link href={`/dashboard/manageResturants/${restaurant?.slug}`}> View Details</Link>
                     </button>
                     <button
                       className="bg-red-500 text-white w-24 px-3 py-1 rounded"

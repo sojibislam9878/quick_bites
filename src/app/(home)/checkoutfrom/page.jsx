@@ -19,7 +19,7 @@ const DeliveryForm = () => {
   });
 
   // for buyNow data form localHost
-  const [buyNow,setBuyNow]=useState(); 
+  const [buyNow, setBuyNow] = useState();
 
   // const buyNow = JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
 
@@ -39,8 +39,8 @@ const DeliveryForm = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-setBuyNow(  JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
-)
+      setBuyNow(JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
+      )
       try {
         if (!formData?.region) {
           setLoading(true);
@@ -56,7 +56,7 @@ setBuyNow(  JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
 
 
           const region = formData?.region
-          axios.post('https://quick-bites-tau.vercel.app/api/location', { region })
+          axios.post('http://localhost:3000/api/location', { region })
             .then(response => {
               console.log(response?.data),
                 setCity(response?.data)
@@ -67,7 +67,7 @@ setBuyNow(  JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
         if (formData?.city) {
 
           const city = formData?.city
-          axios.post(`https://quick-bites-tau.vercel.app/api/location`, { city })
+          axios.post(`http://localhost:3000/api/location`, { city })
             .then(response => {
               console.log(response?.data),
                 setArea(response?.data)
@@ -133,7 +133,7 @@ setBuyNow(  JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
     0
   );
 
-  const taxAmount = ((buyNow?.price || amountWithoutTax )* 0.15).toFixed(2);
+  const taxAmount = ((buyNow?.price || amountWithoutTax) * 0.15).toFixed(2);
   const totalAmountBeforeDiscount = (
     Number(buyNow?.price || amountWithoutTax) + Number(taxAmount)
   ).toFixed(2);
@@ -185,7 +185,7 @@ setBuyNow(  JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
 
     setLoading(true);
 
-    axios.post('https://quick-bites-tau.vercel.app/api/coupon/getCoupon', { coupon })
+    axios.post('http://localhost:3000/api/coupon/getCoupon', { coupon })
       .then((response) => {
 
         console.log(response.data);
@@ -314,18 +314,18 @@ setBuyNow(  JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
     if (allData) {
 
       const data = axios.post('https://quick-bites-ljsf.onrender.com/checkOut', allData)
-      .then((response) => {
-        console.log(response)
+        .then((response) => {
+          console.log(response)
 
-        if (response?.data?.url) {
+          if (response?.data?.url) {
 
-          window.location.href = response.data.url;
-          setCheckoutBtn(false)
+            window.location.href = response.data.url;
+            setCheckoutBtn(false)
 
 
-          // Redirect to SSLCommerz payment page
-        }
-      })
+            // Redirect to SSLCommerz payment page
+          }
+        })
 
     }
 
@@ -503,11 +503,11 @@ setBuyNow(  JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
             <li className="flex justify-between text-gray-600  mb-1">
               <span>Total Units:</span>
               <span className="text-green-500">
-               {
-                buyNow?.price? '1' :cart?.cartItems?.reduce(
-                  (acc, item) => acc + item.quantity,
-                  0
-                ) }
+                {
+                  buyNow?.price ? '1' : cart?.cartItems?.reduce(
+                    (acc, item) => acc + item.quantity,
+                    0
+                  )}
                 (Units)
               </span>
             </li>
