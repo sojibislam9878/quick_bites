@@ -21,7 +21,7 @@ const MenuList = ({ item }) => {
                         <div>
                             <p className='p-1 bg-[#bef754] flex flex-row justify-start items-center'>
                                 <FaRegStar />
-                                <span>{rating}</span>
+                                <span>{Math.ceil(rating)}</span>
                             </p>
                         </div>
                     </div>

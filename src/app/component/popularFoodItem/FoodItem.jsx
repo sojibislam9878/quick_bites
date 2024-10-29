@@ -3,7 +3,7 @@ import Image from 'next/image';
 import React from 'react';
 
 const FoodItem = ({ item }) => {
-    const { priceRange, restaurant, address, dishName, restaurantImage, image } = item;
+    const { priceRange, restaurant, address, dishName, image } = item;
 
     return (
         <div className='flex flex-row justify-between items-center gap-4 p-4 bg-base-100 shadow rounded-lg'>

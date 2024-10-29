@@ -1,7 +1,7 @@
 export const dishItem = [
   {
     "id": 1,
-    "image": "https://i.ibb.co.com/dbtny4H/mae-mu-Gmo-Lp-EYLpe8-unsplash.jpg",
+    "image": "https://i.ibb.co.com/NCs7yHL/7.jpg",
     "priceRange": "$10.00–$30.00",
     "dishName": "Tequila & Lime hake",
     "restaurant": "Ocean Food",
@@ -10,7 +10,7 @@ export const dishItem = [
   },
   {
     "id": 2,
-    "image": "https://i.ibb.co.com/4jY7Lcv/mae-mu-I7-A-p-HLc-QK8-unsplash-1.jpg",
+    "image": "https://i.ibb.co.com/N1QN1Kc/5.jpg",
     "priceRange": "$10.00–$30.00",
     "dishName": "Maximus nibh facilisis",
     "restaurant": "Dream Food",
@@ -19,7 +19,7 @@ export const dishItem = [
   },
   {
     "id": 3,
-    "image": "https://i.ibb.co.com/yP5ww5G/mae-mu-r-XDCb-Bmgdg-unsplash.jpg",
+    "image": "https://i.ibb.co.com/GFT9mwy/4.jpg",
     "priceRange": "$10.00–$30.00",
     "dishName": "Hendreit nisi venenatis",
     "restaurant": "Dream Food",
@@ -28,7 +28,7 @@ export const dishItem = [
   },
   {
     "id": 4,
-    "image": "https://i.ibb.co.com/CtqB8Cm/mae-mu-Ray6r-Os7-Ycc-unsplash.jpg",
+    "image": "https://i.ibb.co.com/wL3MHQF/9.jpg",
     "priceRange": "$10.00–$30.00",
     "dishName": "Grilled Shrimp Scampi",
     "restaurant": "Food Garden",
@@ -37,7 +37,7 @@ export const dishItem = [
   },
   {
     "id": 5,
-    "image": "https://i.ibb.co.com/FKFhVdq/bianca-berg-Vk-0y7-Z32q-A-unsplash.jpg",
+    "image": "https://i.ibb.co.com/GxjR4WF/2.jpg",
     "priceRange": "$10.00–$30.00",
     "dishName": "Jagnetina Na Raznju",
     "restaurant": "Ocean Food",
@@ -46,7 +46,7 @@ export const dishItem = [
   },
   {
     "id": 6,
-    "image": "/path/to/image6.jpg",
+    "image": "https://i.ibb.co.com/QmfLcs2/6.jpg",
     "priceRange": "$10.00–$30.00",
     "dishName": "Korean Bibimbap Yamyam",
     "restaurant": "Central Caffe Pizzeria",

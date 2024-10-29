@@ -9,9 +9,11 @@ import MenuList1 from './MenuList1';
 import SectionTitle from '../SectionTitle';
 
 const FeaturedRestaurant = () => {
+
+    
     return (
         <div className='container mx-auto  mt-12 lg:mt-20 p-4'>
-            <SectionTitle head={"Featured Restaurant"} title={"Featured"} />
+            <SectionTitle head={"Featured Restaurant"} title={"Featured"} para={"Indulge in culinary excellence with our featured restaurant, where every dish is a perfect blend of flavor, freshness, and creativity!"}/>
 
             <div className='flex flex-col md:flex-row justify-between '>
                 {/* Left Column */}
