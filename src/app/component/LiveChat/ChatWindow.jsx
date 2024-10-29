@@ -53,7 +53,7 @@ console.log(chatHistory);
   };
 
   return (
-    <div>
+    <div className='z-auto'>
       <div className="flex flex-col fixed top-24 right-4 h-3/4 max-w-md mx-auto bg-white shadow-lg">
       {/* Chat Header */}
       <div className="py-4  items-center  flex justify-between z-50 px-6 bg-gray-100 font-semibold border-b border-gray-200">

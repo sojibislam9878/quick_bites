@@ -19,7 +19,7 @@ export default function PaymentSuccess() {
   
 
   const { transactionId } = useParams()
-  // console.log(transactionId);
+  console.log(transactionId);
   const route = useRouter()
 
 
