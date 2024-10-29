@@ -19,6 +19,8 @@ const DeliveryForm = () => {
   });
 
   // for buyNow data form localHost
+  const [buyNow,setBuyNow]=useState(); 
+
   // const buyNow = JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
 
 
@@ -37,7 +39,8 @@ const DeliveryForm = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-
+setBuyNow(  JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
+)
       try {
         if (!formData?.region) {
           setLoading(true);
@@ -124,8 +127,6 @@ const DeliveryForm = () => {
   const [coupon, setCoupon] = useState(); // State to store coupon input
   const [discount, setDiscount] = useState(0); // State to store discount
   const [couponData, setCouponData] = useState(); // State to store coupon
-  const buyNow = JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
-
   // Calculate amounts
   const amountWithoutTax = cart?.cartItems?.reduce(
     (acc, item) => acc + item.quantity * item.price,
