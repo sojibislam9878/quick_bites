@@ -19,7 +19,7 @@ const DeliveryForm = () => {
   });
 
   // for buyNow data form localHost
-  const buyNow = JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
+  // const buyNow = JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
 
 
   const [divisions, setDivisions] = useState()
@@ -108,6 +108,8 @@ const DeliveryForm = () => {
 
   const handleSubmit = (e) => {
     e?.preventDefault();
+
+
     console.log("Form data submitted:", formData);
   };
 
@@ -122,6 +124,7 @@ const DeliveryForm = () => {
   const [coupon, setCoupon] = useState(); // State to store coupon input
   const [discount, setDiscount] = useState(0); // State to store discount
   const [couponData, setCouponData] = useState(); // State to store coupon
+  const buyNow = JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
 
   // Calculate amounts
   const amountWithoutTax = cart?.cartItems?.reduce(
