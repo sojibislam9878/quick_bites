@@ -9,13 +9,6 @@ const Page = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(true);
 
-<<<<<<< HEAD
-    queryFn: async () => {
-      const res = await axios.get(`https://quick-bites-tau.vercel.app/api/allDeleveryMan`);
-      return res?.data;
-    },
-  });
-=======
     useEffect(() => {
         const fetchDeliveryMen = async () => {
             setLoading(true);
@@ -24,7 +17,6 @@ const Page = () => {
             setDeliveryMen(data.result);
             setLoading(false);
         };
->>>>>>> b528d313de78f13b90b1c6bf19dfc5474269c1a7
 
         fetchDeliveryMen();
     }, [selectedTab]);

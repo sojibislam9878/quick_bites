@@ -17,11 +17,7 @@ const Restrurentpage = () => {
   const fetchData = async () => {
     setLoading(true); // Start loading
     try {
-<<<<<<< HEAD
-      const res = await fetch('https://quick-bites-tau.vercel.app/api/allrestrurent');
-=======
       const res = await fetch(`/api/allrestrurent?currentPage=${currentPage}`);
->>>>>>> b528d313de78f13b90b1c6bf19dfc5474269c1a7
       const jsonData = await res.json();
       setData(jsonData);
     } catch (error) {
