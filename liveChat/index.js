@@ -20,7 +20,7 @@ const cors = require('cors')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors(
     {
-      origin: [,"https://quick-bites-tau.vercel.app",'https://quick-bites-tau.vercel.app'],
+      origin: [,"uick-bites-tau.vercel.app",'uick-bites-tau.vercel.app'],
       methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     }
   
@@ -121,7 +121,7 @@ try {
 
         // console.log(updateData)
         // Handle success response
-        res.status(200).redirect(`https://quick-bites-tau.vercel.app/transaction/${data.tran_id}`);
+        res.status(200).redirect(`uick-bites-tau.vercel.app/transaction/${data.tran_id}`);
       });
 
 
@@ -134,7 +134,7 @@ try {
         }
        
         await transaction.deleteOne(query)
-        res.status(200).redirect('https://quick-bites-tau.vercel.app');
+        res.status(200).redirect('uick-bites-tau.vercel.app');
 
         
       })
@@ -149,7 +149,7 @@ try {
        
       await  transaction.deleteOne(query)
 
-      res.status(200).redirect('https://quick-bites-tau.vercel.app');
+      res.status(200).redirect('uick-bites-tau.vercel.app');
 
         
       })

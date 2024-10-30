@@ -23,7 +23,7 @@ const ManuePage = () => {
       setLoading(true);
       try {
         const res = await fetch(
-          `https://quick-bites-tau.vercel.app/api/allitem?page=${currentPage}&size=${cardPerPage}&filter=${filter}&brand=${brand}&sort=${sort}&search=${search}`
+          `uick-bites-tau.vercel.app/api/allitem?page=${currentPage}&size=${cardPerPage}&filter=${filter}&brand=${brand}&sort=${sort}&search=${search}`
         );
         const data = await res.json();
 
@@ -46,7 +46,7 @@ const ManuePage = () => {
       setLoading(true);
       try {
         const res = await fetch(
-         `https://quick-bites-tau.vercel.app/api/itemcounts?filter=${filter}&brand=${brand}&search=${search}`
+         `uick-bites-tau.vercel.app/api/itemcounts?filter=${filter}&brand=${brand}&search=${search}`
         );
         const data = await res.json();
         setDataCount(data.count);

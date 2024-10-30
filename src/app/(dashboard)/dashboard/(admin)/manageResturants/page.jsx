@@ -67,7 +67,7 @@ const ManageRestaurants = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`https://quick-bites-tau.vercel.app/api/allrestrurent`);
+        const res = await fetch(`uick-bites-tau.vercel.app/api/allrestrurent`);
         const data = await res.json();
         setData(data?.result);
       } catch (error) {

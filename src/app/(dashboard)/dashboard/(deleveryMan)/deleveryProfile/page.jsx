@@ -74,18 +74,6 @@ const UserProfile = () => {
                     ))}
                 </div>
 
-<<<<<<< HEAD
-        {/* Email */}
-        <p className="text-gray-600 mb-6">{data.email}</p>
-<h1 className="text-red-500 font-bold text-2xl">{data.role}</h1>
-        {/* Additional Info */}
-      
-      </div>
-    </div>
-  </div></div></div>
-  )
-}
-=======
                 {/* Weakest Topics */}
                 <h3 className="text-lg font-semibold text-gray-700 mb-4">Areas to Improve</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -105,6 +93,5 @@ const UserProfile = () => {
         </div>
     );
 };
->>>>>>> 54623e6ce52e0c68823167ac9b0633809e1b6f1f
 
 export default UserProfile;

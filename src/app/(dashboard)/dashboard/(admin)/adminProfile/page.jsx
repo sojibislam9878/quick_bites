@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-'use client'
-import Stats from '@/app/(dashboard)/component/Stats';
-import React from 'react'
-import { FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
-import AdminComponent from './AdminComponent';
-
-const AdminProfile = () => {
-
-    
-  return (
-    <div  >
-    
-=======
 'use client';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
@@ -40,7 +26,6 @@ const AdminProfile = () => {
             { name: "Order Fulfillment Time", percentage: 70, color: "bg-red-400" },
         ]
     };
->>>>>>> 54623e6ce52e0c68823167ac9b0633809e1b6f1f
 
     return (
         <div className="min-h-screen w-full bg-gray-100 flex justify-center items-center p-8">
@@ -57,16 +42,6 @@ const AdminProfile = () => {
                     <h2 className="text-2xl font-semibold text-gray-800 mt-4">{data.name}</h2>
                 </div>
 
-<<<<<<< HEAD
-    <Stats></Stats>
-<AdminComponent></AdminComponent>
-
-</div>
-
-
-  )
-}
-=======
                 {/* Stats Section */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
                     <div className="bg-gray-100 p-6 rounded-lg shadow-sm text-center">
@@ -122,6 +97,5 @@ const AdminProfile = () => {
         </div>
     );
 };
->>>>>>> 54623e6ce52e0c68823167ac9b0633809e1b6f1f
 
 export default AdminProfile;

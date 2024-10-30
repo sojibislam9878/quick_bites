@@ -23,7 +23,7 @@ const CouponManagement = () => {
         if (value.toLowerCase() == 'active') {
             console.log('Active')
 
-            await axios.post('https://quick-bites-tau.vercel.app/api/coupon', { id, value })
+            await axios.post('uick-bites-tau.vercel.app/api/coupon', { id, value })
                 .then(response => {
 
                     if (response?.data?.result?.matchedCount > 0) {
@@ -41,7 +41,7 @@ const CouponManagement = () => {
 
         } else {
 
-            await axios.post('https://quick-bites-tau.vercel.app/api/coupon', { id, value })
+            await axios.post('uick-bites-tau.vercel.app/api/coupon', { id, value })
                 .then(response => {
 
                     if (response?.data?.result?.matchedCount > 0) {
@@ -140,7 +140,7 @@ const CouponManagement = () => {
             }
             console.log(updateCouponData);
             
-            await axios.post('https://quick-bites-tau.vercel.app/api/coupon/updateCoupon',updateCouponData)
+            await axios.post('uick-bites-tau.vercel.app/api/coupon/updateCoupon',updateCouponData)
                 .then(result => {
                     console.log(result.data);
 

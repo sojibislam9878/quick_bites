@@ -76,33 +76,6 @@ const UserProfile = () => {
                     ))}
                 </div>
 
-<<<<<<< HEAD
-    <div className="min-h-screen flex justify-center items-center p-4 lg:p-0">
-
-
-    <div className="bg-gray-200 text-[#533831] selection:text-white rounded-lg shadow-lg p-8 w-full">
-      <div className="flex flex-col items-center">
-        {/* Profile Picture */}
-        <img
-          src={data.image}
-          alt="Profile Picture"
-          className="w-32 h-32 rounded-full object-cover mb-4 shadow-[-10px_-10px_30px_4px_rgba(223,198,173),_10px_10px_30px_4px_rgba(45,78,255,0.15)]"
-        />
-
-        {/* Name */}
-        <h2 className="text-2xl font-bold text-[#533831]">{data.name}</h2>
-
-        {/* Email */}
-        <p className="text-gray-600 mb-6">{data.email}</p>
-        <h1 className="text-red-500 font-bold text-2xl">{data.role}</h1>
-
-        {/* Additional Info */}
-     
-      </div>
-    </div>
-  </div>
-    </div>
-=======
                 {/* Action Buttons */}
                 <div className="flex justify-around mt-8">
                     <Link href={'/dashboard/registarOwner'} className="bg-rose-500 text-white py-2 px-6 rounded-lg shadow-md hover:bg-rose-600 transition duration-200">
@@ -117,6 +90,5 @@ const UserProfile = () => {
         </div>
     );
 };
->>>>>>> 54623e6ce52e0c68823167ac9b0633809e1b6f1f
 
 export default UserProfile;

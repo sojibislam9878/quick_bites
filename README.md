@@ -14,7 +14,7 @@ pnpm dev
 bun dev
 ```
 
-Open [https://quick-bites-tau.vercel.app](https://quick-bites-tau.vercel.app) with your browser to see the result.
+Open [uick-bites-tau.vercel.app](uick-bites-tau.vercel.app) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
