@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
 
 
   return (
-    <html lang="en" data-theme="light" className="bg-gray-100 text-gray-900 ">
+    <html lang="en" data-theme="light" className="  bg-orange-200 text-gray-900 ">
       <body className={`${poppins.variable} antialiased`}>
 
         {/* <div className="drawer lg:drawer-open">

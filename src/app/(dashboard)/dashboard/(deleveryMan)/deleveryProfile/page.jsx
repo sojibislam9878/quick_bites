@@ -1,8 +1,11 @@
 'use client';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import React from 'react';
 
 const UserProfile = () => {
+    const { data: session } = useSession();
+    const user = session?.user;
     const data = {
         name: "Arya Muller",
         image: "https://randomuser.me/api/portraits/women/44.jpg",
@@ -23,19 +26,19 @@ const UserProfile = () => {
     };
 
     return (
-        <div className="min-h-screen w-full bg-gray-100 flex justify-center items-center p-8">
+        <div className="min-h-screen w-full flex justify-center items-center p-8">
             <div className="border-2 rounded-3xl w-full max-w-6xl p-10">
               
                 {/* Profile Picture and Name */}
                 <div className="flex flex-col items-center text-center mb-6">
                     <Image
-                        src={data.image}
+                        src={user?.image}
                         alt="Profile Picture"
                         className="w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg"
                         width={112}
                         height={112}
                     />
-                    <h2 className="text-2xl font-semibold text-gray-800 mt-4">{data.name}</h2>
+                    <h2 className="text-2xl font-semibold text-gray-800 mt-4">{user?.name}</h2>
                 </div>
 
                 {/* Stats Section */}
