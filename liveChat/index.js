@@ -20,7 +20,7 @@ const cors = require('cors')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors(
     {
-        origin: [, "http://localhost:3000", 'http://localhost:3000'],
+        origin: [, "https://quick-bites-tau.vercel.app", 'https://quick-bites-tau.vercel.app'],
         methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     }
 
@@ -122,7 +122,7 @@ async function run() {
 
             // console.log(updateData)
             // Handle success response
-            res.status(200).redirect(`http://localhost:3000/transaction/${data.tran_id}`);
+            res.status(200).redirect(`https://quick-bites-tau.vercel.app/transaction/${data.tran_id}`);
         });
 
 
@@ -135,7 +135,7 @@ async function run() {
             }
 
             await transaction.deleteOne(query)
-            res.status(200).redirect('http://localhost:3000');
+            res.status(200).redirect('https://quick-bites-tau.vercel.app');
 
 
         })
@@ -150,7 +150,7 @@ async function run() {
 
             await transaction.deleteOne(query)
 
-            res.status(200).redirect('http://localhost:3000');
+            res.status(200).redirect('https://quick-bites-tau.vercel.app');
 
 
         })

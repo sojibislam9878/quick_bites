@@ -10,12 +10,12 @@ const PopularFoodItem = () => {
     const [dishItem, setDishItem] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/allitem')
+        fetch('https://quick-bites-tau.vercel.app/api/allitem')
             .then(res => res.json())
             .then(data => setDishItem(data?.result))
     }, [])
 
-   
+
     return (
         <div className='container mx-auto text-center mt-12 lg:mt-20'>
             <SectionTitle head={'Your Favourite Food'} title={'Popular This Month'} para={" Discover this months most popular picks across tech, design, and web development!"} />

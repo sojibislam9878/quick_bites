@@ -11,7 +11,7 @@ const FeaturedRestaurant = () => {
     const [menuData, setMenuData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/allrestrurent')
+        fetch('https://quick-bites-tau.vercel.app/api/allrestrurent')
             .then(res => res.json())
             .then(data => setMenuData(data?.result))
     }, [])

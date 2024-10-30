@@ -7,7 +7,7 @@ const CouponData = () => {
         queryKey: ['couponData'],
 
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:3000/api/coupon`)
+            const res = await axios.get(`https://quick-bites-tau.vercel.app/api/coupon`)
             return (res?.data)
 
         }
