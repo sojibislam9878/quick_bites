@@ -20,13 +20,8 @@ const cors = require('cors')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors(
     {
-<<<<<<< HEAD
-      origin: [,"uick-bites-tau.vercel.app",'uick-bites-tau.vercel.app'],
-      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-=======
         origin: [, "http://localhost:3000", 'https://quick-bites-tau.vercel.app'],
         methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
->>>>>>> 44c6581cd67fb7e4f7d6398e1323a21c3a101abf
     }
 
 ));
@@ -97,95 +92,9 @@ async function run() {
                     transaction.insertOne(paymentData)
 
 
-<<<<<<< HEAD
-        // console.log(updateData)
-        // Handle success response
-        res.status(200).redirect(`uick-bites-tau.vercel.app/transaction/${data.tran_id}`);
-      });
-
-
-    //   when user cancel the payment request
-      app.post('/payment-cancel',async (req, res) => {
-        const data=req.body
-
-        const query = {
-            tran_id: data?.tran_id,
-        }
-       
-        await transaction.deleteOne(query)
-        res.status(200).redirect('uick-bites-tau.vercel.app');
-
-        
-      })
-
-    //   when use click the payment failed
-      app.post('/payment-fail', async(req, res) => {
-        const data=req.body
-
-        const query = {
-            tran_id: data?.tran_id,
-        }
-       
-      await  transaction.deleteOne(query)
-
-      res.status(200).redirect('uick-bites-tau.vercel.app');
-
-        
-      })
-
-    //   get payment information by transaction id 
-      app.get('/order/:id',async(req,res)=>{
-        const data=req.params.id
-        const query = {
-            tran_id: data,
-        }
-        const result = await transaction.findOne(query)
-        // console.log(result)
-        // Handle success response
-        res.status(200).json(result);
-      })
-
-
-    //   for ipn
-
-    app.post('/ipn', async(req, res) => {
-    
-        res.send(req.body)
-       
-    })
-    //   for validation payment methods
-    app.post('/validate',async(req,res) => {
-
-        const data = req.body;
-        const query = {
-            tran_id: data.transactionId,
-        }
-        const paymentData=await transaction.findOne(query)
-
-       
-        if (paymentData.validId==data.id) {
-
-          const  userData={
-                email: data?.userData
-            }
-
-            const dataa=await userCollection.findOne(userData)
-            console.log(dataa);
-            
-
-
-            const amount= parseInt(Math.ceil(paymentData?.product_data?.amount*(20/100)))+parseInt(dataa?.points)||0
-            
-            // console.log(paymentData?.product_data?.amount,Math.ceil(paymentData?.product_data?.amount*(20/100)),parseInt(Math.ceil(paymentData?.product_data?.amount*(20/100))),amount);
-            
-            const point={
-                $set:{
-                    points:amount
-=======
                     res.status(200).send({ url: paymentResponse.GatewayPageURL });
                 } else {
                     res.status(400).send({ error: 'Failed to initiate payment' });
->>>>>>> 44c6581cd67fb7e4f7d6398e1323a21c3a101abf
                 }
             } catch (error) {
                 res.status(500).send({ error: error.message });
