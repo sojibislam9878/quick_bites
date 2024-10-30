@@ -1,4 +1,5 @@
 "use client"
+import CheckoutSpin from "@/app/component/checkoutSpin/CheckoutSpin";
 import SocialSignin from "@/app/component/shared/SocialSignin";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
@@ -12,10 +13,15 @@ const Page = () => {
 
 
 const [eye,setEye]=useState(true)
- const router=useRouter()    
+ const router=useRouter()   
+ 
+ const [loading, setLoading] = useState(false);
+
 
     const handleSubmit = async e => {
         e.preventDefault();
+
+        setLoading(true);
 
         const Toast = Swal.mixin({
             toast: true,
@@ -40,6 +46,8 @@ const [eye,setEye]=useState(true)
 
         });
         if (resp?.ok==false){
+            setLoading(false);
+
             Toast.fire({
                 icon: "error",
                 color:'red',
@@ -47,6 +55,8 @@ const [eye,setEye]=useState(true)
               });
 
         }else{
+            setLoading(false);
+
             router.push("/"); 
 
         }
@@ -126,6 +136,10 @@ const [eye,setEye]=useState(true)
 
                 </div>
             </div>
+
+            {
+          loading ? <CheckoutSpin></CheckoutSpin> : ''
+        }
         </div>
        
        
