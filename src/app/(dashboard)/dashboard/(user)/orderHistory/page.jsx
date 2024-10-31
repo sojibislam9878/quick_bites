@@ -34,7 +34,7 @@ const OrderHistory = () => {
       <div className="max-w-screen-xl mx-auto px-4 md:px-8 bg-white rounded-lg shadow-md">
    <div className="max-w-2xl mx-auto text-center">
 <h3 className="text-gray-600 text-3xl font-semibold sm:text-4xl">
-    All Order History
+    All Order  History
 </h3>
 
 </div>
