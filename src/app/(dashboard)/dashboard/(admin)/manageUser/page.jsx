@@ -8,7 +8,7 @@ const MangeUser = () => {
     queryKey: ['mangeUser'],
 
     queryFn: async() =>{
-     const res= await axios.get(`uick-bites-tau.vercel.app/api/allUser`)
+     const res= await axios.get(`http://localhost:300/api/allUser`)
      return (res?.data)
 
     }})

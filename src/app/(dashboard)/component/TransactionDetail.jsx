@@ -4,7 +4,7 @@ const TransactionDetail = ({data}) => {
 
     const stats = [
         {
-          data: "d200" , // Accessing the length of the result array
+          data: "200" , // Accessing the length of the result array
           title: "Customers",
         },
         {
@@ -15,6 +15,7 @@ const TransactionDetail = ({data}) => {
           data: "30M+",
           title: "Total Revenue",
         },
+
       ];
     
   return (
