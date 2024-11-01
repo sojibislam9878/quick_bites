@@ -1,13 +1,7 @@
-<<<<<<< HEAD
-"use Client";
-import React from "react";
-import { FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa";
-=======
 "use Client"
 import Image from 'next/image';
 import React from 'react'
 import { FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
->>>>>>> 54623e6ce52e0c68823167ac9b0633809e1b6f1f
 
 export const metadata = {
   title: "Dashboard-UserProfile",
@@ -27,7 +21,7 @@ const UserProfile = () => {
       <div>
         {" "}
         <div className="min-h-screen flex justify-center items-center p-4 lg:p-0">
-          <div className="bg-white shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)] text-[#533831] selection:text-orange-500 rounded-lg shadow-lg ">
+          <div className="bg-white  text-[#533831] selection:text-orange-500 rounded-lg shadow-lg ">
             <div className="flex flex-col items-center">
               {/* Profile Picture */}
               <img
@@ -39,22 +33,12 @@ const UserProfile = () => {
               {/* Name */}
               <h2 className="text-2xl font-bold text-[#533831]">{data.name}</h2>
 
-<<<<<<< HEAD
+
               {/* Email */}
               <p className="text-gray-600 mb-6">{data.email}</p>
               <h1 className="text-red-500 font-bold text-2xl">{data.role}</h1>
               {/* Additional Info */}
-           
-            </div>
-=======
-    <div className="bg-white shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)] text-[#533831] selection:text-orange-500 rounded-lg shadow-lg p-8 w-full">
-      <div className="flex flex-col items-center">
-        {/* Profile Picture */}
-        <Image
-          src={data.image}
-          alt="Profile Picture"
-          className="w-32 h-32 rounded-full object-cover mb-4 shadow-[-10px_-10px_30px_4px_rgba(223,198,173),_10px_10px_30px_4px_rgba(45,78,255,0.15)]"
-        />
+   
 
         {/* Name */}
         <h2 className="text-2xl font-bold text-[#533831]">{data.name}</h2>
@@ -81,12 +65,13 @@ const UserProfile = () => {
             <a href="#" className="text-gray-800 hover:text-black" aria-label="GitHub">
               <FaGithub size={24} />
             </a>
->>>>>>> 54623e6ce52e0c68823167ac9b0633809e1b6f1f
+
           </div>
         </div>
       </div>
     </div>
   );
-};
-
+</div>
+</div>
+</div>)}
 export default UserProfile;
