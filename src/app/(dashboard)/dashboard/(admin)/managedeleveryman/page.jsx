@@ -12,7 +12,7 @@ const Page = () => {
     useEffect(() => {
         const fetchDeliveryMen = async () => {
             setLoading(true);
-            const response = await fetch(`/api/allUsers?role=Delivery Man&status=${selectedTab}`);
+            const response = await fetch(`/api/allUsers?role=deleveryMan&status=${selectedTab}`);
             const data = await response.json();
             setDeliveryMen(data.result);
             setLoading(false);

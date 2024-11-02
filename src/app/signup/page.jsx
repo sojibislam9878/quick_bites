@@ -9,15 +9,12 @@ import Swal from 'sweetalert2';
 
 
 const SignUpPage = () => {
-
-    const router = useRouter()
-
+    const router = useRouter();
     const [image, setImage] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
-    const [eye, setEye] = useState(true)
-    const [checkbox, setCheckbox] = useState()
-    const [emailCheck, setEmailCheck] = useState()
-
+    const [eye, setEye] = useState(true);
+    const [checkbox, setCheckbox] = useState();
+    const [emailCheck, setEmailCheck] = useState();
 
     // Handle file input change
     const handleImageChange = (e) => {
@@ -87,9 +84,6 @@ const SignUpPage = () => {
               });
         }
 
-
-        // console.log('safd', e.target.sf.value)
-
         if (imageUrl) {
 
             setLoading(true);
@@ -97,15 +91,12 @@ const SignUpPage = () => {
             const name1 = e.target.name1.value
             const name2 = e.target.name2.value
             const formData = {
-                name: name1 + ' ' + name2,
+                name: `${e.target.name1.value} ${e.target.name2.value}`,
                 password: e.target.password.value,
                 email: e.target.email.value,
                 image: imageUrl,
-                // role: e.target.role.value
                 role: 'user'
-
-
-            }
+            };
 
             if (formData?.password.length < 6) {
                 setLoading(false);
@@ -125,13 +116,10 @@ const SignUpPage = () => {
                 return
             }
 
-            console.log('alldata', formData);
-            const resp = await fetch(`https://quick-bites-tau.vercel.app/signup/api`, {
+            const resp = await fetch(`/signup/api`, {
                 method: "POST",
                 body: JSON.stringify(formData),
-                headers: {
-                    "content-type": "application/json",
-                },
+                headers: { "content-type": "application/json" },
             });
             if (resp?.status === 200) {
                 setLoading(false);

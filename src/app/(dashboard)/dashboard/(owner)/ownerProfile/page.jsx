@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image';
 import React from 'react'
 import { FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
 
@@ -11,13 +12,13 @@ const  OwnerProfile = () => {
       };
     
   return (
-    <div><div> <div className="min-h-screen flex justify-center items-center p-4 lg:p-0">
+    <div><div> <div className="min-h-screen bg-yellow-300 flex justify-center items-center p-4 lg:p-0">
 
 
-    <div className="bg-white shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)] text-[#533831] selection:text-orange-500 rounded-lg shadow-lg p-8 w-full">
+    <div className=" shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)] text-[#533831] selection:text-orange-500 rounded-lg shadow-lg p-8 w-full">
       <div className="flex flex-col items-center">
         {/* Profile Picture */}
-        <img
+        <Image
           src={data.image}
           alt="Profile Picture"
           className="w-32 h-32 rounded-full object-cover mb-4 shadow-[-10px_-10px_30px_4px_rgba(223,198,173),_10px_10px_30px_4px_rgba(45,78,255,0.15)]"

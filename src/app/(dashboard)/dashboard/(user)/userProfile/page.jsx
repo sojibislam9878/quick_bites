@@ -24,7 +24,7 @@ const UserProfile = () => {
     };
 
     return (
-        <div className="min-h-screen w-full bg-gray-100 flex justify-center items-center p-8">
+        <div className="min-h-screen w-full  flex justify-center items-center p-8">
             <div className="border-2 rounded-3xl w-full max-w-6xl p-10 bg-white shadow-md">
                 {/* Profile Picture and Name */}
                 <div className="flex flex-col items-center text-center mb-6">
