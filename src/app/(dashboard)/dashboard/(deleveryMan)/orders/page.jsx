@@ -23,7 +23,7 @@ const Orders = () => {
   useEffect(() => {
     fetchFoodDelivery();
   }, []);
-console.log(orders,'orders');
+console.log(selectedOrder,'orders');
   return (
     <div className="p-4">
       <h1 className="text-2xl font-semibold mb-4">Orders</h1>
@@ -66,13 +66,13 @@ customer_total_foodItems?.name}</td>
       {selectedOrder && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 sm:w-3/4 md:w-1/2">
-            <h2 className="text-xl font-bold mb-4">Order Details for {selectedOrder.name}</h2>
-            <p><strong>Order Time:</strong> {selectedOrder.customer_oder_time}</p>
-            <p><strong>Address:</strong> {selectedOrder.customer_address}</p>
-            <p><strong>Phone:</strong> {selectedOrder.customer_phone}</p>
-            <p><strong>Food Items:</strong> {selectedOrder.foodItems.foodName} ({selectedOrder.foodItems.category})</p>
-            <p><strong>Total Amount:</strong> ${selectedOrder.customer_total_foodItems.amount}</p>
-            <p><strong>Food Status:</strong> {selectedOrder.food_status}</p>
+            <h2 className="text-xl font-bold mb-4">Order Details for {selectedOrder.customer_total_foodItems.name}</h2>
+            <p><strong>Order Time:</strong> 65</p>
+            <p><strong>Address:</strong> adress</p>
+            <p><strong>Phone:</strong> 455</p>
+            {/* <p><strong>Food Items:</strong> {selectedOrder.foodItems.foodName} ({selectedOrder.foodItems.category})</p> */}
+            <p><strong>Total Amount:</strong> $89</p>
+            <p><strong>Food Status:</strong> 4</p>
             <button 
               className="mt-4 px-4 py-2 bg-red-500 text-white rounded" 
               onClick={() => setSelectedOrder(null)}
