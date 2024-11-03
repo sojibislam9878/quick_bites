@@ -20,3 +20,14 @@ export const POST = async (request)=>{
     data
     })
 }
+
+export const GET = async (request)=>{
+    const db = await connectDB();
+    const foodRequest = db.collection('foodRequest');
+    const data = await foodRequest.find({food_status:'cooking'}).toArray()
+
+    console.log(data);
+    return NextResponse.json({
+        data
+        })
+}

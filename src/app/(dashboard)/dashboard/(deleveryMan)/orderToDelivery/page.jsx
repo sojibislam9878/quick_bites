@@ -121,6 +121,9 @@ if(session){
                 <p className="text-lg text-gray-500">Loading order details...</p>
             </div>
         )}
+          <div className="flex justify-center items-center h-full">
+                <p className="text-lg text-gray-500">No order To Deliver</p>
+            </div>
     </div>
     );
 };
