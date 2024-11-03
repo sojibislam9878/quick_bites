@@ -201,6 +201,10 @@ async function run() {
 
                 await foodRequest.insertOne(foodData)
 
+                // from user data to send data to delivery man
+                io.emit('new-order', result.ops[0]); // Notify all delivery personnel
+                res.status(201).json({ message: 'Order created', order: result.ops[0] });
+
                 const userData = {
                     email: data?.userData
                 }
