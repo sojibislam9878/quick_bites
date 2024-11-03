@@ -288,6 +288,42 @@ io.on('connection', (socket) => {
         io.emit('admin_receive', { socketId: socket.id, userEmail: users[socket.id], msg, userName: name, userImage: image });
     });
 
+
+
+
+
+    // Delivery person accepts an order
+app.post('/accept-order', async (req, res) => {
+    try {
+        const { orderId, deliveryPersonId } = req.body;
+
+        const result = await ordersCollection.updateOne(
+            { _id: new ObjectId(orderId), status: 'Pending' },
+            { $set: { status: 'Accepted', deliveryPersonId } }
+        );
+
+        if (result.matchedCount === 0) {
+            return res.status(404).json({ message: 'Order not found or already accepted' });
+        }
+
+        // Emit the accepted order to notify all clients
+        io.emit('order-accepted', { orderId, deliveryPersonId });
+
+        // Send updated orders list excluding the accepted order
+        const updatedOrders = await ordersCollection.find({ status: 'Pending' }).toArray();
+        io.emit('update-orders', updatedOrders); // Notify clients with the updated order list
+
+        res.status(200).json({ message: 'Order accepted', orderId });
+    } catch (error) {
+        res.status(500).json({ message: 'Error accepting order', error });
+    }
+});
+
+
+
+
+
+
     // Admin sends a message to a specific user
     socket.on('admin_message', async ({ userId, message }) => {
         console.log(`Admin sends message to ${userId}: ${message}`);
