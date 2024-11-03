@@ -277,6 +277,7 @@ setBuyNow(  JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
         amount,
         name: formData?.fullName,
         email: userData?.data?.user?.email,
+        image: userData?.data?.user?.image,
         foodItems: buyNow,
         userPhoneNumber: formData?.phoneNumber,
         userAddress: `${formData?.address}, ${formData?.building}, ${formData?.area}, , ${formData?.city}, ${formData?.region}`,
@@ -300,6 +301,8 @@ setBuyNow(  JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
         amount,
         name: formData?.fullName,
         email: userData?.data?.user?.email,
+        image: userData?.data?.user?.image,
+
         foodItems: cart?.cartItems,
         userPhoneNumber: formData?.phoneNumber,
         userAddress: `${formData?.address}, ${formData?.building}, ${formData?.area}, , ${formData?.city}, ${formData?.region}`,

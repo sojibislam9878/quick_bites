@@ -81,6 +81,7 @@ async function run() {
                 cus_address: data?.userAddress,
                 cus_country: 'Bangladesh',
                 cus_phone: data?.userPhoneNumber,
+                cus_image: data?.image,
             };
 
             try {
@@ -120,9 +121,9 @@ async function run() {
             const updateData = await transaction.updateOne(query, update)
 
 
-            // console.log(updateData)
+            console.log(data?.tran_id)
             // Handle success response
-            res.status(200).redirect(`http://localhost:3000/transaction/${data.tran_id}`);
+            res.status(200).redirect(`http://localhost:3000/transaction/${data?.tran_id}`);
         });
 
 
@@ -188,22 +189,29 @@ async function run() {
 
             if (paymentData?.validId == data?.id) {
 
+
+                console.log(paymentData?.cus_address);
+                
+
                 const foodData = {
+                    orderId: transactionId.slice(0, 5),
                     customer_phone: paymentData?.cus_phone,
                     customer_address: paymentData?.cus_address,
                     customer_oder_time: new Date().toLocaleString(),
                     customer_total_foodItems: paymentData?.product_data,
+                    customer_image:paymentData?.cus_image,                   
                     food_status: "cooking",
 
                 }
-                // console.log(foodData);
+                console.log(foodData);
 
 
-                await foodRequest.insertOne(foodData)
+                const result = await foodRequest.insertOne(foodData)
+                console.log(result);
 
                 // from user data to send data to delivery man
-                io.emit('new-order', result.ops[0]); // Notify all delivery personnel
-                res.status(201).json({ message: 'Order created', order: result.ops[0] });
+                io.emit('new-order', foodData); // Notify all delivery personnel
+                // res.status(201).json({ message: 'Order created', order: result.ops[0] });
 
                 const userData = {
                     email: data?.userData
@@ -297,31 +305,35 @@ io.on('connection', (socket) => {
 
 
     // Delivery person accepts an order
-app.post('/accept-order', async (req, res) => {
-    try {
-        const { orderId, deliveryPersonId } = req.body;
+    app.post('/accept-order', async (req, res) => {
+        try {
+            const { orderId,deliveryPersonId } = req.body;
 
-        const result = await ordersCollection.updateOne(
-            { _id: new ObjectId(orderId), status: 'Pending' },
-            { $set: { status: 'Accepted', deliveryPersonId } }
-        );
 
-        if (result.matchedCount === 0) {
-            return res.status(404).json({ message: 'Order not found or already accepted' });
+
+            const result = await foodRequest.updateOne(
+                { orderId:orderId, food_status: 'cooking' },
+                { $set: { food_status: 'Accepted', deliveryPersonId } }
+            );
+ 
+            // console.log(result,'ddd');
+            
+            if (result.matchedCount === 0) {
+                return res.status(404).json({ message: 'Order not found or already accepted' });
+            }
+
+            // Emit the accepted order to notify all clients
+            io.emit('order-accepted', { orderId, deliveryPersonId });
+
+            // Send updated orders list excluding the accepted order
+            const updatedOrders = await foodRequest.find({ food_status: 'cooking' }).toArray();
+            io.emit('update-orders', updatedOrders); // Notify clients with the updated order list
+
+            res.status(200).json({ message: 'Order accepted', orderId });
+        } catch (error) {
+            res.status(500).json({ message: 'Error accepting order', error });
         }
-
-        // Emit the accepted order to notify all clients
-        io.emit('order-accepted', { orderId, deliveryPersonId });
-
-        // Send updated orders list excluding the accepted order
-        const updatedOrders = await ordersCollection.find({ status: 'Pending' }).toArray();
-        io.emit('update-orders', updatedOrders); // Notify clients with the updated order list
-
-        res.status(200).json({ message: 'Order accepted', orderId });
-    } catch (error) {
-        res.status(500).json({ message: 'Error accepting order', error });
-    }
-});
+    });
 
 
 

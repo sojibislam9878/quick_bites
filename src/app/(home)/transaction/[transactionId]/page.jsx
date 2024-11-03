@@ -4,7 +4,6 @@ import CartContext from '@/app/Context/CartContext';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
-import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { useContext, useEffect, useState } from 'react';
 import { FcOk } from "react-icons/fc";
@@ -52,20 +51,21 @@ export default function PaymentSuccess() {
 
             
 
-         return route.replace('/')
 
             
           }
 
           if(!buyNowBtn){
+
             localStorage.removeItem('cart')
 
-            route.replace('/')
             
             setTimeout(() => {
               setCart('')
             }, 1000);
           }
+          route.replace('/')
+
           
 
         }
