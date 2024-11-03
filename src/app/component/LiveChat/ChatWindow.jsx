@@ -5,7 +5,7 @@ import ChatMessage from './ChatMessage';
 import { useSession } from 'next-auth/react';
 import { MdOutlineCancelScheduleSend } from 'react-icons/md';
 
-const socket = io('https://quick-bites-ljsf.onrender.com');
+const socket = io('http://localhost:4000');
 ;
 
 const ChatWindow = ({setOpen}) => {

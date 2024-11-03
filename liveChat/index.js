@@ -20,7 +20,7 @@ const cors = require('cors')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors(
     {
-        origin: [, "http://localhost:3000", 'https://quick-bites-tau.vercel.app'],
+        origin: [, "http://localhost:3000", 'http://localhost:3000'],
         methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     }
 
@@ -67,10 +67,10 @@ async function run() {
                 total_amount: data?.amount, // payment amount
                 currency: 'USD', // e.g., 'BDT'
                 tran_id: transactionId, // unique transaction id
-                success_url: 'https://quick-bites-ljsf.onrender.com/payment-success',
-                fail_url: 'https://quick-bites-ljsf.onrender.com/payment-fail',
-                cancel_url: 'https://quick-bites-ljsf.onrender.com/payment-cancel',
-                ipn_url: 'https://quick-bites-ljsf.onrender.com/ipn',
+                success_url: 'http://localhost:5000/payment-success',
+                fail_url: 'http://localhost:5000/payment-fail',
+                cancel_url: 'http://localhost:5000/payment-cancel',
+                ipn_url: 'http://localhost:5000/ipn',
                 shipping_method: 'No',
                 product_name: data?.productData?.length > 1 ? 'Multiple Food items' : 'food',
                 product_category: 'Food',
@@ -122,7 +122,7 @@ async function run() {
 
             // console.log(updateData)
             // Handle success response
-            res.status(200).redirect(`https://quick-bites-tau.vercel.app/transaction/${data.tran_id}`);
+            res.status(200).redirect(`http://localhost:3000/transaction/${data.tran_id}`);
         });
 
 
@@ -135,7 +135,7 @@ async function run() {
             }
 
             await transaction.deleteOne(query)
-            res.status(200).redirect('https://quick-bites-tau.vercel.app');
+            res.status(200).redirect('http://localhost:3000');
 
 
         })
@@ -150,7 +150,7 @@ async function run() {
 
             await transaction.deleteOne(query)
 
-            res.status(200).redirect('https://quick-bites-tau.vercel.app');
+            res.status(200).redirect('http://localhost:3000');
 
 
         })

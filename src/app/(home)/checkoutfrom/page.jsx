@@ -56,7 +56,7 @@ setBuyNow(  JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
 
 
           const region = formData?.region
-          axios.post('https://quick-bites-tau.vercel.app/api/location', { region })
+          axios.post('http://localhost:3000/api/location', { region })
             .then(response => {
               console.log(response?.data),
                 setCity(response?.data)
@@ -67,7 +67,7 @@ setBuyNow(  JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
         if (formData?.city) {
 
           const city = formData?.city
-          axios.post(`https://quick-bites-tau.vercel.app/api/location`, { city })
+          axios.post(`http://localhost:3000/api/location`, { city })
             .then(response => {
               console.log(response?.data),
                 setArea(response?.data)
@@ -185,7 +185,7 @@ setBuyNow(  JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
 
     setLoading(true);
 
-    axios.post('https://quick-bites-tau.vercel.app/api/coupon/getCoupon', { coupon })
+    axios.post('http://localhost:3000/api/coupon/getCoupon', { coupon })
       .then((response) => {
 
         console.log(response.data);
@@ -313,7 +313,7 @@ setBuyNow(  JSON.parse(localStorage.getItem('buyNowData'))?.buyNow
 
     if (allData) {
 
-      const data = axios.post('https://quick-bites-ljsf.onrender.com/checkOut', allData)
+      const data = axios.post('http://localhost:5000/checkOut', allData)
       .then((response) => {
         console.log(response)
 
