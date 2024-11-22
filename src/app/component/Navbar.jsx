@@ -45,7 +45,7 @@ const Navbar = () => {
 
   return (
     <div className=" shadow-md  sticky top-0 left-0  z-50 bg-base-100">
-      <div className=" container mx-auto p-4 navbar  justify-between  lg:justify-between md:justify-between ">
+      <div className=" container mx-auto p-4 navbar   justify-between  lg:justify-between md:justify-between ">
         <div className="navbar-start  w-fit">
           {/* for small */}
           <div className={icon ? "" : " relative"}>
@@ -98,7 +98,7 @@ const Navbar = () => {
         </div>
 
         {/* for large  */}
-        <div className="navbar-center hidden gap-4 lg:flex">
+        <div className="navbar-center hidden gap-4 ">
           {navLinks?.map((link, index) => (
             <Link
               key={index}
@@ -128,13 +128,13 @@ const Navbar = () => {
                     <span className=" lg:inline ml-1 text-orange-600">
                       {/* (<b>{cartItems?.length || 0}</b>) */}
                       (<b>{cart?.cartItems?.reduce(
-                          (acc, item) => acc + item.quantity,
-                          0
-                        )|| 0}
-                        </b>)
+                        (acc, item) => acc + item.quantity,
+                        0
+                      ) || 0}
+                      </b>)
                     </span></div></Link>
               </div>
-              <div className="dropdown dropdown-hover">
+              <div className="dropdown dropdown-hover  ">
                 <div tabIndex={0} role="button" className=" m-1">
                   {/* <FaUserCircle
                     className="hover:scale-[1.03]  hover:text-orange-600 "
@@ -159,10 +159,10 @@ const Navbar = () => {
                     unoptimized
                   />
                 </div>
-                <div>
+                <div className="">
                   <ul
                     tabIndex={0}
-                    className="dropdown-content absolute  gap-1  -right-5 lg:-right-10 h-fit  menu bg-base-100 rounded-md z-[1] w-32 p-2 shadow"
+                    className="dropdown-content absolute  gap-1  -right-5 lg:-right-4 h-fit  menu bg-base-100 rounded-md z-[1] w-32 p-2 shadow"
                   >
                     <h1 className="text-center">Hi {session?.data?.user?.name}</h1>
                     <li className=" hover:bg-gray-300 hover:rounded-lg">

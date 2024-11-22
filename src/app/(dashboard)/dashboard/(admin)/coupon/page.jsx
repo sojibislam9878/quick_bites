@@ -97,57 +97,57 @@ const CouponManagement = () => {
     const [startText, setText1] = useState('');
     const [startEnd, setText2] = useState('');
     const [startPrice, setText3] = useState('');
-  
+
     const handleEditClick = (value) => {
-      setIsEditing(value); 
-      setText1('')
-      setText2('')
-      setText3('')
-      console.log(isEditing);
-      
-    };
-  
-  
-  
-    const handleInputChange = (e ,da) => {
+        setIsEditing(value);
+        setText1('')
+        setText2('')
+        setText3('')
+        console.log(isEditing);
 
-        let data=e.target.value
-        if (da=='start') {
-      setText1(data); 
-            
-        }
-        else if (da=='end') {
-            setText2(data); 
-            
-        }
-        else if (da=='price') {
-            setText3(data); 
-            
-        }
     };
 
-    const handleSaveUpdate=async()=>{
-
-        if(isEditing){
-        setloading(true)
 
 
-            const updateCouponData={
-                id:isEditing,
-                price:startPrice,
-                start:startText,
-                end:startEnd
+    const handleInputChange = (e, da) => {
+
+        let data = e.target.value
+        if (da == 'start') {
+            setText1(data);
+
+        }
+        else if (da == 'end') {
+            setText2(data);
+
+        }
+        else if (da == 'price') {
+            setText3(data);
+
+        }
+    };
+
+    const handleSaveUpdate = async () => {
+
+        if (isEditing) {
+            setloading(true)
+
+
+            const updateCouponData = {
+                id: isEditing,
+                price: startPrice,
+                start: startText,
+                end: startEnd
             }
             console.log(updateCouponData);
-            
-            await axios.post('https://quick-bites-tau.vercel.app/api/coupon/updateCoupon',updateCouponData)
+
+            await axios.post('https://quick-bites-tau.vercel.app/api/coupon/updateCoupon', updateCouponData)
                 .then(result => {
                     console.log(result.data);
 
                     if (result) {
-    
+
                         refetch()
-                setIsEditing(false)
+                        setIsEditing(false)
 
                         setTimeout(() => {
                             setloading(false)
@@ -156,14 +156,14 @@ const CouponManagement = () => {
                         console.error("Error removing from favorites:", response.statusText);
                     }
                 })
-                
-              
 
-           
+
+
+
         }
 
     }
-  
+
 
 
     return (
@@ -200,48 +200,48 @@ const CouponManagement = () => {
                                 <td className="text-center p-4">{data?.id}</td>
                                 <td className="text-center p-4">{data?.code}</td>
                                 <td className="text-center text-red-400 p-4">
-                                {isEditing==data?._id ? (
+                                    {isEditing == data?._id ? (
                                         <input className="w-10 text-center max-w-2xl"
                                             type="text"
-                                            value={startPrice ||data?.discountValue}
-                                            onChange={(e)=>handleInputChange(e,'price')}
+                                            value={startPrice || data?.discountValue}
+                                            onChange={(e) => handleInputChange(e, 'price')}
                                             // onBlur={handleSaveClick} // Save when clicking outside the input
                                             autoFocus
                                         />
                                     ) : (
-                                        <span>                                    
+                                        <span>
                                             {data?.discountValue}%
                                         </span>
                                     )}
                                 </td>
                                 <td className="text-center p-4">
 
-                                    {isEditing==data?._id ? (
+                                    {isEditing == data?._id ? (
                                         <input className="w-[89px] max-w-2xl"
                                             type="text"
-                                            value={startText ||data?.validity?.start}
-                                            onChange={(e)=>handleInputChange(e,'start')}
+                                            value={startText || data?.validity?.start}
+                                            onChange={(e) => handleInputChange(e, 'start')}
                                             // onBlur={handleSaveClick} // Save when clicking outside the input
                                             autoFocus
                                         />
                                     ) : (
-                                        <span>                                    
+                                        <span>
                                             {data?.validity?.start}
                                         </span>
                                     )}
 
                                 </td>
                                 <td className="text-center p-4">
-                                {isEditing==data?._id ? (
+                                    {isEditing == data?._id ? (
                                         <input className="w-[89px] max-w-2xl"
                                             type="text"
-                                            value={startEnd ||data?.validity?.end}
-                                            onChange={(e)=>handleInputChange(e,'end')}
+                                            value={startEnd || data?.validity?.end}
+                                            onChange={(e) => handleInputChange(e, 'end')}
                                             // onBlur={handleSaveClick} // Save when clicking outside the input
                                             autoFocus
                                         />
                                     ) : (
-                                        <span>                                    
+                                        <span>
                                             {data?.validity?.end}
                                         </span>
                                     )}
@@ -261,7 +261,7 @@ const CouponManagement = () => {
                                     {dot == data?._id ?
                                         <div onMouseLeave={() => setDot('')} className='border   text-center space-y-2 px-4  rounded-md absolute  top  bg-white'>
 
-                                            <p onClick={()=>handleEditClick(data?._id)} className='p-3 mt-2 text-center cursor-pointer text-green-500 rounded-md hover:bg-slate-300'><FaEdit size={22} />
+                                            <p onClick={() => handleEditClick(data?._id)} className='p-3 mt-2 text-center cursor-pointer text-green-500 rounded-md hover:bg-slate-300'><FaEdit size={22} />
                                             </p>
                                             <p onClick={() => handleDelete(data?._id)} className='p-3  cursor-pointer text-red-500 rounded-md hover:bg-slate-300' ><MdDelete size={25} /></p>
                                         </div> : ' '
@@ -274,7 +274,7 @@ const CouponManagement = () => {
                 </table>
                 <div className='text-right mx-1'>
                     {
-                        isEditing?<button onClick={handleSaveUpdate} className='bg-green-400 hover:scale-[1.01] hover:border-green-400 text-slate-50 font-medium mt-3  font-lobster p-3 border '>SAVE</button>:''
+                        isEditing ? <button onClick={handleSaveUpdate} className='bg-green-400 hover:scale-[1.01] hover:border-green-400 text-slate-50 font-medium mt-3  font-lobster p-3 border '>SAVE</button> : ''
                     }
                 </div>
             </div>

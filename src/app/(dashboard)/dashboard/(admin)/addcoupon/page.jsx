@@ -5,8 +5,8 @@ import axios from "axios"
 import { useRouter } from "next/navigation"
 
 const AddCouponForm = () => {
-    const [,refetch]=CouponData()
-    const route=useRouter()
+    const [, refetch] = CouponData()
+    const route = useRouter()
 
     const add = async (e) => {
         e.preventDefault()
@@ -45,7 +45,7 @@ const AddCouponForm = () => {
         if (formData) {
             axios.post('https://quick-bites-tau.vercel.app/api/addCoupon', formData)
                 .then(response => {
-                    if(response.data.message=='Coupon updated successfully'){
+                    if (response.data.message == 'Coupon updated successfully') {
                         refetch()
                         route.push('coupon')
 
